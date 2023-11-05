@@ -695,9 +695,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LsiGxUtilidades\LsiGxUtilidades.csproj">
+    <ProjectReference Include="..\LsiGxUtilidades-XEv3\LsiGxUtilidades-XEv3.csproj">
       <Project>{cbd60e66-51b3-45c7-8e42-a28fdda58cd8}</Project>
-      <Name>LsiGxUtilidades</Name>
+      <Name>LsiGxUtilidades-XEv3</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
