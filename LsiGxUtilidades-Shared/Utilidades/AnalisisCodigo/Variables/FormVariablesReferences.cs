@@ -1,28 +1,10 @@
-﻿using System;
+﻿using Artech.Architecture.Common.Objects;
+using Artech.Genexus.Common.Parts;
+using Artech.Patterns.WorkWithDevices.Parts;
+using LSI.Packages.Extensiones.Utilidades.AnalisisCodigo.Tokens;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Artech.Genexus.Common.Objects;
-using Artech.Architecture.Common.Objects;
-using Artech.Genexus.Common.Parts;
-using Artech.Genexus.Common;
-using Artech.Genexus.Common.Parts.Layout;
-using LSI.Packages.Extensiones.Utilidades.AnalisisCodigo;
-using LSI.Packages.Extensiones.Utilidades.AnalisisCodigo.Reglas;
-using Artech.Genexus.Common.CustomTypes;
-using Artech.Architecture.Language.Parser.Data;
-using LSI.Packages.Extensiones.Utilidades.WinForms;
-using Artech.Common.Framework.Objects;
-using Artech.Genexus.Common.Parts.Form.DOM;
-using Artech.Genexus.Common.Types;
-using Artech.Genexus.Common.Parts.WebForm;
-using Artech.Common.Properties;
-using LSI.Packages.Extensiones.Utilidades.AnalisisCodigo.Tokens;
-using Artech.Common.Language;
-using Artech.Architecture.Datatypes;
-using LSI.Packages.Extensiones.Utilidades.GxClassExtensions;
-using Artech.Patterns.WorkWithDevices.Parts;
-using LSI.Packages.Extensiones.Utilidades.Variables;
 
 namespace LSI.Packages.Extensiones.Utilidades.AnalisisCodigo.Variables
 {

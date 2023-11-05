@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7C4E9606-EF0D-4791-867D-83211C059146}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LSI.Packages.Extensiones</RootNamespace>
+    <AssemblyName>LSI.Packages.Extensiones</AssemblyName>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <OutputPath>bin\Debug\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <DebugType>full</DebugType>
+    <DefineConstants>TRACE;DEBUG;GX_15;GX_15_OR_GREATER</DefineConstants>
+    <Optimize>false</Optimize>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+    <DefineConstants>GX_15;GX_15_OR_GREATER</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Artech.Architecture.BL.Framework">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Artech.Architecture.BL.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiproSoftware.Shared.Net20, Version=1.0.102.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR_GX15)\ActiproSoftware.Shared.Net20.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ActiproSoftware.SyntaxEditor.Net20, Version=4.0.283.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR_GX15)\ActiproSoftware.SyntaxEditor.Net20.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ActiproSoftware.WinUICore.Net20, Version=1.0.102.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR_GX15)\ActiproSoftware.WinUICore.Net20.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.Architecture.BL.Framework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR_GX15)\Artech.Architecture.BL.Framework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.Architecture.Common">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Artech.Architecture.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Architecture.Language">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Artech.Architecture.Language.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Architecture.UI.Framework">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Artech.Architecture.UI.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Common">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Artech.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Common.Controls">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Artech.Common.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Common.Framework">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Artech.Common.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Common.Helpers">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Artech.Common.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Common.Properties, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR_GX15)\Artech.Common.Properties.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.Common.Language">
+      <HintPath>$(GX_PROGRAM_DIR_GX15)\Artech.Common.Language.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.Common.Properties, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR_GX15)\Artech.Common.Properties.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.Common.Language">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Artech.Common.Language.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Common.Properties">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Artech.Common.Properties.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.FrameworkDE">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Artech.FrameworkDE.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Genexus.Common">
+      <HintPath>$(GX_PROGRAM_DIR_GX15)\Artech.Genexus.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.GXplorer.BL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR_GX15)\Packages\Artech.GXplorer.BL.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.Genexus.UI.Common">
+      <HintPath>$(GX_PROGRAM_DIR_GX15)\Artech.Genexus.UI.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.GXplorer.BL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR_GX15)\Packages\Artech.GXplorer.BL.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.GXplorer.Common">
+      <HintPath>$(GX_PROGRAM_DIR_GX15)\Artech.GXplorer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Layers.Framework">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Artech.Layers.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.MsBuild.Common">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Artech.MsBuild.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Packages.Patterns">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Artech.Packages.Patterns.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Packages.Language">
+      <HintPath>$(GX_PROGRAM_DIR_GX15)\Packages\Artech.Packages.Language.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.Packages.Patterns, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR_GX15)\Packages\Artech.Packages.Patterns.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.Patterns.WorkWithDevices">
+      <HintPath>$(GX_PROGRAM_DIR_GX15)\Packages\Patterns\WorkWithDevices\Artech.Patterns.WorkWithDevices.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Template.Base">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Artech.Template.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Template.Helper">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Artech.Template.Helper.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Template.Parser">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Artech.Template.Parser.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.Architecture.Common">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Artech.Udm.Architecture.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.BL">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Artech.Udm.BL.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.Data">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Artech.Udm.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.Framework">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Artech.Udm.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.Layers">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Artech.Udm.Layers.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.Layers.BL">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Artech.Udm.Layers.BL.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.Layers.Common">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Artech.Udm.Layers.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.Layers.Data.SQL">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Artech.Udm.Layers.Data.SQL.dll</HintPath>
+    </Reference>
+    <Reference Include="Connector">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Connector.dll</HintPath>
+    </Reference>
+    <Reference Include="DeklaritLibrary">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\DeklaritLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="GxDataLayer">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\GxDataLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Microsoft.Build.Utilities.v4.0" />
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=e44a2bc38ed2c13c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder">
+      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="newtonsoft.json">
+      <HintPath>$(GX_PROGRAM_DIR_GX15)\newtonsoft.json.dll</HintPath>
+    </Reference>
+    <Reference Include="SmartPropertyGrid">
+      <HintPath>$(GX_PROGRAM_DIR_GX15)\SmartPropertyGrid.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Management.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\WindowsPowerShell\v1.0\System.Management.Automation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TfLiteNetWrapper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libraries\TfLiteNetWrapper\TfLiteNetWrapper.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(GX_SDK_DIR_GX15)\Src\CommonPackageInfo.cs">
+      <Link>Properties\CommonPackageInfo.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LsiGxUtilidades-Gx15\LsiGxUtilidades-Gx15.csproj">
+      <Project>{80e73a97-cfa9-4c5f-9bc5-f5a7199571b4}</Project>
+      <Name>LsiGxUtilidades-Gx15</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="..\LsiGxExtensions-Shared\LsiGxExtensions-Shared.projitems" Label="Shared" />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>copy /Y ..\..\..\libraries\TfLiteNetWrapper\tensorflowlite_c.dll .
+"$(GX_SDK_DIR_GX15)\Tools\Updater" ..\..\..\LsiGxExtensions-Shared\Catalog.xml ..\..\ "$(GX_PROGRAM_DIR_GX15)"\ $(Configuration)
+"$(GX_PROGRAM_DIR_GX15)"\Genexus /install
+</PostBuildEvent>
+  </PropertyGroup>
+</Project>

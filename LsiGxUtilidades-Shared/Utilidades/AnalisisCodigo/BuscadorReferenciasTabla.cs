@@ -74,7 +74,18 @@ namespace LSI.Packages.Extensiones.Utilidades.AnalisisCodigo
                     // incorrectas
                     referenciasSaveSeguras = false;
 
+                // TODO: Check if this GX_15_OR_GREATER check is needed
+#if GX_15_OR_GREATER
+                // TODO: If FUNC_INSERT or FUNC_UPDATE is found, the reference is 100% sure,
+                // TODO: but is reported as "maybe"
+                funcionesBuscar.Add(BuscadorTokensSdtGx.FUNC_INSERTORUPDATE);
+                if (contieneInsercion)
+                    funcionesBuscar.Add(BuscadorTokensSdtGx.FUNC_INSERT);
+                if (contieneEscritura)
+                    funcionesBuscar.Add(BuscadorTokensSdtGx.FUNC_UPDATE);
+#else
                 funcionesBuscar.Add(BuscadorTokensSdtGx.FUNC_SAVE);
+#endif
             }
 
             if (TiposReferencias.Contains(TipoOperacion.LECTURA))

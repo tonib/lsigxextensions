@@ -57,10 +57,19 @@ namespace LSI.Packages.Extensiones.Utilidades.AnalisisCodigo
 
             if (nombreSimpleEvento == null)
             {
+                // TODO: Check this GX_15_OR_GREATER check is really needed
+#if GX_15_OR_GREATER
+                // Check composite names: "Event grid.load"
+                ObjectPEM compositeName = evento.EventName as ObjectPEM;
+                if (compositeName != null)
+                    nombreSimpleEvento = compositeName.PEMExpression as Word;
+#else
+                // Ev3
                 // Verificar un nombre compuesto: "Event grid.load"
                 EventDefinition nombreCompuesto = evento.EventName as EventDefinition;
                 if (nombreCompuesto != null)
                     nombreSimpleEvento = nombreCompuesto.PEMExpression as Word;
+#endif
             }
             if (nombreSimpleEvento == null)
                 return;

@@ -40,8 +40,15 @@ namespace LSI.Packages.Extensiones.Comandos.Build
             foreach (QueryObject q in TargetModel.GetDesignModel().GetObjects<QueryObject>())
             {
                 q.LoadVirtualParts();
+#if GX_15_OR_GREATER
+                // TODO: Gx15: Check this is working
+                // Gx15: QueryCacheInfoPart does not longer exists...
+                q.QuerySQLSentencePart.CalculateAndUpdateSQLSentence();
+#else
+                // Ev3U3:
                 q.QueryCacheInfoPart.SetCalculateSQLSentence(true);
                 q.QuerySQLSentencePart.DeleteSQLSentence();
+#endif
                 q.SaveVirtualParts();
                 any = true;
             }

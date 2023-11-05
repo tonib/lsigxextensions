@@ -1,4 +1,5 @@
-﻿using Artech.Architecture.Common.Objects;
+﻿using Artech.Architecture.Common.Modules;
+using Artech.Architecture.Common.Objects;
 using Artech.Architecture.UI.Framework.Services;
 using Artech.Genexus.Common;
 using Artech.Genexus.Common.Objects;
@@ -72,6 +73,15 @@ namespace LSI.Packages.Extensiones.Utilidades.AnalisisCodigo
         public UnreferencedObjectsFinder(List<IKBObjectParent> foldersToIgnore)
         {
             foldersToIgnore.ForEach(x => ExpandFoldersOrModulesToIgnore(x));
+
+#if GX_15_OR_GREATER
+            // Ignore interface modules
+            foreach ( Module m in Module.GetAll(UIServices.KB.CurrentModel) )
+            {
+                if (ObjectModuleHelper.IsRootInterfaceModule(m))
+                    ExpandFoldersOrModulesToIgnore(m);
+            }
+#endif
         }
 
         /// <summary>

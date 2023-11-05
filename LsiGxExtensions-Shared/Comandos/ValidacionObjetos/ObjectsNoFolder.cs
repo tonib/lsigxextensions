@@ -21,8 +21,9 @@ namespace LSI.Packages.Extensiones.Comandos.ValidacionObjetos
             if (!LsiExtensionsConfiguration.Load().CheckObjectsWithNoFolder)
                 return;
 
-            // Do no check folders / modules
-            if (task.ObjectToCheck is Folder || task.ObjectToCheck is Module)
+            // Do no check folders / modules / domains
+            if (task.ObjectToCheck is Folder || task.ObjectToCheck is Module || 
+                task.ObjectToCheck is Domain)
                 return;
 
             // Do not check DataView indices. They seems to have a browsable property for Folder, but they don't really have it...

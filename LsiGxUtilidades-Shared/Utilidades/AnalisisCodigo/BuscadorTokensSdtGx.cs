@@ -24,9 +24,27 @@ namespace LSI.Packages.Extensiones.Utilidades.AnalisisCodigo
         public const string FUNC_LOAD = "load";
 
         /// <summary>
-        /// Funcion de los BC para guardar
+        /// BC function to insert or update the record
         /// </summary>
         public const string FUNC_SAVE = "save";
+
+        // TODO: Check if this GX_15_OR_GREATER check is needed
+#if GX_15_OR_GREATER
+        /// <summary>
+        /// BC function to insert or update the record (duplicated?)
+        /// </summary>
+        public const string FUNC_INSERTORUPDATE = "insertorupdate";
+
+        /// <summary>
+        /// BC function to insert the record
+        /// </summary>
+        public const string FUNC_INSERT = "insert";
+
+        /// <summary>
+        /// BC function to update the record
+        /// </summary>
+        public const string FUNC_UPDATE = "update";
+#endif
 
         /// <summary>
         /// Funcion de los BC para guardar

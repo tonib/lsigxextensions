@@ -172,14 +172,26 @@ namespace LSI.Packages.Extensiones
             if (args.Status != KBOpenStatus.Normal)
                 return;
 
+#if GX_15_OR_GREATER
+            // Gx15: CurrentGxBuild no longer exists...
+            if (args.CurrentGXVersionID == args.Properties.LastOpenGXVersionID)
+#else
+            // Ev3U3:
             if (args.CurrentGxBuild == args.Properties.LastOpenGXBuild)
+#endif
                 return;
+            
 
             string msg = "The current GeneXus version is different of the last GeneXus version used to open this KB" +
                 Environment.NewLine;
             msg += Environment.NewLine;
+#if GX_15_OR_GREATER
+            msg += "Current GeneXus version: " + args.CurrentGXVersionName + Environment.NewLine;
+            msg += "Last open GeneXus version: " + args.Properties.LastOpenGXVersionName + Environment.NewLine;
+#else
             msg += "Current GeneXus version: " + args.CurrentGxBuild + Environment.NewLine;
             msg += "Last open GeneXus version: " + args.Properties.LastOpenGXBuild + Environment.NewLine;
+#endif
             msg += Environment.NewLine;
             msg += "Are you sure you want to open the KB with this GeneXus version?";
 

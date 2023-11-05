@@ -129,7 +129,11 @@ namespace LSI.Packages.Extensiones.Comandos
                 else if (TipoObjetoSeleccionado == TIPO_SDT)
                     return SDT.Get(modelo, new QualifiedName(nombre));
                 else if (TipoObjetoSeleccionado == TIPO_ENUM)
+#if GX_15_OR_GREATER
+                    return Domain.Get(modelo, new QualifiedName(nombre));
+#else
                     return Domain.Get(modelo, nombre);
+#endif
                 else
                     return null;
             }

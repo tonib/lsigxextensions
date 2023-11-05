@@ -1,23 +1,12 @@
-﻿using System;
+﻿using Artech.Architecture.Common.Objects;
+using Artech.Genexus.Common;
+using Artech.Genexus.Common.Entities;
+using Artech.Genexus.Common.Helpers;
+using Artech.Udm.Framework;
+using LSI.Packages.Extensiones.Utilidades.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Artech.Architecture.Common.Objects;
-using LSI.Packages.Extensiones.Utilidades.UI;
-using Artech.Architecture.UI.Framework.Services;
-using Artech.Genexus.Common.Objects;
-using Artech.Udm.Framework.References;
-using Artech.Genexus.Common;
-using Artech.Genexus.Common.Parts;
-using System.Windows.Forms;
-using Artech.Patterns.WorkWithDevices.Objects;
-using LSI.Packages.Extensiones.Utilidades.AnalisisCodigo.Tokens;
-using LSI.Packages.Extensiones.Utilidades.AnalisisCodigo.Reglas;
-using Artech.GXplorer.Common.Objects;
-using Artech.Genexus.Common.Entities;
-using LSI.Packages.Extensiones.Utilidades.CallsAnalisys;
-using Artech.Udm.Framework;
-using Artech.Genexus.Common.Helpers;
 
 namespace LSI.Packages.Extensiones.Utilidades.CallsAnalisys
 {

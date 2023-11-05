@@ -1,4 +1,3 @@
-
 - Revision de variables no usadas: Reportar los external objects, no se reportan
 
 - WWMains: Al abrir un fuente c# de un objeto sd panel, ademas del detail, abrir los fuentes de todos los grids (+99)
@@ -83,6 +82,9 @@
 - Documentar: Arreglo errores buscando referencias a SDPanels (ej. buscando referencias desde mains)
 
 - Llamadas a funcion format: no se verifica que los %NUMERO cuadren con el nº de parametro (madre mia)
+
+- &ColeccionSdts.Sort( 'a.b, c' ):
+	Verificar que las propiedades indicadas existan (se puede hacer si hay cache de SDTs). Si no existen, el programa se cuelga en tiempo de ejecucion
 
 - Añadir verificadores en la extensiones privadas especificas para los de SAP:
 	- Que en los SDTs este puesto no serializar los no tocados
@@ -308,6 +310,23 @@ Si se le da a hacer un rebuild all, aparece el aviso. Si se cancela el aviso el 
 - ERROR: Search unreferenced objects: Si esta marcado como "Expose as webservice", no deberia aparecer
   QUE SEA UNA OPCION (puede interesar quitarlos si son de consumo interno de la kbase)
 
+GX 15: 
+- Busqueda de objetos no referenciados: Por defecto, no reportar los que estan en la carpeta Genexus
+  del modulo Root (¿ni de ningun otro modulo?)
+- Busqueda de objetos no referenciados: Parece que no esta haciendo caso del filtro de las carpetas a
+  ignorar: Si añades "Genexus", aparecen objetos que estan en la carpeta "Genexus"
+- Busqueda de objetos no referenciados: Ya no tiene sentido pedir el "Forms to check", solo pueden ser
+  web
+- Aviso que no se puede depurar en wwmains: Ahora la propiedad "compiler options" se llama "compiler flags"
+
+- BuscadorReferenciasTabla: Si se encuentra una llamada a Insert() o Update() en un BC, el resultado
+  es seguro una insercion o actualizacion, pero aparecen en gris
+
+- Probar BuildQueryObjects, cambiado recalculo del SQL
+- Probar Package.OnKBOpening, cambiado id de Genexus
+
+----------------------------------------------------------------
+
 Informacion de parametros:
 	- Rendimiento
 	- ERROR: Sigue fallando. Escribir "PSliGenPedCnfAlm( &PathArchivo | )", cancelar el autocompletado, escribir ", "
@@ -339,6 +358,11 @@ Autocompletado:
 - Cuando se renombra una variable, renombrar todas las ocurrencias en el objeto (F2 del Visual Studio)
 
 - Crear tarea msbuild para actualizar estadisticas del sql server de la bbdd de la kbase (EXEC sp_updatestats)
+
+- Buscar todos los casts "(IParserObjectBaseCollection)" y reemplazarlos por LsiGetRootNodes()
+- Quitar los yield return de la busqueda de hijos (y otros)
+
+- Crear branch para Gx16
 
 - Crear variables:
   * ERROR: Muchas veces le das a la tecla rapida y no aparece la variable en la ToolWindow de Properties (race conditions???). REVISAR
