@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>a83130ce-a9d5-4ed4-8139-e65739891251</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>LsiGxUtilidades_Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\BuscadorAsignaciones.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\BuscadorConditions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\BuscadorEventos.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\BuscadorLecturasEscrituras.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\BuscadorReferenciasAtributo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\BuscadorReferenciasTabla.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\BuscadorTokensSdtGx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\EnumeratedDomainsFinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\GxSourcesFinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Llamadas\CallInfoBuilder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Llamadas\CallPemExpression.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Llamadas\CallsFinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Llamadas\Edicion\EditorLlamadas.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Llamadas\Edicion\Estado.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Llamadas\Edicion\InfoCambioLlamada.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Llamadas\Edicion\InfoCambioLlamadasObjeto.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Llamadas\Edicion\IOperacionLlamada.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Llamadas\Edicion\OpAgregarParametro.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Llamadas\Edicion\OpQuitarParametro.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Llamadas\Edicion\OpReemplazarLlamador.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Llamadas\GxCallInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Llamadas\Llamada.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\ObjectBaseReplacer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\ObjectPEMGx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\ObjectsModifiedByUserFinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\OrphanAttributesFinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\ParsedCode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\ParsedCodeFinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\ParserGx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Reglas\BuscadorReglas.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Reglas\ParameterElement.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Reglas\ReglaDefault.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Reglas\ReglaHidden.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Reglas\ReglaOrder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Reglas\ReglaParm.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Reglas\ReglaUpdate.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\RemoveLogicalOperatorsDots.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\SubroutinesFinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\TokensFinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Tokens\ControlsTokenReferences.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Tokens\ControlTokenFinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Tokens\FiltroIndirecionToken.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Tokens\FiltroTiposToken.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Tokens\TipoIndireccion.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Tokens\TipoToken.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Tokens\TokenGx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\UnreferencedObjectsFinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\VariablesFinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Variables\ConditionsVariablesReferences.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Variables\FormVariablesReferences.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Variables\MainCodeVariablesReferences.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Variables\ObjectVariablesReferences.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Variables\PartVariablesReferences.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Variables\ReportLayoutVariablesReferences.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AnalisisCodigo\Variables\RulesVariablesReferences.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\AtributoGx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\CallsAnalisys\BuscadorReferenciasMain.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\CallsAnalisys\FullGraphBuilder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\CallsAnalisys\GraphVisitState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\CallsAnalisys\KbSignaturesCache.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\CallsAnalisys\ObjectsByGeneratorFinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\CallsAnalisys\ObjectsGraph.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\CallsAnalisys\PartialGraphBuilder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\CodeGeneration\AssignmentsGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\CodeGeneration\ForEachGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\CodeGeneration\NewGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\CodeGeneration\ProcedureForEachGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\CodeGeneration\ProcedureGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\CodigoGenerado.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\Compression\Compressor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\Compression\ZipOperation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\CSharpWin\CSharpUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\CSharpWin\GeneratedSourceFilesCache.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\CSharpWin\ObjectSourceFiles.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\CSharpWin\RspFile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\CSharpWin\UnusedFiles\UnusedFile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\CSharpWin\UnusedFiles\UnusedFilesFinderBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\CSharpWin\UnusedFiles\UnusedSourceFiles.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\CSharpWin\UnusedFiles\UnusedSpecificationFilesFinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\CSharpWin\UnusedFiles\UnusedWinBinFilesFinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\DataTypeInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\Entorno.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\EventoGX.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\GxClassExtensions\CommandDataExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\GxClassExtensions\DataSelectorExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\GxClassExtensions\HashSetExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\GxClassExtensions\ICallableInfoExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\GxClassExtensions\IParserObjectBaseExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\GxClassExtensions\ITypedObjectExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\GxClassExtensions\KBObjectPartCollectionExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\GxClassExtensions\KBObjectPartExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\GxClassExtensions\ObjClassLsi.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\GxClassExtensions\ObjectBaseExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\GxClassExtensions\PatternInstanceElementExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\GxClassExtensions\ProductVersionHelperExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\GxClassExtensions\SDPanelExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\GxClassExtensions\SDTLevelExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\GxClassExtensions\VariableExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\GxClassExtensions\VariablesPartExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\KBaseGX.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\KBSync\KBSyncInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\KBSync\KBSyncObjectInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\KBSync\KBSyncObjectRef.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\KeywordGx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\LayoutGx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\Logging\BackgroundWorkerLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\Logging\Log.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\Logging\PlainTextLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\MainsGx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\ParteObjetoKb.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\Reflection\DependenciesWalker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\Reflection\SerializableDictionary.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\Reflection\SerializableKeyValue.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\Reflection\UtilidadesReflexion.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\Sdts\StdGX.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\Threading\ColaTareas.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\Threading\CommandDelegatorBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\Threading\IExecutable.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\Threading\NativeWindowEnumerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\Threading\ProcessChooser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\Threading\ProcessChooser.Designer.cs">
+      <DependentUpon>ProcessChooser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\Threading\ProcessLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\Threading\ProcessUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\TipoOperacion.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\TipoReferenciaTabla.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\UI\ClipboardTable.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\UI\ControlUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\UI\GridObjetos.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\UI\ListBoxTypeAhead.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\UI\ListBoxUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\UI\RefObjetoGX.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\UI\SearchKbObjectsToolWindowBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\UI\SearchToolWindowBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\UI\SelectGenerator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\UI\SelectGenerator.Designer.cs">
+      <DependentUpon>SelectGenerator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\UI\SelectKbObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\UI\SortableList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\UI\ToolWindowBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\UI\UISearchBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\Validation\IValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\Validation\ValidationService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\Validation\ValidationTask.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\Variables\VariableGX.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\VS\CompilerError.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\VS\CompilerLog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\VS\VisualStudio.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\WinForms\ControlWinForm.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\WinForms\EnumeradorWinform.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilidades\WinForms\WinFormGx.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Utilidades\Threading\ProcessChooser.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ProcessChooser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Utilidades\UI\GridObjetos.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>GridObjetos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Utilidades\UI\SelectGenerator.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SelectGenerator.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)LEEME.txt" />
+    <Content Include="$(MSBuildThisFileDirectory)LICENSE.txt" />
+  </ItemGroup>
+</Project>

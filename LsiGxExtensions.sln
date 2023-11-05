@@ -22,10 +22,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "LsiGxExtensions-Shared", "LsiGxExtensions-Shared\LsiGxExtensions-Shared.shproj", "{680E93F9-7753-47C1-B89B-BE6D9A023CC4}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "LsiGxUtilidades-Shared", "LsiGxUtilidades-Shared\LsiGxUtilidades-Shared.shproj", "{A83130CE-A9D5-4ED4-8139-E65739891251}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		LsiGxExtensions-Shared\LsiGxExtensions-Shared.projitems*{2b383796-cc63-4c26-a1ef-f6f9df9ec05e}*SharedItemsImports = 4
 		LsiGxExtensions-Shared\LsiGxExtensions-Shared.projitems*{680e93f9-7753-47c1-b89b-be6d9a023cc4}*SharedItemsImports = 13
+		LsiGxUtilidades-Shared\LsiGxUtilidades-Shared.projitems*{a83130ce-a9d5-4ed4-8139-e65739891251}*SharedItemsImports = 13
+		LsiGxUtilidades-Shared\LsiGxUtilidades-Shared.projitems*{cbd60e66-51b3-45c7-8e42-a28fdda58cd8}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
