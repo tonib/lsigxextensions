@@ -1,0 +1,13 @@
+﻿<!-- 
+  LSI extensions msbuild tasks definition.
+  This file must to be placed in the Packages directory of the Genexus installation dir.
+-->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<UsingTask TaskName="LSI.Packages.Extensiones.MsBuild.LsiCompileTask" AssemblyFile="LSI.Packages.Extensiones.dll"/>
+  <UsingTask TaskName="LSI.Packages.Extensiones.MsBuild.LsiBuildQuerys" AssemblyFile="LSI.Packages.Extensiones.dll"/>
+  <UsingTask TaskName="LSI.Packages.Extensiones.MsBuild.LsiSendEmail" AssemblyFile="LSI.Packages.Extensiones.dll"/>
+  <UsingTask TaskName="LSI.Packages.Extensiones.MsBuild.LsiDeleteBackups" AssemblyFile="LSI.Packages.Extensiones.dll"/>
+  <UsingTask TaskName="LSI.Packages.Extensiones.MsBuild.LsiLogSectionStart" AssemblyFile="LSI.Packages.Extensiones.dll"/>
+  <UsingTask TaskName="LSI.Packages.Extensiones.MsBuild.LsiLogSectionEnd" AssemblyFile="LSI.Packages.Extensiones.dll"/>
+  <UsingTask TaskName="LSI.Packages.Extensiones.MsBuild.LsiPrepareProduction" AssemblyFile="LSI.Packages.Extensiones.dll"/>
+</Project>

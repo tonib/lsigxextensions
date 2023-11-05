@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Actividad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\actividad.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ArreglarProblemas" xml:space="preserve">
+    <value>Fix current object problems...</value>
+  </data>
+  <data name="CopyParmRule" xml:space="preserve">
+    <value>Copy selected obj. parm rule to clipboard</value>
+  </data>
+  <data name="CrearProcActualizacionSdt" xml:space="preserve">
+    <value>Create procedure to update record with SDT values...</value>
+  </data>
+  <data name="CrearProcAsignarAtributo" xml:space="preserve">
+    <value>Create procedure to assign an attribute (P&lt;attribute&gt;)...</value>
+  </data>
+  <data name="CrearProcBorradoRegistro" xml:space="preserve">
+    <value>Create procedure to delete record (P&lt;table&gt;Bor)...</value>
+  </data>
+  <data name="CrearProcCargaSdt" xml:space="preserve">
+    <value>Create procedure to load SDT from record...</value>
+  </data>
+  <data name="CrearProcInsercion" xml:space="preserve">
+    <value>Create procedure to insert record (P&lt;table&gt;Gen)...</value>
+  </data>
+  <data name="CrearProcInsercionSdt" xml:space="preserve">
+    <value>Create procedure to insert record with SDT values...</value>
+  </data>
+  <data name="CrearProcObtenerValor" xml:space="preserve">
+    <value>Create procedure to retrieve attribute (PU&lt;attribute&gt;)...</value>
+  </data>
+  <data name="CrearSdtDeTabla" xml:space="preserve">
+    <value>Create SDT from table structure...</value>
+  </data>
+  <data name="EditarConfiguracion" xml:space="preserve">
+    <value>LSI.Extensions configuration...</value>
+  </data>
+  <data name="Formula" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Formula.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Grid_Add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Grid_Add.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Grid_Build" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Grid_Build.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Grid_Check" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Grid_Check.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Grid_Delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Grid_Delete.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Grid_Edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Grid_Edit.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Grid_Refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Grid_Refresh.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Grid_Run" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Grid_Run.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Grid_UpdateDB" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Grid_UpdateDB.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="InsertarForEach" xml:space="preserve">
+    <value>Copy table FOR EACH to clipboard...</value>
+  </data>
+  <data name="InsertarNew" xml:space="preserve">
+    <value>Copy table NEW to clipboard...</value>
+  </data>
+  <data name="VerificarObjeto" xml:space="preserve">
+    <value>Check current object</value>
+  </data>
+  <data name="LSI" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Lsi.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LsiImport" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\LsiImport.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Objetos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Objetos.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TamMaximoWinform" xml:space="preserve">
+    <value>Set max. winform size</value>
+  </data>
+  <data name="RevisarFuentes" xml:space="preserve">
+    <value>Check reports fonts...</value>
+  </data>
+  <data name="OpenDocumentation" xml:space="preserve">
+    <value>LSI.Extensions documentation (v2.12.0)</value>
+  </data>
+  <data name="Ayuda" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\help.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AyudaImg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\ayuda.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="VerificarBorradoTransaccion" xml:space="preserve">
+    <value>Check if transaction removal will reorganize database</value>
+  </data>
+  <data name="ReplaceVariablesAttributeBased" xml:space="preserve">
+    <value>Replace variables 'Attribute based on' property...</value>
+  </data>
+  <data name="SearchGxSources" xml:space="preserve">
+    <value>Search on Genexus sources</value>
+  </data>
+  <data name="KBSyncExportInfo" xml:space="preserve">
+    <value>Export selected objects versioning info...</value>
+  </data>
+  <data name="KBSyncReviewInfo" xml:space="preserve">
+    <value>Review objects versioning info on destination KB...</value>
+  </data>
+  <data name="EditCallsTW" xml:space="preserve">
+    <value>Edit object calls</value>
+  </data>
+  <data name="SearchMainTW" xml:space="preserve">
+    <value>Search main references</value>
+  </data>
+  <data name="SearchReferencesTW" xml:space="preserve">
+    <value>Search references</value>
+  </data>
+  <data name="SearchSourcesTW" xml:space="preserve">
+    <value>Search on Genexus sources</value>
+  </data>
+  <data name="SearchUnreferencedTW" xml:space="preserve">
+    <value>Search unreferenced objects</value>
+  </data>
+  <data name="CheckExportableTW" xml:space="preserve">
+    <value>Check exportable objects</value>
+  </data>
+  <data name="ReorderWinTab" xml:space="preserve">
+    <value>Reorder winform tab control pages...</value>
+  </data>
+  <data name="BldAssemblies_cs" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>comandos\build\bldassemblies.cs.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="applycodechanges_6548" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\vsicons\applycodechanges_6548.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BreakpointEnabled_6584_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\vsicons\breakpointenabled_6584_16x.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BreakpointsWindow_6557" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\vsicons\breakpointswindow_6557.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="build_Solution_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\vsicons\build_solution_16xlg.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Compile_191" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\vsicons\compile_191.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CSharpProject_SolutionExplorerNode" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\vsicons\csharpproject_solutionexplorernode.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CustomActionsEditor_5850" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\vsicons\customactionseditor_5850.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Executequery_9958" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\vsicons\executequery_9958.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FormRunHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\vsicons\formrunhs.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Hammer_Builder_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\vsicons\hammer_builder_16xlg.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="startwithoutdebugging_6556" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\vsicons\startwithoutdebugging_6556.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Symbols_Pause_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\vsicons\symbols_pause_16xlg.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Error" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\error.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ok" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\ok.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Processing" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\processing.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WorkWithMains" xml:space="preserve">
+    <value>Work with mains</value>
+  </data>
+  <data name="CompilationEmailTemplate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>msbuild\compilationemailtemplate.htm;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="HelpVS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\vsicons\helpvs.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Find_5650" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\vsicons\find_5650.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Diagram_8283" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\vsicons\diagram_8283.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WindowsForm_817" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\vsicons\windowsform_817.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CopyObjectsAsTable" xml:space="preserve">
+    <value>Copy objects info as table</value>
+  </data>
+  <data name="Table_748" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\vsicons\table_748.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Strings_7959" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\vsicons\strings_7959.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="refresh_16xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\vsicons\refresh_16xlg.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExtractProcedure" xml:space="preserve">
+    <value>Extract selected code to new Procedure</value>
+  </data>
+  <data name="ExtractMethod_6786" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\vsicons\extractmethod_6786.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HelpVSIco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\vsicons\helpvs.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExtractDataSelector" xml:space="preserve">
+    <value>Extract selected code to new Data Selector</value>
+  </data>
+  <data name="Shortcut_8169" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\vsicons\shortcut_8169.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PasteAsStringLiteral" xml:space="preserve">
+    <value>Paste as GeneXus string literal</value>
+  </data>
+  <data name="ObjectsModifiedByUser" xml:space="preserve">
+    <value>Objects modified by users</value>
+  </data>
+  <data name="WindowsGroups_7309" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>resources\vsicons\windowsgroups_7309.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AddVariableFastKey" xml:space="preserve">
+    <value>Add / Edit Variable</value>
+  </data>
+  <data name="Autocomplete" xml:space="preserve">
+    <value>Autocomplete</value>
+  </data>
+  <data name="GenerateModel" xml:space="preserve">
+    <value>Generate prediction model</value>
+  </data>
+  <data name="ParameterInfo" xml:space="preserve">
+    <value>Show parameter info</value>
+  </data>
+  <data name="VerifySelectedObjects" xml:space="preserve">
+    <value>Check selected objects</value>
+  </data>
+  <data name="data_info" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\data_info.json;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="model" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\model.tflite;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>

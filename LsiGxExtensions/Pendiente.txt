@@ -1,0 +1,693 @@
+
+- Revision de variables no usadas: Reportar los external objects, no se reportan
+
+- WWMains: Al abrir un fuente c# de un objeto sd panel, ademas del detail, abrir los fuentes de todos los grids (+99)
+  Abrir tambien el sdsvc_* (es donde estan las llamadas a los data providers). Ej. dprzdocimpbul -> sdsvc_dprzdocimpbul_level_detail
+
+- Si abres una kb de gx18 con gx16 no da ningun aviso. Que lo de la extension
+
+- Privada: Control de conexion de bases de datos:
+	Si hay un sub 'Salir', no dejar hacer returns fuera de este sub. Para controlar que no se dejen conexiones a la bbdd abiertas
+	Si se llama a CrearQuery() en alguna parte del procedure, asegurarse que en el 'Salir' haya un .CerrarQuery()
+	Si se llama a AbrirConexion() en alguna parte del procedure, asegurarse que en el 'Salir' haya un .CerrarConexion()
+	Asegurarse que la ultima sentencia del procedure es una llamada a 'Salir'
+	No permitir parametros de tipo ConexionBd (cada proc ha de tener su propia conexion, evitar error sql server ha de tener
+		un unico data reader abierto)
+	Dar aviso si hay variables de external objects no referenciados
+
+- &ColeccionSdts.Sort( 'a.b, c' ): (+1)
+	Verificar que las propiedades indicadas existan (se puede hacer si hay cache de SDTs). Si no existen, el programa se cuelga en tiempo de ejecucion
+
+- Proponer codigo: Al mostrar info de un tipo enumerado, no muestra nada: Ni el valor, ni la descripcion. Mostrarlos en el tooltip
+
+- Añadir una opcion para copiar una tabla con los valores de un tipo enumerado
+
+- Traducciones, da ERROR al abrir la toolwindow de traducciones en la kb lsicobros, gx15u8, y en la app de instaladores instaladores, gx17:   at System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   at System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   at System.Linq.Enumerable.ToDictionary[TSource,TKey,TElement](IEnumerable`1 source, Func`2 keySelector, Func`2 elementSelector, IEqualityComparer`1 comparer)
+   at System.Linq.Enumerable.ToDictionary[TSource,TKey,TElement](IEnumerable`1 source, Func`2 keySelector, Func`2 elementSelector)
+   at LSI.Packages.PrivateExtensions.Commands.Translations.TranslationsEditor.BtnRefresh_Click(Object sender, EventArgs e) in D:\Repositorios\Subversion\ExtensionesGXPrivadas\branches\branch-GX15\LsiGxPrivateExtensions\Commands\Translations\TranslationsEditor.cs:line 219
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+
+- Autocierre de strings. Si se escribe "!", se podria añadir el cierre de comillas -> !'|'
+- Hay un error al proponer los nombres de controles en SDPanels: Los controles de los titulos de los tabs no aparecen...
+  Ej KB Sga, DEazTraCon, escribir TabRec (no propone nada). Escribir TabRec. (aparecen los miembros)
+
+- Verificaciones: No dejar menter un bucle FOR &i = 1... denro de otro bucle FOR &i = 1 ... CON LA MISMA VARIABLE INDICE!!!
+
+- Traducciones:
+	- Los "Initial values" de los SDTs deberian ir siempre traducidos? (HAY UN ERROR DE GENEXUS CON ESTO)
+	- Traducciones ingles Google:
+		- Si empieza con ¿, quitarlo
+		- Si el texto original empezaba con mayusculas y la traduccion no, poner la mayuscula
+		- Al traducir, no refrescar la ventana entera, solo las celdas, por si se tiene un filtro de ver solo no traducidas
+	- Editor traducciones:
+		 - Ver si se puede sacar la fecha en que se creo un mensaje
+		 - Poder filtrar para ver un solo lenguage
+	- Hacer una verificacion de las llamadas a Format()
+	- Poner que la descripcion de las tablas no es traducible (opcion)
+	- Poner que la descripcion de los ordenes de los grids no son traducibles (opcion)
+	- Al pegar un texto como literal genexus, poner que no es traducible (o si?)
+	- Funciones / miembros que no deberian estar traducidos nunca:
+		- &Coleccion.Sort( 'XXX' ) [OK]
+		- Control.JSEvent( 'xxx', 'xxx' ) [OK]
+		- &HttpClient.AddHeader( 'xxx', 'xxx' ) [OK]
+		- &WebSession.Get( 'xxx' , )
+		- &WebSession.Set( 'xxx' , ... )
+		- ClientStorage.Get( 'xxx' )
+		- ClientStorage.Set( 'xxx', ... )
+		- Form.Meta.AddItem( 'xxx' )
+		- &HttpClient.GetHeader( 'xxx' )
+		- InterOp.Open( 'xxx' )
+		- &Varchar.SplitRegEx( 'XXX' )
+		- &HttpClient.Execute( 'XXX', 'XXX' )
+		- Link( 'XXX' ) // Funcion
+		- Cache.GetCache
+		- &Varchar.Indexof( 'XXX' )
+		- ConfigurationManager.GetValue( 'XXX' )
+		- &Control.Class = 'XXX'
+		
+	- Dar avisos si:
+		- Añadir una lista de expresiones regulares que deberian dar avisos (ej string mayusculas con longitud <= 3)
+		- Poder declarar en un parametro con [NOTRL] de un objeto que el parametro en los llamadores no deberia traducirse
+		
+- Documentar: Arreglo errores buscando referencias a SDPanels (ej. buscando referencias desde mains)
+
+- Llamadas a funcion format: no se verifica que los %NUMERO cuadren con el nº de parametro (madre mia)
+
+- Añadir verificadores en la extensiones privadas especificas para los de SAP:
+	- Que en los SDTs este puesto no serializar los no tocados
+	- Que en los Dataviews este creado el datastore hana y sql
+
+- Añadir opcion para Camel Case en la configuracion
+
+- Documentar la funcion de añadir nuevas variables en el autocompletado
+
+- Al precargar objetos en la lista de autocompletado, solo carga 15: Mirarse mas (ej. 30), y cargar los 15 con mas probabilidad, deberia ser rapido.
+  Para todos excepto los atributos (rendimiento)
+
+- Dar soporte para la palabra clave LEVEL (ver contabilidad, eventos TEntApu):
+	[WARNING] TEntApu: Unknown token type: LevelSentenceToken, 'level', line 83, character 5, EventsPart
+
+- Quitar todo lo relacionado con entrenar desde genexus, ya no esta sopotado
+- Quitar soporte a usar un modelo completo de tensorflow, usar solo tflite
+	 
+- Opciones para añadir variables:
+	- Proponer nombrs de sdts
+	- Hay algun tipo de error al escrbir una variable durante la inicializacion de los datos de la kb.
+	  Probarlo de nuevo, creo que es al inicializar los hashes
+	- ERROR: SDPanels: Al crear variable desde parametro, el cursor no se mueve al final de la palabra
+	- Predicciones: Evaluar el tipo de datos de las opciones de añadir variable
+	- Hacer predicciones de lo que se va a crear
+
+- Hacer pruebas sin la prediccion de codigo activada
+
+- Error: He abierto una kb en gx17 u10 que se abrio por ultima vez con gx17 u2 y no ha dado ningun aviso. Ha dejado de nfuncionar el control?
+
+- Fernando:
+	hola Toni
+	una pequeña sugerencia para un futuro update de las LSI extensiones
+	cuando utilizas un patrón hay variables que crea por defecto, las utilices o no, si las borras las vuelve a crear, por ejemplo:
+	isauthorized
+	securityfunctionalitykeys
+	quizás estaría bueno agregar una lista de excepciones a tener en cuenta en el warning There are unused variables, si una variable está en esa lista, no la muestra como warning.
+	Por ampliar, esto también pasa al controlar el N4 y otras cosas. Son variables que se crean de forma automática y sobre las que no tienes ningún control
+	es una simple idea de mejora, con 0,0 de urgencia, o igual no crees que corresponda agregar esto, lo que consideres
+
+- Debug con el VS:
+	- En el equipo de fernando, en gx17 ha dado error que la dll dte.env (o algo asi) no existia. ver exactamente que dll y donde ha dado
+
+- tipos SDTs:
+	- Si en el SDT hay atributos, aprovechar y guardar el tipo de los atributos
+	- Probar los SDTs que tienen la raiz como una coleccion, a ver que hacer
+	- Ver si se podria aplicar a external objects / extended objects / BC / algo mas?
+	- Si, en variables/miembros no hay ningun con sufijo, buscar un que contenga el texto escrito?
+
+- Actualizacion de cache de nombres con cambios remotos: NO usar el Timestamp, da problemas de precision. Intentar usar el nº de version del objeto
+
+- Debora intentaba usar la busqueda de variables por tipo, pero ponia un nombre de atributo. No esta soportado. Ver si hay alguna forma de hacer el control de poner algo asi.
+  Ver si se puede hacer una seleccion de tipos
+
+- ERROR, gx16, kb sga, DEalLin: Si se pone un campo de un SDT y solo aparece en el form, no avisa de que esta solo en el form.
+  El campo es el &XpdPreConPedVta.PncDocNum. Si se quita la escritura del campo, no da el warning
+
+- ERROR: Si una variable se escribe y se lee como propiedad "Collection" de un grid en un sdpanel, dice que la variable esta solo escrita
+  Ej. kb sga sap, obj. DDocCon revision 11
+
+- Autocompletado: No propone "USING" en la funcion Count(). Ej. count( X, USING Ds(&y) )
+
+- Autocompletado: Propone hidden, noaccept en los eventos de SDPanels (kb sgasap)
+  PUEDE QUE NO SE PUEDA ARREGLAR, VER COMENTARIOS EN FunctionNameInfo.CanBeUsed()
+
+- Arreglar de una vez las referencias a las dlls de distintas versiones de genexus. Tiene que haber algo mejor que los bat que se usan ahora
+
+- Autocomletado / RENDIMIENTO: Mirarse si se puede mejorar el rendimiento del despliegue de la lista de miembros de un SDT. Hay que tardan mucho (ArtSdt/DefApl)
+
+- Verificacion SDTs: Poner algo para controlar que TODOS los campos tengan puesto "Json Null Serialization" ="No Property" (SAP)
+
+- Terminar la documentacion de la prediccion de codigo
+
+- Privada: Verificar que los campos ArtDes no esten marcados como con tamaño por defecto
+
+- La palabra clave commit aparece en los sdpanels. Sospecho que no deberia aparecer
+
+- Avisar si hay controles fuera del winform
+
+- Documentacion: En index.shtml:
+	* Pone "C:\Program Files (x86)\Artech\GeneXus\GeneXusXEv3", deberia quedar claro que es el dir. de la version de genexus
+	* Donde dice como desinstalar, actualizar la lista de fichero a borrar (buscar "LSI.Packages.Extensiones.Utilidades.dll")
+
+- Poner aviso en la documentacion: El proponer parametros de objeto fallara si hay mas de un mismo objeto con el mismo nombre
+
+Error. Seguramente arreglado, probar de nuevo:
+	[WARNING] TPanLin: Removed all tokens after resolving ambiguous tokens, name ayuda
+	[WARNING] TPanLin: Unknown identifier: IdentifierToken, 'ayuda'
+	[WARNING] TPedidoResiduos_bc: Removed all tokens after resolving ambiguous tokens, name ayuda
+	[WARNING] TPedidoResiduos_bc: Unknown identifier: IdentifierToken, 'ayuda'
+	[WARNING] TServicioTipo: Removed all tokens after resolving ambiguous tokens, name ayuda
+	[WARNING] TServicioTipo: Unknown identifier: IdentifierToken, 'ayuda'
+	[WARNING] TServicioSubtipo: Removed all tokens after resolving ambiguous tokens, name ayuda
+	[WARNING] TServicioSubtipo: Unknown identifier: IdentifierToken, 'ayuda'
+	[WARNING] TResCndTra: Removed all tokens after resolving ambiguous tokens, name ayuda
+	[WARNING] TResCndTra: Unknown identifier: IdentifierToken, 'ayuda'
+
+- Probar reglas con SDPanels
+
+Prediccion:
+	- Ver si se puede resolver de forma correcta los nombre duplicados (ej. callabe e imagen con el mismo nombre). Revisar uso de modulos.
+	  Revisar todas las llamadas a GetAllByExactName
+	- Dar soporte a partes condition
+	- Unificar de nuevo los tipos CHAR y VARCHAR? Y que pasa con el longvarchar? NO
+	- Para las reglas, podria ser util intentar predecir el tipo de control (o si es un control), daria mas probabilidad a los attrs/variables que estan en pantalla
+	- Pasar tipo de los parametros de las funciones? ESTA COMPLICADO: SOLO DEVUELVE INFORMACION DEL TIPO COMO UN STRING, Y TRAE COSAS COMO "Date/Datetime"
+	- Volver a añadir la columna "Training" como una opcion, y probar el GPT con la columna puesta. NO ENCAJA CON EL MODELO DE COLUMNAS: HABRIA
+	  QUE AÑADIR/QUITAR COLUMNAS DINAMICAMENTE (se necesita una columna outputType distinta a la de entrada) Y NO ESTA SOPORTADO
+	- AÑADIR OPCIONES PARA CONFIGURAR el learning rate en la ventana de generacion del modelo
+	- Ver de donde sale "FcnWordToken" y ver si hay mas. Ver porque no coinciden los tokens con los que saca en training...
+	  VER QUE ES FcnNpWordToken (CodeTokenizer)
+    - Recuperar informacion de las variables es MUY lento, y siguie siendo lento tras poner una cache. Poner una de varios objetos?
+	- Training: Verificar codigo de salida de los scripts python. ¿Si es < 0, parar el proceso?
+	- Mover PythonVEnv al package padre
+	- En la definicion de los "StandardMembers" intentar poner el tipo que devuelve o tiene. Si se repite, con distintos tipos, poner NONE
+	- Intentar poner el tipo de OtherMember ???
+	- Propiedades de controles de webforms no soportadas, no puedo obtenerlas: ¯\_(ツ)_/¯
+	- Ver que pasa si se mata el proceso Python. Ver como se puede recuperar
+
+- Bueno: https://machinelearningmastery.com/combine-predictions-for-ensemble-learning/
+
+- DAR MENOS PRIORIDAD A LOS NOMBRES !!!!
+ 
+- En la busqueda de objetos no referenciados no aparecen las imagenes
+
+- ObjectContextCache: Si se cierra el obejto y se vuelve a abrir, parece que mantiene la cache. Esto esta mal: Si se crea una variable, se cierra el objeto
+  sin guardar y se vuelve a abrir, mantendra la cache (incorrecta!)
+
+- wwmains sd: Al abrir los fuentes de un sd panel, abrir tambien los fuentes de los grids +1
+
+- kb app instaladores: Los eventos Split.Start / Flip.Start no estan declarados en ninguna parte ???
+  [WARNING] DMenPri: Unknown identifier: IdentifierToken, 'split'
+  [WARNING] DMenPri: Unknown identifier: IdentifierToken, 'flip'
+
+- Prediccion: Ya no hay soporte para parar si el loss de evaluacion sube. Ver que hacer...
+
+- ObjectsContextCache, lin 55: VariablesPart variables = o.Parts.Get<VariablesPart>();
+  ESTO VA A FALLAR PARA LOS SD ???
+
+- Prediccion: 
+	- Si se cambia el tipo de una variable en el panel de propiedades, parece que en la proxima prediccion a veces no se actualiza el tipo correctamente.
+	  Ha pasado en DPrueba (un SDPanel), escribir esto crear Sum como N(12), cambiarle el tipo a N(8). Tambien ha pasado cambiandole el tipo de &Numeros de coleccion de no a si:	  
+	  (PROBAR TAMBIEN WEBPANELS)
+Event Start
+	&Sum = 0
+	FOR &i IN &Numeros
+		 &s
+EndEvent
+DA RESULTADOS DISTINTOS EN EV3 (PRUEBAS-SDALMACEN / ) Y GX16 (PRUEBASGX16SD / DPrueba), aunque el json de las entradas es el mismo ???
+EN TEORIA ARREGLADO, PROBAR DE NUEVO EN GX16
+
+	- Revisar la tokenizacion de constantes string, parece que esta mal
+	- Pase de contexto: Las comas y parentesis separadores no deberia indicarse que son parametros!
+	- Rehacer UI (Cambios en la configuracion, ya no hay soporte para parar si el loss de evaluacion sube, etc)
+	- GxNameSplitter: Dar soporte a cortar los nombre por el caracter "_" (ej. "Tabla_Atributo")
+
+- El .bat para cambiar de entorno de GX a veces falla, y no se sabe porque. Ver si el VS tiene soporte para cambiar las DLLS a referenciar
+
+- EL RENDIMIENTO DE WebFormHelper.EnumerateWebTag ES MUY MUY MALO. INTENTAR QUITARLOS
+
+- ObjectContextCache.ClearControlNames en Gx15 se esta disparando cada vez que escribes una letra en el editor de eventos en los SD, no sirve para nada...
+
+- En la busqueddad de donde se escribe un atributo aparecen transacciones donde el atributo es calculado
+
+- Extension privada para sacar los tamaños de las columnas a partir de un Excel guardado como XML, poniendo como
+  comentario del codigo el titulo de la columna
+
+- Verificacion objetos: Cambiar el width de un listado matricial no es un error: En pantalla se ver con el widht
+  indicado, pero cuando se imprime no hace caso. Poner un aviso si se ha modificado a mano el width de un campo / label
+
+- Los clone() de colecciones no estan soportados en C# EvU3 (no hacen nada). Dar un warning si se encuentran ¯\_(ツ)_/¯
+  Ver si hay que dar el warning tambien en Gx 16
+
+- Opcion para marcar que no de warning de variable solo leida (Parametros de notificaciones en una app SD vienen en variables)
+
+- Poder lanzar el emulador de android desde Genexus (eligiendo emulador). Estaria bien opcion para abrir el proyecto en el Android Studio, opcion
+  para editar los fuentes del Flexible Client, y opcion actualizar los fuentes, etc
+
+- El dialogo de "Lucen esta en activo" aparece bajo la pantalla principal y no se ve. Ver si hay una funcion de modal propia de genexus
+  
+- A CAMBIAR ANTES DE PROXIMA PRODUCCION:
+	Para las pruebas de importacion de los servicios de SAP B1, se ha añadido en LSI.Packages.PrivateExtensions.Commands.OfflineProcedures
+	una llamada a ServicePointManager.ServerCertificateValidationCallback para deshabilitar la validacion de servicios SSL (autofirmado en el
+	servidor de SAP) EN LA RAMA DE GX16. Podría ser util como una extension aparte publica
+
+- ERROR: Extension de reparar RSPs no incluye los dominios en el Genexus.Common....RSP
+
+- Nueva extension: 
+	* El segundo parametro de la regla color() deberia aparecen como un campo en pantalla
+	* noaccept() deberia tener un unico parametro
+	* El parametro de noaccept() deberia aparecer como un campo en pantalla
+  
+- ERROR: Pregunta en el Marketplace, que las extensiones no funcionan en Gx15
+
+- Reportar cosas que han cambiado en Gx16:
+  * Si se cancela un rebuild all, no se para
+
+- Poder buscar que External Objects hacen referencia a una dll (para poder renombrarla/quitarla)
+
+- Error Gx16:
+Si se le da a hacer un rebuild all, aparece el aviso. Si se cancela el aviso el Rebuild all continua
+
+- Si se cierra genexus y hay un build a medias, ver si se puede pedir para confirmar si realmente se quiere cerrar.
+  Lo mismo con los custom builds
+
+- Revision de objetos: Si un parametro esta repetido en la regla parm() dar un aviso (especifica, genera y compila pero 
+  evidentemente no funciona)
+
+- ERROR: Si un workpanel tiene otros forms aparte del form class = "Graphic", las variables no se revisan en estos
+  otros forms. Si una variable solo esta en uno de estos otros forms, dice que no se usa y se la carga, y el objeto
+  queda mal
+
+- Borrar extension de los merges del kbsync a las privadas (no funciona bien)
+
+- Poner modo nocturno en los editores de texto
+
+- Extension para localizar un atributo / variable en un winform
+
+- Reparar RSPs: Si un external object (C#) hace referencia a una dll, si la referencia no esta en dicha dll, añadirla
+  en la reparacion (ej. ver "/r:XXX.dll" en los archivos .RSP) (+1)
+  SI EL COMPILER OPTIONS ES DISTINTO AL ACTUAL, ACTUALIZARLO AL MOMENTO
+
+- ERROR: Search unreferenced objects: Si esta marcado como "Expose as webservice", no deberia aparecer
+  QUE SEA UNA OPCION (puede interesar quitarlos si son de consumo interno de la kbase)
+
+Informacion de parametros:
+	- Rendimiento
+	- ERROR: Sigue fallando. Escribir "PSliGenPedCnfAlm( &PathArchivo | )", cancelar el autocompletado, escribir ", "
+	  Ambos parametros quedan en negrita... NO PARECE QUE SE PUEDA ARREGLAR
+	- Si el parametro es un array, mostrar la dimension del array
+	
+Autocompletado:
+	- No esta proponiendo nada tras escribir "[|" ([win], [web], ...)
+	- El comando de menu de autocompletado si estas en una variable para mostrar la lista de autocompletado sigue sin funcionar si se usa el atajo de teclado...
+	- KbPredictorInfo: Las palabras claves que se añaden al leguaje, añadirlas en KeywordGx
+	- ObjectControls.constructor: Si no hay generador win, ignorar la declaracion del webform (y viceversa). En versiones de gx >= 15 ignorar el winform
+	- Rendimiento
+	- El nº maximo de elementos a proponer deberia ser configurable (diferentes valores para atributos y otros)
+	- ObjectNameInfo.cs: Ver si hay una funcion ya hecha para convertir un tipo de objeto a ChoiceInfo.ChoiceType (parece que no hay)
+	* Cuando se hace un Paste no actualiza la lista de autocompletados [PARECE QUE NO SE PUEDE ARREGLAR]
+	* Handle STUB / ENDSTUB, they can contain "in:", "out:" , "inout:" (NO SE SOPORTARA)
+	* ¿Dar prioridad a los objetos actualmente abiertos?
+	* ¿Dar prioridad a los objetos / atributos mas referenciados?
+	* Workpanels:
+		- Eventos: En el scope raiz solo se permite "Event" y "Sub"
+		- Añadir miembros de controles en workpanels / transacciones como "StandardMember"
+		- Llamadas a confirm(): Dejar poner "Y" o "N" como palabras clave. Verificar el "nowait" de msg() (el mismo caso)
+	- Al autocompletar, no mostrar objetos / modulos privados / internal. Habra que guardar la estructura de modulos
+	- Al proponer atributos, proponer de tablas referenciadas en el ultimo bloque de codigo
+	- El autocompletado no propone llamadas a objetos Query (deberian ser llamables) Ver el tema de los parametros...
+	- Añadir automaticametne los parentesis cuando se autocompleta una funcion ???
+	- Dar soporte a mas tipos de objetos
+
+- Cuando se renombra una variable, renombrar todas las ocurrencias en el objeto (F2 del Visual Studio)
+
+- Crear tarea msbuild para actualizar estadisticas del sql server de la bbdd de la kbase (EXEC sp_updatestats)
+
+- Crear variables:
+  * ERROR: Muchas veces le das a la tecla rapida y no aparece la variable en la ToolWindow de Properties (race conditions???). REVISAR
+  * Poder poner en la configuracion con que tipo crear las variables basandose en su nombre, u otros patrones (empieza por, termina con)
+
+- SUPUESTO ERROR: Ver en el marketplace la pregunta referente a que el build with this generator no funciona
+
+- ERROR: En el upgrade 12 las extensiones no se cargan
+
+- El Android SDK ya no soporta la UI para el SDK Manager y el AVD Manager (ver 
+  https://docs.microsoft.com/en-us/xamarin/android/troubleshooting/sdk-cli-tooling-changes).
+  Ver si se puede utilizar https://developer.android.com/studio/command-line/avdmanager.html para gestionar los dispostivos
+
+- Dar la posibilidad de que las variables se reemplacen por un SDT (+4)
+
+- AÑADIR EXTENSION PARA CONTROLAR QUE SE TIENE PUESTO EN LA PROPIEDAD "IIS VERSION" DEL GENERADOR .NET. Si se esta 
+  generando con una versión posterior dar un aviso al generar (+2)
+
+- Custom Compilation C# / Win: Si es necesario, recompilar los exes (si el fuente call_MAIN.cs 
+  tiene fecha posterior a la fecha de compilacion del exe) (+2)
+
+- EXTENSION PARA CONTROLAR EN WORKPANELS CON SUBFILES, QUE LOS ATRIBUTOS REFERENCIADOS EN EL CODIGO ESTEN EN EL GRID (+2)
+
+- Ver si se pueden revisar los tipos de los parametros pasados a una llamada: Por ejemplo, si se espera un numero y se pasa un boolean
+  GX no da ningun warning, si se pasa un nº decimal a un parametro que espera un entero, tampoco da warning (+1)
+
+- Extraer codigo a un nuevo data selector: Poder extraer tambien clausulas ORDER y DEFINED by (+1)
+
+- Extension para verificar si: (+1)
+	* Un SDT contiene todos los campos no formula de una tabla
+	* Verificar si un proc. de carga o actualizacion desde un SDT asigna todos los campos de una tabla
+	* Si en un NEW hay campos que no se actualizan
+	* Si en un FOR EACH hay campos que no se actualizan
+	* Si en un FOR EACH hay campos que no se leen
+	* Si en un NEW hay campos basados en un dominio enumerado que no se asignan y no tienen un valor
+	  por defecto
+
+- Work with mains: Añadir label con "&" para poner el foco en la lista de objetos (+1)
+
+- Toolwindow objetos no usados: Informar de carpetas vacias
+
+- ¿Hacer auditoria de seguridad? Mirar si ya hay alguna extension que lo haga
+
+- Ver el correo "Mensaje en la ventana de Output con link a un objeto.", indica como poner un link a un objeto en la
+  ventana output. Ponerlo en los mensajes de la revision de errores de un objeto
+
+- Preparar produccion / web / copiar carpeta web: La opcion de mantener el web.config actual puede dar errores (declaracion de
+  nuevos servicios). Dar opcion de rellenar los usuarios y contraseñas del web.config
+
+- Revisar este caso (Milton): Un winform tiene una pantalla de A/400 (texto), con una variable que no existe. No
+  da error de especificacion, pero si se exporta el objeto, al importarlo da error.
+
+- CREAR PRODUCCION / WIN: Poder elegir de donde cojer la carpeta Resources: De dentro del bin, o de al lado, o 
+  no incluirla. Despues preparar la produccion del GxMenu. Si se incluye al lado, en el zip debe ponerse el
+  images.txt tambien en el zip
+
+- En el wwmains, en el generador SD, en run deberia ser el "Run without build" de genexus
+
+- Buscar objetos no referenciados: Atributos que solo estan en transacciones Y DATAVIEWS (y ningun mas) deberian aparecer si se marca
+  "Attributes only in transactions"
+
+- Buscar objetos no referenciados: No se estan mostrando los datastores ni los data views no referenciados.
+  DEBERIAN APARECER
+
+- Win C# / Revision objetos: Dar un warning si se llama a un Workpanel como un UDP (Bug Genexus)
+
+- Extension para crear triggers de fecha de ultima modificacion y borrado de registros
+
+- Mostrar referencias a tablas de un tipo donde no se asigna un atributo
+
+- Revision de variables: En los parametros no deberia haber variables repetidas (ni atributos?)
+
+- Verificacion de objetos: Si un workpanel tiene mas de un grid, o si el grid no se carga desde la base de datos, las propiedades
+  "Load records" del objeto y de los grids deberian valer "Load all records"
+
+- Edicion de llamadas a objetos: Si el parametro que se va a añadir esta basado en un atributo, mostrar el "Initial value" del atributo,
+  para evitar errores (me ha pasado pasar un valor incorrecto)
+
+- Tareas msbuild: "D:\tonib\CompiladorExtensiones\Template_Ev3.msbuild(39,5): error : Error al enviar correo". Esto deberia detallar que error
+  se ha producido
+
+- Control de la version en la apertura de las kbase: Añadir configuracion para hacer o no el control
+
+- Produccion: Guardar el archivo para preparar la produccion en los "files" de la kbase, para que se manden al GxServer
+
+- WWMains / Abrir un RSP: Abrirlo con el editor de texto indicado en la configuracion, y no con el que este asociado en el shell de Windows
+
+- Dar un aviso si hay atributos usandos en las rules y el atributo no se guarda en el grid
+
+- ERROR: KBaseGX.GetUnusedName parece que no tiene en cuenta que puede haber nombres repetidos en
+  modulos distintos. La funcion busca en el Root Module, pero el objeto que se puede estar creando
+  puede estar en un modulo distinto
+
+- Dar un aviso si se hacen asignaciones / pasan parametros de una variable/atributo con decimales a un entero (se perderan valores)
+
+- Dar un aviso si se hacen asignaciones / pasan parametros de arrays con distintos tamaños
+
+- Avisar si un atributo es pasado a un objeto como parametro con calificador out:
+
+- WWMains: Opcion depurar exe win: Si el exe se ejecuta mas de una vez, aparece uan ventana de seleccion:
+  Hacer que esta ventana sea mas ancha (90% pantalla?), normalmente no cabe todo
+  
+---------------------------------
+
+- WWMains: Poder probar servicios web
+
+- WWMains: Abrir un main web. Si es main=true, call protocol= http, generator= web, expose as web service = true, soap protocol= false:
+  Deberia abrir un path distinto: http://localhost/GxAlmacSqlNet/rest/pwscdcinfcob, el de la raiz recibe parametros pero no
+  devuelve nada...
+  
+- WWMains: Abrir un main web. Si es main=true, call protocol= http, generator= web, expose as web service = true, soap protocol= false
+  al abrirlo da el siguiente error:
+  error: System.IO.FileNotFoundException: Could not execute the command ""O:\Programacion\Oscar\Desarrollo\Aplicaciones\Construccion\GXalmacSQL_vX3.1212\DATA002\web\bin\pwscdcinfcob.exe"". Could not find a part of the path
+Nombre de archivo: 'O:\Programacion\Oscar\Desarrollo\Aplicaciones\Construccion\GXalmacSQL_vX3.1212\DATA002\web\bin\pwscdcinfcob.exe' ---> System.ComponentModel.Win32Exception: El sistema no puede encontrar el archivo especificado
+   en System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   en System.Diagnostics.Process.Start()
+   en Artech.Genexus.Common.Run.RunBase.ExecuteCommand(IDictionary`2 tokens, String command, Boolean synchro, Boolean printCmd)
+   en Artech.Genexus.Common.Run.RunBase.ExecuteCommand(IDictionary`2 tokens, String command, Boolean synchro, Boolean printCmd)
+   en Artech.Genexus.Common.Run.RunBase.ExecuteCommand(IDictionary`2 tokens, String command, Boolean synchro)
+   en Artech.Packages.Genexus.BL.Services.RunServices.RunDotNet.Execute(KBModel model, EntityKey objKey, String execParams)
+   
+- LOS PROCS SE PUEDE MARCAR COMO "EXPOSE AS WEB SERVICE" AUNQUE NO ESTEN MARCADOS COMO MAIN: VER SI DEBERIAN SALIR
+  TAMBIEN EN EL WORK WITH MAINS PARA PODER SER COMPILADOS
+  
+- CREAR PROC PARA CARGAR UN SDT: SI SE HA MARCADO QUE LA RAIZ ES UNA COLECCION, DA UN ERROR DE VALIDACION:
+  1) SI SE DAN ERRORES DE VALIDACION, MOSTRAR EL FUENTE DEL OBJETO
+  2) VER SI SE PUEDE DAR UN ERROR MAS DESCRIPTIVO
+  
+- CREAR PROC PARA CARGAR UN SDT: SI HAY CAMPOS EN LA TABLA QUE NO ESTAN EN EL SDT, DAR UN AVISO. NO LO ESTA HACIENDO
+
+- CREAR PROC PARA CARGAR UN SDT: MOSTRAR LOS AVISOS EN INGLES, Y PONER NOMBRE INGLES A LA VARIABLE DECLARADA (AHROA ES &sRegistro)
+  
+- Busqueda de referencias: La busqueda de referencias a atributos muestra el aviso de las especificaciones: Solo se ha de mostrar
+  para las tablas
+- Preparar produccion: Intentar no parar el IIS entero, sino solo un sitio web del IIS. Si no se
+  puede, intentar solo reiniciarlo, para que libere el directorio
+  
+- Control de  variables: Intentar dar soporte a los arrays
+
+- Work with mains: Poner campo con el nombre del Environment seleccionado
+
+- En SDPanels, dar un aviso si hay variables con el mismo nombre que atributos. Lo da en la especificacion y muchas veces no se ven
+Cannot use attribute and variable with the same name ('FacAplDtoDoc'). 
+ spc0183 Cannot use attribute and variable with the same name ('FacCod').  
+ spc0183 Cannot use attribute and variable with the same name ('FacLinCod'). 
+
+- iOS: Extensiones para:
+	* Editar el archivo GXCustomExternalObjectsMapper.m
+	* Abrir la carpeta con las clases de external objects
+	* Abrir el archivo externo .m asociado a un external object
+	
+- Verificacion de variables: Si se declaran servicios web con un stub, hay variables que se reciben como parametro, pero dice que 
+  sólo se han leido
+  
+Stub FirmarAlbaran
+( 
+	in:&UsrNick, in:&UsrPwd,	// Usuario y contraseña para autenticarse
+	in:&EmpCod , in:&AlcNri,	// Codigo del albaran a firmar
+	in:&NombreArchivo,			// Nombre original del archivo de la imagen
+	in:&ImagenBase64,			// Contenido del archivo de la imagen en base 64
+	out:&FlgErr,				// Cierto si se ha producido algun error
+	out:&MsgErr	
+)
+	PWSFirAlc( &UsrNick , &UsrPwd , &EmpCod , &AlcNri , &NombreArchivo , &ImagenBase64 , &FlgErr , &MsgErr )	
+EndStub
+
+Stub BorrarFirmaAlbaran
+(
+	in:&UsrNick, in:&UsrPwd,	// Usuario y contraseña para autenticarse
+	in:&EmpCod , 		
+	in:&AlcNri,			// Nº interno del albaran
+    out:&FlgErr , 		// Cierto si se ha producido algun error
+	out:&MsgErr
+)
+	PWSFirAlcBor( &UsrNick , &UsrPwd , &EmpCod , &AlcNri , &FlgErr , &MsgErr )
+EndStub
+
+warning: Object WSFirmasAlbaranes: There are only read variables:
+alcnri
+empcod
+imagenbase64
+nombrearchivo
+usrnick
+usrpwd
+
+- Preparar produccion web: Añadir opcion para mantener los archivos del gam (*.gam)
+
+- Al buscar lecturas / escrituras, ver si una funcion es estandar o no sin ir a buscar el objeto con dicho
+  nombre
+ 
+
+- Cuando se modifica un objeto con arreglar errores de objeto, al reabrirse a veces da una
+  excepcion como esta:
+  ===================================
+Object reference not set to an instance of an object. (Artech.FrameworkDE)
+------------------------------
+Program Location:
+   at Artech.FrameworkDE.Text.StandaloneTextEditor.SyntaxEditor_SelectionChanged(SelectionEventArgs e)
+   at Artech.FrameworkDE.Text.StandaloneTextEditor.<>c__DisplayClassb.<SyntaxEditor_SelectionChanged>b__a()
+   
+- Ev3 U3: Al crear un nuevo proc y abrirlo en el IDE siempre da una excepcion. Ver porque.
+
+- Smart devices: opcion para integrar los fuentes de un external objects automaticamente al hacer un build
+
+- La carpeta de las bibliotecas esta en el repositorio publico, cuando solo se utiliza en las 
+  extensiones privadas: Moverlas alli.
+
+- generacion de procs para editar sdts: cambiar la variable &sRegistro por &sSdt o algo asi, no ponerlo en español
+ 
+- Verificar usos de KBaseGX.IsForm, ver si incluir VirtualLayoutPart
+  Buscar usos de KBObject.Save y asegurase que se llama a Parts.LsiUpdatePart()
+  
+- Ev3 U3, kbase almac 12.09. Hay un exe que se llama uwprueba.exe. Al intentar lanzarlo desde wwmains dice que no existe:
+Lsi.Extensions exception : System.Exception: O:\Programacion\Oscar\Desarrollo\Aplicaciones\Construccion\GXalmacSQL_vX3.1209\DATA002\bin\WPrueba.exe does not exist
+   at LSI.Packages.Extensiones.Comandos.Build.GeneratorMains.ExecuteMain() in D:\kbases\subversion\lsigxextensions\branches\branch-evolution3\LsiGxExtensions\Comandos\Build\GeneratorMains.cs:line 691
+
+- Dar soporte a los tipos de objetos no soportados (dashboards, data providers)
+
+- Probar el abstract layout editor en webpanels en la ev3, a ver que hace con el control de las variables no usadas
+
+
+- Ev3 U3: Funcion de generar con un solo generador: Si se modifican objetos win y web, y se genera con solo el generador web, los objetos
+  web no se generan. Solo se funciona si todos los objetos SOLO se generan con el generador seleccionado
+
+- ERROR: Generacion de procedimiento de carga de un SDT: Este mensaje de error no esta traducido:
+// No se ha encontrado un campo llamado Nodos en la tabla Balance
+
+- Ventana de log de builds: Cuando se posiciona sobre un error de compilacion, añadir la opcion de abrir el objeto genexus que se corresponde
+  con el archivos .CS que ha fallado.
+  
+- Kbsync: Poner los archivos de sincronizacion en una carpeta aparte, dentro de la de las
+  extensiones
+  
+- ERROR: Objeto PFapLinUpdCua: La llamada:
+"
+&AtlImpCom = PUImpCLin( , AllCan , AllPreCom , AllDto1 , AllDto2 , AllDto3 , AllDto4 , AllDto5 , AllDto6 ,
+				AllDto7 , AllDto8)
+"
+tiene un nº de parametros incorrecto, pero la extension no estaba dando ningun aviso
+
+- Extension leer parametros: Deberia mostrar tambien los tipos de los parametros
+
+- Extension referencias: No mostrar indices
+
+- Si un atributo formula contiene otras formulas, el atributo formula falla: GX no da ningun aviso. 
+  Hacer una revision que de un aviso
+
+- Si se pulsa el boton "Search" en las tooltips cuando no se tiene cargada una kb da una 
+  excepcion. Los botones deberian estar deshabilitados. De hecho: Las toolwindows no deberian estar
+  disponibles: Ver como lo hacen para esconder las toolwindows de Work with objects, etc.
+
+- Extensiones para crear procs para modificar en la bbdd un SDT: que no muestren log en la ventana output, o que lo muestren
+  tras la seleccion
+  
+- Extension para buscar textos en los fuentes genexus: Opcion para buscar solo palabras completas
+
+- Extension para buscar textos en los fuentes genexus: Opcion para buscar solo en codigo (sin tener en cuenta comentarios)
+
+
+- Extension para obtener valor de un atributo. Si el atributo esta en mas de una tabla, da error 
+  (p.ej. CliCod esta en Contacto) Pedir la tabla.
+
+- Se podria dar el aviso de que parametros del tipo inout: solo se leen o solo se escriben.
+
+- El tamaño maximo de los winforms deberia guardarse por kbase
+
+- Extension para cambiar en variables el atributo basado en por un dominio
+
+- EXTENSION PARA BUSCAR DONDE DE UN WINFORM ESTA UN CAMPO atributo / variable, SI ES QUE ESTA: Indicar el 
+  nombre del tabcontrol, pestaña y posicion (x,y). Estoy buscando DgaAnyRec en las definiciones por aplicacion y 
+  no la encuentro.
+
+- Extension procedimiento borrado: Borrar tablas que cuelgen de la tabla del registro borrado, o
+  devolver un error si hay referencias en dicha tabla
+
+- Confirmar que se haya quitado del LsiMenu las extensiones de revision de variables
+
+- EXTENSION PARA COPIAR AL PORTAPAPELES CODIGO PARA LA ASIGNACION DE LOS CAMPOS DE UNA TABLA A UN 
+  SDT
+
+- Unificar funciones de reporte de la busqueda en todas las toolwindows
+
+- Extension copia parametros de otro objeto: Si la regla contiene comentarios del tipo /* ... */, borrarlos
+
+- Extension copia parametros de otro objeto: Si justo antes de la regla parm hay un bloque de comentarios
+  copiarlos tambien: Son documentacion sobre la llamada (no usar mas, datos de dlls a importar, etc)
+ 
+- Si una variable aparece en las conditions de un grid, y dicha variable aparece en un campo
+  tambien en el form, es correcto que no aparezca en ningun otro sitio del objeto... Ahora mismo
+  esta dando un aviso.
+    
+- El arbol de parseado tiene una funcion SerializeToText. Ver si arregla el problema con el when
+  al hacer tostring()
+
+- Nueva extension para avisar si la propiedad "Footer on last page" esta a "Yes" en los listados matriciales
+
+- Busqueda de referencias de escritura: Si un atributo es formula hace las busquedas, pero nunca va encontrar nada.
+ 
+- Busqueda en fuentes: Tras haber hecho la busqueda, si se abre un objeto con la lista, al volver a la ventana de la extension
+  el foco se pone en el campo del filtro: Deberia ponerse en los resultados de la busqueda
+
+- Validar variables. Ver si se pueden revisar en Dashboards
+
+- EXTENSION PARA REDIMENSIONAR CAMPOS EN LISTADOS Y WINFORMS PARA QUE NO PISE A OTROS
+
+- EXTENSION PARA COPIAR LAS VARIABLES SELECCIONADAS EN UN LAYOUT AL PORTAPAPELES
+
+- Poner iconos coherentes en los menus de las extensiones
+
+- Implementar la validacion de objetos como un servicio?
+	
+
+- Ver correo de Almeida, sobre el parseado (la forma correcta de parsear?):
+private Artech.Genexus.Common.AST.AbstractNode m_AstRoot;
+public virtual Artech.Genexus.Common.AST.AbstractNode AstRoot
+{
+    get
+    {
+        if (m_AstRoot == null)
+        {
+            Artech.Architecture.Language.Parser.IParserEngine2 Parser = new LanguageService().CreateEngine() as Artech.Architecture.Language.Parser.IParserEngine2;
+            Artech.Architecture.Language.Parser.ParserInfo ParserInfo = new Artech.Architecture.Language.Parser.ParserInfo(m_SourcePart);
+            if (Parser.Validate(ParserInfo, Content))  // Content es el texto correspondiente a la parte. Puede ser Regla/Source/Eventos, dependiendo de la parte.
+                m_AstRoot = Artech.Genexus.Common.AST.ASTNodeFactory.Create(Parser.Structure, m_SourcePart, K2BObject.Variables.VariablesPart, ParserInfo);
+        }
+        return m_AstRoot;
+    }
+}
+
+// Mi prueba:
+static private void CheckAst(CommandData data)
+{
+    GxTextEditor editor = data.LsiGetCurrentTextEditor() as GxTextEditor;
+    if (editor == null)
+        return;
+
+    using (Log log = new Log())
+    {
+        log.Output.AddLine("CheckAst");
+
+        IParserEngine2 Parser = new LanguageService().CreateEngine() as IParserEngine2;
+        //Artech.Architecture.Language.Parser.ParserInfo ParserInfo = new Artech.Architecture.Language.Parser.ParserInfo(m_SourcePart);
+        KBObjectPart part = Entorno.CurrentEditingPart;
+        ParserInfo info = ParserGx.GetParserInfoFromKbPart(part);
+        if (Parser.Validate(info, editor.Source))
+        {
+            VariablesPart variablesPart = part.KBObject.Parts.Get<VariablesPart>();
+            AbstractNode root = ASTNodeFactory.Create(Parser.Structure, part, variablesPart, info);
+            log.Output.AddLine(root.ToString());
+        }
+    }
+}

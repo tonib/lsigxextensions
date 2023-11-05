@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+
+	<head>
+	    <title>LSI.Extensiones - Objetos main que referencian a una serie de objetos</title>
+		<!--#include file="./head.shtml" -->
+	</head>
+	
+	<body>
+	    <!--#include file="./cabecera.shtml" -->
+	    
+		<h2>Objetos main que referencian a una serie de objetos</h2>
+		<p>
+		    Esta extensión permite buscar qué objetos marcados como "Main" referencian de alguna forma
+		    a una serie de objetos llamables (procedures, transacciones, Win/webforms, etc.). Esto
+		    es útil, por ejemplo, en una aplicación win en la que se quiere hacer una actualización
+		    parcial, actualizando sólo las DLLs correspondientes a los objetos main modificados.
+		</p>
+		<p>
+		    Si un objeto a buscar ya es main, se reporta a si mismo y a todos los mains que lo referencian.
+		    Además es posible, de forma opcional, buscar mains recursivamente o no.
+		    Por ejemplo, si se buscan referencias a un objeto "a", y hay una secuencia de llamadas 
+            a &lt; b (main) &lt; c &lt; d (main), es posible reportar b, o reportar b y d.
+		</p>
+		<p>
+		    La extensión se encuentra en View &gt; Other Tool Windows  &gt; Buscar referencias main.
+		    Permite indicar uno o más objetos a los que buscar referencias, y busca los 
+		    objetos main que referencia a al menos uno de los objetos de la lista.
+		    La interface de usuario es la siguiente:
+		</p>
+		
+		<p style="text-align:center">
+		    <a href="./referenciasmain.png">
+		        <img class="img-responsive" style="display:inline" alt="Imagen llamadas" src="./referenciasmain.png" />
+		    </a>
+		</p>
+		
+		<table class="table table-bordered">
+		    <tr>
+		        <td><b>Objeto / botón "Add"</b></td>
+		        <td>Permite añadir un objeto a buscar a la lista de objetos a buscar por su nombre.</td>
+		    </tr>
+		    <tr>
+		        <td><b>Botón "..."</b></td>
+		        <td>Añade uno o más objetos con el diálogo de selección de objetos.</td>
+		    </tr>
+		    <tr>
+		        <td><b>Lista de objetos a buscar</b></td>
+		        <td>Aquí se muestra la lista de objetos a los que se van a buscar referencias.</td>
+		    </tr>
+		    <tr>
+		        <td><b>Botón "Paste objects from clipboard"</b></td>
+		        <td>
+		            Añade a la lista de objetos a buscar los objetos Genexus que se hayan copiado
+		            al portapapeles, por ejemplo desde el "Work with objects".
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Botones "Remove all" / "Remove selected"</b></td>
+		        <td>
+		            Quita de la lista de objetos a buscar los indicados.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Botón "Search"</b></td>
+		        <td>
+		            Lanza la búsqueda de objetos Main que referencian a alguno de los objetos indicados
+		            en la lista.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Search mains recursively</b></td>
+		        <td>
+		            Si no está marcado, sólo se reportarán los objetos mains que referencien a los objetos
+		            sin ningún main intermedio en la cadena de llamadas. Si está marcado, se también 
+		            listarán mains que llamen a mains que referencien a los objetos.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Resultados de la búsqueda</b></td>
+		        <td>
+		            Al pulsar el botón "Buscar" aquí aparece la lista de objetos main que referencian 
+		            de alguna forma a alguno de los objetos indicados en la lista.
+		        </td>
+		    </tr>
+		    
+		</table>
+		
+		<div class="bs-callout bs-callout-warning">
+		    <h3>Limitaciones</h3>
+		    <ul>
+		        <li>
+		            Sólo se pueden buscar referencias a objetos llamables (procedures, win/webpanels, etc).
+		            No se pueden buscar atributos, tablas, etc.
+		        </li>
+		        <li>
+		            La extensión busca hacia atrás a partir de los objetos a buscar llamadores que sean 
+		            objetos llamables. Si un objeto no es llamable, lo descarta en la busqueda. Esto provoca
+		            que si se buscan referencias a un procedure que es usado en un atributo fórmula, no
+		            se buscará donde se usa este atributo.
+		        </li>
+		    </ul>
+		</div>
+		
+		<!--#include file="./pie.shtml" -->
+	</body>
+	
+</html>

@@ -1,0 +1,3 @@
+﻿- Biblioteca de clases de utilidades para acceder a genexus, usadas en las extensiones y, 
+  en teoria, reusables. Este proyecto no contiene ninguna extension.
+

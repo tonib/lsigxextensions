@@ -1,0 +1,88 @@
+
+h2 
+{
+	padding-bottom:5px;
+	border-bottom: 1px dashed;
+}
+
+/*********************************************************************************/
+/* Log genexus                                                                   */
+/*********************************************************************************/
+
+div.loggx , pre.loggx
+{
+	background-color: White;
+	border-style: solid;
+	border-width: 1px;
+	margin: 5px;
+	padding: 20px;
+	font-family: "MS Sans-serif", arial, sans-serif, Georgia;
+	font-size: 9pt;
+	white-space: pre;
+	overflow: auto;
+}
+
+/*****************************************
+	Colision de nombres entre bootstrap y syntaxhiglighter.
+	http://stackoverflow.com/questions/22610540/syntaxhighlighter-margin-bug-with-bootstrap
+*****************************************/
+.syntaxhighlighter table .container:before {
+    display: none !important;
+}
+
+/*****************************************
+	Pie
+*****************************************/
+.pie 
+{
+	border-top: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+    color: #777;
+    margin-top: 50px;
+    padding-bottom: 40px;
+    padding-top: 40px;
+    text-align: center;
+    background-color: #f8f8f8;
+}
+
+/*****************************************
+	Avisos
+*****************************************/
+
+.bs-callout {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #eee;
+    border-image: none;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px 1px 1px 5px;
+    margin: 20px 0;
+    padding: 20px;
+}
+
+.bs-callout-warning {
+    border-left-color: #f0ad4e;
+}
+
+.bs-callout-warning {
+    border-left-color: #f0ad4e;
+}
+.bs-callout-warning h2 , .bs-callout-warning h3  , .bs-callout-warning h4 {
+    color: #f0ad4e;
+}
+
+.bs-callout h2 , .bs-callout h3 , .bs-callout h4 {
+    margin-bottom: 5px;
+    margin-top: 0;
+    border-bottom: none;
+}
+
+/*****************************************
+	PIE
+*****************************************/
+.navbar-static-top {
+  margin-bottom: 19px;
+}

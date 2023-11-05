@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+	    <title>LSI.Extensiones - Edición de llamadas a objetos</title>
+		<!--#include file="./head.shtml" -->
+	</head>
+
+	<body>
+	    <!--#include file="./cabecera.shtml" -->
+	    
+		<h2>Edición de llamadas a objetos</h2>
+		<p>
+		    El objetivo de esta extensión es agilizar el cambio a llamadas a 
+		    objetos que se llaman desde muchos sitios en una kbase. <br />
+		    Por ejemplo, en una aplicación de logística, el prompt
+		    de selección de un artículo puede llamarse desde centenares de objetos. Si se necesita
+		    añadir un cierto parámetro, por ejemplo la familia de artículos a proponer en el prompt,
+		    exige ir a todos los llamadores para añadir dicho parámetro.
+		</p>
+		<p>
+		    Esta extensión permite, de forma automática, añadir o quitar un parámetro en todas las
+		    llamadas a un objeto, o reemplazar la llamada a un objeto por otro. 
+		    En caso de añadir un parámetro, el valor a pasar en todas las 
+		    llamadas puede ser una variable o una constante especificada por el usuario.
+		</p>
+		<p>
+		    Los parámetros sólo se pueden agregar o quitar uno a uno. En caso de necesitar añadir 
+		    más de uno,
+		    hay que repetir el proceso por cada parámetro. En caso de querer quitar un parámetro, hay
+		    que ejectar este proceso antes de quitarlo de la regla parm del objeto llamado. Si se quiere
+		    añadir uno, hay que ejecutar el proceso despues de haberlo añadido a la regla parm.
+		</p>
+		<p>
+		    La extensión permite visualizar los cambios que se harán sin guardar los cambios, para
+		    revisar que no habrá problemas.
+		</p>
+		<div class="bs-callout bs-callout-warning">
+		    <h4>Atención</h4>
+	        <ul>
+	            <li>
+	                EJECUTE SIEMPRE LA REVISIÓN ANTES DE HACER LOS
+	                CAMBIOS para evitar posibles equivocaciones o errores en la extensión.
+	            </li>
+	            <li>
+	                Mientras se esté ejecutando esta extensión, el IDE puede ir lento o dejar
+	                de responder. Consulte las <a href="#limitaciones">limitaciones</a>.
+	            </li>
+	        </ul>
+		</div>
+		<p>
+		    La extensión se encuentra en el menú <i>Lsi.Extensions &gt; Tool Windows
+		    &gt; Edit object calls</i>. El formato de la ventana es el siguiente:
+		</p>
+		<p style="text-align:center">
+		    <a href="./llamadas.png">
+		        <img class="img-responsive" style="display:inline" alt="Imagen llamadas" src="./llamadas.png" />
+		    </a>
+		</p>
+		
+		<table class="table table-bordered">
+		    <tr>
+		        <td><b>Object</b></td>
+		        <td>Aquí se indica el nombre del objeto del que editar las llamadas.</td>
+		    </tr>
+		    <tr>
+		        <td><b>Operation</b></td>
+		        <td>
+		            Aquí se indica la operación a ejecutar en los llamadores al objeto:
+		            <ul>
+		                <li>
+		                    Add new parameter (Literal): Añadir un parametro en todos los llamadores,
+		                    pasando un valor literal (p.ej. "true", "0")
+		                </li>
+		                <li>
+		                    Add new parameter (Variable): Añadir un parametro en todos los llamadores,
+		                    pasando una variable como valor. Si el objeto llamador no contiene una
+		                    variable con dicho nombre, esta se creará automáticamente.
+		                </li>
+		                <li>
+		                    Remove parameter: Quita un parametro de las llamadas al objeto.
+		                </li>
+		                <li>
+		                    Replace called object by other: Reemplaza las llamadas del objeto por el
+		                    indicado en el campo New object.
+		                </li>
+		            </ul>
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Parameter to add / remove</b></td>
+		        <td>
+		            Aquí se selecciona el parámetro que hay que añadir o quitar de las llamadas, si
+		            así se indico.
+		            También muestra información sobre el tipo del parámetro seleccionado.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>New parameter value (variable name / literal)</b></td>
+		        <td>
+		            En caso de haber indicado que se quiere añadir un parametro, aquí se indica
+		            el valor del parametro a pasar. Si era un valor literal, indica el valor 
+		            constante a pasar. Si era una variable, indica el nombre de la variable a
+		            pasar
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>New object</b></td>
+		        <td>
+		            Si se indico que se quieren reemplazar las llamadas a un objeto por otro,
+		            aquí se indica cual es el nuevo objeto que se quiere llamar en lugar del
+		            antiguo.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Callers with name that starts with</b></td>
+		        <td>
+		            Si se indica un texto en este campo, solo se modificarán los objetos cuyo
+		            nombre empieze por este texto. Si se deja en blanco, se modificarán todos
+		            los objetos llamadores.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>View objects:</b></td>
+		        <td>
+		            Permite filtrar en la lista "Objects with calls" los objetos según si ha habido
+		            problemas o no con la edición de las llamadas. Puede filtrarse para ver los objetos
+		            sin problemas, con avisos o con errores.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Validate objects when testing</b></td>
+		        <td>
+		            Se aplica al revisar los cambios en las llamadas. Indica si Genexus tiene que hacer 
+		            una validación del objeto para ver si tras el cambio en las llamadas, los objetos 
+		            llamadores quedarán bien. Si se activa esta opción, la validación del objeto tardará 
+		            mucho más. Esta opción no se aplica al hacer realmente los cambios, ya que en ese
+		            caso Genexus siempre valida el objeto.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Test changes</b></td>
+		        <td>
+		            Hace una revisión de los cambios que se harán en los llamadores, sin hacer realmente
+		            ningún cambio. Los cambios que se harían se muestran en la lista "Objects with calls".
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Do changes</b></td>
+		        <td>
+		            Hace los cambios en las llamadas. Los cambios hechos se muestran en la lista 
+		            "Objects with calls".
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Objects with calls</b></td>
+		        <td>
+		            Esta lista se llena cuando se pulsa el botón "Test changes" o "Do changes".
+		            Muestra una lista de los objetos que tienen llamadas al objeto, e indica si hay 
+		            algún problema con los cambios en las llamadas del objeto. Al selecciónar algún
+		            objeto, en el campo "Cambios en el objeto" se muestran los cambios que se han hecho
+		            o harán en las llamadas del objeto.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Object changes</b></td>
+		        <td>
+		            Muestra información sobre los cambios hechos en el código del objeto seleccionado.
+		            En caso que haya habido errores o avisos, aquí se muestra el detalle de estos.
+		        </td>
+		    </tr>
+		</table>
+		
+		<div class="bs-callout bs-callout-warning">
+		    <a id="limitaciones"></a>
+		    <h3>Limitaciones</h3>
+		    <ul>
+		        <li>
+		            No se pueden editar los parámetros de DataProviders 
+                    (añaden una parámetro oculto &amp;ReturnValue con la propiedad 
+		            Object nula).
+		        </li>
+		        <li>
+		            La extensión no edita las llamadas en instancias de patterns ni Dashboards.
+		        </li>
+		        <li>
+		            La extensión sólo edita las llamadas en las partes de código de los objetos (Rules,
+		            Events, Conditions, etc.). No edita llamadas en propiedades de controles
+		            Win/Web (por ejemplo, conditions de un grid), ni llamadas upd en atributos fórmula, 
+		            etc.
+		        </li>
+		        <li>
+		            No se editan las llamadas en partes de conditions que contengan el texto "when" por lo
+		            que parece ser un bug en el parser de genexus. (Ver 
+		            <a href="http://www.gxopen.com/forumsr/servlet/viewthread?ARTECH,23,190752">
+		            http://www.gxopen.com/forumsr/servlet/viewthread?ARTECH,23,190752
+		            </a>)
+		        </li>
+		        <li>
+		            Mientras se esté ejecutando la edición de parametros, el IDE puede ir lento o dejar
+		            de responder. Esto es debido a que, por lo que parece, no se pueden guardar dos 
+		            objetos a la vez en la misma instancia del IDE de Genexus: Cuando la extensión 
+		            guarda cada objeto llamador, bloquea el IDE. (Ver 
+		            <a href="http://www.gxopen.com/forumsr/servlet/viewthread?ARTECH,23,191125">
+		            http://www.gxopen.com/forumsr/servlet/viewthread?ARTECH,23,191125
+		            </a>)
+		        
+                </li>
+                <li>No se pueden añadir parámetros en la última posición en llamadas UDP. Por ejemplo,
+                    si:
+                    <pre class="brush: genexus;">
+///*** Reglas del objeto PObjeto. ***///
+parm( in:&amp;ParametroEntrada, out:&amp;ParametroSalida1 );
+                    </pre>
+                    se cambia a:
+                    <pre class="brush: genexus;">
+parm( in:&amp;ParametroEntrada, out:&amp;ParametroSalida1 , out:&amp;ParametroSalida2);
+                    </pre>
+                    Una llamada como la siguiente no se modificará, dando un error en los resultados:
+                    <pre class="brush: genexus;">
+&amp;Variable = PObjeto( &amp;OtraVariable )
+                    </pre>
+                </li>
+                <li>Si un objeto llamador está abierto en algún puesto de trabajo, no se modificará
+                    y dará un error. 
+                </li>
+                <li>
+                    En el caso de reemplazar llamadas a un objeto por otro, puede haber problemas en
+                    caso de cambiar una llamada de un objeto por otro que está en otro módulo. 
+                    La extensión sólo modifica el nombre del objeto llamado en la llamada, no el módulo. 
+                    Por ejemplo, supongamos que se cambian las llamadas a un objeto "Objeto1" que 
+                    está en el módulo "Modulo1" por llamadas a un objeto "Objeto2" que está en el 
+                    módulo "Modulo2", y existe el siguiente código:
+                    <pre class="brush: genexus;">
+// Llamada 1
+Objeto1.call()
+// Llamada 2
+Modulo1.Objeto1.call()
+                    </pre>
+                    La extensión intentará cambiar las llamadas para que queden así:
+                    <pre class="brush: genexus;">
+// Llamada 1
+Objeto2.call()
+// Llamada 2
+Modulo1.Objeto2.call()                    
+                    </pre>
+                    La segunda llamada es erronea, y GeneXus dará un error al intentar guardar los
+                    cambios.
+                </li>
+            </ul>
+        </div>
+        <!--#include file="./pie.shtml" -->
+    </body>
+</html>

@@ -1,0 +1,14 @@
+        </div>
+		
+		
+        <footer role="contentinfo" class="pie">
+            <div class="container">
+                Copyright (c) 2021 <a href="http://lsisoluciones.com/">LSI</a> | 
+		        Proyecto hospedado en <a href="http://sourceforge.net/projects/lsigxextensions/">SourceForge</a>
+            </div>
+        </footer>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>

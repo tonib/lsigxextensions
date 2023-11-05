@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+
+	<head>
+	    <title>LSI.Extensiones - Predicción de código</title>
+		<!--#include file="./head.shtml" -->
+	</head>
+	
+	<body>
+	    <!--#include file="./cabecera.shtml" -->
+	    
+		<h2>Predicción de código</h2>
+
+		<p>
+            Esta extensión es una función de autocompletado de código Genexus con <i>Machine learning</i>. Intenta predecir la siguiente 
+            palabra que se va a escribir en el editor de código de Genexus.
+        </p>
+        <p>
+            La extensión provee una función para proponer, de entre las palabras que propone la extensión
+            de <a href="codigo.shtml#autocompletado">Autocompletado extendido</a>, cual es la más probable. En este caso, la 
+            extensión automáticamente selecciona esta palabra más probable. Por ejemplo si se escribe "I" y el modelo decide que
+            la palabra más probable de entre las que aparecen en la ventana de autocompletado es un "IF", la selecciona automáticamente:
+        </p>
+        <p style="text-align: center">
+            <a href="./prediccion.png">
+                <img alt="Ejemplo predicción" class="img-responsive" style="display:inline" src="./prediccion.png" />
+            </a>
+        </p>
+        <p>
+            En concreto, se hacen dos cosas:
+            <ul>
+                <li>
+                    La lista de autocompletado tiene un tamaño limitado: En kbases grandes, por rendimiento, no se pueden cargar en la lista TODOS los
+                    objetos de la kbase que empiecen por el texto escrito, y hay que reducir la cantidad que se pone en la lista. Esta extensión
+                    precarga los objetos con un nombre mas probable.
+                </li>
+                <li>
+                    De entre las opciones cargas en la lista, selecciona automáticamente la que el modelo cree que es la mas probable.
+                </li>
+            </ul>
+            
+        </p>
+        <div class="bs-callout bs-callout-warning">
+            <h4>Limitaciones</h4>
+            <ul>
+                <li>
+                    La extensión sólo soporta objetos de tipo Transacciones, Workpanels, Webpaneles, Procedures y SDPanels.
+                </li>
+                <li>
+                    Si hay distintos objetos con el mismo nombre, la extensión puede no distinguir correctamente a que tipo de objeto se refiere.
+                    Por ejemplo, si se tiene un procedure con nombre "CustomerDelete", y una imagen con el mismo nombre, la extension puede
+                    usar como entrada al modelo uno por otro. La extensión seguirá funcionando, pero en estos casos puede hacer predicciones 
+                    incorrectas. Lo mismo puede ocurrir si se tienen objetos con el mismo nombre en distintos módulos.<br/>
+                    Se han implementado algunas heuristicas para intentar descartar algunos tipos de objetos (por ejemplo, en una llamada a
+                    ".FromImage()" se espera una imagen), pero no son completas.
+                </li>
+            </ul>
+        </div>
+        <p>
+            Junto con la extensión se incluye un modelo entrenado con varias Kbases de LSI (aprox. 10.600 objetos en total).
+        </p>
+        <p>
+            La extensión se habilita en la <a href="configuracion.shtml">configuración</a>, en la pestaña Autocomplete:
+        </p>
+        <table class="table table-bordered">
+            <tr>
+                <td><b>Use prediction model</b></td>
+                <td>
+                    Indica si usar el modelo de predicción:
+                    <ul>
+                        <li>Do not use prediction model: No usar el modelo de predicción</li>
+                        <li>Use model distributed with Lsi.Extensions (TF Lite): Usa el model de predicción entrenado que se
+                        distribuye con las extensiones</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Debug prediction model</b></td>
+                <td>
+                    Si se marca, se muestra información de debug de las palabras de autocompletado, en la propia ventana de
+                    autocompletado y en la ventana de Output
+                </td>
+            </tr>
+        </table>
+        <p>
+            El resto de opciones son para entrenar y usar un model propio, y se explican en los apartados correspondientes. Más información:
+        </p>
+        <ul>
+            <li><a href="prediccion_como.shtml">Como funciona el modelo</a></li>
+        </ul>
+
+
+        <!--#include file="./pie.shtml" -->
+	</body>
+	
+</html>

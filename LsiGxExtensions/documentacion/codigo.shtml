@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>LSI.Extensiones - Código</title>
+		<!--#include file="./head.shtml" -->
+	</head>
+	<body>
+	    <!--#include file="./cabecera.shtml" -->
+	    
+	    <h2>Código</h2>
+	    <p>
+	        Algunas utilidades para agilizar la edición del código en GeneXus.
+	        Se encuentran en el menú Lsi.Extensiones &gt; Código
+	    </p>
+	    
+        <a id="autocompletado"></a>
+        <h3>Autocompletado extendido</h3>
+        <p>
+            Esta extensión añade una función de autocompletado en el editor de código de Genexus, donde
+            Genexus no lo hace. No reemplaza el que ya hace Genexus cuando se muestran miembros miembros de un SDT, BC, etc
+            ni el de variables.
+        </p>
+        <p>
+            Para que esta extensión funcione correctamente, el <i>Automatic outlining</i> del editor de texto de Genexus
+            debe estar habilitado (por defecto lo está).
+        </p>
+        <p>
+            Este autocompletado está soportado sólo en lo siguientes sitios:
+            <ul>
+                <li>Parte Procedure de objetos Procedure</li>
+                <li>Parte Events de Transacciones, Workpanels, Webpanels y Panel for Smart Devices</li>
+                <li>Parte Conditions de Procedures, Workpanels y Webpanels y Panel for Smart Devices</li>
+            </ul>
+        </p>
+
+        <p>
+            Cuando se empieza a escribir una palabra, automáticamente aparece una lista con los objetos y
+            palabras del lenguaje que empiezan por el texto escrito. Si se selecciona un elemento de la
+            lista, con el raton o con el teclado (Tab, Enter, Espacio), se autocompleta la palabra:
+        </p>
+
+        <p style="text-align: center">
+            <a href="./codigo-autocompletado.png">
+                <img alt="Autocompletado" class="img-responsive" style="display:inline" src="./codigo-autocompletado.png" />
+            </a>
+        </p>
+
+        <p>
+            Esta extensión se puede habilitar / deshabilitar en la <a href="configuracion.shtml">configuración.</a>
+        </p>
+
+        <p>
+            Por rendimiento, la extensión muestra un número máximo de resultados (15 entradas por cada "espacio de nombres").
+            Cada vez que se añade o quita una letra, se actualiza la lista.
+        </p>
+
+        <p>
+            En algunos (pocos) casos la exensión intenta dar prioridad a alguna de las opciones de la lista de autocompletado.
+            En estos casos, cuando se muestra la lista de palabras probables, la que la extensión considera más probable aparece
+            seleccionada. Esto puede hacerlo con algunas palabras clave, o cuando se escriben parametros en una llamada.
+        </p>
+
+        <p>
+            El contexto del lenguaje está parcialmente soportado. Por ejemplo, la palabra clave "WHERE" sólo
+            debería aparecer dentro de un bloque "FOR EACH / ENDFOR", y la extensión sólo la propone en la
+            lista si este es el caso. También, por ejemplo, en procedures sólo se proponen nombres de atributos si se está
+            dentro de un bloque de código donde tengan sentido ("FOR EACH"/ "XFOR" / "NEW"...).
+            No todo el lenguaje está soportado.
+        </p>
+
+        <p>
+            La extensión también intenta auto-cerrar bloques de código. Por ejemplo, cuando se escribe "IF" en una línea vacia,
+            automáticamente se añade una segunda línea de código con un "ENDIF" (el cursor queda detrás del IF). Esto intenta hacer
+            con todos los bloques de código (FOR - ENDFOR, Event - EndEvent, etc)
+        </p>
+
+        <p>
+            En LSI no tenemos un estandar sobre si escribir las palabras clave en mayusculas o minúsculas.
+            La extensión soporta dos formas de poner las mayusculas/minusculas
+            al autocompletar: Todo en mayusculas ("FOR EACH") o la primera letra en mayusculas ("For each"). Esto se indica en
+            la <a href="configuracion.shtml">configuración</a>.
+        </p>
+
+        <p>
+            Existe otra extensión que funciona sobre esta, y que intenta predecir cual es la palabra más probable
+            de las que aparecen en la lista de autocompletado. Esta extensión <a href="prediccion.shtml">se describe aquí</a>.
+        </p>
+
+        <p>
+            En caso de querer mostrar la lista de autocompletado sin tener que escribr una letra, la opción del menú es
+            <i>Lsi.Extensions &gt; Edit &gt; Autocomplete</i> (tecla rápida <kbd>Ctrl+May+T</kbd>). La tecla <kbd>Ctrl+Espacio</kbd>
+            sigue mostrando el autocompletado original de Genexus.
+        </p>
+
+        <div class="bs-callout bs-callout-warning">
+            <h4>Limitaciones</h4>
+            <p>
+                Para que el autocompletado funcione con un rendimiento aceptable, la extensión mantiene una cache de los nombres de los
+                objetos de la KBase. Cuando se entra en una KB se lanza la carga de esta cache con TODOS los nombre de la KBase.
+                En una KBase con 10.300 objetos (aprox.) que tenemos en LSI se cachean 9645 nombres de objetos/funciones
+                y 10440 nombres de atributos. No parece que consuma mucha memoria (no podemos dar un numero), pero si que tarda unos
+                20 segundos (aprox.) en cargar esta información. Hasta que no pasa este tiempo, la función de autocompletado
+                no está disponible. La extensión informa en la ventana Output cuando se inicia y finaliza la carga de esta cache.
+                La carga se hace en segundo plano.
+            </p>
+            <p>
+                Esta cache se actualiza al momento con cambios que se hagan en local en la misma instancia de Genexus. Para cambios que
+                hagan otros usuarios desde otros puestos, se revisan los objetos modificados cada 30 segundos y se actualiza esta cache.
+                Hay una limitación con esto: Si un usuario desde otro puesto borra un objeto, la cache local NO se entera, seguirá
+                asumiendo que el objeto existe y lo propondrá en el autocompletado.
+            </p>
+            <p>
+                El contexto de los objetos que se proponen no se tiene en cuenta. Es decir, un Data Selector sólo
+                debería poder escribirse despues de la palabra clave USING. La extensión no tiene en cuenta esto.
+            </p>
+            <p>
+                Hay palabras clave que sólo se proponen al principio de una linea, aunque el lenguaje soporta que
+                puedan venir en cualquier lugar. Por ejemplo, este código, todo en una línea, es correcto:
+            </p>
+<pre class="brush: genexus;">
+IF &amp;a = &amp;b msg( 'Cierto' ) ELSE msg ( 'Falso' ) ENDIF
+</pre>
+            <p>
+                Esta extension asume que las palabras clave IF, ELSE y ENDIF sólo pueden venir al principio de una línea
+                y no las propondrá.
+            </p>
+            <p>
+                Hay palabras clave del lenguaje que no están soportadas. Por ejemplo el segundo parametro de la funcion "Confirm"
+                puede ser Y o N. Estos dos valores en realidad son palabras clave del lenguaje, y no se proponen.
+                Puede haber otras: Esta extensión se ha escrito y probado en la Ev3. Palabras clave que se hayan añadido
+                en Gx15 o 16 seguramente no están soportadas. Y otras palabras que directamente no usamos nunca.
+            </p>
+            <p>
+                En los procedures, en los parametros de las funciones agregadas (Sum, Count, Average,...) fuera de un bloque
+                de código que permita atributos (FOR EACH, NEW, etc), aun no está soportado proponer atributos.
+            </p>
+            <p>
+                No está soportado proponer nombres de módulos.
+            </p>
+            <p>
+                La extensión soporta proponer nombres de controls en un win/web form. Hay una limitación con las Transacciones en
+                la Ev3: En la Ev3 la transaccion tiene siempre un form para Win y Web, aunque en la KBase se tenga sólo un
+                generador Web. En este caso, el autocompletado propone los nombres de ambos forms, aunque no tenga sentido.
+            </p>
+        </div>
+
+        <a id="parametros"></a>
+        <h3>Información extendida de parametros</h3>
+        <p>
+            Esta extensión reemplaza la función de Genexus de mostrar información de los parametros mientras se escribe una
+            llamada a un objeto:
+        </p>
+        <p style="text-align: center">
+            <a href="./codigo-parametros.png">
+                <img alt="Parametros" class="img-responsive" style="display:inline" src="./codigo-parametros.png" />
+            </a>
+        </p>
+        <p>
+            Muestra más información de la que muestra Genexus, y que a nosotros nos es útil. En concreto:
+        </p>
+        <ul>
+            <li>
+                La longitud y/o decimales del parametro.
+            </li>
+            <li>
+                El atributo / dominio en el que está basado
+            </li>
+            <li>
+                Si es un array
+            </li>
+            <li>
+                Si el parámetro es in: / inout: / out:
+            </li>
+            <li>
+                La documentación del parámetro en el que se está posicionado.
+            </li>
+        </ul>
+        <p>
+            Además, la información del parametro se muestra si la llamada al objeto ocupa más de una línea de código. El cuadro con
+            la información de Genexus no aparece la segunda o posteriores líneas de código.
+        </p>
+        <p>
+            Los parametros se documentan de la siguiente forma:
+        </p>
+        <pre class="brush: genexus">
+parm(
+        in:&amp;Parametro1,     // Información del parametro 1
+        inout:&amp;Parametro2,  // Información del parametro 2. Información del parametro 2...
+                            // Información del parametro 2. Información del parametro 2...
+        out:&amp;Parametro3, out:&amp;Parametro4    // Información de los parametros 3 y 4 (aparece la misma en los dos)...
+);
+	    </pre>
+        <p>
+            Esta extensión se puede habilitar / deshabilitar en la <a href="configuracion.shtml">configuración</a>. Requiere
+            que la extensión de Autocompletado extendido esté habilitada. Se puede configurar para reemplazar la información de Genexus
+            siempre, nunca, o mostrarla sólo cuando Genexus no muestra la suya (en la segunda o posterior línea de código de la llamada).
+        </p>
+        <div class="bs-callout bs-callout-warning">
+            <h4>Limitaciones</h4>
+            <p>
+                Esta información extendida no se muestra en DataSelectors ni DataProviders, ni en llamadas a funciones de Genexus ni
+                miembros de External Objects. En estos, se muestra la información original que da Genexus.
+            </p>
+            <p>
+                En los parametros array no se muestra informacion de la dimension del array
+            </p>
+        </div>
+
+
+
+        <a id="autocierre"></a>
+        <h3>Auto-cierre de parentesis y comillas</h3>
+        <p>
+            Esta extensión autocierra los paréntesis de y comillas al escribir código en el editor. Intenta hacer lo mismo que hace
+            el Visual Studio Code (y otros): Cuando escribes "(", automáticamente añade el carácter ")". Hace los mismo con
+            las comillas simples y dobles.
+        </p>
+        <p>
+            Esta extensión se puede habilitar / deshabilitar en la <a href="configuracion.shtml">configuración</a>. Requiere
+            que la extensión de Autocompletado extendido esté habilitada.
+        </p>
+
+        <a id="addvariable"></a>
+        <h3>Tecla rápida para crear una variable</h3>
+        <p>
+            Añade una tecla rápida para crear una variable desde el editor de código. Es parecido a la opción <i>Add variable</i>
+            que aparece cuando se pulsa botón derecho sobre un nombre de variable en el editor de código:
+        </p>
+        <p style="text-align: center">
+            <a href="./confirmacionrebuild.png">
+                <img alt="Nueva variable" class="img-responsive" style="display:inline" src="./addvariable.png" />
+            </a>
+        </p>
+
+        <p>
+            La tecla rápida es <kbd>Ctrl+May+C</kbd>. Si la variable sobre la que está posicionado el cursor no existe, la crea.
+            Si Genexus le da un tipo de datos (p.ej., basado en un atributo o en un dominio), el tipo de la variable se respeta.
+        </p>
+        <p>
+            Si va a crear con el tipo por defecto ( N(4) ), la extensión mira si en alguno de los objetos abiertos existe una
+            variable con el mismo nombre. Si es así, se asigna el tipo de dicha variable. Si en el editor se tiene seleccionado
+            parte del nombre de la variable a crear (p.ej. "Attribute" en "&amp;AttributeInfo"), la variable se intentará crear
+            basada en "Attribute". Si se usa la tecla rápida cuando el cursor está en una posición en una llamada a un objeto
+            (p.ej. <code>Procedure( &amp;Variable|)</code>), la variable se creará basada en el tipo del parámetro.
+        </p>
+        <p>
+            Si se pulsa la tecla rápida y la variable ya existe, mueve el foco a la ventana de <i>Properties</i>, y
+            posiciona el foco en la propiedad <i>Based on</i>. Para que esto funcione, la ventana de <i>Properties</i>
+            tiene que estar visible. La idea es no tener que coger el ratón para cambiar el tipo de la variable.
+        </p>
+        <p>
+            Si se pulsa la tecla rápida, y el foco está en la ventana de <i>Properties</i>, se devuelve el foco al editor de
+            código. Otra vez, la idea es no tener que coger el ratón.
+        </p>
+        <p>
+            La opción del menú para esta tecla rápida es <i>Lsi.Extensions &gt; Code &gt; Add/edit variable</i>.
+        </p>
+
+
+	    <h3>Copiar parm del obj. seleccionado al portapapeles (Atajo de teclado: <kbd>Ctrl+F10</kbd>)</h3>
+	    <p>
+	        En LSI, en algunas aplicaciones, documentamos los parametros de los objetos de una forma 
+	        parecida a como se hace con javadoc o en C#. Un ejemplo del formato de documentación que 
+	        usamos es este:
+	    </p>
+	    <pre class="brush: genexus">
+///**** REGLAS DEL OBJETO PUCliNomFis ****///
+parm(
+        in:&amp;EmpCod,     // Código de la empresa base
+        in:&amp;CliCod,     // Código del cliente
+        in:&amp;Flag,       // Tipo de nombre del cliente a obtener. 'F' = Nombre fiscal, 'C': Nombre comercial
+        out:&amp;CliNomFis	// El nombre del cliente
+);
+	    </pre>
+	    
+	    <p>
+	        Al escribir una llamada a un objeto en el editor GeneXus,
+	        este muestra los parametros que el objeto espera recibir, pero, evidentemente, no
+	        muestra el formato de nuestros comentarios. Si un objeto tiene muchos parametros, o si
+	        la documentación es relevante para hacer la llamada, esta extensión tiene utilidad.
+	        Al seleccionar un objeto en el editor de código (poniendo el cursor encima del nombre
+	        del objeto a llamar)
+	        y pulsando <kbd>Ctrl+F10</kbd>, copia al portapapeles la regla parm del objeto comentada. 
+	        Si se pega (<kbd>Ctrl+V</kbd>) encima del código de la llamada, se tiene la información completa de
+	        como hacer la llamada:
+	    </p>
+	    <pre class="brush: genexus">
+///**** OBJETO QUE QUIERE LLAMAR A PUCliNomFis ****///
+/* parm(
+		in:&amp;EmpCod,     // Código de la empresa base
+        in:&amp;CliCod,     // Código del cliente
+		in:&amp;Flag,       // Tipo de nombre del cliente a obtener. 'F' = Nombre fiscal, 'C': Nombre comercial
+        out:&amp;CliNomFis	// El nombre del cliente
+); */
+PUCliNomFis.Call( |
+	    </pre>
+	    
+	    <h3>Copiar un FOR EACH de una tabla al portapapeles... (Atajo de teclado: <kbd>Ctrl+F11</kbd>)</h3>
+	    <p>
+	        Pide al usuario seleccionar una tabla de la kbase y copia al portapapeles el código
+	        de un FOR EACH para leer un único registro de dicha tabla. Pulsando Ctrl+V se pega
+	        el código en el editor GeneXus.
+	        Por ejemplo, si la tabla seleccionada tiene como atributos clave EmpCod y CliCod copia esto:
+	    </p>
+	    <pre class="brush: genexus">
+FOR EACH
+	WHERE EmpCod = &amp;EmpCod
+	WHERE CliCod = &amp;CliCod
+
+
+ENDFOR
+	    </pre>
+	    
+	    <h3>Copiar un NEW de una tabla al portapapeles... (Atajo de teclado: <kbd>Ctrl+F12</kbd>)</h3>
+	    <p>
+	        Pide al usuario seleccionar una tabla de la kbase y copia al portapapeles el código
+	        de un NEW para leer crear un registro en dicha tabla. Pulsando Ctrl+V se pega
+	        el código en el editor GeneXus. El NEW no contiene atributos que sean formulas.
+	        Por ejemplo:
+	    </p>
+        <pre class="brush: genexus">
+NEW
+	EmpCod = &amp;EmpCod
+	CliCod = &amp;CliCod
+	CliNomFis = &amp;CliNomFis
+	...
+ENDNEW
+        </pre>
+        
+	    <!--#include file="./pie.shtml" -->
+	</body>
+</html>

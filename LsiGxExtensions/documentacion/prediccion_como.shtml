@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+
+	<head>
+	    <title>LSI.Extensiones - Predicción de código</title>
+		<!--#include file="./head.shtml" -->
+	</head>
+	
+	<body>
+	    <!--#include file="./cabecera.shtml" -->
+	    
+        <h2>Como funciona la predicción de código</h2>
+        <p>
+            La extensión usa un <a href="https://en.wikipedia.org/wiki/Natural_language_processing">modelo de lenguaje</a>,
+            implementado con <a href="https://www.tensorflow.org">Tensorflow</a>, para 
+            intentar predecir que características tendrá la siguiente palabra escrita en el editor de código, en función de
+            las palabras escritas en el editor antes de la posición actual del cursor.
+        </p>
+        <p>
+            En esta documentación no se entrará en los detalles de funcionamiento del modelo en si. Están soportados
+            dos tipos de modelo:
+        </p>
+        <ul>
+            <li>
+                <a href="https://en.wikipedia.org/wiki/OpenAI#GPT">GPT</a>. En concreto se usa una versión
+                modificada de <a href="https://github.com/kamalkraj/minGPT-TF">minGPT-TF</a>.
+                En <a href="https://jalammar.github.io/illustrated-gpt2/">https://jalammar.github.io/illustrated-gpt2/</a> se puede
+                encontrar una descripción de como funciona este tipo de modelos. El modelo entrenado que se distribuye con las extensiones usa
+                este tipo de modelo.
+            </li>
+            <li>
+                <a href="https://en.wikipedia.org/wiki/Recurrent_neural_network">RNN (Recurrent neural network)</a>.
+                En 
+                <a href="http://karpathy.github.io/2015/05/21/rnn-effectiveness/">http://karpathy.github.io/2015/05/21/rnn-effectiveness/</a>
+                se puede encontrar un post excelente sobre el funcionamiento de este tipo de redes.
+            </li>
+        </ul>
+        <p>
+            El usar un modelo un modelo u otro, a efectos de entender como funciona el modelo tiene poca relevancia, ya que ambos tienen las
+            mismas entradas y salidas. Las diferencias prácticas se explican más adelante.
+        </p>
+
+        <h3>Modelos de lenguaje</h3>
+        <p>
+            Los datos de entrada al modelo son la lista de palabras anteriores a la posición actual del cursor en el editor de texto.
+            Simplificando mucho, en un modelo de lenguaje "normal" estas palabras se introducirían al modelo, y este daría una predicción de cual 
+            es la siguiente palabra que aparería en el texto.
+        </p>
+        <p>
+            Por ejemplo, imaginemos que en un editor de texto se intenta predecir cual es la siguiente palabra que se escribirá. Hasta ahora, 
+            en el editor de texto se ha escrito: "Mi coche es de color |". El modelo dará, para cada palabra del diccionario, la probabilidad
+            de que esa palabra sea la siguiente en la frase. Por ejemplo:
+        </p>
+        <table class="table">
+            <thead>
+                <tr><th>Palabra</th><th>Probabilidad</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Blanco</td><td>20 %</td></tr>
+                <tr><td>Negro</td><td>11 %</td></tr>
+                <tr><td>Verde</td><td>8 %</td></tr>
+                <tr><td>...</td><td>...</td></tr>
+                <tr><td>Tocino</td><td>0,001 %</td></tr>
+                <tr><td>Velocidad</td><td>0,0006 %</td></tr>
+                <tr><td>...</td><td>...</td></tr>
+            </tbody>
+        </table>
+
+        <p>
+            Otra vez, esto es simplificar mucho. Por ejemplo, los modelos de lenguaje modernos pueden trocear las palabras, y utilizar como entrada (y
+            predecir) un trozo de palabra, y no una palabra entera, pero la idea es la misma.
+        </p>
+
+        <p>
+            En el caso de la extensión, el modelo no va a trabajar con un lenguaje natural, sino con el lenguaje de programación de Genexus.
+            La principal diferencia es que en este caso, las palabras tiene más de una "dimensión". Por ejemplo, tenemos el siguiente código:
+        </p>
+<pre class="brush: genexus;">
+    &amp;x = Round( // El cursor esta aqui
+</pre>
+        <p>
+            Seguramente la siguiente palabra que va a venir será una variable o atributo con tipo numerico (¡y con decimales!). Esto 
+            no puede saberse sólo con el texto escrito con el editor de texto, sino que se necesita saber el tipo de las variables / attributos.
+            En este caso, para cada palabra escrita, si es una variable o atributo, es útil para el modelo saber su tipo de datos.
+        </p>
+
+        <p>
+            El modelo de la extensión codifica cada palabra previamente escrita con la siguiente información:
+        </p>
+        <ul>
+            <li>
+                <b>Tipo</b>: Este es la dimensión "principal". Las palabras claves de Genexus, como "For", "each", "where", "order", "by", "commit", 
+                "true", etc., se identifican por si mismas. Miembros estandar de tipos de Genexus, tales como "Item" en "&amp;Coleccion.Item(1)", 
+                también. Las variables, todas, se identifican como un tipo "Variable" generico, los atributos (todos) con un tipo "Attribute", etc.
+            </li>
+            <li>
+                <b>Tipo de datos</b>: Esta dimensión sólo se aplica a palabras que tenga un tipo de datos asociado: Atributos, variables y 
+                funciones. En el caso de las funciones, el tipo de datos es el devuelto por la función. El tipo de datos no es una única dimensión,
+                sino cuatro:
+                <ul>
+                    <li>El tipo (Varchar, Numeric, Bolean, ...)</li>
+                    <li>¿Es colección? (cierto o falso)</li>
+                    <li>La longitud (ej. 40 en Varchar(40))</li>
+                    <li>El número de decimales (ej. 2 en Numeric(10.2))</li>
+                </ul>
+            </li>
+            <li>
+                <b>Nombre</b>: El texto con que aparece la palabra, en un modelo de lenguaje, evidentemente es importante. Y la forma en que se codifica
+                este texto es muy importante para el modelo. Como se trata de un modelo para el lenguaje de programación de Genexus, se ha optado por hacer
+                una asupción, y es que se usa el <a href="https://es.wikipedia.org/wiki/Camel_case">Camel case</a> de Genexus. Se explica más adelante.
+            </li>
+            <li>
+                <b>Tipo de control</b>: Indica si la palabra aparece en un Form como un control, y qué tipo de control es. Es útil para el modelo. P.ej:
+<pre class="brush: genexus;">
+    &amp;x.// El cursor esta aqui
+</pre>
+                Si &amp;x es un Combobox, es mucho más probable que la siguiente palabra sea AddItem, que si no lo es.
+            </li>
+        </ul>
+        <p>
+            Al empezar a escribir en el editor de texto, se obtienen esta información de cada palabra anterior al cursor, para alimentar el modelo. 
+            ¿Cuantas palabras se revisan?.
+            Lo ideal es que se revisaran todas las palabras anteriores al cursor, hasta llegar al principio de la parte del objeto. Desgraciadamente,
+            este modelo se usa para autompletado, y tiene que funcionar en "tiempo real", con lo que el usuario no puede esperar 1 segundo
+            hasta que se haga la predicción cada vez que se pulsa una tecla. El modelo distribuido con la extensión revisa 64 palabras hacia atras.
+        </p>
+
+        <!-- TODO: Poner algo sobre los valores nulo. Indicar algo sobre los rangos para valores numericos. Poner un ejemplo -->
+        <h3>Contexto en un modelo de lenguaje de programación</h3>
+        <p>
+            Lo explicado anteriormente es lo estandar en un modelo de lenguaje: Se da como entrada al modelo la lista de palabras anteriores, y se
+            espera que el modelo prediga la siguiente palabra. Sin embargo, en el un lenguaje de programación como Genexus se le puede dar más
+            información de "contexto" al modelo.
+        </p>
+        <p>
+            En esta documentación definimos "contexto" como la información que ya se sabe sobre la siguiente palabra que va a escribirse antes
+            de que el usuario empiece a escribirla. 
+        </p>
+        <p>
+            Imaginemos que se está en un Procedure, en la parte Procedure, escribiendo lo siguiente:
+        </p>
+<pre class="brush: genexus;">
+    MyProcedure( &amp;MyVariableNumeric , &amp;// El cursor está aquí
+</pre>
+        <p>
+            La extensión sabe bastantes cosas antes de escribir la palabra: Se está editando un objeto Procedure, en concreto la parte Procedure. 
+            También sabe que lo que va a venir es una variable, ya que empieza por &amp;, y qué tipo de parametro se espera en la llamada a 
+            MyProcedure en la posición del cursor. Alimentar al modelo con esta información debería ayudarle a hacer la predicción.
+        </p>
+        <p>
+            En concreto, en el contexto se informa de lo siguiente:
+        </p>
+        <ul>
+            <li>
+                <b>Parametro esperado</b>: Si el cursor está en un parámetro de una llamada, se da información sobre el parámetro esperado. La
+                información es:
+                <ul>
+                    <li>El tipo (Varchar, Numeric, Bolean, ...)</li>
+                    <li>¿Es colección? (cierto o falso)</li>
+                    <li>La longitud (ej. 40 en Varchar(40))</li>
+                    <li>El número de decimales (ej. 2 en Numeric(10.2))</li>
+                    <li>El nombre del parametro</li>
+                    <li>Si el parametro es in:, out: o inout:</li>
+                </ul>
+            </li>
+            <li>
+                <b>¿Es variable?</b>: El autocompletado no propone nada hasta que se ha escrito una letra de la palabra en el editor. De esta
+                forma, la extensión puede saber si lo que va a escribirse a continuación es una variable o no: Si empieza por "&amp;" sabemos
+                que es una variable. Es un boolean.
+            </li>
+            <li>
+                <b>Tipo del objeto y tipo de la parte que se está editando</b>. Esto es relevante ya que hay funciones y palabras clave que
+                solo aparecen en ciertos tipos de objetos/partes.
+            </li>
+        </ul>
+        <p>
+            A priori, parece que bastaría informar del contexto de la pósición donde está el cursor actualmente. Sin embargo, en el modelo
+            distribuido con las extensiones se informa del contexto para todas las palabras anteriores al cursor, y, además, para la siguiente
+            palabra que va a venir. Esto se hace porque, primero, la implementación del modelo GPT lo exige, y también porque puede contener
+            información útil. Ejemplo:
+        </p>
+<pre class="brush: genexus;">
+    MyProcedure( &amp;InputValue , &amp;FlgError )   // &amp;InputValue es una variable de entrada, y &amp;FlgError es una variable booleana de salida
+    IF NOT &amp;// El cursor está aquí
+</pre>
+        <p>
+            El que &amp;FlgError sea un parametro de salida boolean en la última llamada anterio es relevante, y deberia incrementar las probabilidades
+            que fuese la proxima palabra.
+        </p>
+
+        <h3>Codificación del texto de las palabras</h3>
+        <p>
+            En Genexus hay tres tipos de "palabras" en los que su descripción textual (su nombre) tienen relevancia: 
+            Los atributos, variables y nombres de controles en la interface de usuario (ej. un nombre de un control de tipo Label).
+            Para estos tipos de palabras, los nombres se usan como entrada al modelo, y el modelo tambien intenta predecir que nombre tendrá
+            la proxima palabra escrita.
+        </p>
+        <p>
+            Para este modelo, se asume que se usa el "estandar" de nomenclatura de Genexus para atributos/variables: Un "CamelCase" en el que
+            la primera letra de cada palabra se pone en mayusculas. Ejemplos de esta nomenclatura serían "CustomerName", "InvoiceFiscalId", etc.
+        </p>
+        <p>
+            Para la entrada al modelo, para cada palabra a usar como entrada, esta se trocea por el "CamelCase", hasta tres trozos como máximo.
+            Por ejemplo, "InvoiceFiscalCustomerName" se convertiría en [ "Invoice", "Fiscal", "CustomerName" ], y "CustomerName" se convertiría en
+            [ "Customer", "Name", null ].
+        </p>
+        <p>
+            Una vez dividido el nombre en palabras, se aplica una función de hash a cada palabra para obtener tres números, que son los que se alimentan
+            al modelo. Por ejemplo, la transformación completa para "CustomerName" seria => [ "Customer", "Name", null ] => [ 12 , 45 , null ].
+            El valor máximo que puede devolver la función de hash es configurable.
+        </p>
+
+        <h3>Salidas del modelo</h3>
+        <p>
+            En los modelos de lenguaje, el modelo intenta predecir cual es la siguiente palabra (o subpalabra) que aparecerá en el texto. El modelo
+            de la extensión no funciona así, sino que intenta predecir las características que tendrá la siguiente palabra. Son características
+            que aparecen en las entradas al modelo, con los mismos significados y valores:
+        </p>
+        <ul>
+            <li><b>Tipo</b>: "For", "each", "where", "Variable", "Attribute", "Item", etc.</li>
+            <li><b>Tipo de datos</b>: (Varchar, Numeric, Bolean, ...)</li>
+            <li><b>Tipo de datos, ¿es colección?</b>: cierto o falso</li>
+            <li><b>Tipo de datos, longitud</b>: 40 en Varchar(40)</li>
+            <li><b>Tipo de datos, número de decimales</b>: 2 en Numeric(10.2)</li>
+            <li><b>Nombre</b>: El texto con que aparece la palabra</li>
+        </ul>
+        <p>
+            A cada posible valor de cada característica, el modelo le da una probabilidad, y despues estas se combinan.
+            La forma mas facil de verlo es activar la opción "Debug prediction model" en la configuración. Imaginemos que se escribe este código:
+        </p>
+<pre class="brush: genexus;">
+    FOR EACH
+        WHERE EmpCod = &EmpCod
+        WHERE CliCod = &CliCod
+
+        &CliNomFis = C // El cursor está aquí
+</pre>
+        <p>
+            La predicción que genera el modelo es esta (se muestran las 10 opciones con más probabilidad para cada característica):
+        </p>
+<pre>
+* Collection: False: 0,999760925769806 / null: 0,000238476306549273 / True: 5,57221710550948E-07
+* DataType: CHARACTER: 0,999415636062622 / VARCHAR: 0,000422787270508707 / NONE: 8,03845177870244E-05 / NUMERIC: 6,81372548569925E-05 / Extended#0: 9,11683764570626E-06 / Boolean: 1,96533915186592E-06 / Extended#3: 4,83294513742294E-07 / Extended#12: 4,77526839404163E-07 / DATE: 4,03522022907055E-07 / Extended#11: 1,97357024944722E-07
+* Decimals: 0: 0,999857664108276 / null: 0,000140819873195142 / 2: 1,40022416417196E-06 / 3: 1,23714443134304E-07 / 6: 2,76962914824708E-08 / 8: 2,50535094892257E-08 / 5: 8,50647108308067E-09 / 4: 1,31900193892087E-11 / 7: 3,85863297694064E-13 / >8: 1,98379588580919E-14
+* Length: 21-50: 0,999745905399323 / 11-15: 0,000112319794425275 / 101-500: 5,03408045915421E-05 / 0: 2,02812789211748E-05 / 1: 1,8588320017443E-05 / 3: 1,7763200958143E-05 / 7: 1,1798317245848E-05 / null: 5,87603926760494E-06 / 2: 4,75753176942817E-06 / >1000: 4,14986971009057E-06
+* NameHash0: #28: 0,968661785125732 / #8: 0,0168280508369207 / #6: 0,00859676394611597 / #23: 0,00187915586866438 / #21: 0,00172489054966718 / #26: 0,000817122519947588 / #11: 0,00026689117657952 / #12: 0,000227051961701363 / #30: 0,000177471243659966 / #18: 0,000150742765981704
+* NameHash1: #26: 0,999927282333374 / #0: 3,60488738806453E-05 / #28: 3,09404567815363E-05 / #8: 1,51710071349953E-06 / #17: 8,63412651597173E-07 / #13: 7,49804087263328E-07 / #27: 4,68729695057846E-07 / #9: 3,57321312094427E-07 / #6: 3,31480777049364E-07 / #19: 3,25477884643988E-07
+* NameHash2: #6: 0,999159693717957 / (empty): 0,000594422104768455 / #11: 0,000226495278184302 / #26: 7,05701268088887E-06 / #18: 6,51641357762855E-06 / #28: 1,18152684080997E-06 / #23: 9,28266047139914E-07 / (null): 7,17029422503401E-07 / #3: 5,25958455455111E-07 / #29: 4,60067866470126E-07
+* Type: Attribute: 0,999850869178772 / Procedure: 8,00647612777539E-05 / trim: 2,45771461777622E-05 / upper: 1,74521228473168E-05 / padr: 4,74127136840252E-06 / link: 3,70674570149276E-06 / udp: 3,19076184496225E-06 / nullvalue: 2,73515956905612E-06 / noprompt: 2,15106706491497E-06 / removediacritics: 2,06420918402728E-06
+</pre>
+        <p>
+            Aquí la extensión precarga en la lista de autocompletado las palabras que empiezan por la letra c. Para atributos y objetos se tienen en cuenta 
+            los hashes de nombres con más probabilidad, que empiece por "c" y los carga. Despues, se da una probabilidad a cada palabra en la lista de 
+            autocompletado, y se selecciona automáticamente la palabra que tiene la probabilidad más alta. En este caso:
+        </p>
+        <p style="text-align: center">
+            <a href="./prediccion-prediccion.png">
+                <img alt="Detalles de una predicción" class="img-responsive" style="display:inline" src="./prediccion-prediccion.png" />
+            </a>
+        </p>
+         
+        <p>
+            La probabilidad final de cada palabra es la multiplicación de las probabilidades de cada características de la palabra.
+        </p>
+
+        <!--#include file="./pie.shtml" -->
+	</body>
+	
+</html>

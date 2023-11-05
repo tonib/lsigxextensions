@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="es">
+
+	<head>
+	    <title>LSI.Extensiones - Log de cambios</title>
+		<!--#include file="./head.shtml" -->
+	</head>
+	
+	<body>
+	    <!--#include file="./cabecera.shtml" -->
+	    
+		<h2>Log de cambios</h2>
+		
+		<h3>2.12.0 / 3.5.0 / 4.4.0 / 5.2.0</h3>
+		<p>Arreglo de errores:</p>
+		<ul>
+			<li>
+				<a href="codigo.shtml#autocompletado">Autocompletado</a>: Solo se proponía ThemeClass en partes de eventos y reglas. Ahora se propone en cualquier tipo de parte
+			</li>
+			<li>
+				<a href="wwmains.shtml">Trabajar con mains</a> / C#: En Gx17, si tenia la propiedad "Build mode" = "MsBuild", no dejaba hacer debug
+			</li>
+		</ul>
+		<p>Nuevas funciones:</p>
+		<ul>
+			<li>
+				<a href="wwmains.shtml">Trabajar con mains</a>: Las tareas de preparar producción ahora se pueden condicionar para que se ejecuten en
+				un solo Environment. Nueva variable de entorno para los scripts Powershell que indica el nombre del entorno
+			</li>
+			<li>
+				<a href="verificacion.shtml">Verificación de variables</a>: Nueva opción en la configuración para poder indicar una lista de
+				nombres de variables que no hay que revisar en ningún objeto. Puede ser útil en el caso de usar Patterns que generan código
+				automáticamente
+			</li>
+			<li>
+				Mejoras en la <a href="prediccion.shtml">predicción de código</a>:
+			</li>
+		</ul>
+
+        <h3>2.11.0 / 3.4.0 / 4.3.0 / 5.1.0</h3>
+        <p>Nuevas funciones:</p>
+        <ul>
+            <li>
+                Nueva versión del modelo de <a href="prediccion.shtml">predicción de código</a>. Ahora se hacen predicciones en partes de 
+                Rules y Conditions. El rendimiento en las transacciones debería ser mejor.
+            </li>
+        </ul>
+        <h3>2.10.0 / 3.3.0 / 4.2.0 / 5.0.0</h3>
+        <p>Nuevas funciones:</p>
+        <ul>
+            <li>Soporte para Genexus 17 (Beta)</li>
+            <li>
+                <a href="wwmains.shtml">Trabajar con mains</a>: Quitada opcion para abrir el Android Monitor (está obsoleto), no mostrar opciones
+                del API de externos de Android solo aplicables a la Ev3 en otras versiones de Genexus
+            </li>
+            <li>
+                Mejoras en el modelo de <a href="prediccion.shtml">predicción de código</a>. Se provee un modelo enbebido en las propias dlls 
+                de las extensiones. Ya no se requiere instalar Python.
+            </li>
+        </ul>
+        <p>Arreglo de errores:</p>
+        <ul>
+            <li>
+                <a href="wwmains.shtml">Trabajar con mains</a>: Arreglado fallo al abrir fuentes de objetos main que estaban en un módulo: 
+                Daba error de que el fichero no existía
+            </li>
+            <li>
+                Arreglado posible fallo al guardar la configuración en versiones de Genexus versión &gt;= 15 si se tiene las extensiones instaladas
+                también en la versión Ev3: Podía dar error "Winform sizes must to be greater or equal to zero"
+            </li>
+            <li>
+                Arreglados fallos en el <a href="codigo.shtml#autocompletado">autocompletado</a>:
+                <ul>
+                    <li>Hay nombres que no se proponian ("namespaces": DateTime, Window, etc)</li>
+                    <li>No se proponia el comando "popup" (ej: popup( Objeto ))</li>
+                    <li>No se proponia la palabra clave "ThemeClass" (ej. ThemeClass:NombreClase)</li>
+                    <li>Se proponia el modulo raiz, cuando no es referenciable desde el codigo (modulo "Root Module")</li>
+                    <li>No se proponia FOR EACH SELECTED LINE IN en los SDPanels</li>
+                    <li>
+                        Arreglada excepción "System.ArgumentException: An item with the same key has already been added" que a veces se producia
+                        al importar objetos
+                    </li>
+                    <li>No se proponia EndEvent</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>2.9.0 / 3.2.0 / 4.1.0</h3>
+        <p>Nuevas funciones:</p>
+        <ul>
+            <li>
+                Nueva tarea de MsBuild <a href="msbuild.shtml#LsiPrepareProduction">LsiPrepareProduction</a> para preparar la produccion de una KBase
+            </li>
+            <li>
+                La tarea de MsBuild <a href="msbuild.shtml#lsisendmail">LsiSendMail</a> tiene nuevas opciones para indicar si el servidor de correo 
+                requiere SSL, el puerto y el "Timeout". Si hay errores en el envio de correo, ahora la tarea muestra el error en el log.
+            </li>
+            <li>
+                Verificacion de objetos: Nueva extensión para hacer las verificaciones sobre la 
+                <a href="verificacion.shtml#verificacionmanual">lista de objetos actualmente seleccionados</a>
+                (<a href="https://sourceforge.net/p/lsigxextensions/tickets/2/">https://sourceforge.net/p/lsigxextensions/tickets/2/</a>)
+            </li>
+            <li>
+                <a href="codigo.shtml#addvariable">Tecla rapida para crear variables</a> (<kbd>Ctrl+May+C</kbd>). 
+                Ahora copia la definicion de la variable con el mismo nombre de otros objetos abiertos.
+                Permite seleccionar en el editor una parte del nombre de la variable para crear la variable basada en dicha seleccion.
+                Si se usa la tecla rapida cuando se esta editando una llamada a un parametro de un objeto, crea la variable basada en el tipo del 
+                parametro del objeto (requiere que la funcion de autocompletado este activa).
+            </li>
+            <li>
+                <a href="codigo.shtml#autocompletado">Autocompletado</a>: Ahora se proponen tambien los nombres de modulos
+            </li>
+            <li>
+                <a href="codigo.shtml#autocompletado">Autocompletado</a>: Se propone el nombre de las subrutinas definidas actualmente en el 
+                objeto al escribir un comando <code>DO '|'</code>
+            </li>
+            <li>
+                Verificacion de objetos / <a href="verificacion.shtml#huerfanos">Atributos referenciados fuera de FOR EACH / NEWs</a>: 
+                Nueva opción en la configuración para indicar si hay que reportar atributos referenciados en declaraciones de SUBs
+                (<a href="https://sourceforge.net/p/lsigxextensions/tickets/4/">https://sourceforge.net/p/lsigxextensions/tickets/4/</a>)
+            </li>
+            <li>
+                Eliminadas verificaciones de Winforms para versiones de Genexus >= Gx15 (ya no hay Winforms)
+            </li>
+        </ul>
+
+        <p>Arreglo de errores:</p>
+        <ul>
+            <li>
+                Tecla rapida para crear variables (Ctrl+May+C): Arreglado fallo, no funcionaba en las conditions de los SDPanels
+            </li>
+            <li>
+                Autocompletado: Arreglado error al inicializar el autocompletado al crear una nueva KB, lanzaba una excepcion.
+            </li>
+            <li>
+                Autocompletado: Arreglado problema grave de rendimiento al autocompletar en WebPanels. Al empezar a editar código en un objeto, el editor
+                podia quedarse congelado segundos (muchos, he visto hasta 10 segundos), hasta que se mostrase la lista de autocompletado.
+            </li>
+            <li>
+                Autocompletado: Arreglado fallos al mover el cursor con el teclado mientras se mostraba la lista de autocompletado: No se actualizaba
+                la lista de opciones
+            </li>
+            <li>
+                Autocompletado: Cambiada la tecla rapida a Ctrl + May + T. La tecla anterior no funcionaba
+            </li>
+            <li>
+                Crear producción: Arreglado fallo al ccopiar la producción a una carpeta si no se marcaba "Mantener copia de seguridad": 
+                Si la carpeta destino no existia previamente daba un error
+            </li>
+            <li>
+                Predicción de código: Arreglado fallo al abrir el fichero de definición del modelo. El fichero se abria en modo exclusivo, y si dos equipos
+                abrian el modelo al mismo tiempo daba error
+            </li>
+            <li>
+                Arreglado fallo extrayendo codigo a un nuevo procedure en objetos ReadOnly (ej. versiones anteriores de un objeto). Se ha deshabilitado, no está
+                soportado
+            </li>
+            <li>
+                Mostrar información de parametros: Arreglado fallo por el que se mostraba el tooltip al escribir dentro de comentarios o literales string
+            </li>
+            <li>
+                Mostrar información de parametros: Arreglado fallo al mostrar parametros en una llamada a un SDPanel: No se mostraban los tipos de los
+                parametros.
+            </li>
+            <li>
+                Mostrar información de parametros: Arreglado fallo al mostrar un parametro variable: No mostraba informacion del tipo del atributo
+            </li>
+            <li>
+                Mostrar información de parametros: Si en los parametros de un objeto habia una variable y un atributo que se llamaban igual, al mostrar
+                la documentacion de estos parametros mostraba la misma documentacion para los dos
+            </li>
+            <li>
+                Verificacion de objetos / avisar de objetos sin carpeta: Arreglado fallo en Gx16: Al hacer algun cambio en una tabla de la bbdd, reportaba
+                incorrectamente que la tabla no tenia una carpeta/modulo asignado
+            </li>
+            <li>
+                Verificacion de que un objeto tenga indicado una carpeta, arreglado error: Los indices declarados en un DataView estaban siempre 
+                dando error de que no tenian indicada una carpeta
+            </li>
+            <li>
+                Arreglados errores con verificaciones generales provocadas por winforms en transacciones en versiones de Genexus >= Gx15 (ya no hay)
+            </li>
+            <li>
+                Verificacion de objetos: Arreglado fallo al buscar variables escritas en llamadas a FromJson(), FromXml(), etc. en Gx16.
+                El parametro &amp;Messages se consideraba de entrada, cuando es de salida
+            </li>
+            <li>
+                Verificación de objeto / Variables: Ahora cuando un objeto contiene un NEW y se lee un atributo Autonumber fuera de FOR EACH / NEW
+                no se reporta como un error 
+                (<a href="https://sourceforge.net/p/lsigxextensions/tickets/3/">https://sourceforge.net/p/lsigxextensions/tickets/3/</a>)
+            </li>
+            <li>
+                Verificación de objetos / Variables: Si se llamaba a la funcion DFRGTxt( &amp;Variable ), se reportaba incorrectamente que la
+                &amp;Variable era leida, cuando la variable es escrita
+                (<a href="https://sourceforge.net/p/lsigxextensions/tickets/5/">https://sourceforge.net/p/lsigxextensions/tickets/5/</a>)
+            </li>
+            <li>
+                Balanceado de parentesis, comillas: Arreglado fallo cuando habia una seleccion de texto, a veces no sobreescribia el texto seleccionado
+                al escribir uno de los carácteres a balancear.
+            </li>
+            <li>
+                Balanceado de parentesis, comillas: No autocerrar si el cursor esta al principio de una palabra.
+            </li>
+            <li>
+                Las opciones del menu de las extensiones para el autocompletado y la informacion de parametros aparecian siempre habilitadas aunque
+                estas opciones no estuvieran habilitadas en la configuracion de las extensiones
+            </li>
+        </ul>
+
+        <h3>2.8.1 / 3.1.1 / 4.0.1</h3>
+        <ul>
+            <li>
+                Mejoras en el modelo de predicción de código.
+            </li>
+            <li>
+                Soporte de autocompletado para SD Panels. Otros objetos SD (Dashboards, Work with devices) no están soportados.
+            </li>
+            <li>
+                Arreglado fallo con la verificación de Data Selectors: Las variables estandar (ej. &amp;Today) se
+                reportaban como sólo leidas.
+            </li>
+            <li>
+                Arreglado fallo mostrando informacion de parametros en llamadas a Data Selectors: No se mostraba
+                la informacion extra.
+            </li>
+            <li>
+                Arreglado fallo en autocompletado: No se proponían atributos dentro de formulas agregadas (count, sum, etc.)
+            </li>
+        </ul>
+
+        <h3>2.8 / 3.1 / 4.0</h3>
+        <ul>
+            <li>
+                Soporte para Genexus 16 (Alfa)
+            </li>
+            <li>
+                Todas las extensiones ahora soportan el tipo de objeto Data Selector
+            </li>
+            <li>
+                <a href="pegarcomoliteral.shtml">Nueva extensión</a> para pegar un texto como un literal string de GeneXus
+            </li>
+            <li>
+                <a href="modificadosporusuario.shtml">Nueva extensión</a> para buscar objetos modificados por un usuario en un periodo de tiempo, teniendo en cuenta los historicos 
+                de modificaciones de los objetos
+            </li>
+            <li>
+                <a href="confirmacionrebuild.shtml">Nueva extension</a> para poder pedir confirmación al hacer un "Rebuild all" / "Rebuild Main"
+             </li>
+            <li>
+                <a href="codigo.shtml#addvariable">Nueva extension</a> con una tecla rapida para la acción "Add variable". 
+                Tambien agiliza el editar el tipo de la variable y devolver el foco al editor de texto (Ctrl + May + C)
+            </li>
+            <li>
+                <a href="versionabrirkb.shtml">Nueva extensión</a>: 
+                Ahora se pide confirmación si se va a abrir una kbase con una versión distinta de la última
+                que se uso para abrir dicha KB. Útil si se usan distintos upgrades de la misma versión de
+                Genexus, para no cometer errores
+            </li>
+            <li>
+                <a href="codigo.shtml#autocompletado">Nueva extensión</a> para autocompletado extendido del código
+            </li>
+            <li>
+                <a href="codigo.shtml#parametros">Nueva extensión</a> para mostrar información adicional de los parámetros al
+                escribir una llamada a un objeto.
+            </li>
+            <li>
+                <a href="codigo.shtml#autocierre">Nueva extensión</a> para cerrar automáticamente parentesis y comillas al escribir
+                código.
+            </li>
+            <li>
+                <a href="prediccion.shtml">Nueva extensión</a> para predicción de código.
+            </li>
+            <li>
+                Arreglar errores de un objeto: Arreglado fallo borrando variables no usadas: Si una 
+                variable se usaba sólo en código externo (sentencias SQL, CSHARP, JAVA, etc), la 
+                variable se borraba, lo cual era incorrecto.
+            </li>
+            <li>
+                Revision de objetos al guardar: Ahora no se revisan los objetos generados por 
+                Patterns, porque pueden contener variables no usadas, y otras cosas, que no podrán
+                ser arregladas por el usuario
+            </li>
+            <li>
+                Arreglado error en revision de variables: Cuando se llama a un miembro de una variable de 
+                un External Object, p.ej. &amp;ExternalObject.Miembro( &amp;x ), las variables parametros
+                se ignoraban. Ahora se asume que son siempre leidas y escritas. No está soportado el revisar
+                la definición del miembro llamado para saber si los parametros son de lectura y/o escritura.
+            </li>
+            <li>
+                Arreglado fallo al extraer un fragmento de código a un nuevo Procedure: Cuando habia atributos huerfanos, se hacian
+                reeplazos incorrectos de atributos
+            </li>
+            <li>
+                Arreglado fallo depurando con Visual Studio: A veces se abrían dos VS en lugar de uno
+            </li>
+            <li>
+                Mejoras en el rendimiento de la revision de objetos en segundas y posteriores ejecuciones sobre el mismo objeto
+            </li>
+            <li>
+                Arreglado fallo en la edición de llamadas a objetos: Cuando se estaba ejecutando la extensión, 
+                el boton de refrescar los parametros seguía activo, y no deberia estarlo
+            </li>
+            <li>
+                Arreglado fallo en la validacion de objetos. El codigo &amp;FacItlFec = Nullvalue( FacItlFec )
+                provocaba un aviso de que el atributo FacItlFec era referenciado fuera de un FOR EACH / NEW
+            </li>
+            <li>
+                Trabajar con mains, operación "Editar RSP": Ahora se abre con el editor de texto indicado en la configuracion.
+                Antes se abria con la aplicación que tuviera asociada la extensión ".RSP"
+            </li>
+            <li>
+                Verificacion de variables: Si una variable es N(4) y no se usa, ahora no se reporta como que es N(4)
+            </li>
+            <li>
+                Arreglado fallo con la tarea de MsBuild BuildQuerys. Si fallaba, se paraba el build entero
+            </li>
+            <li>
+                Arreglado error en las revisiones de objetos en Gx15 con los winforms: A veces lanzaba un error NullReferenceException
+            </li>
+            <li>
+                Build with this generator only: Ahora ya no se pueden especificar los objetos pendientes. Cambiado para que funcione en Gx15.
+            </li>
+            <li>
+                Work with mains / Android: Quitadas las opciones del menu para abrir el AVD Manager y el SDK Manager. Las versiones
+                recientes del SDKs de Android ya no los soportan.
+            </li>
+            <li>
+                Arreglado fallo con la reparacion de RSPs: Habia paginas del Wiki que se consideraban Mains
+            </li>
+            <li>
+                Arreglado fallo quitando puntos de los operadores booleanos (".AND." => "AND"). El operador LIKE no se cambiaba
+            </li>
+            <li>
+                Arreglado fallo extrayendo codigo a un nuevo Data Selector: Las variables estandar (ej. &amp;Today) se
+                intentaban redeclarar y daba una excepción
+            </li>
+            <li>
+                Buscar objetos referenciados por un generador: Ahora se puede seleccionar mas de un generador y,
+                si se marca buscar solo especificables, si todos los generadores son del mismo tipo (Win o Web) 
+                se ignoran referencias a objetos no aplicables (Webpanels y Workpanels respectivamente)
+            </li>
+        </ul>
+
+		<h3>2.7 / 3.0</h3>
+		<ul>
+            <li>Soporte para la versión 15 de Genexus (beta)</li>
+            <li>Cambio de licencia. Ahora se usa la MIT</li>
+		    <li>
+		        Revisión de objetos: Nueva extensión para reportar objetos usados que están marcados
+		        como obsoletos. Los objetos obsoletos se marcan poniendo "[DEPRECATED]" en su 
+		        descripcion. El texto para marcar se puede cambiar en la configuración de las
+		        extensiones.
+		    </li>
+		    <li>
+		        Nueva extensión para extraer código seleccionado como un nuevo DataSelector
+		    </li>
+            <li>
+                WWMains / Build with this generador: Añadida una opción para especificar o no los 
+                objetos pendientes, para sólo generarlos y compilarlos. Por defecto, no se especifican.
+            </li>
+		    <li>
+		        Revisión de objetos / revisión de variables: Los prefijos para variables siempre nulas
+		        antes no distinguian entre mayusculas y minusculas. Ahora si lo hacen, para el caso
+		        de variables basadas atributos que empiezan por zeta. P.ej. si existe un atributo
+		        ZtrCod, una variable &amp;ZtrCod no es siempre nula, pero una &amp;zZtrCod si lo es.
+		    </li>
+            <li>
+                Revisión de objetos: Arreglado fallo en variables con prefijo de que son siempre nulas,
+                y tienen la propiedad "Initial Value" asignada: Si el "Initial Value" se corresponde con
+                el valor por defecto de la variable (p.ej. cero para variables numericas), no reportar
+                la variable.
+            </li>
+            <li>
+                Ventana de configuración: Añadido el COM id para depurar con Visual Studio 2015
+            </li>
+            <li>
+                Busqueda de objetos no referenciados: Nueva opción para indicar que no se muestren los 
+                objetos cuyo ultimo usuario modificador fue "Genexus" (o "Artech\Genexus")
+            </li>
+            <li>
+                Busqueda de objetos no referenciados: Ahora se pueden indicar modulos,
+                ademas de carpetas, en la lista de carpetas en las que no buscar objetos 
+                no referenciados
+            </li>
+		</ul>
+		
+		<h3>2.6</h3>
+		<ul>
+		    <li>
+		        Nueva extension para extraer codigo a un nuevo procedimiento (como GRefactor) (beta)
+		    </li>
+		    <li>
+		        Revision de objetos: Nueva opcion para avisar si el objeto no tiene carpeta/modulo asignado
+		    </li>
+		    <li>
+		        Configuración: Nueva opción para indicar cuales son los prefijos de los nombres de las 
+		        variables que siempre tienen valor nulo
+		    </li>
+		    <li>
+		        Revision de objetos: Nueva opcion para avisar si hay variables con un prefijo de que son
+		        siempre nulas (ej. "&amp;zCliCodigo"), y tienen la propiedad "Initial Value" asignada.
+		    </li>
+		    <li>
+		        Revision de objetos: Ahora se pueden marcar variables para que se ignoren en las 
+		        revisiones, añadiendo en su descripcion "[NOCHECK]"
+		    </li>
+		    <li>
+		        Work with mains / C# Win: Nueva función para borrar un archivo fuente de todos los
+		        RSPs
+		    </li>
+		    <li>
+		        Work with mains / Preparar produccion / Ejecutar script powershell: Ahora se
+		        pasan variables al script: Path del modelo y path de la ultima copia
+		    </li>
+		    <li>
+		        Revision de objetos: Arreglado fallo con las llamadas a submit: No se tenia en cuenta
+		        el parametro inicial extra que hay que pasar.
+		    </li>
+		    <li>
+		        Agregar / quitar parametros a las llamadas a un objeto: Arreglado fallo con las 
+		        llamadas a submit: No se tenia en cuenta el parametro inicial extra que hay que pasar.
+		    </li>
+		    <li>
+		        KBsync / ventana de objetos exportables: Arreglado error en la lista de objetos no
+		        exportables / no modificados: Si se tenía el foco en el grid de objetos, cuando se 
+		        pulsaba alguna tecla lanzaba una excepcion.
+		    </li>
+		    <li>
+		        Edicion de llamadas a objetos: Si se añade un parametro variable, y el parametro es de 
+		        salida o entrada / salida, no proponer la "z" inicial en el nombre de la variable
+		    </li>
+		    <li>
+		        Tema de Genexus para SyntaxHighlighter: Creado CSS para el tema (incompleto, pero mejor 
+		        que antes)
+		    </li>
+		</ul>
+		
+		<h3>2.5</h3>
+		<ul>
+		    <li>
+		        Work with mains / Android: En el generador SD ahora se pueden abrir los fuentes de los 
+		        External Objects
+		    </li>
+		    <li>
+		        Work with mains / Android: Añadidos comandos en el menu del generador SD para abrir 
+		        utilidades de Android (SDK manager, AVD manager y el monitor)
+		    </li>
+		    <li>
+		        Work with mains / Android / C# web: Soporte para abrir el fuente de un SDPanel en el 
+		        servidor (solo del detail, no de los grids)
+		    </li>
+		    <li>
+		        Work with mains / C# web:  Al depurar, ahora se asocian todos los w3wp.exe que se 
+		        encuentren ejecutandose
+		    </li>
+		    <li>
+		        Arreglado fallo en la busqueda de referencias a valores de un tipo enumerado: Estaba
+		        dando falsos positivos en los SDPanels
+		    </li>
+		    <li>
+		        Arreglado fallo en la revision de SD panels: Expresiones de asignacion de propiedades
+		        del form (p.ej. &amp;Valor.Visible = false) se consideraban escrituras de la variable
+		    </li>
+		    <li>
+		        Work with mains / zip modules: Nueva opcion para añadir siempre algunos archivos al
+		        zip generado
+		    </li>
+		</ul>
+		
+		<h3>2.4</h3>
+		<ul>
+		    <li>Ya no se soporta la version GXX Ev2</li>
+		    <li>
+		        Todas las extensiones ahora soportan el tipo de objeto Panel for Smart Devices (beta)
+		    </li>
+		    <li>
+		        Al hacer debug en C# web ya no se para automáticamente la ejecución. Sólo se hace en 
+		        win.
+		    </li>
+		    <li>
+		        Preparar producción: Añadida extensión *.zip.tmp a las extensiones de archivos a ignorar
+		        al crear una nueva producción
+		    </li>
+		    <li>
+		        Buscar objetos no referenciados: Ahora se buscan tambien los objetos Domain no usados
+		    </li>
+		    <li>
+		        Edición de llamadas a objetos: Nuevo botón para refrescar la lista de parametros del
+		        objeto del que editar las llamadas.
+		    </li>
+		    <li>
+		        Arreglado error en la revision de objetos: Si se cambiaba el codigo de los parametros
+		        del objeto, los cambios se ignoraban al revisar el objeto
+		    </li>
+		</ul>
+		
+		<h3>1.10 / 2.3</h3>
+		<ul>
+		    <li>
+		        Busqueda de mains referenciadores: Si se busca un objeto que es main, antes
+		        mostraba a si mismo. Ahora tambien busca los referenciadores de dicho main.
+		    </li>
+		    <li>
+		        Busqueda de mains referenciadores: Nueva opción para buscar recursivamente
+		        los mains.
+		    </li>
+		    <li>
+		        Analisis de lecturas / escrituras: Arreglado error por el cual antes se 
+		        consideraba erroneamente que el miembro SetFocus (p.ej. &amp;x.SetFocus()) 
+		        modificaba al llamador.
+		    </li>
+		    <li>
+		        Work with mains / C#: Al abrir el archivo fuente de un objeto en el VS, 
+		        ahora el objeto tambien se abre en Genexus.
+		    </li>
+		    <li>
+		        Work with mains: Quitado el campo "autoscroll" en los logs de los procesos: No
+		        estaba funcionando correctamente.
+		    </li>
+		    <li>
+		        Work with mains / Preparar producción: Nueva función para ejecutar sólo las tareas
+		        seleccionadas de la producción, y no todas como hasta ahora.
+		    </li>
+		    <li>
+		        Búsqueda de referencias: Nueva opción para buscar referencias a valores de 
+		        un tipo enumerado.
+		    </li>
+		    <li>
+		        Búsqueda de referencias: Nueva opción para buscar objetos referenciados por un
+		        generador.
+		    </li>
+		    <li>
+		        Nueva opcion para copiar al portapapeles la informacion de los objetos seleccionados
+		        en formato tabulado.
+		    </li>
+		    <li>
+		        Arreglados fallos en el menu contextual de las listas de objetos en las toolwindows de 
+		        las extensiones. Implementados los comandos Copy y Delete.
+		    </li>
+		    <li>
+		        La versión 2.3 y posteriores, compiladas para la Ev3, sólo soportan el Upgrade 3
+		        y posteriores. Las extensiones no funcionarán en el U2 y anteriores. Las versiones
+		        1.X siguen soportando todos los upgrades de la Ev2.
+		    </li>
+		</ul>
+		
+		<h3>1.9 / 2.2</h3>
+		<ul>
+		    <li>
+		        Arreglo de objetos: Nueva opción para reemplazar la sintaxis antigua de los
+		        operadores lógicos (".AND.", ".OR.", ".NOT.") por la nueva 
+		        ("AND", "OR", "NOT")
+		    </li>
+		    <li>
+		        Arreglo de objetos: Nueva opción para indicar si se quieren borrar las 
+		        variables no usadas o no
+		    </li>
+		    <li>
+		        Nuevas tareas msbuild
+		    </li>
+		</ul>
+		
+		<h3>1.8.1 / 2.1.1</h3>
+		<ul>
+		    <li>
+		        Arreglado fallo en tareas de Msbuild: El archivo LsiExtensions.targets tenia
+		        mal la clase y la dll a usar en la tarea
+		    </li>
+		</ul>
+		
+		<h3>1.8 / 2.1</h3>
+		<ul>
+		    <li>
+		        Busqueda de objetos no referenciados: Ahora se revisan los Query Objects 
+		        no referenciados
+		    </li>
+		    <li>
+		        Nueva toolwindow Work with mains
+		    </li>
+		    <li>
+		        La configuración de las extensiones se ha movido a una nueva ventana
+		    </li>
+		    <li>
+		        Verificación de objetos: Nueva opción para indicar si hay que reportar o no
+		        las variables sólo leidas que tienen un "Initial value". Antes no se reportaban
+		        nunca.
+		    </li>
+		    <li>
+		        Creada una tarea para msbuild que compila todos los mains de la aplicacion, y
+		        envia un correo con el log de la compilacion.
+		    </li>
+		</ul>
+		
+		<h3>1.7 / 2.0</h3>
+		<ul>
+		    <li>Ahora todos los archivos que guardan las extensiones en la kbase se guardan
+		    en una subcarpeta llamada "LsiExtensions"</li>
+		    <li>Nueva extension para reordenar las tab pages de un tab control de un winform</li>
+		    <li>
+		        Busqueda de objetos no referenciados: Nuevo botón para añadir una lista de
+		        carpetas estandar generadas por GeneXus, y que no deberían revisarse.
+		    </li>
+		    <li>Compilación para la versión Evolution 3 de Genexus</li>
+		</ul>
+		
+		<h3>1.6.2</h3>
+		<ul>
+		    <li>
+		        Sincronización de cambios entre kbases: El nombre del archivo de exportacion
+		        ahora incluye el nombre del usuario de windows.
+		    </li>
+		    <li>
+		        La extensión de arreglar errores de un objeto ahora no se deja usar si el objeto 
+		        está modificado.
+		    </li>
+		    <li>
+		        Mientras se hace una importación de objetos en una kbase, se deshabilita la verificación
+		        de objetos, para evitar dar falsos avisos.
+		    </li>
+		    <li>
+		        La verificación de objetos ahora detecta parametros in: escritos.
+		    </li>
+		    <li>
+		        Mientras se ejecuta la substitucion del atributo en que se basan variables por otro,
+		        ahora se deshabilita la verificación de objeto.
+		    </li>
+		    <li>
+		        Arreglado fallo en la verificacion de numero de parametros incorrecto en las llamadas: 
+		        Las llamadas a la funcion create del tipo wcRecentLinks.Object = Create(HRecentLinks, '' )
+		        reportaban un error incorrecto.
+		    </li>
+		    <li>
+		        Se ha añadido un filtro para el nombre de los objetos llamadores a modificar en la extensión de edición
+		        de llamadas a objetos.
+		    </li>
+		    <li>
+		        Ahora durante la ejecución de la extensión de edición de llamadas a objetos no se revisan los objetos 
+		        modificados.
+		    </li>
+		    <li>
+		        Nuevo filtro en la búsqueda de referencias a atributos: Ahora se puede filtrar para
+		        que sólo se muestren objetos que referencian a una cierta tabla.
+		    </li>
+		    <li>
+		        El control de listas de objetos de la extensión ahora permiten selección por 
+		        teclado: Si se escribe el nombre mientras la lista tiene el foco, se selecciona
+		        el primer objeto encontrado en la lista con dicho nombre.
+		    </li>
+		    <li>
+		        Arreglado error las listas de objetos cuando no se ha establecido el usuario
+		        de ultima modificacion en un objeto.
+		    </li>
+		    <li>
+		        Nuevo submenú para las toolwindows de la extensión en el propio menú de las 
+		        extensiones.
+		    </li>
+		    <li>
+		        Arreglado fallo cuando se mostraba el menu contextual sobre una lista de objetos:
+		        El menu no se mostraba en la posicion correcta
+		    </li>
+		</ul>
+		
+		<h3>1.6.1</h3>
+		<ul>
+		    <li>
+		        Arreglado error en la sincronizacion de cambios entre kbases: Si un objeto
+		        había sido renombrado en el origen, indicaba que el objeto era nuevo pero despues
+		        lo sobreescribía.
+		    </li>
+		    <li>
+		        Arreglado error en la sincronizacion de cambios entre kbases: Si un objeto en el origen
+		        era nuevo (por ejemplo, un procedure) y en el destino existia otro con el mismo nombre,
+		        pero de un distinto <i>namespace</i> (por ejemplo, un atributo), la extension indicaba
+		        de forma incorrecta que el objeto no era exportable.
+		    </li>
+		    <li>
+		        Las extensiones de prueba o privadas se han movido a un paquete de extensiones distinto.
+		        Ya no se requieren las dlls ExCSS / HtmlAgilityPack.
+		    </li>
+		</ul>
+		
+		<h3>1.6</h3>
+		<ul>
+		    <li>
+		        Nueva extension para sincronizar cambios entre kbases.
+		    </li>
+		</ul>
+		
+		<h3>1.5.2</h3>
+		<ul>
+		    <li>
+		        A efectos de analisis de lecturas / escrituras, las variables pasadas como parámetro 
+		        a la función NullValue() ya no se considera leidas.
+		    </li>
+		    <li>
+		        Nuevo control para avisar si hay printblocks no usados en un procedure
+		    </li>
+		    <li>
+		        La generacion del procedimiento para borrar un registro ahora devuelve un
+		        codigo de error por si no se encontro el registro
+		    </li>
+		    <li>
+		        La búsqueda de referencias a tablas ahora devuelve un falso positivo (con fondo gris) si 
+		        un objeto referencia a una tabla, pero no guarda ninguna operacione hecha
+		        sobre la tabla.
+		    </li>
+		    <li>
+		        Arreglado fallo con analisis de lecturas/escrituras de variables: Antes se consideraba
+		        que la llamada al miembro ".load(codigo)" de una variable BC era una lectura, y no una
+		        escritura.
+		    </li>
+		</ul>
+		
+		<h3>1.5.1</h3>
+		<ul>
+		    <li>
+		        Arreglados fallos en la deteccion de escrituras de variables en indirecciones 
+		        (del tipo &amp;variable.FromString('x'))
+		    </li>
+		</ul>
+		
+		<h3>1.5</h3>
+		<ul>
+		    <li>
+		        Nueva extension para buscar objetos que contienen variables de un cierto tipo
+		    </li>
+		    <li>
+		        Nueva extension para buscar patrones de texto en los código fuente de una kbase.
+		    </li>
+		    <li>
+		        Arreglado fallo en la extensión para crear un procedure para actualizar un
+		        registro en la bbdd con los valores de un SDT: Daba una excepción si el SDT
+		        tenia subniveles (no están soportados).
+		    </li>
+		    <li>
+		        Arreglada limitación de revisión de variables sólo leidas / escritas. Cuando se llama a un
+		        objeto externo (p.ej. call( "x" , &amp;y )), los parametros pueden ser leidos y escritos.
+		        Antes consideraba que eran sólo leidos.
+		    </li>
+		    <li>
+		        Arreglada limitación de revisión de variables sólo leidas / escritas. Las variables
+		        referenciadas en código externo (p.ej. "CSHARP [!&amp;x!] = 0;") antes se ignoraban.
+		        Ahora se consideran leidas y escritas.
+		    </li>
+		    <li>
+		        Arreglada limitacion de revisión de variables sólo leidas / escritas. Las variables que hacian
+		        llamadas a variables miembros (p. ej. "&amp;Numero.FromString( '1' )") se consideraban
+		        leidas/escritas. Ahora la extensión debería categorizar correctamente la mayor
+		        parte de las veces si la llamada al miembro es de lectura o escritura.
+		    </li>
+		</ul>
+		
+		<h3>1.4</h3>
+		<ul>
+		    <li>
+		        Nueva extensión para reemplazar las variables de toda la kbase que estén basadas en
+		        un atributo por otro.
+		    </li>
+		    <li>
+		        Nueva extensión para buscar objetos/atributos no usados, o subsceptibles de ser borrados
+		    </li>
+		    <li>
+		        Arreglado fallo en la deteccion de atributos huerfanos. Los atributos dentro de
+		        sentencias FOR EACH LINE no se consideraban huerfanos.
+		    </li>
+		</ul>
+		
+		<h3>1.3</h3>
+		<ul>
+		    <li>
+		        Nueva extensión para reemplazar las llamadas a un objeto por otro.
+		    </li>
+		    <li>
+		        Arreglado fallo en la verificación de objetos con atributos que son pasados como 
+		        parametro a un objeto: Si son
+		        referenciados fuera de un FOR EACH / NEW, no son huerfanos. La extensión reportaba
+		        que si lo eran.
+		    </li>
+		    <li>
+		        Traducción al ingles de la UI de las extensiones.
+		    </li>
+		</ul>
+		
+		<h3>1.2</h3>
+		<ul>
+		    <li>Nueva verificación para revisar referencias a atributos fuera de FOR EACHs / NEWs</li>
+		</ul>
+		
+		<h3>1.1.1</h3>
+		<ul>
+		    <li>
+		        Arreglado fallo en extension de carga de SDTs con niveles, no están soportados.
+		        Lanzaba una excepción.
+		    </li>
+		    <li>
+		        Arreglado fallo en analisis de llamadas: Lanzaba una excepción cuando se encontraba
+		        una llamada a link pasandole como parametro un campo de un SDT/BC, lanzaba una excepción.
+		        P.ej. Link( &amp;variable.campo )
+		    </li>
+		    <li>
+		        Arreglado fallo en las validaciones al crear una kbase. Lanzaba excepciones porque
+		        el modelo actual era null.
+		    </li>
+		    <li>
+		        Arreglado fallo en la revision si el numero de parametros en la llamada es correcto o
+		        no cuando se usa la funcion Link. P.ej. &amp;Url = Link( Objeto ) daba un error de nº de
+		        parametros incorrecto.
+		    </li>
+		    <li>
+		        Arreglado fallo al poner el tamaño máximo de un winform: No marcaba como dirty
+		        la parte del winform del objeto: Si no se modificaba algo mas tras ejecutar la extensión, 
+		        el cambio en el tamaño no se guardaba
+		    </li>
+		    <li>
+		        Añadidas más opciones en la ventana de configuración de validaciones para indicar
+		        que tests hacer o no.
+		    </li>
+		    <li>
+		        Arreglado fallo en analisis de lecturas/escrituras: Las reglas default en objetos no transaccion
+		        escriben a las variables.
+		    </li>
+		    <li>
+		        Arreglado fallo en la edicion de parametros: Si mientras se estaba ejecutando la
+		        extension, en el IDE se intentaba guardar un objeto, el IDE quedaba colgado. Ahora
+		        el IDE queda bloqueado cada vez que la extensión guarda un objeto.
+		    </li>
+		</ul>
+		
+		<h3>1.1</h3>
+		<ul>
+		    <li>
+		        Nuevas opciones en la configuración de validaciones para indicar si avisar o no
+		        si hay variables no usadas, reglas hidden en winforms y variables autodefinidas.
+		    </li>
+		    <li>
+		        Nueva extensión para verificar si el borrado de una transacción reorganizará la
+		        base de datos.
+		    </li>
+		    <li>
+		        Nueva extensión para buscar qué objetos main referencian a una serie de objetos.
+		    </li>
+		    <li>
+		        La revisión de lecturas/escrituras ahora avisa si el número de parametros en las
+		        llamadas a objetos es incorrecta.
+		    </li>
+		</ul>
+		
+		<h3>1.0.1</h3>
+		<ul>
+		    <li>
+		        Variables con la propiedad "Initial value" asignada ya no dan error de solo leidas.
+		    </li>
+		    <li>
+		        Ya no se revisan sólo lecturas/escrituras de variables de tipo External object o Extended type. 
+		        Por ejemplo, una variable HttpRequest nunca se escribe, ya que al crearla tiene valores.
+		    </li>
+		</ul>
+		
+		<!--#include file="./pie.shtml" -->
+	</body>
+	
+</html>

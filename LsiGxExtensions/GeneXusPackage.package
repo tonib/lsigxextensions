@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Package xmlns='http://schemas.genexus.com/addin/v1.0'
+			id='5e918b12-60a5-409c-aaf1-a08901cff6b6'
+			name='Lsi.Extensiones'>
+
+  <!--Extensions resources-->
+  <Resources>
+    <Resource type="strings" name="LSI.Packages.Extensiones.Resources"/>
+    <Resource type="images" name="LSI.Packages.Extensiones.Resources"/>
+  </Resources>
+
+  <!-- Los comandos de la extension -->
+  <!-- Los textos a poner para los shortcut se pueden consultar en 
+       http://msdn.microsoft.com/en-us/library/system.windows.forms.shortcut.aspx -->
+  <Commands>
+
+    <!-- Lista las variables no usadas del objeto actual -->
+    <CommandDefinition id="VerificarObjeto"             imageType="ico" image="LSI" shortcut="CtrlF8" />
+
+    <CommandDefinition id="VerifySelectedObjects" imageType="ico" image="Objetos" />
+
+    <!-- Arreglar problemas del objeto actual -->
+    <CommandDefinition id="ArreglarProblemas"           imageType="ico" image="LSI" shortcut="CtrlF9" />
+    
+    <!-- Crear un procedimiento PU<Atributo> (Obtener valor de un campo de una tabla) -->
+    <CommandDefinition id="CrearProcObtenerValor"       imageType="ico" image="Formula"/>
+    
+    <!-- Crear un procedimiento P<Tabla>Bor para borrar el registro de una tabla -->
+    <CommandDefinition id="CrearProcBorradoRegistro"    imageType="ico" image="Formula"/>
+    
+    <!--Comando para crear insertar en la posicion actual del editor un for each de una tabla-->
+    <CommandDefinition id="InsertarForEach"             imageType="ico" image="Formula" shortcut="CtrlF11"/>
+    
+    <!--Comando para crear insertar en el codigo un new de una tabla-->
+    <CommandDefinition id="InsertarNew"                 imageType="ico" image="Formula" shortcut="CtrlF12"/>
+    
+    <!--Comando para crear un sdt con la misma estructura que una tabla-->
+    <CommandDefinition id="CrearSdtDeTabla"             imageType="ico" image="Formula"/>
+    
+    <!--Comando para crear un procedimento para cargar un sdt de una tabla-->
+    <CommandDefinition id="CrearProcCargaSdt"           imageType="ico" image="Formula"/>
+    
+    <!--Comando para actualizar un registro con valores de un sdt-->
+    <CommandDefinition id="CrearProcActualizacionSdt"   imageType="ico" image="Formula"/>
+    
+    <!--Comando para crear un procedimiento que inserta un registro con los valores de un sdt-->
+    <CommandDefinition id="CrearProcInsercionSdt"       imageType="ico" image="Formula" />
+    
+    <!--Edit extensions configuration-->
+    <CommandDefinition id="EditarConfiguracion"         imageType="ico" image="LSI" />
+    
+    <!--Copy parm rule of the selected object to clipboard-->
+    <CommandDefinition id="CopyParmRule" imageType="ico" image="Shortcut_8169" shortcut="CtrlF10"/>
+    
+    <!--Crea un procedimiento de insercion de un registro-->
+    <CommandDefinition id="CrearProcInsercion"          imageType="ico" image="Formula"/>
+    
+    <!--Crea un procedimiento de asignacion de un atributo-->
+    <CommandDefinition id="CrearProcAsignarAtributo"    imageType="ico" image="Formula"/>
+    
+    <!--Establece el tamaño de un winform a su tamaño maximo-->
+    <CommandDefinition id="TamMaximoWinform" imageType="ico" image="Objetos" />
+
+    <!--Revisar las fuentes no instaladas en el equipo de los reports-->
+    <CommandDefinition id="RevisarFuentes" imageType="ico" image="Objetos" />
+
+    <!--Open extensions web documentation-->
+    <CommandDefinition id="OpenDocumentation" imageType="ico" image="HelpVSIco" />
+
+    <!--Verificar si el borrado de la transaccion actual reorganizara la base de datos-->
+    <CommandDefinition id="VerificarBorradoTransaccion" imageType="ico" image="Objetos" />
+
+    <!--Replace variables 'Attribute based on' property-->
+    <CommandDefinition id="ReplaceVariablesAttributeBased" imageType="ico" image="Objetos" />
+
+    <!--Export versioning information about the selected objects-->
+    <CommandDefinition id="KBSyncExportInfo" imageType="ico" image="Objetos" />
+
+    <!--Review objects versioning info on destination KB-->
+    <CommandDefinition id="KBSyncReviewInfo" imageType="ico" image="Objetos" />
+    
+    <!--Reorder winform tab control pages-->
+    <CommandDefinition id="ReorderWinTab" imageType="ico" image="Objetos" />
+
+    <!--Copy selected objects as table to the clipboard-->
+    <CommandDefinition id="CopyObjectsAsTable" imageType="ico" image="Table_748" context="selection" />
+
+    <!-- Paste text as multiline Genexus string -->
+    <CommandDefinition id="PasteAsStringLiteral" imageType="ico" image="Formula" />
+    
+    <!--Extract selected code to new procedure-->
+    <CommandDefinition id="ExtractProcedure" context="selection" imageType="ico" image="ExtractMethod_6786" />
+
+    <!-- Extract selected code to new DataSelector -->
+    <CommandDefinition id="ExtractDataSelector" context="selection" imageType="ico" image="ExtractMethod_6786" />
+
+    <!-- Autocomplete code -->
+    <CommandDefinition id="Autocomplete" imageType="ico" image="Objetos" shortcut="CtrlShiftT" context="selection" />
+
+    <!-- Show parameter info -->
+    <CommandDefinition id="ParameterInfo" imageType="ico" image="Objetos" shortcut="CtrlShiftZ" context="selection" />
+
+    <!-- Add variable with fast key -->
+    <CommandDefinition id="AddVariableFastKey" imageType="ico" image="LSI" shortcut="CtrlShiftC" context="selection" />
+    
+    <!--TOOLWINDOWS MENUS-->
+    
+    <!--Search references toolwindow-->
+    <CommandDefinition id="SearchReferencesTW" imageType="ico" image="Find_5650" shortcut="CtrlR" />
+
+    <!--Edit object calls toolwindow -->
+    <CommandDefinition id="EditCallsTW" imageType="ico" image="LSI" />
+
+    <!-- Search unreferenced objects toolwindow -->
+    <CommandDefinition id="SearchUnreferencedTW" imageType="ico" image="LSI" />
+
+    <!-- Search genexus sources toolwindow -->
+    <CommandDefinition id="SearchSourcesTW" imageType="ico" image="LSI" />
+    
+    <!-- Search main references toolwindow -->
+    <CommandDefinition id="SearchMainTW" imageType="ico" image="Diagram_8283" />
+
+    <!-- Check exportable objects toolwindow -->
+    <CommandDefinition id="CheckExportableTW" imageType="ico" image="LSI" />
+    
+    <!--Work with mains toolwindow-->
+    <CommandDefinition id="WorkWithMains" imageType="ico" image="WindowsForm_817" shortcut="CtrlM" />
+    
+    <!-- Search objects modified by users -->
+    <CommandDefinition id="ObjectsModifiedByUser" imageType="ico" image="WindowsGroups_7309" />
+
+    <!-- Generate model to predict code -->
+    <CommandDefinition id="GenerateModel" imageType="ico" image="Objetos" />
+    
+    
+  </Commands>
+
+  <!--Definicion de ventanas de la extension-->
+  <ToolWindows>
+    <!--Ventana para buscar referencias de lectura / escritura a un atributo / sdt / tabla-->
+    <ToolWindow id='97740DBC-AC46-411f-967E-7F41FBCE1123' title='Search references' mdi='true' visible='false'/>
+    <!--Ventana para agregar parametros a llamadas a un objeto-->
+    <ToolWindow id='79804B75-AFF0-4f61-BB9E-EABEA0853CC6' title='Edit object calls' mdi='true' visible='false'/>
+    <!--Ventana para buscar las referencias de objetos main a una lista de objetos-->
+    <ToolWindow id='7AC2CD95-C5E0-45d1-B5FC-8A95559F5AE7' title='Search main references' mdi='true' visible='false'/>
+    <!--Windows to search unreferenced objects-->
+    <ToolWindow id='2607CB28-5676-404c-BCE5-2E12079B1A72' title='Search unreferenced objects' mdi='true' visible='false'/>
+    <!--Search on genexus sources-->
+    <ToolWindow id='0FBEC0F1-88B2-4c23-AA07-42849285E790' title='Search on Genexus sources' mdi='true' visible='false'/>
+    <!--Tool to check exportable / not exportable objects-->
+    <ToolWindow id='179940A1-D4CC-422f-8AC7-0DA6392C2BCA' title='Check exportable objects' mdi='true' visible='false'/>
+    <!--Work with mains toolwindow-->
+    <ToolWindow id='5939F42F-3672-494a-8B9F-49B99D59C9C3' title='Work with mains' mdi='true' visible='false' />
+    <!-- Search objects modified by users -->
+    <ToolWindow id='C716CFC3-42F3-49D5-B803-07B05D6FD6B8' title='Objects modified by users' mdi='true' visible='false'/>
+    <!--Generate model to predict code-->
+    <ToolWindow id='5EDD2C9C-D03B-4C3A-8A53-78723C795924' title='Generate prediction model' mdi='true' visible='false'/>
+  </ToolWindows>
+  
+  <Menus>
+    
+    <!--Main extensions menu-->
+    <Menu type="menubar">
+      <Popup name="Lsi.Extensions" insertBefore="Help" id="LsiExtensionsPopupId" >
+
+        <Popup name="Code" id="LsiCodigoPopupId">
+          <!--Copy parm rule of the selected object to clipboard-->
+          <Command refid="CopyParmRule"/>
+          <!--Comando para crear insertar en la posicion actual del editor un for each de una tabla-->
+          <Command refid="InsertarForEach"/>
+          <!--Comando para crear insertar en el codigo un new de una tabla-->
+          <Command refid="InsertarNew"/>
+          <!--Replace variables 'Attribute based on' property-->
+          <Command refid="ReplaceVariablesAttributeBased"/>
+          <!--Extract selected code to new procedure-->
+          <Command refid='ExtractProcedure'/>
+          <!-- Extract selected code to new DataSelector -->
+          <Command refid='ExtractDataSelector'/>
+          
+          <!-- Add variable with fast key -->
+          <Command refid="AddVariableFastKey"/>
+
+          <!-- Autocomplete code -->
+          <Command refid="Autocomplete" />
+
+          <!-- Show parameter info -->
+          <Command refid="ParameterInfo" />
+        </Popup>
+
+        <Popup name="Procedures" id="LsiProceduresPopupId">
+          <!-- Crear un procedimiento PU<Atributo> (Obtener valor de un campo de una tabla) -->
+          <Command refid="CrearProcObtenerValor"/>
+          <!-- Crear un procedimiento P<Tabla>Bor para borrar el registro de una tabla -->
+          <Command refid="CrearProcBorradoRegistro"/>
+          <!-- Crea un procedimiento de insercion de un registro -->
+          <Command refid="CrearProcInsercion"/>
+          <!-- Crea un procedimiento de asignacion de un atributo -->
+          <Command refid="CrearProcAsignarAtributo"/>
+        </Popup>
+
+        <Popup name="Object verifications" id="LsiValidacionesPopupId">
+          <!-- Verifica el objeto actual -->
+          <Command refid="VerificarObjeto"/>
+          <!-- Arreglar problemas del objeto actual -->
+          <Command refid="ArreglarProblemas"/>
+          <!-- Verify selected objects -->
+          <Command refid="VerifySelectedObjects"/>
+          <!--Verificar si el borrado de la transaccion actual reorganizara la base de datos-->
+          <Command refid="VerificarBorradoTransaccion"/>
+          <!--Revisar las fuentes no instaladas en el equipo de los reports-->
+          <Command refid="RevisarFuentes"/>
+        </Popup>
+        
+        <!--Generacion de SDTs-->
+        <Popup name="SDTs" id="LsiPopupSdtsId">
+          <!--Comando para crear insertar en el codigo un new de una tabla-->
+          <Command refid="CrearSdtDeTabla" />
+          <!--Comando para crear un procedimento para cargar un sdt de una tabla-->
+          <Command refid="CrearProcCargaSdt"/>
+          <!--Comando para actualizar un registro con valores de un sdt-->
+          <Command refid="CrearProcActualizacionSdt"/>
+          <!--Comando para crear un procedimiento que inserta un registro con los valores de un sdt-->
+          <Command refid="CrearProcInsercionSdt"/>
+        </Popup>
+
+        <!--KBases syncronization-->
+        <Popup name="KB Sync" id ="LsiKBSync">
+          
+          <Command refid="KBSyncExportInfo"/>
+          
+          <Command refid="KBSyncReviewInfo"/>
+          
+          <!-- Check exportable objects toolwindow -->
+          <Command refid="CheckExportableTW" />
+          
+        </Popup>
+
+        <!--Edit menu-->
+        <Popup name="Edit" id="LsiEdit">
+          
+          <!--Copy selected objects as table to the clipboard-->
+          <Command refid='CopyObjectsAsTable'/>
+
+          <!-- Paste text as multiline Genexus string -->
+          <Command refid="PasteAsStringLiteral"/>
+          
+        </Popup>
+        
+        <!--Toolwindows menu-->
+        <Popup name="Tool Windows" id="LsiToolwindows">
+
+          <!--Search references toolwindow-->
+          <Command refid="SearchReferencesTW"/>
+
+          <!--Edit object calls toolwindow -->
+          <Command refid="EditCallsTW"/>
+
+          <!-- Search unreferenced objects toolwindow -->
+          <Command refid="SearchUnreferencedTW" />
+
+          <!-- Search genexus sources toolwindow -->
+          <Command refid="SearchSourcesTW" />
+
+          <!-- Search main references toolwindow -->
+          <Command refid="SearchMainTW" />
+
+          <!--Work with mains toolwindow-->
+          <Command refid="WorkWithMains"/>
+
+          <!-- Search objects modified by users -->
+          <Command refid="ObjectsModifiedByUser" />
+
+          <!-- Generate model to predict code -->
+          <Command refid="GenerateModel" />
+          
+        </Popup>
+ 
+        <!--Forms menu-->
+        <Popup name="Forms" id="LsiForms">
+          
+          <!--Establece el tamaño de un winform a su tamaño maximo-->
+          <Command refid="TamMaximoWinform"/>
+
+          <!--Reorder winform tab control pages-->
+          <Command refid="ReorderWinTab"/>
+          
+        </Popup>
+
+        <!--Editar la configuracion de la extension-->
+        <Command refid="EditarConfiguracion"/>
+
+        <!--Open extensions web help-->
+        <Command refid="OpenDocumentation"/>
+        
+      </Popup>
+    </Menu>
+  </Menus>
+  
+</Package>

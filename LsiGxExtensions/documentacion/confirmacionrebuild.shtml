@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+	<head>
+	    <title>LSI.Extensiones - Confirmación para Rebuild all</title>
+		<!--#include file="./head.shtml" -->
+	</head>
+	
+	<body>
+	    <!--#include file="./cabecera.shtml" -->
+	    
+		<h2>Confirmación para Rebuild all</h2>
+		<p>
+            La operación <i>Rebuild all</i> en KBases grandes (ej. 10.000 objetos) puede llegar a tardar 
+            mucho tiempo (horas).
+            Si se tiene la intención de hacer una operación <i>Build all</i> y por error se selecciona 
+            <i>Rebuild all</i> tienes un problema. 
+        </p>
+		<p>
+            Esta extensión muestra un dialogo de confirmación cuando intenta hacer un <i>Rebuild all</i> o
+            <i>Rebuild main</i>.
+            Si el dialogo se cancela, la operación no se lanza:
+        </p>
+        
+        <p style="text-align: center">
+            <a href="./confirmacionrebuild.png">
+                <img alt="Imagen ventana" class="img-responsive" style="display:inline" src="./confirmacionrebuild.png" />
+            </a>
+        </p>
+
+        <p>
+            Esta extensión se puede habilitar / deshabilitar en <a href="configuracion.shtml">la configuración</a>.
+        </p>
+		<!--#include file="./pie.shtml" -->
+	</body>
+	
+</html>

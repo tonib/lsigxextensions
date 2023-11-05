@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+
+	<head>
+	    <title>LSI.Extensiones - Reordenar páginas de un tab control en un winform</title>
+		<!--#include file="./head.shtml" -->
+	</head>
+	
+	<body>
+	    <!--#include file="./cabecera.shtml" -->
+	    
+		<h2>Reordenar páginas de un tab control en un winform</h2>
+		<p>
+		    Esta extensión permite reodenar de forma rápida las páginas de un tab control
+		    en un winform (Workpanel o Transaction).
+		</p>
+		<p>
+		    Para poder usarla hay que abrir el objeto que contiene el tab control, y usar la 
+		    opción del menú Lsi.Extensions &gt; Forms &gt; Reorder winform tab control pages. 
+		    Aparecerá la siguiente ventana:
+		</p>
+		
+		<p style="text-align:center">
+		    <a href="./ordertabcontrol.png">
+		        <img class="img-responsive" style="display:inline" alt="Imagen tab control" src="./ordertabcontrol.png" />
+		    </a>
+		</p>
+		
+		<table class="table table-bordered">
+		    <tr>
+		        <td><b>Tab control</b></td>
+		        <td>
+		            Aquí aparecen todos los tab controls del winform. Aparece la propiedad "Name" del
+		            control. Aquí se selecciona el control que se quiere modificar.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Tab pages</b></td>
+		        <td>
+		            Aquí aparecen las páginas del tab control seleccionado. El texto que aparece es la
+		            propiedad "Caption" de la página.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Move up / down</b></td>
+		        <td>
+		            Permiten subir o bajar la página seleccionada en "Tab pages".
+		        </td>
+		    </tr>
+		</table>
+		    
+		<p>
+		    Al confirmar la ventana se cerrará el objeto, se harán los cambios y se volverá a abrir
+		    el objeto con los cambios hechos en el tab control.
+		</p>
+		
+		<div class="bs-callout bs-callout-warning">
+    		<h2>Limitaciones</h2>
+		    <ul>
+		        <li>
+		            Para poder usar la extensión el objeto no ha de tener modificaciones pendientes
+		            de guardar
+		        </li>
+		        <li>
+		            No se pueden reordenar tabs que contengan páginas con captions repetidos
+		        </li>
+		        <li>
+		            Si hay tab controls con la propiedad "Name" duplicada, la extensión puede fallar.
+		        </li>
+		    </ul>
+		</div>
+		    
+		<!--#include file="./pie.shtml" -->
+	</body>
+	
+</html>

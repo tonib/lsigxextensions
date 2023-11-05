@@ -1,0 +1,63 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<!-- Import standard gx tasks and custom LSI tasks -->
+	<Import Project="C:\Program Files (x86)\Artech\GeneXus\GeneXusXEv3\Genexus.Tasks.targets" />
+	<Import Project="C:\Program Files (x86)\Artech\GeneXus\GeneXusXEv3\Packages\LsiExtensions.targets" />
+  
+  <PropertyGroup>
+    
+		<!-- Set the  kbase path -->
+    <KBPath Condition=" '$(KBPath)' == '' ">D:\kbases\PruebasWinWebEv3</KBPath>
+    
+    <!--Set the model-->
+    <KBEnvironment Condition=" '$(KBEnvironment)' == '' ">.Net Environment</KBEnvironment>
+    
+    <!--The generator to compile. If its empty, all generators will be compiled-->
+    <!--<Generator>Default (C#)</Generator>-->
+    
+	</PropertyGroup>
+
+  <!--Email addresses to send compilation reports-->
+  <ItemGroup>
+    <DestinationEmails Include="xxx@xxx.com" />
+    <!--<DestinationEmails Include="yyy@xxx.com" />-->
+  </ItemGroup>
+
+  <!--Build kbase-->
+	<Target Name="Build">
+    
+		<OpenKnowledgeBase Directory="$(KBPath)" />
+    
+    <SetActiveEnvironment EnvironmentName="$(KBEnvironment)" />
+        
+    <!--Start log section-->
+    <LsiLogSectionStart SectionTitle="Build all" IsWeb="false"/>
+
+    <!--Run a gx msbuild task-->
+    <BuildAll ForceRebuild="false" CompileMains="false" DetailedNavigation="false" />
+    
+    <!--Compile-->
+    <LsiCompileTask Generator="$(Generator)" RepairRsp="all" />
+
+    <!--Generate query objects-->
+    <LsiBuildQuerys />
+
+    <!--Delete backup files-->
+    <LsiDeleteBackups />
+
+    <!-- Prepare production -->
+    <LsiPrepareProduction RunWithErrors="false" />
+    
+    <!--End log section-->
+    <LsiLogSectionEnd />
+    
+    <!--Send email-->
+    <LsiSendEmail FromEmail="xxx@xxx.com" ToEmails="@(DestinationEmails)"
+                  EmailHost="xxx" Port="25" TimeoutMiliseconds="10000" Ssl="false"
+                  EmailUserName="xxx@xxx.com" EmailPassword="xxx" />
+        
+    <CloseKnowledgeBase />
+    
+	</Target>
+
+</Project>

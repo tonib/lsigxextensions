@@ -1,0 +1,5 @@
+<DestinationEmails Include="xxx@xxx.com" />
+
+    <LsiSendEmail FromEmail="xxx@xxx.com" ToEmails="@(DestinationEmails)"
+                  EmailHost="xxx" EmailUserName="xxx@xxx.com"
+                  EmailPassword="xxx" />

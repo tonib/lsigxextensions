@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+	<head>
+	    <title>LSI.Extensiones - Verificar reorganización en borrado de transacciones</title>
+		<!--#include file="./head.shtml" -->
+	</head>
+	
+	<body>
+	    <!--#include file="./cabecera.shtml" -->
+	    
+		<h2>Verificar reorganización en borrado de transacciones</h2>
+		<p>
+		    Esta extensión verifica si el borrado de una transacción provocará o no una reorganización
+		    en la base de datos. Es útil en kbases grandes y con transacciones duplicadas 
+		    que referencian a las mismas tablas. 
+		    En este caso es peligroso borrar transacciones que ya no se llaman sin estar seguro antes
+		    de que no haya atributos sólo instanciados en estas.
+		</p>
+		<p>
+		    La extensión se encuentra en el menú Lsi.Extensiones &gt; Verificaciones &gt; 
+		    Verificar si el borrado de la transacción actual reorganizará BBDD. La extensión verifica
+		    si el borrado de la transacción actualmente abierta provocaría que se hiciera algún cambio
+		    en la base de datos. La extensión no hace ningún cambio en la transacción.
+		</p>
+		<p>
+		    Al ejecutarla, en la ventana de Output mostrará mensajes indicando si el borrado provocaría
+		    algún cambio en la BBDD. Si es así, indica que atributos se verían afectados. 
+		    Un ejemplo de la salida de la extensión es este:
+		</p>
+		
+		<pre class="loggx">
+========== LSI.Extensiones started ==========
+Revisando atributos de la transacción TzzzPncTeC...
+warning: El atributo PncObsDoc2 se quitará de la tabla PedCnC
+warning: El atributo PncPckNro se quitará de la tabla PedCnC
+warning: Si se borra la transacción se reorganizará la bbdd
+LSI.Extensiones Success
+		</pre>
+		
+		<!--#include file="./pie.shtml" -->
+	</body>
+	
+</html>

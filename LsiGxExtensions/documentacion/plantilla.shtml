@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+
+	<head>
+	    <title>LSI.Extensiones - Titulo</title>
+		<!--#include file="./head.shtml" -->
+	</head>
+	
+	<body>
+	    <!--#include file="./cabecera.shtml" -->
+	    
+		<h2>Título</h2>
+		<p>Contenido</p>
+		
+		
+		<!--#include file="./pie.shtml" -->
+	</body>
+	
+</html>

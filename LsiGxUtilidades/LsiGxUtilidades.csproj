@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CBD60E66-51B3-45C7-8E42-A28FDDA58CD8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LSI.Packages.Extensiones</RootNamespace>
+    <AssemblyName>LSI.Packages.Extensiones.Utilidades</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Artech.Architecture.BL.Framework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR)\Artech.Architecture.BL.Framework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.Architecture.Common, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR)\Artech.Architecture.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.Architecture.Language, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR)\Artech.Architecture.Language.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.Architecture.UI.Framework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR)\Artech.Architecture.UI.Framework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.Common, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR)\Artech.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.Common.Framework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR)\Artech.Common.Framework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.Common.Helpers, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR)\Artech.Common.Helpers.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.Common.Language, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR)\Artech.Common.Language.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.Common.Properties, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR)\Artech.Common.Properties.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.Core.UI, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR)\Artech.Core.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.FrameworkDE, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR)\Artech.FrameworkDE.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.Genexus.Common, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR)\Artech.Genexus.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.GXplorer.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR)\Artech.GXplorer.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.Packages.Editors.Text, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR)\Packages\Artech.Packages.Editors.Text.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.Packages.Patterns, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR)\Packages\Artech.Packages.Patterns.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.Patterns.WorkWithDevices, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR)\Packages\Patterns\WorkWithDevices\Artech.Patterns.WorkWithDevices.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.Udm.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR)\Artech.Udm.Framework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\PublicAssemblies\EnvDTE.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\ObjectsModifiedByUserFinder.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\ParsedCode.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\BuscadorConditions.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\BuscadorEventos.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\EnumeratedDomainsFinder.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Llamadas\CallInfoBuilder.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Llamadas\CallPemExpression.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Reglas\ParameterElement.cs" />
+    <Compile Include="Utilidades\CSharpWin\UnusedFiles\UnusedFilesFinderBase.cs" />
+    <Compile Include="Utilidades\CSharpWin\UnusedFiles\UnusedFile.cs" />
+    <Compile Include="Utilidades\CSharpWin\UnusedFiles\UnusedSpecificationFilesFinder.cs" />
+    <Compile Include="Utilidades\CallsAnalisys\KbSignaturesCache.cs" />
+    <Compile Include="Utilidades\CallsAnalisys\ObjectsByGeneratorFinder.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\OrphanAttributesFinder.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\RemoveLogicalOperatorsDots.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\SubroutinesFinder.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\ObjectBaseReplacer.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Tokens\ControlsTokenReferences.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Variables\ConditionsVariablesReferences.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Variables\FormVariablesReferences.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Variables\MainCodeVariablesReferences.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Variables\PartVariablesReferences.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Variables\ReportLayoutVariablesReferences.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Variables\RulesVariablesReferences.cs" />
+    <Compile Include="Utilidades\CallsAnalisys\BuscadorReferenciasMain.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\BuscadorReferenciasTabla.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\BuscadorTokensSdtGx.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\GxSourcesFinder.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Llamadas\GxCallInfo.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\UnreferencedObjectsFinder.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Llamadas\Edicion\OpAgregarParametro.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Llamadas\Edicion\Estado.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Llamadas\Edicion\InfoCambioLlamada.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Llamadas\Edicion\InfoCambioLlamadasObjeto.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Llamadas\Edicion\IOperacionLlamada.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Llamadas\Edicion\OpQuitarParametro.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Llamadas\Edicion\OpReemplazarLlamador.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Reglas\ReglaDefault.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Tokens\ControlTokenFinder.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Tokens\FiltroIndirecionToken.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Tokens\FiltroTiposToken.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Tokens\TipoIndireccion.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Tokens\TipoToken.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\VariablesFinder.cs" />
+    <Compile Include="Utilidades\CallsAnalisys\FullGraphBuilder.cs" />
+    <Compile Include="Utilidades\CallsAnalisys\GraphVisitState.cs" />
+    <Compile Include="Utilidades\CallsAnalisys\ObjectsGraph.cs" />
+    <Compile Include="Utilidades\CallsAnalisys\PartialGraphBuilder.cs" />
+    <Compile Include="Utilidades\Compression\Compressor.cs" />
+    <Compile Include="Utilidades\Compression\ZipOperation.cs" />
+    <Compile Include="Utilidades\CSharpWin\CSharpUtils.cs" />
+    <Compile Include="Utilidades\CSharpWin\UnusedFiles\UnusedSourceFiles.cs" />
+    <Compile Include="Utilidades\CSharpWin\UnusedFiles\UnusedWinBinFilesFinder.cs" />
+    <Compile Include="Utilidades\CSharpWin\GeneratedSourceFilesCache.cs" />
+    <Compile Include="Utilidades\CSharpWin\ObjectSourceFiles.cs" />
+    <Compile Include="Utilidades\CSharpWin\RspFile.cs" />
+    <Compile Include="Utilidades\DataTypeInfo.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\CommandDataExtensions.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\DataSelectorExtensions.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\HashSetExtensions.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\IParserObjectBaseExtensions.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\ITypedObjectExtensions.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\ICallableInfoExtensions.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\KBObjectPartCollectionExtensions.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\KBObjectPartExtensions.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\ObjClassLsi.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\ObjectBaseExtensions.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\PatternInstanceElementExtensions.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\ProductVersionHelperExtensions.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\SDPanelExtensions.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\SDTLevelExtensions.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\VariableExtensions.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\VariablesPartExtensions.cs" />
+    <Compile Include="Utilidades\KBSync\KBSyncInfo.cs" />
+    <Compile Include="Utilidades\KBSync\KBSyncObjectInfo.cs" />
+    <Compile Include="Utilidades\KBSync\KBSyncObjectRef.cs" />
+    <Compile Include="Utilidades\KeywordGx.cs" />
+    <Compile Include="Utilidades\LayoutGx.cs" />
+    <Compile Include="Utilidades\Logging\BackgroundWorkerLogger.cs" />
+    <Compile Include="Utilidades\Logging\PlainTextLogger.cs" />
+    <Compile Include="Utilidades\MainsGx.cs" />
+    <Compile Include="Utilidades\Reflection\DependenciesWalker.cs" />
+    <Compile Include="Utilidades\Reflection\SerializableDictionary.cs" />
+    <Compile Include="Utilidades\Reflection\SerializableKeyValue.cs" />
+    <Compile Include="Utilidades\Threading\CommandDelegatorBase.cs" />
+    <Compile Include="Utilidades\Threading\NativeWindowEnumerator.cs" />
+    <Compile Include="Utilidades\Threading\ProcessChooser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilidades\Threading\ProcessChooser.Designer.cs">
+      <DependentUpon>ProcessChooser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilidades\Threading\ProcessLogger.cs" />
+    <Compile Include="Utilidades\Threading\ProcessUtils.cs" />
+    <Compile Include="Utilidades\UI\ControlUtils.cs" />
+    <Compile Include="Utilidades\UI\UISearchBase.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\ParsedCodeFinder.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\BuscadorAsignaciones.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\BuscadorLecturasEscrituras.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\BuscadorReferenciasAtributo.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\TokensFinder.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Llamadas\CallsFinder.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Llamadas\Edicion\EditorLlamadas.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Llamadas\Llamada.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\ObjectPEMGx.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\ParserGx.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Reglas\BuscadorReglas.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Reglas\ReglaHidden.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Reglas\ReglaOrder.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Reglas\ReglaUpdate.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Tokens\TokenGx.cs" />
+    <Compile Include="Utilidades\AtributoGx.cs" />
+    <Compile Include="Utilidades\CodigoGenerado.cs" />
+    <Compile Include="Utilidades\Entorno.cs" />
+    <Compile Include="Utilidades\EventoGX.cs" />
+    <Compile Include="Utilidades\KBaseGX.cs" />
+    <Compile Include="Utilidades\Logging\Log.cs" />
+    <Compile Include="Utilidades\ParteObjetoKb.cs" />
+    <Compile Include="Utilidades\CodeGeneration\ProcedureGenerator.cs" />
+    <Compile Include="Utilidades\CodeGeneration\ProcedureForEachGenerator.cs" />
+    <Compile Include="Utilidades\Reflection\UtilidadesReflexion.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Reglas\ReglaParm.cs" />
+    <Compile Include="Utilidades\Sdts\StdGX.cs" />
+    <Compile Include="Utilidades\UI\SearchToolWindowBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Utilidades\UI\SelectKbObject.cs" />
+    <Compile Include="Utilidades\CodeGeneration\AssignmentsGenerator.cs" />
+    <Compile Include="Utilidades\CodeGeneration\ForEachGenerator.cs" />
+    <Compile Include="Utilidades\CodeGeneration\NewGenerator.cs" />
+    <Compile Include="Utilidades\Threading\ColaTareas.cs" />
+    <Compile Include="Utilidades\Threading\IExecutable.cs" />
+    <Compile Include="Utilidades\TipoOperacion.cs" />
+    <Compile Include="Utilidades\TipoReferenciaTabla.cs" />
+    <Compile Include="Utilidades\UI\ClipboardTable.cs" />
+    <Compile Include="Utilidades\UI\GridObjetos.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Utilidades\UI\SortableList.cs" />
+    <Compile Include="Utilidades\UI\ListBoxTypeAhead.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Utilidades\UI\ListBoxUtils.cs" />
+    <Compile Include="Utilidades\UI\RefObjetoGX.cs" />
+    <Compile Include="Utilidades\UI\SearchKbObjectsToolWindowBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Utilidades\UI\SelectGenerator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilidades\UI\SelectGenerator.Designer.cs">
+      <DependentUpon>SelectGenerator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilidades\UI\ToolWindowBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Utilidades\Validation\IValidator.cs" />
+    <Compile Include="Utilidades\Validation\ValidationTask.cs" />
+    <Compile Include="Utilidades\Validation\ValidationService.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Variables\ObjectVariablesReferences.cs" />
+    <Compile Include="Utilidades\Variables\VariableGX.cs" />
+    <Compile Include="Utilidades\VS\CompilerError.cs" />
+    <Compile Include="Utilidades\VS\CompilerLog.cs" />
+    <Compile Include="Utilidades\VS\VisualStudio.cs" />
+    <Compile Include="Utilidades\WinForms\ControlWinForm.cs" />
+    <Compile Include="Utilidades\WinForms\EnumeradorWinform.cs" />
+    <Compile Include="Utilidades\WinForms\WinFormGx.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Utilidades\Threading\ProcessChooser.resx">
+      <DependentUpon>ProcessChooser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilidades\UI\GridObjetos.resx">
+      <DependentUpon>GridObjetos.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilidades\UI\SelectGenerator.resx">
+      <DependentUpon>SelectGenerator.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LEEME.txt" />
+    <Content Include="LICENSE.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,21 @@
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <meta name="keywords" content="Lsi.Extensiones GeneXus extensiones extension utilidades LSI" />
+        <meta name="description" content="Un conjunto de extensiones para GeneXus" />
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <!-- Bootstrap -->
+        <link href="bootstrap-3.2.0-dist/css/bootstrap.min.css" rel="stylesheet">
+    
+        <!--Custom styles-->
+        <link href="css/estilos.css" rel="stylesheet" type="text/css" media="all" />
+
+        <!--Syntax highlighter-->        
+        <script type="text/javascript" src="js/shCore.js"></script>
+        <script type="text/javascript" src="js/shBrushGenexus.js"></script>
+        <script type="text/javascript" src="js/shBrushXml.js"></script>
+        <link type="text/css" rel="stylesheet" href="css/shThemeGenexus.css"/>
+        <script type="text/javascript">SyntaxHighlighter.all();</script>
+        

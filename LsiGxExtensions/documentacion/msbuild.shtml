@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+
+	<head>
+	    <title>LSI.Extensiones - Tareas de MSBuild</title>
+		<!--#include file="./head.shtml" -->
+	</head>
+	
+	<body>
+	    <!--#include file="./cabecera.shtml" -->
+	    
+		<h2>Tareas de MSBuild</h2>
+		<p>
+		    Las extensiones ofrecen una serie de tareas para MSBuild para trabajar con kbase de
+		    Genexus. Para poder utilizar las tareas hay que importar en el script del msbuild el 
+		    archivo de definiciones "LsiExtensions.targets" que se incluye en la instalación
+		    de las extensiones. Las tareas declaradas se describen a continuación.
+		</p>
+		<div class="bs-callout bs-callout-warning">
+	        <p>
+	            Si se tiene configurado que al generar se cree el directorio virtual en el IIS,
+	            la ejecución de esta tarea requiere permisos de administrador,
+	            ya que lanza la ejecución de <code>appcmd.exe start apppool ...</code>. Si se 
+	            crease una tarea programada para lanzar msbuild, por ejemplo, para hacer builds
+	            nocturnos, hay que acordarse de marcar "Ejecutar con los privilegios más elevados"
+	            en la tarea programada. Si no se hace, la tarea programada quedará colgada
+	            en el paso "Updating web config ..."
+		    </p>
+		</div>
+		
+		<a id="lsilogsectionstart"></a>
+		<h3>LsiLogSectionStart / LsiLogSectionEnd</h3>
+		<p>
+		    Permiten registrar el log de Genexus de las tareas incluidas entre estas dos tareas.
+		    Este log puede mandarse por correo con la tarea <a href="#lsisendmail">LsiSendEmail</a>.
+		</p>
+		<p>
+		    Las otras tareas declaradas por las extensiones no debería incluirse dentro de 
+		    estas tareas, ya que el log de dichas tareas siempre queda registrado, y siempre
+		    se envian en el correo.
+		</p>
+		<p>
+		    Estas tareas pueden usarse varias veces dentro del archivo MsBuild, pero no recursivamente
+		    (secciones dentro de secciones).
+		</p>
+<pre class='brush: xml'>
+    &lt;LsiLogSectionStart SectionTitle="Build all" IsWeb="false"/&gt;
+      &lt;BuildAll ForceRebuild="false" CompileMains="false" DetailedNavigation="false" /&gt;
+      ...
+    &lt;LsiLogSectionEnd /&gt;
+</pre>
+        <table class="table table-bordered">
+		    <tr>
+		        <td>
+		            <b>SectionTitle</b>
+		        </td>
+		        <td>
+		            Titulo que se da en el correo al log de la ejecución de las tareas dentro
+		            de esta sección.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td>
+		            <b>IsWeb</b>
+		        </td>
+		        <td>
+		            Indica si las tareas que se ejecutan se refieren a generadores web o no.<br />
+		            Cuando se manda el log por correo, este se manda en formato HTML. Las tareas 
+		            intentan parsear errores de compilación C#, y si encuentran alguno, ponen un
+		            link al archivo fuente con el error. Este flag se necesita para saber en que
+		            directorio está ubicado el archivo fuente con el error (si en la carpeta del
+		            modelo, o en la carpeta "web" del modelo).
+		        </td>
+		    </tr>
+		</table>
+
+            <div class="bs-callout bs-callout-warning">
+    		<h2>Limitaciones</h2>
+		    <p>
+		        Estas tareas sólo registran el log de lo que sería la ventana "Output" de Genexus.
+		        Si se incluyen tareas propias de MsBuild (crear directorios, copiar archivos, etc.),
+		        el log de dichas tareas no quedará registrado.
+		    </p>
+		</div>
+		
+		<a id="lsisendmail"></a>
+		<h3>LsiSendEmail</h3>
+		<p>
+		    Envia por correo el log capturado por las tareas 
+		    <a href="#lsilogsectionstart">LsiLogSectionStart / LsiLogSectionEnd</a> y el resto
+		    de tareas declaradas en estas extensiones.
+		</p>
+<pre class='brush: xml'>
+	&lt;LsiSendEmail FromEmail="xxx@xxx.com" ToEmails="@(DestinationEmails)"
+              EmailHost="xxx" EmailUserName="xxx@xxx.com"
+              EmailPassword="xxx" 
+              Ssl="true"
+              Port="1234"
+              TimeoutMiliseconds="10000"
+/&gt;              
+</pre>
+        <table class="table table-bordered">
+		    <tr>
+		        <td>
+		            <b>FromEmail</b>
+		        </td>
+		        <td>
+		            Dirección de correo de origen para enviar el correo con el log del proceso.
+		             Si no se indica, no se enviará ningún correo.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td>
+		            <b>ToEmails</b>
+		        </td>
+		        <td>
+		            Un ItemGroup con las dirección de correo a las que enviar el correo 
+		            con el log del proceso. Si no se indica ninguno, no se enviará ningún correo.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td>
+		            <b>EmailHost</b>
+		        </td>
+		        <td>
+		            Dirección del servidor de correo. Si no se indica, no se enviará ningún correo.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td>
+		            <b>EmailUserName / EmailPassword</b>
+		        </td>
+		        <td>
+		            Usuario y password con los que autenticarse en el servidor de correo.
+		        </td>
+		    </tr>
+            <tr>
+                <td>
+                    <b>Ssl</b>
+                </td>
+                <td>
+                    ¿Usar SSL para el envio del correo?. Por defecto no
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Port</b>
+                </td>
+                <td>
+                    Puerto en el servidor de correo. Por defecto el 25
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>TimeoutMiliseconds</b>
+                </td>
+                <td>
+                    Tiempo de espera para el envio de correo, en milisegundos. Por defecto 100000
+                </td>
+            </tr>
+		</table>
+		<div class="bs-callout bs-callout-warning">
+    		<h2>Limitaciones</h2>
+    		<p>
+    		    No hay soporte para configuración avanzada del envio del correo. El envio se hace
+    		    con SMTP estandar: No se soporta SSL, ni cambiar el puerto de destino ni ningún otro
+    		    tipo de configuración aparte de la descrita.
+    		</p>
+        </div>
+        
+		<h3>LsiCompileTask</h3>
+		
+		<p>
+		    Es una tarea para compilar todos los mains de uno o varios generadores de la kbase. 
+		    En caso de compilar un main con generador c# win, y si la 
+	        propiedad "Assemblies structure" del generador vale "By main",
+	        intenta reparar errores en su RSP. Puede encontrar más información sobre
+	        la reparación de RSPs en la documentación de la toolwindow 
+	        <a href="wwmains.shtml">Work with mains</a>.
+		</p>
+		
+<pre class='brush: xml'>
+&lt;LsiCompileTask Generator="$(Generator)" RepairRsp="all"/&gt;
+</pre>
+
+        <table class="table table-bordered">
+		    <tr>
+		        <td>
+		            <b>Generator</b>
+		        </td>
+		        <td>
+		            Descripción del generador del que hay que compilar los mains, por ejemplo
+		            "Default (C#)". Si no se indica, se compilarán los mains de todos los
+		            generadores.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td>
+		            <b>RepairRsp</b>
+		        </td>
+		        <td>
+		            Sólo se aplica a generadores C# / Win, si la 
+	                propiedad "Assemblies structure" del generador vale "By main". Indica
+	                si hay que intentar reparar o no los archivos RSP antes de la compilación.
+	                Puede valer una de estas opciones:
+	                <ul>
+	                    <li>
+	                        "default": Este es el valor por defecto si no se indica la 
+	                        propiedad. En este caso, si se ha indicado el flag "/debug" en
+	                        la propiedad "Compiler flags" del generador, se intentarán agregar
+	                        todos los archivos fuentes que falten. Si no se encuentra el flag
+	                        sólo se intentarán agregar los fuentes referentes a Bussiness
+	                        Components.
+	                    </li>
+	                    <li>
+	                        "all": Se intentan agregar todos los archivos fuente que falten.
+	                    </li>
+	                    <li>
+	                        "none": No se intentan reparar los archivos RSP.
+	                    </li>
+	                    <li>
+	                        "onlybc": Intenta agregar los fuentes referentes a Bussiness
+	                        Components.
+	                    </li>
+	                </ul>
+		        </td>
+		    </tr>
+		</table>
+		
+		<h3>LsiBuildQuerys</h3>
+		<p>
+		    Genera todos los objetos Query del entorno actual, sin especificar / generar nada.
+		</p>
+<pre class='brush: xml'>
+&lt;LsiBuildQuerys /&gt;
+</pre>
+		
+		<h3>LsiDeleteBackups</h3>
+		<p>
+		    Sólo tiene sentido si se suele usar la operación de compilación personalizada de la 
+		    toolwindow <a href="wwmains.shtml">Work with mains</a>. Esta compilación puede generar
+		    archivos de backup en el directorio del modelo. Esta tarea borra dichos archivos.
+		</p>
+<pre class='brush: xml'>
+&lt;LsiDeleteBackups /&gt;
+</pre>
+
+        <a id="LsiPrepareProduction"></a>
+        <h3>LsiPrepareProduction</h3>
+        <p>
+            Ejecuta las tareas para <a href="wwmains.shtml#produccion">preparar la producción de la KBase</a>.
+            Si la propiedad "RunWithErrors" es falsa, si alguna tarea anterior ha fallado, esta no se ejecutará. Si es cierta,
+            se preparará la producción aunque haya habido errores. Su valor por defecto es falso.
+        </p>
+<pre class='brush: xml'>
+&lt;LsiPrepareProduction RunWithErrors="false" /&gt;
+</pre>
+
+		<h3>Ejemplo</h3>
+		<p>
+		    Un ejemplo de archivo msbuild que usan las tarea sería el siguiente:
+		</p>
+		
+<pre class='brush: xml'>
+&lt;Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"&gt;
+
+	&lt;!-- Import standard gx tasks and custom LSI tasks --&gt;
+	&lt;Import Project="C:\Program Files (x86)\Artech\GeneXus\GeneXusXEv3\Genexus.Tasks.targets" /&gt;
+	&lt;Import Project="C:\Program Files (x86)\Artech\GeneXus\GeneXusXEv3\Packages\LsiExtensions.targets" /&gt;
+  
+  &lt;PropertyGroup&gt;
+    
+		&lt;!-- Set the  kbase path --&gt;
+		&lt;KBPath Condition=" '$(KBPath)' == '' "&gt;D:\kbases\PruebasWinWebEv3&lt;/KBPath&gt;
+    
+    &lt;!--Set the model--&gt;
+    &lt;KBEnvironment Condition=" '$(KBEnvironment)' == '' "&gt;.Net Environment&lt;/KBEnvironment&gt;
+    
+    &lt;!--The generator to compile. If its empty, all generators will be compiled--&gt;
+    &lt;!--&lt;Generator&gt;Default (C#)&lt;/Generator&gt;--&gt;
+    
+	&lt;/PropertyGroup&gt;
+
+  &lt;!--Email addresses to send compilation reports--&gt;
+  &lt;ItemGroup&gt;
+    &lt;DestinationEmails Include="xxx@xxx.com" /&gt;
+    &lt;!--&lt;DestinationEmails Include="yyy@xxx.com" /&gt;--&gt;
+  &lt;/ItemGroup&gt;
+
+  &lt;!--Build kbase--&gt;
+  &lt;Target Name="Build"&gt;
+    
+	&lt;OpenKnowledgeBase Directory="$(KBPath)" /&gt;
+    
+    &lt;SetActiveEnvironment EnvironmentName="$(KBEnvironment)" /&gt;
+        
+    &lt;!--Start log section--&gt;
+    &lt;LsiLogSectionStart SectionTitle="Build all" IsWeb="false"/&gt;
+
+      &lt;!--Run a gx msbuild task--&gt;
+      &lt;BuildAll ForceRebuild="false" CompileMains="false" DetailedNavigation="false" /&gt;
+    
+    &lt;!--End log section--&gt;
+    &lt;LsiLogSectionEnd /&gt;
+    
+    &lt;!--Compile--&gt;
+    &lt;LsiCompileTask Generator="$(Generator)" RepairRsp="all"/&gt;
+
+    &lt;!--Generate query objects--&gt;
+    &lt;LsiBuildQuerys /&gt;
+
+    &lt;!--Delete backup files--&gt;
+    &lt;LsiDeleteBackups /&gt;
+
+    &lt;!--Send email--&gt;
+    &lt;LsiSendEmail FromEmail="xxx@xxx.com" ToEmails="@(DestinationEmails)"
+                  EmailHost="xxx" EmailUserName="xxx@xxx.com"
+                  EmailPassword="xxx" /&gt;
+    
+	&lt;CloseKnowledgeBase /&gt;
+    
+  &lt;/Target&gt;
+
+&lt;/Project&gt;
+</pre>
+
+    <p>
+        El correo enviado tiene un formato parecido al siguiente:
+    </p>
+    <div style="font-weight: bold; font-size: 28px; margin-top: 20px">Genexus build</div>
+	    <table>
+	        <tr>
+	            <td><b>KBase</b>&nbsp;</td>
+	            <td><a href="#">D:\kbases\PruebasWinWeb</a></td>
+	        </tr>
+	        <tr>
+	            <td><b>Enviroment</b>&nbsp;</td>
+	            <td><a href="#">Prototipo</a></td>
+	        </tr>
+	    </table>
+	    
+        <div>
+            <div style="font-weight: bold; font-size: 20px; margin-top: 20px">
+                Build all</div>
+            <div style="font-family: Courier New,Monospace; font-size: 12px">
+                Building changed objects list<br />
+                [Specification started]<br />
+                Specifying WebPanel3 (1 of 1) ...<br />
+                [Specification finished succesfully]<br />
+                [Generation started]<br />
+                Generating to CSharpModel\client.exe.config<br />
+                Generating to CSharpModel\WCFClient.config<br />
+                Generating to CSharpModel\gxmetadata\gxversion.json<br />
+                Generating to CSharpModel\gxmetadata\gx_entity_list.json<br />
+                Generating to sm18_2.ari<br />
+                Generating to CSharpModel\runsets.ini<br />
+                Generating to CSharpModel\bldAssemblies.cs<br />
+                Generating to CSharpModel\GeneXus.Programs.Common.rsp<br />
+                Generating to sm18_2.ari<br />
+                [Generation finished succesfully]<br />
+                [Generation started]<br />
+                Generating to CSharpModel\web\gxcfg.js<br />
+                Generating to CSharpModel\web\GXCFG.WEB<br />
+                Generating to CSharpModel\web\client.exe.config<br />
+                Generating to CSharpModel\web\WCFClient.config<br />
+                Generating to CSharpModel\web\gxmetadata\gxversion.json<br />
+                Generating to CSharpModel\web\gxmetadata\gx_entity_list.json<br />
+                Generating to CSharpModel\web\bldDevelopermenu.cs<br />
+                Generating to sm15_2.ari<br />
+                Generating to CSharpModel\web\runsets.ini<br />
+                Generating to CSharpModel\web\GeneXus.Programs.Common.rsp<br />
+                Generating to sm15_2.ari<br />
+                Generating to CSharpModel\web\exe.bld<br />
+                Generating to CSharpModel\web\winexe.bld<br />
+                Generating to CSharpModel\web\library.bld<br />
+                Generating to CSharpModel\web\bld15.info<br />
+                [Generation finished succesfully]<br />
+                [WebPanel3 Compilation started]<br />
+                gxexec &quot;D:\kbases\PruebasWinWeb\CSharpModel\web\bldwebpanel3.cs&quot; -r:GxBaseBuilder.dll
+                -arg:csc=&quot;C:\WINDOWS\Microsoft.NET\Framework\v3.5\csc.exe&quot;<br />
+                [WebPanel3 Compilation finished succesfully]<br />
+                [Web config update started]<br />
+                Updating web config ...<br />
+                [Web config update finished succesfully]<br />
+                <br />
+            </div>
+            <div style="font-weight: bold; font-size: 20px; margin-top: 20px">
+                Default (C#) compilation</div>
+            <div style="font-family: Courier New,Monospace; font-size: 12px">
+                Checking RSP files...<br />
+                Generating D:\kbases\PruebasWinWeb\CSharpModel\BldAssembliesCustom.cs file<br />
+                &quot;D:\kbases\PruebasWinWeb\CSharpModel\GXEXEC.EXE&quot; &quot;D:\kbases\PruebasWinWeb\CSharpModel\BldAssembliesCustom.cs&quot;
+                -r:GxBaseBuilder.dll -arg:csc=&quot;C:\WINDOWS\Microsoft.NET\Framework\v3.5\csc.exe&quot;
+                -arg:mdlpath=&quot;D:\kbases\PruebasWinWeb\CSharpModel&quot;
+                <br />
+                Building bin\GeneXus.Programs.Common.dll<br />
+                Compilador de Microsoft (R) Visual C# 2008, versi&#243;n 3.5.30729.7903<br />
+                para Microsoft (R) .NET Framework, versi&#243;n 3.5<br />
+                (C) Microsoft Corporation. Reservados todos los derechos.<br />
+                <br />
+                Building bin\ProcedureMainConUnNo.dll<br />
+                Compilador de Microsoft (R) Visual C# 2008, versi&#243;n 3.5.30729.7903<br />
+                para Microsoft (R) .NET Framework, versi&#243;n 3.5<br />
+                (C) Microsoft Corporation. Reservados todos los derechos.<br />
+                <br />
+                Building bin\NotificationsRegistr.dll<br />
+                Compilador de Microsoft (R) Visual C# 2008, versi&#243;n 3.5.30729.7903<br />
+                para Microsoft (R) .NET Framework, versi&#243;n 3.5<br />
+                (C) Microsoft Corporation. Reservados todos los derechos.<br />
+                <br />
+                Building bin\Workpanel1.dll<br />
+                Compilador de Microsoft (R) Visual C# 2008, versi&#243;n 3.5.30729.7903<br />
+                para Microsoft (R) .NET Framework, versi&#243;n 3.5<br />
+                (C) Microsoft Corporation. Reservados todos los derechos.<br />
+                <br />
+                Building bin\WorkPanel2.dll<br />
+                Compilador de Microsoft (R) Visual C# 2008, versi&#243;n 3.5.30729.7903<br />
+                para Microsoft (R) .NET Framework, versi&#243;n 3.5<br />
+                (C) Microsoft Corporation. Reservados todos los derechos.<br />
+                <br />
+                <br />
+            </div>
+            <div style="font-weight: bold; font-size: 20px; margin-top: 20px">
+                Web (C#) compilation</div>
+            <div style="font-family: Courier New,Monospace; font-size: 12px">
+                [WebPanel1 Compilation started]<br />
+                gxexec &quot;D:\kbases\PruebasWinWeb\CSharpModel\web\bldwebpanel1.cs&quot; -r:GxBaseBuilder.dll
+                -arg:csc=&quot;C:\WINDOWS\Microsoft.NET\Framework\v3.5\csc.exe&quot;<br />
+                [WebPanel1 Compilation finished succesfully]<br />
+                [WebPanel2 Compilation started]<br />
+                gxexec &quot;D:\kbases\PruebasWinWeb\CSharpModel\web\bldwebpanel2.cs&quot; -r:GxBaseBuilder.dll
+                -arg:csc=&quot;C:\WINDOWS\Microsoft.NET\Framework\v3.5\csc.exe&quot;<br />
+                [WebPanel2 Compilation finished succesfully]<br />
+                [WebPanel3 Compilation started]<br />
+                gxexec &quot;D:\kbases\PruebasWinWeb\CSharpModel\web\bldwebpanel3.cs&quot; -r:GxBaseBuilder.dll
+                -arg:csc=&quot;C:\WINDOWS\Microsoft.NET\Framework\v3.5\csc.exe&quot;<br />
+                [WebPanel3 Compilation finished succesfully]<br />
+                [Web config update started]<br />
+                Updating web config ...<br />
+                [Web config update finished succesfully]<br />
+                <br />
+            </div>
+            <div style="font-weight: bold; font-size: 20px; margin-top: 20px">
+                Query objects</div>
+            <div style="font-family: Courier New,Monospace; font-size: 12px">
+                [SQL statement generation started]<br />
+                Generating QryCliente ...<br />
+                [SQL statement generation finished succesfully]<br />
+                <br />
+            </div>
+            <div style="font-weight: bold; font-size: 20px; margin-top: 20px">
+                Remove backup files</div>
+            <div style="font-family: Courier New,Monospace; font-size: 12px">
+                D:\kbases\PruebasWinWeb\CSharpModel\Workpanel1-BACKUP-1.rsp deleted<br />
+                D:\kbases\PruebasWinWeb\CSharpModel\Workpanel1-BACKUP.rsp deleted<br />
+                2 files deleted<br />
+                <br />
+            </div>
+        </div>
+        
+        <!--#include file="./pie.shtml" -->
+	</body>
+	
+</html>

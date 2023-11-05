@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Projects>
+	<Project Name="LSI.Extensiones" Location=".">
+
+		<!--
+		The Package assembly needs to be copied to the Packages
+		folder below the base execution path.
+		-->
+    
+    <!-- Extensions Dll -->
+		<File Name="LSI.Packages.Extensiones.dll" Target="Packages" />
+
+    <!-- Utilities Dll required by the extensions-->
+    <File Name="LSI.Packages.Extensiones.Utilidades.dll" Target="Packages" />
+
+    <!-- Wrapper for Tensorflow Lite C API -->
+    <File Name="TfLiteNetWrapper.dll" Target="Packages" />
+    
+    <!-- Tensorflow Lite C API -->
+    <File Name="tensorflowlite_c.dll" Target="Packages" />
+    
+    <!-- MSBuild custom tasks -->
+    <File Name="LsiExtensions.targets" Target="Packages" />
+    
+    <!--
+		Any other dependency (i.e.: other assemblies on which
+		this package depends) needs to be copied to the
+		base execution path.
+		-->
+		<!-- 
+		<File Name="Dependency1.dll" Target="." />
+		<File Name="Dependency2.dll" Target="." />
+		-->
+	</Project>
+</Projects>
