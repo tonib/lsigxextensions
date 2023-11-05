@@ -13,6 +13,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LsiGxUtilidades-XEv3", "Lsi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LsiGxExtensions-XEv3", "LsiGxExtensions-XEv3\LsiGxExtensions-XEv3.csproj", "{2B383796-CC63-4C26-A1EF-F6F9DF9EC05E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F5297D1B-86E8-4CDF-AF7A-A1D878B66D05}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		SetEnvironmentVariables.bat = SetEnvironmentVariables.bat
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

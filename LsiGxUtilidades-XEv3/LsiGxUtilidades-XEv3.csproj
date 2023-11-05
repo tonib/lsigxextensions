@@ -42,87 +42,87 @@
   <ItemGroup>
     <Reference Include="Artech.Architecture.BL.Framework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(GX_PROGRAM_DIR)\Artech.Architecture.BL.Framework.dll</HintPath>
+      <HintPath>$(GX_PROGRAM_DIR_EV3)\Artech.Architecture.BL.Framework.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Artech.Architecture.Common, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(GX_PROGRAM_DIR)\Artech.Architecture.Common.dll</HintPath>
+      <HintPath>$(GX_PROGRAM_DIR_EV3)\Artech.Architecture.Common.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Artech.Architecture.Language, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(GX_PROGRAM_DIR)\Artech.Architecture.Language.dll</HintPath>
+      <HintPath>$(GX_PROGRAM_DIR_EV3)\Artech.Architecture.Language.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Artech.Architecture.UI.Framework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(GX_PROGRAM_DIR)\Artech.Architecture.UI.Framework.dll</HintPath>
+      <HintPath>$(GX_PROGRAM_DIR_EV3)\Artech.Architecture.UI.Framework.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Artech.Common, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(GX_PROGRAM_DIR)\Artech.Common.dll</HintPath>
+      <HintPath>$(GX_PROGRAM_DIR_EV3)\Artech.Common.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Artech.Common.Framework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(GX_PROGRAM_DIR)\Artech.Common.Framework.dll</HintPath>
+      <HintPath>$(GX_PROGRAM_DIR_EV3)\Artech.Common.Framework.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Artech.Common.Helpers, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(GX_PROGRAM_DIR)\Artech.Common.Helpers.dll</HintPath>
+      <HintPath>$(GX_PROGRAM_DIR_EV3)\Artech.Common.Helpers.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Artech.Common.Language, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(GX_PROGRAM_DIR)\Artech.Common.Language.dll</HintPath>
+      <HintPath>$(GX_PROGRAM_DIR_EV3)\Artech.Common.Language.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Artech.Common.Properties, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(GX_PROGRAM_DIR)\Artech.Common.Properties.dll</HintPath>
+      <HintPath>$(GX_PROGRAM_DIR_EV3)\Artech.Common.Properties.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Artech.Core.UI, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(GX_PROGRAM_DIR)\Artech.Core.UI.dll</HintPath>
+      <HintPath>$(GX_PROGRAM_DIR_EV3)\Artech.Core.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Artech.FrameworkDE, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(GX_PROGRAM_DIR)\Artech.FrameworkDE.dll</HintPath>
+      <HintPath>$(GX_PROGRAM_DIR_EV3)\Artech.FrameworkDE.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Artech.Genexus.Common, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(GX_PROGRAM_DIR)\Artech.Genexus.Common.dll</HintPath>
+      <HintPath>$(GX_PROGRAM_DIR_EV3)\Artech.Genexus.Common.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Artech.GXplorer.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(GX_PROGRAM_DIR)\Artech.GXplorer.Common.dll</HintPath>
+      <HintPath>$(GX_PROGRAM_DIR_EV3)\Artech.GXplorer.Common.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Artech.Packages.Editors.Text, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(GX_PROGRAM_DIR)\Packages\Artech.Packages.Editors.Text.dll</HintPath>
+      <HintPath>$(GX_PROGRAM_DIR_EV3)\Packages\Artech.Packages.Editors.Text.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Artech.Packages.Patterns, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(GX_PROGRAM_DIR)\Packages\Artech.Packages.Patterns.dll</HintPath>
+      <HintPath>$(GX_PROGRAM_DIR_EV3)\Packages\Artech.Packages.Patterns.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Artech.Patterns.WorkWithDevices, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(GX_PROGRAM_DIR)\Packages\Patterns\WorkWithDevices\Artech.Patterns.WorkWithDevices.dll</HintPath>
+      <HintPath>$(GX_PROGRAM_DIR_EV3)\Packages\Patterns\WorkWithDevices\Artech.Patterns.WorkWithDevices.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Artech.Udm.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(GX_PROGRAM_DIR)\Artech.Udm.Framework.dll</HintPath>
+      <HintPath>$(GX_PROGRAM_DIR_EV3)\Artech.Udm.Framework.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
