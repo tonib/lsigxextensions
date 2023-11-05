@@ -1,0 +1,516 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>680e93f9-7753-47c1-b89b-be6d9a023cc4</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>LsiGxExtensions_Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\ArreglarProblemas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\ArreglarProblemas.Designer.cs">
+      <DependentUpon>ArreglarProblemas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\AddVariableAutocomplete.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\Autocomplete.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\AutocompleteContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\AutocompleteItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\AutocompleteItemsGeneration.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\BalancedChars.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\CallStatusFinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\Calls\CallInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\Calls\CallInfoFinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\Calls\CallInfoTree.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\Calls\CallMatcher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\Commands\AllowedScope.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\Commands\CommandDefinition.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\Commands\CommandsAutocomplete.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\Commands\ScopeId.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\CodeTokenizer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\DataDefinition\ColumnBoolean.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\DataDefinition\ColumnDebugString.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\DataDefinition\ColumnEnum.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\DataDefinition\ColumnInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\DataDefinition\ColumnIntCategory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\DataDefinition\ColumnStringCategory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\DataDefinition\ColumnStringHashMurmur.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\DataDefinition\DataInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\DataDefinition\DataInfoV12.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\DataDefinition\DataInfoV13.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\DataDefinition\DataInfoV14.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\DataDefinition\GxNameSplitter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\DataDefinition\MurmurHash2.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\IndexedList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\KbPredictorInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\ModelGeneration\ExportTrainObjects.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\ModelGeneration\GenerateModelTW.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\ModelGeneration\GenerateModelTW.Designer.cs">
+      <DependentUpon>GenerateModelTW.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\ModelGeneration\PythonVEnv.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\ModelGeneration\TrainModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\PemTokenizer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\PredictionGeneration\ColumnPrediction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\PredictionGeneration\PredictionCache.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\PredictionGeneration\PredictionResult.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\PredictionGeneration\Predictor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\PredictionGeneration\PredictorBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\PredictionGeneration\PredictorInput.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\PredictionGeneration\PredictorLite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\TokenContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\TokenInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\TokenizedPart.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\TokenKeysEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\TokensList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\WordTypeKey.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\KbNames\AttributeNameInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\KbNames\ControlNameInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\KbNames\FunctionNameInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\KbNames\HashedNames.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\KbNames\ITimestamped.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\KbNames\KbObjectNameInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\KbNames\NamespaceNames.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\KbNames\ObjectNameInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\KbNames\ObjectNamesCache.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\KbNames\ObjectPartType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\KbNames\OpenObjectsPrefech.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\KbNames\Sdts\SdtNodeNameInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\KbNames\Sdts\SdtStructureInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\KbNames\Sdts\SdtStructuresCache.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\KbNames\Tables\TableName.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\KbNames\Tables\TablesCache.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\KbNames\Trie.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\KbNames\TypedNameInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\KbNames\VariableNameInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\LineParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\ObjectsInfoCache\ObjectContextCache.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\ObjectsInfoCache\ObjectControls.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\OutlineState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\ParmsInfo\ParametersInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\ParmsInfo\ParmDocumentationParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\PredictionBindings\AutocompletePrediction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\PredictionBindings\HashesCombinator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\PredictionBindings\ProbableAttributes.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\PredictionBindings\TokenizedAutocompleteItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\SubNames.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\TextStreamExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\AndroidTools.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\BuildLogControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\BuildLogControl.Designer.cs">
+      <DependentUpon>BuildLogControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\BuildProcess.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\BuildQueryObjects.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\BuildSingleGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\BuildSingleGeneratorDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\BuildSingleGeneratorDlg.Designer.cs">
+      <DependentUpon>BuildSingleGeneratorDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\CleanObjectInfoCache.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\CompileModules.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\CustomWinCompiler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\GeneratorMains.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\GeneratorMains.Designer.cs">
+      <DependentUpon>GeneratorMains.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\Production\CopyProduction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\Production\EnvironmentTask.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\Production\EnvironmentType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\Production\ExecuteScript.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\Production\PrepareProduction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\Production\PrepareProductionDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\Production\PrepareProductionDlg.Designer.cs">
+      <DependentUpon>PrepareProductionDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\Production\ProductionTask.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\Production\ProductionTaskDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\Production\ProductionTaskDlg.Designer.cs">
+      <DependentUpon>ProductionTaskDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\Production\ZipProduction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\RemoveBackupFiles.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\RemoveBackupFilesDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\RemoveBackupFilesDlg.Designer.cs">
+      <DependentUpon>RemoveBackupFilesDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\RepairRspConfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\RepairRspConfirm.Designer.cs">
+      <DependentUpon>RepairRspConfirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\RepairRspFiles.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\WorkWithMains.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Build\WorkWithMains.Designer.cs">
+      <DependentUpon>WorkWithMains.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\BuscarReferenciasMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\BuscarReferenciasMain.Designer.cs">
+      <DependentUpon>BuscarReferenciasMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\BuscarReferenciasToolWindow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\BuscarReferenciasToolWindow.Designer.cs">
+      <DependentUpon>BuscarReferenciasToolWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\CopyParmRule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\EditarConfiguracion.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\EditObjectCallsTW.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\EditObjectCallsTW.Designer.cs">
+      <DependentUpon>EditObjectCallsTW.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Edit\AddVariable\AddVariableFastKey.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Edit\AddVariable\CustomVariablesCreator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Edit\ObjectsInfoClipboard.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Edit\PasteAsStringLiteral.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\GxSourcesSearchTW.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\GxSourcesSearchTW.Designer.cs">
+      <DependentUpon>GxSourcesSearchTW.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\InsertarForEach.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\InsertarNew.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\KBSync\KBSyncExportInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\KBSync\KBSyncReviewInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\KBSync\KBSyncReviewResultTW.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\KBSync\KBSyncReviewResultTW.Designer.cs">
+      <DependentUpon>KBSyncReviewResultTW.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\ObjectsModifiedByUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\ObjectsModifiedByUser.Designer.cs">
+      <DependentUpon>ObjectsModifiedByUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\OpenDocumentation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Procedures\CrearProcAsignarAtributo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Procedures\CrearProcBorradoRegistro.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Procedures\CrearProcInsercion.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Procedures\CrearProcObtenerValor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Refactoring\ExtractDataSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Refactoring\ExtractProcedure.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\ReorderWinTab.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\ReorderWinTab.Designer.cs">
+      <DependentUpon>ReorderWinTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\ReplaceVariablesAttributeBased.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\ReplaceVariablesAttributeBasedWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\ReplaceVariablesAttributeBasedWindow.Designer.cs">
+      <DependentUpon>ReplaceVariablesAttributeBasedWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\RevisarFuentesReports.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Sdts\CrearProcActualizacionSdt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Sdts\CrearProcCargaSdt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Sdts\CrearProcInsercionSdt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\Sdts\CrearSdtDeTabla.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\TamMaximoWinform.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\UnreferencedObjectsToolWindow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\UnreferencedObjectsToolWindow.Designer.cs">
+      <DependentUpon>UnreferencedObjectsToolWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\ValidacionObjetos\AtributosHuerfanos.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\ValidacionObjetos\CheckVariables.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\ValidacionObjetos\DeprecatedObjectsCalled.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\ValidacionObjetos\ListarErroresWinform.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\ValidacionObjetos\ObjectsNoFolder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\ValidacionObjetos\UnreferencedPrintblocks.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\ValidacionObjetos\ValidarObjeto.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\ValidacionObjetos\ValidateSelectedObjects.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Comandos\VerificarBorradoTransaccion.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CommandKeys.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CommandManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ConfigurationWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ConfigurationWindow.Designer.cs">
+      <DependentUpon>ConfigurationWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)LsiExtensionsConfiguration.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MsBuild\LsiBuildQuerys.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MsBuild\LsiCompileTask.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MsBuild\LsiDeleteBackups.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MsBuild\LsiLogSectionEnd.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MsBuild\LsiLogSectionStart.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MsBuild\LsiMsBuildTask.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MsBuild\LsiPrepareProduction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MsBuild\LsiSendEmail.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MsBuild\MsBuildLog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Package.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Comandos\ArreglarProblemas.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ArreglarProblemas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Comandos\Autocomplete\GxPredictor\ModelGeneration\GenerateModelTW.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>GenerateModelTW.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Comandos\Build\bldAssemblies.cs.txt" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Comandos\Build\BuildLogControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BuildLogControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Comandos\Build\BuildSingleGeneratorDlg.resx">
+      <DependentUpon>BuildSingleGeneratorDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Comandos\Build\GeneratorMains.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>GeneratorMains.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Comandos\Build\Production\PrepareProductionDlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PrepareProductionDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Comandos\Build\Production\ProductionTaskDlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ProductionTaskDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Comandos\Build\RemoveBackupFilesDlg.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>RemoveBackupFilesDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Comandos\Build\RepairRspConfirm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>RepairRspConfirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Comandos\Build\WorkWithMains.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WorkWithMains.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Comandos\BuscarReferenciasMain.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BuscarReferenciasMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Comandos\BuscarReferenciasToolWindow.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BuscarReferenciasToolWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Comandos\EditObjectCallsTW.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EditObjectCallsTW.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Comandos\GxSourcesSearchTW.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>GxSourcesSearchTW.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Comandos\KBSync\KBSyncReviewResultTW.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>KBSyncReviewResultTW.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Comandos\ObjectsModifiedByUser.resx">
+      <DependentUpon>ObjectsModifiedByUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Comandos\ReorderWinTab.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ReorderWinTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Comandos\ReplaceVariablesAttributeBasedWindow.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ReplaceVariablesAttributeBasedWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Comandos\UnreferencedObjectsToolWindow.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>UnreferencedObjectsToolWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ConfigurationWindow.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ConfigurationWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)GeneXusPackage.package" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)MsBuild\CompilationEmailTemplate.htm" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources.resx">
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Catalog.xml" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\abrircsharp.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\addvariable.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\arreglos.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\bootstrap-3.2.0-dist\css\bootstrap-theme.css" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\bootstrap-3.2.0-dist\css\bootstrap-theme.min.css" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\bootstrap-3.2.0-dist\css\bootstrap.css" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\bootstrap-3.2.0-dist\css\bootstrap.min.css" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\bootstrap-3.2.0-dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\bootstrap-3.2.0-dist\js\bootstrap.js" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\bootstrap-3.2.0-dist\js\bootstrap.min.js" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\buildall.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\codigo-autocompletado.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\codigo-parametros.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\compile.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\configuracion.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\configuracion.shtml" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\confirmacionrebuild.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\confirmacionrebuild.shtml" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\copiartabla.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\css\shThemeGenexus.css" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\customcompile.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\debug.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\editrsp.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\favicon.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\fuentes.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\gxcompile.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\js\shBrushGenexus.js" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\js\shBrushXml.js" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\js\shCore.js" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\llamadas.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\logo.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\modificadosporusuario.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\modificadosporusuario.shtml" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\msbuild.shtml" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\nousados.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\pegarcomoliteral.shtml" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\plantilla.shtml" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\prediccion-entreno.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\prediccion-prediccion.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\prediccion.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\prediccion.shtml" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\prediccion_como.shtml" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\produccion.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\reemplazarvariables.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\refactorizaciones.shtml" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\referencias.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\referenciasmain.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\run.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\startdebug.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\tareaproduccion.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\verificarrsp.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\versionabrirkb.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\versionabrirkb.shtml" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\wwmains.png" />
+    <Content Include="$(MSBuildThisFileDirectory)documentacion\wwmains.shtml" />
+    <Content Include="$(MSBuildThisFileDirectory)LICENSE.txt" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\Ayuda.gif" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\error.ico" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\help.ico" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\ok.ico" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\processing.ico" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\VSIcons\applycodechanges_6548.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\VSIcons\BreakpointEnabled_6584_16x.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\VSIcons\BreakpointsWindow_6557.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\VSIcons\build_Solution_16xLG.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\VSIcons\Compile_191.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\VSIcons\CSharpProject_SolutionExplorerNode.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\VSIcons\CustomActionsEditor_5850.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\VSIcons\Diagram_8283.ico" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\VSIcons\Executequery_9958.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\VSIcons\ExtractMethod_6786.ico" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\VSIcons\Find_5650.ico" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\VSIcons\FormRunHS.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\VSIcons\Hammer_Builder_16xLG.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\VSIcons\HelpVS.ico" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\VSIcons\HelpVS.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\VSIcons\refresh_16xLG.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\VSIcons\Shortcut_8169.ico" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\VSIcons\startwithoutdebugging_6556.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\VSIcons\Strings_7959.ico" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\VSIcons\Symbols_Pause_16xLG.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\VSIcons\Table_748.ico" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\VSIcons\WindowsForm_817.ico" />
+    <Content Include="$(MSBuildThisFileDirectory)Resources\VSIcons\WindowsGroups_7309.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)documentacion\atrbasedon.shtml" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\bootstrap-3.2.0-dist\css\bootstrap-theme.css.map" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\bootstrap-3.2.0-dist\css\bootstrap.css.map" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\bootstrap-3.2.0-dist\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\bootstrap-3.2.0-dist\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\bootstrap-3.2.0-dist\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\borradotrn.shtml" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\buscartexto.png" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\buscartexto.shtml" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\busquedamains.shtml" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\cabecera.shtml" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\changelog.shtml" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\codigo.shtml" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\copiartabla.shtml" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\css\estilos.css" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\css\shCore.css" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\css\shCoreDefault.css" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\fuentes.shtml" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\head.shtml" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\index.shtml" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\llamadas.shtml" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\noreferenciados.shtml" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\ordentab.shtml" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\ordertabcontrol.png" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\pie.shtml" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\procedures.shtml" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\redimensionarwinform.shtml" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\referencias.shtml" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\sdts.shtml" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\sync.png" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\sync.shtml" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\syntaxhighlighter.shtml" />
+    <None Include="$(MSBuildThisFileDirectory)documentacion\verificacion.shtml" />
+    <None Include="$(MSBuildThisFileDirectory)LsiExtensions.targets">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)MsBuild\build.ps1" />
+    <None Include="$(MSBuildThisFileDirectory)MsBuild\Template.msbuild">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Pendiente.txt" />
+    <None Include="$(MSBuildThisFileDirectory)PrepareProduction.ps1" />
+    <None Include="$(MSBuildThisFileDirectory)README.txt" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\actividad.gif" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\data_info.json" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Formula.ico" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Grid_Add.gif" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Grid_Build.gif" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Grid_Check.gif" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Grid_Delete.gif" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Grid_Edit.gif" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Grid_Refresh.gif" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Grid_Run.gif" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Grid_UpdateDB.gif" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Lsi.ico" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\LsiImport.ico" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\model.tflite" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\Objetos.ico" />
+    <None Include="$(MSBuildThisFileDirectory)Tests_ev2.xpz" />
+    <None Include="$(MSBuildThisFileDirectory)Tests_ev3.xpz" />
+  </ItemGroup>
+</Project>
