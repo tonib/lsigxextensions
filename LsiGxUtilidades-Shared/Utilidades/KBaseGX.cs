@@ -173,8 +173,12 @@ namespace LSI.Packages.Extensiones.Utilidades
         /// <param name="fileExtension">Extension of the file name. null to don't add
         /// any extension</param>
         /// <returns>Normalized file name, without any path</returns>
-        static public string GetProgramFileName(KBObject o, GxEnvironment environment, 
+#if GX_17_OR_GREATER
+        static public string GetProgramFileName(KBObject o, GxGenerator environment, bool withInitialLetter, string fileExtension)
+#else
+        static public string GetProgramFileName(KBObject o, GxEnvironment environment,
             bool withInitialLetter, string fileExtension)
+#endif
         {
             string fileName;
             if (withInitialLetter)

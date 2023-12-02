@@ -45,7 +45,11 @@ namespace LSI.Packages.Extensiones.Comandos.Build
             /// </summary>
             /// <param name="o">Main object</param>
             /// <param name="binModuleDir">bin directory path where this module is compiled</param>
+#if GX_17_OR_GREATER
+            public CompilationObjectRef(KBObject o, string binModuleDir, GxGenerator enviroment)
+#else
             public CompilationObjectRef(KBObject o, string binModuleDir, GxEnvironment enviroment)
+#endif
                 : base(o) 
             {
                 UpdateCompilationDate(binModuleDir, enviroment);
@@ -55,7 +59,11 @@ namespace LSI.Packages.Extensiones.Comandos.Build
             /// Constructor for genexus.commons.programs.dll
             /// </summary>
             /// <param name="binModuleDir">bin directory path where this module is compiled</param>
+#if GX_17_OR_GREATER
+            public CompilationObjectRef(string binModuleDir, GxGenerator enviroment)
+#else
             public CompilationObjectRef(string binModuleDir, GxEnvironment enviroment)
+#endif
             {
                 NombreObjeto = CSharpUtils.COMMONSNAME;
                 DescripcionObjeto = "Dll for SDTs, domains, etc";
@@ -66,7 +74,11 @@ namespace LSI.Packages.Extensiones.Comandos.Build
             /// Update the LastCompilationDate property with the module last compilation date
             /// </summary>
             /// <param name="binModuleDir">Bin directory path for this module</param>
+#if GX_17_OR_GREATER
+            public void UpdateCompilationDate(string binModuleDir, GxGenerator enviroment)
+#else
             public void UpdateCompilationDate(string binModuleDir, GxEnvironment enviroment)
+#endif
             {
                 try
                 {
@@ -82,7 +94,11 @@ namespace LSI.Packages.Extensiones.Comandos.Build
             /// </summary>
             /// <param name="enviroment">Enviroment where to get the file name</param>
             /// <returns>The object file name</returns>
+#if GX_17_OR_GREATER
+            private string BinModuleName(GxGenerator enviroment)
+#else
             private string BinModuleName(GxEnvironment enviroment)
+#endif
             {
                 if (NombreObjeto == CSharpUtils.COMMONSNAME)
                     return CSharpUtils.COMMONSNAME;
@@ -93,7 +109,11 @@ namespace LSI.Packages.Extensiones.Comandos.Build
             /// <summary>
             /// Get the file name of the dll file of this object
             /// </summary>
+#if GX_17_OR_GREATER
+            public string DllFileName(GxGenerator enviroment)
+#else
             public string DllFileName(GxEnvironment enviroment)
+#endif
             {
                 return BinModuleName(enviroment) + ".dll";
             }
@@ -101,7 +121,11 @@ namespace LSI.Packages.Extensiones.Comandos.Build
             /// <summary>
             /// Get the file name of the PDB  file (debug info) of this object
             /// </summary>
+#if GX_17_OR_GREATER
+            public string PdbFileName(GxGenerator enviroment)
+#else
             public string PdbFileName(GxEnvironment enviroment)
+#endif
             {
                 return BinModuleName(enviroment) + ".pdb";
             }
@@ -116,8 +140,11 @@ namespace LSI.Packages.Extensiones.Comandos.Build
         /// <summary>
         /// Generator of this panel
         /// </summary>
+#if GX_17_OR_GREATER
+        public GxGenerator Generator { get; private set; }
+#else
         public GxEnvironment Generator { get; private set; }
-
+#endif
         /// <summary>
         /// Mains objects list
         /// </summary>
@@ -158,7 +185,11 @@ namespace LSI.Packages.Extensiones.Comandos.Build
         /// </summary>
         private CompilationObjectRef RefCommons;
 
+#if GX_17_OR_GREATER
+        public GeneratorMains(WorkWithMains wwMains, GxGenerator generator, IEnumerable<KBObject> mains)
+#else
         public GeneratorMains(WorkWithMains wwMains, GxEnvironment generator, IEnumerable<KBObject> mains)
+#endif
         {
             try
             {
@@ -486,14 +517,11 @@ namespace LSI.Packages.Extensiones.Comandos.Build
         {
             try
             {
-
                 // Check if debug is enabled
-                string compilerOptions =
-                    Generator.Properties.GetPropertyValue(Properties.CSHARP.CompilerFlags) as string;
-                if (!CSharpUtils.GeneratorHasDebugOption(Generator))
+                string errorMessage;
+                if (!CSharpUtils.GeneratorHasDebugOption(Generator, out errorMessage))
                 {
-                    MessageBox.Show("Generator compiler options does not contains /debug option");
-                    return;
+                    MessageBox.Show(errorMessage);
                 }
 
                 if (IsCSharpWebGenerator)
@@ -1049,7 +1077,7 @@ namespace LSI.Packages.Extensiones.Comandos.Build
             RspFile.RemoveFileFromAllRsps(Path.GetFileName(dlg.FileName));
         }
 
-        #region Link events
+#region Link events
 
         /// <summary>
         /// GMatCon.ini link clicked
@@ -1105,9 +1133,9 @@ namespace LSI.Packages.Extensiones.Comandos.Build
             ShellOpen(Entorno.GetTargetDirectoryFilePath(path));
         }
 
-        #endregion
+#endregion
 
-        #region Android
+#region Android
 
 
         private void MiApisSourcesDir_Click(object sender, EventArgs e)
@@ -1120,7 +1148,7 @@ namespace LSI.Packages.Extensiones.Comandos.Build
             new AndroidTools(Generator).EditUserExternalApiFactory();
         }
 
-        #endregion
+#endregion
 
         
     }

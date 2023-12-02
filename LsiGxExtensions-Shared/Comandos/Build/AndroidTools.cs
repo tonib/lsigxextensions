@@ -23,13 +23,21 @@ namespace LSI.Packages.Extensiones.Comandos.Build
         /// <summary>
         /// The SD generator
         /// </summary>
+#if GX_17_OR_GREATER
+        private GxGenerator Generator;
+#else
         private GxEnvironment Generator;
+#endif
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="generator">The SD generator</param>
+#if GX_17_OR_GREATER
+        public AndroidTools(GxGenerator generator)
+#else
         public AndroidTools(GxEnvironment generator)
+#endif
         {
             Generator = generator;
         }

@@ -164,12 +164,19 @@ namespace LSI.Packages.Extensiones.Comandos.Build
                 TxtTargetModel.Text = Entorno.TargetDirectory;
 
                 // Get mains for each generator
-                Dictionary<GxEnvironment, List<KBObject>> mainsByGenerator =
-                    MainsGx.GetMainsByGenerator();
+#if GX_17_OR_GREATER
+                Dictionary<GxGenerator, List<KBObject>> mainsByGenerator = MainsGx.GetMainsByGenerator();
+#else
+                Dictionary<GxEnvironment, List<KBObject>> mainsByGenerator = MainsGx.GetMainsByGenerator();
+#endif
 
                 // Create tab for each generator, with the same generation declaration order
                 GxModel gxModel = UIServices.KB.WorkingEnvironment.TargetModel.GetAs<GxModel>();
+#if GX_17_OR_GREATER
+                foreach (GxGenerator environment in gxModel.Generators) {
+#else
                 foreach (GxEnvironment environment in gxModel.Environments) {
+#endif
                     List<KBObject> mains;
                     if( mainsByGenerator.TryGetValue(environment, out mains) )
                     {

@@ -34,7 +34,11 @@ namespace LSI.Packages.Extensiones.Comandos.Build
         /// <summary>
         /// Generator to use with compilation.
         /// </summary>
+#if GX_17_OR_GREATER
+        private GxGenerator Generator;
+#else
         private GxEnvironment Generator;
+#endif
 
         /// <summary>
         /// True (this class uses the build functions of genexus)
@@ -44,8 +48,12 @@ namespace LSI.Packages.Extensiones.Comandos.Build
         /// <summary>
         /// Constructor
         /// </summary>
-        public CompileModules(KBModel targetModel, 
-            IEnumerable<KBObject> mainsToCompile, GxEnvironment generator) 
+
+#if GX_17_OR_GREATER
+            public CompileModules(KBModel targetModel, IEnumerable<KBObject> mainsToCompile, GxGenerator generator) 
+#else
+        public CompileModules(KBModel targetModel, IEnumerable<KBObject> mainsToCompile, GxEnvironment generator)
+#endif
         {
             TargetModel = targetModel;
             MainsToCompile = mainsToCompile;
@@ -103,7 +111,7 @@ namespace LSI.Packages.Extensiones.Comandos.Build
                             continue;
 
                         // Be sure to compile only one generator at time
-                        GxEnvironment mainGenerator = MainsGx.GetMainGenerator(main);
+                        var mainGenerator = MainsGx.GetMainGenerator(main);
                         if (mainGenerator != null && mainGenerator.Generator == Generator.Generator)
                         {
                             toCompileInfo.Add(new CompileItemInfo(main.Key)

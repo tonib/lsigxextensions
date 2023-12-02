@@ -59,6 +59,17 @@ namespace LSI.Packages.Extensiones.Utilidades
         /// <param name="gxModel">The target model where to search the generator</param>
         /// <param name="description">The generator description</param>
         /// <returns>The generator. null if the generator was not found</returns>
+#if GX_17_OR_GREATER
+        static public GxGenerator GetGeneratorByDescription(GxModel gxModel, string description)
+        {
+            if (string.IsNullOrEmpty(description))
+                return null;
+            description = description.Trim().ToLower();
+            return gxModel.Generators
+                .Where(x => x.Description.ToLower() == description)
+                .FirstOrDefault();
+        }
+#else
         static public GxEnvironment GetGeneratorByDescription(GxModel gxModel, string description)
         {
             if (string.IsNullOrEmpty(description))
@@ -68,16 +79,31 @@ namespace LSI.Packages.Extensiones.Utilidades
                 .Where(x => x.Description.ToLower() == description)
                 .FirstOrDefault();
         }
+#endif
 
+#if GX_17_OR_GREATER
+        static public GxGenerator GetGeneratorByType(KBModel targetModel, GeneratorType type)
+        {
+            return targetModel.GetAs<GxModel>().Generators.Where(x => x.Generator == (int)type).FirstOrDefault();
+        }
+#else
         static public GxEnvironment GetGeneratorByType(KBModel targetModel, GeneratorType type)
         {
             return targetModel.GetAs<GxModel>().Environments.Where(x => x.Generator == (int)type).FirstOrDefault();
         }
+#endif
 
+#if GX_17_OR_GREATER
+        static public GxGenerator GetMainGenerator(KBObject main)
+        {
+            ItemReference<GxGenerator> genRef = main.GetPropertyValue(Properties.PRC.Generator)
+                        as ItemReference<GxGenerator>;
+#else
         static public GxEnvironment GetMainGenerator(KBObject main)
         {
             ItemReference<GxEnvironment> genRef = main.GetPropertyValue(Properties.PRC.Generator)
                         as ItemReference<GxEnvironment>;
+#endif
             if (genRef != null)
                 return genRef.Definition;
 
@@ -97,7 +123,11 @@ namespace LSI.Packages.Extensiones.Utilidades
         /// </summary>
         /// <param name="generator">Generator</param>
         /// <returns></returns>
+#if GX_17_OR_GREATER
+        static public bool IsWebGenerator(GxGenerator generator)
+#else
         static public bool IsWebGenerator(GxEnvironment generator)
+#endif
         {
             bool? isWeb = generator.Properties.GetPropertyValue(Properties.CSHARP.IsWebGenerator) as bool?;
             if (isWeb != null && (bool)isWeb)
@@ -118,7 +148,7 @@ namespace LSI.Packages.Extensiones.Utilidades
         /// <returns>True if the object is web</returns>
         static public bool IsMainWeb(KBObject mainObject)
         {
-            GxEnvironment generator = GetMainGenerator(mainObject);
+            var generator = GetMainGenerator(mainObject);
             if (generator == null)
                 return false;
 
@@ -129,7 +159,11 @@ namespace LSI.Packages.Extensiones.Utilidades
         /// Get kbase mains grouped by generator of the current UI kb
         /// </summary>
         /// <returns>Main kb objects grouped by generator</returns>
+#if GX_17_OR_GREATER
+        static public Dictionary<GxGenerator, List<KBObject>> GetMainsByGenerator()
+#else
         static public Dictionary<GxEnvironment, List<KBObject>> GetMainsByGenerator()
+#endif
         {
             return GetMainsByGenerator(UIServices.KB.CurrentKB.DesignModel.Environment.DesignModel);
         }
@@ -138,14 +172,22 @@ namespace LSI.Packages.Extensiones.Utilidades
         /// Get kbase mains grouped by generator
         /// </summary>
         /// <returns>Main kb objects grouped by generator</returns>
+#if GX_17_OR_GREATER
+        static public Dictionary<GxGenerator, List<KBObject>> GetMainsByGenerator(KBModel model)
+#else
         static public Dictionary<GxEnvironment, List<KBObject>> GetMainsByGenerator(KBModel model)
+#endif
         {
+#if GX_17_OR_GREATER
+            Dictionary<GxGenerator, List<KBObject>> mainsByGenerator =
+                    new Dictionary<GxGenerator, List<KBObject>>();
+#else
             Dictionary<GxEnvironment, List<KBObject>> mainsByGenerator =
                     new Dictionary<GxEnvironment, List<KBObject>>();
-
+#endif
             foreach (KBObject main in GetKBMainObjects(model))
             {
-                GxEnvironment generator = GetMainGenerator(main);
+                var generator = GetMainGenerator(main);
                 if (generator == null)
                     // Mains for Smart devices do not have "Generator" property (fuck) 
                     continue;
@@ -169,8 +211,8 @@ namespace LSI.Packages.Extensiones.Utilidades
         /// <returns>The list of main objects</returns>
         static public List<KBObject> GetMainsByGenerator(KBModel model, GeneratorType generatorType)
         {
-            Dictionary<GxEnvironment, List<KBObject>> mainsbyGenerator = GetMainsByGenerator(model);
-            GxEnvironment env = mainsbyGenerator.Keys.FirstOrDefault(x => x.GeneratorType == generatorType);
+            var mainsbyGenerator = GetMainsByGenerator(model);
+            var env = mainsbyGenerator.Keys.FirstOrDefault(x => x.GeneratorType == generatorType);
             if (env == null)
                 return new List<KBObject>();
             return mainsbyGenerator[env];

@@ -19,7 +19,11 @@ namespace LSI.Packages.Extensiones.Utilidades.CallsAnalisys
         /// <summary>
         /// Generator which we will get the referenced objects
         /// </summary>
+#if GX_17_OR_GREATER
+        private List<GxGenerator> Generators;
+#else
         private List<GxEnvironment> Generators;
+#endif
 
         /// <summary>
         /// Should we publish only specifiable objects?
@@ -30,7 +34,11 @@ namespace LSI.Packages.Extensiones.Utilidades.CallsAnalisys
         /// Constructor
         /// </summary>
         /// <param name="generators">Generators which we will get the referenced objects</param>
+#if GX_17_OR_GREATER
+        public ObjectsByGeneratorFinder(IEnumerable<GxGenerator> generators)
+#else
         public ObjectsByGeneratorFinder(IEnumerable<GxEnvironment> generators)
+#endif
         {
             Generators = generators.ToList();
             MessagesMultiple = 50;
@@ -52,7 +60,7 @@ namespace LSI.Packages.Extensiones.Utilidades.CallsAnalisys
 
             // Get the generators mains
             GraphVisitState visitState = new GraphVisitState();
-            foreach (GxEnvironment generator in Generators)
+            foreach (var generator in Generators)
             {
                 List<KBObject> mainObjects = graph.GetMainObjects(generator);
 

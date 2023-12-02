@@ -168,7 +168,11 @@ namespace LSI.Packages.Extensiones.Utilidades.CallsAnalisys
         /// </summary>
         /// <param name="generator">The generator of mains to retrieve. If it's null, all mains
         /// will be returned</param>
+#if GX_17_OR_GREATER
+        public List<KBObject> GetMainObjects(GxGenerator generator)
+#else
         public List<KBObject> GetMainObjects(GxEnvironment generator)
+#endif
         {
 
             // Get graph main objects:
@@ -180,7 +184,7 @@ namespace LSI.Packages.Extensiones.Utilidades.CallsAnalisys
                 // Filter by generator
                 mains = mains.Where(x =>
                 {
-                    GxEnvironment mainGenerator = MainsGx.GetMainGenerator(x);
+                    var mainGenerator = MainsGx.GetMainGenerator(x);
                     return mainGenerator != null && mainGenerator == generator;
                 });
             }

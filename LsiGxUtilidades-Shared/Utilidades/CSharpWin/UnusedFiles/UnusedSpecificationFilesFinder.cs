@@ -62,7 +62,11 @@ namespace LSI.Packages.Extensiones.Utilidades.CSharpWin.UnusedFiles
             string baseDir = Path.Combine(TargetModel.KB.Location, ModelSpecificationsDirName);
             // Get each C# win generator specifications dir
             GxModel gxModel = TargetModel.GetAs<GxModel>();
-            foreach (GxEnvironment generator in gxModel.Environments.Where(x => x.Generator == (int)GeneratorType.CSharpWin))
+#if GX_17_OR_GREATER
+            foreach (var generator in gxModel.Generators.Where(x => x.Generator == (int)GeneratorType.CSharpWin))
+#else
+            foreach (var generator in gxModel.Environments.Where(x => x.Generator == (int)GeneratorType.CSharpWin))
+#endif
             {
                 string generatorDirName = "GEN" + generator.Generator;
                 if (Directory.Exists(Path.Combine(baseDir, generatorDirName)))

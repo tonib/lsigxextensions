@@ -142,21 +142,29 @@ namespace LSI.Packages.Extensiones.Comandos
         /// <summary>
         /// The currently selected generator. null if no generator has been selected
         /// </summary>
+#if GX_17_OR_GREATER
+        private List<GxGenerator> SelectedGenerators
+#else
         private List<GxEnvironment> SelectedGenerators
+#endif
         {
             get
             {
                 IEnumerable<string> generatorsNames = TxtObjeto.Text.Split(new char[] { ';' }, 
                     StringSplitOptions.RemoveEmptyEntries)
                     .Select(x => x.Trim());
+#if GX_17_OR_GREATER
+                List<GxGenerator> generators = new List<GxGenerator>();
+#else
                 List<GxEnvironment> generators = new List<GxEnvironment>();
+#endif
 
                 GxModel gxModel = UIServices.KB.CurrentKB.DesignModel.Environment.TargetModel.GetAs<GxModel>();
                 foreach(string generatorName in generatorsNames)
                 {
                     if (string.IsNullOrEmpty(generatorName))
                         continue;
-                    GxEnvironment generator = MainsGx.GetGeneratorByDescription(gxModel, generatorName);
+                    var generator = MainsGx.GetGeneratorByDescription(gxModel, generatorName);
                     if (generator == null)
                         throw new Exception("Generator with description " + generatorName + " not found");
                     generators.Add(generator);

@@ -99,7 +99,11 @@ namespace LSI.Packages.Extensiones.Utilidades.CSharpWin.UnusedFiles
             List<string> compilerOptionsDependencies = new List<string>();
 
             // I don't know how to get the generator from the model. I only know how to get it from a main...
+#if GX_17_OR_GREATER
+            GxGenerator generator = null;
+#else
             GxEnvironment generator = null;
+#endif
             if (mainObjects.Count == 0)
                 return new List<string>();
 

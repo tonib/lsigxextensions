@@ -33,7 +33,11 @@ namespace LSI.Packages.Extensiones.Utilidades.UI
         /// <summary>
         /// The selected environments. empty if no enviroment was selected
         /// </summary>
+#if GX_17_OR_GREATER
+        public List<GxGenerator> SelectedEnvironments = new List<GxGenerator>();
+#else
         public List<GxEnvironment> SelectedEnvironments = new List<GxEnvironment>();
+#endif
 
         /// <summary>
         /// The model where to get the generators
@@ -58,11 +62,15 @@ namespace LSI.Packages.Extensiones.Utilidades.UI
             GxModel = model.GetAs<GxModel>();
 
             // Filter smart devices?
+#if GX_17_OR_GREATER
+            IEnumerable<GxGenerator> generators = GxModel.Generators;
+#else
             IEnumerable<GxEnvironment> generators = GxModel.Environments;
-            if(!showSmartDevices)
+#endif
+            if (!showSmartDevices)
                 generators = generators.Where(x => x.Generator != (int)GeneratorType.SmartDevices);           
 
-            foreach (GxEnvironment generator in generators)
+            foreach (var generator in generators)
                 LstGenerators.Items.Add(generator.Description);
             if (LstGenerators.Items.Count > 0)
                 LstGenerators.SelectedIndex = 0;
@@ -78,7 +86,7 @@ namespace LSI.Packages.Extensiones.Utilidades.UI
             DialogResult = DialogResult.OK;
             foreach (string generatorDescription in LstGenerators.SelectedItems)
             {
-                GxEnvironment generator = MainsGx.GetGeneratorByDescription(GxModel, generatorDescription);
+                var generator = MainsGx.GetGeneratorByDescription(GxModel, generatorDescription);
                 if (generator != null)
                     SelectedEnvironments.Add(generator);
             }

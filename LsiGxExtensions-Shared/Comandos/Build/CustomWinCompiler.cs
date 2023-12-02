@@ -45,7 +45,11 @@ namespace LSI.Packages.Extensiones.Comandos.Build
         /// <summary>
         /// Generator to compile
         /// </summary>
+#if GX_17_OR_GREATER
+        private GxGenerator Generator;
+#else
         private GxEnvironment Generator;
+#endif
 
         /// <summary>
         /// Compile Genexus.programs.commons.dll?
@@ -71,7 +75,11 @@ namespace LSI.Packages.Extensiones.Comandos.Build
         /// Constructor to compile a list of mains
         /// </summary>
         /// <param name="mainsToCompile">Set of mains to compile</param>
+#if GX_17_OR_GREATER
+        public CustomWinCompiler(GxGenerator generator, IEnumerable<KBObject> mainsToCompile)
+#else
         public CustomWinCompiler(GxEnvironment generator, IEnumerable<KBObject> mainsToCompile)
+#endif
         {
             Generator = generator;
             MainsToCompile = mainsToCompile;

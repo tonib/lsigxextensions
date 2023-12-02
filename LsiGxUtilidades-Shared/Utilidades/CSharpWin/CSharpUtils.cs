@@ -18,6 +18,7 @@ using System.Diagnostics;
 using Artech.Genexus.Common.CustomTypes;
 using Artech.Genexus.Common.ModelParts;
 using Artech.Genexus.Common.Helpers;
+using static Artech.Genexus.Common.Properties.CSHARP;
 
 namespace LSI.Packages.Extensiones.Utilidades.CSharpWin
 {
@@ -55,15 +56,61 @@ namespace LSI.Packages.Extensiones.Utilidades.CSharpWin
         }
 
         /// <summary>
-        /// C# compiler has defined the "/debug" compiler flag
+        /// C# compiler has defined the debug options?
         /// </summary>
         /// <param name="generator">Generator to check</param>
         /// <returns>True if the compiler flags contains the debug option</returns>
+#if GX_17_OR_GREATER
+        static public bool GeneratorHasDebugOption(GxGenerator generator)
+#else
         static public bool GeneratorHasDebugOption(GxEnvironment generator)
+#endif
         {
-            string compilerOptions =
-                generator.Properties.GetPropertyValue(Properties.CSHARP.CompilerFlags) as string;
-            return compilerOptions != null && compilerOptions.ToLower().Contains("/debug");
+            string errorMessage;
+            return GeneratorHasDebugOption(generator, out errorMessage);
+        }
+
+        /// <summary>
+        /// C# compiler has defined debug options?
+        /// </summary>
+        /// <param name="generator">Generator to check</param>
+        /// <param name="warningMessage">Message to display to user if generator has no set compiler options</param>
+        /// <returns>True if the compiler flags contains the debug option</returns>
+#if GX_17_OR_GREATER
+        static public bool GeneratorHasDebugOption(GxGenerator generator, out string warningMessage)
+#else
+        static public bool GeneratorHasDebugOption(GxEnvironment generator, out string warningMessage)
+#endif
+        {
+            warningMessage = null;
+            string buildMode = generator.Properties.GetPropertyValue<string>(Properties.CSHARP.BuildMode);
+
+            bool msBuildMode = false;
+#if GX_17_OR_GREATER
+            msBuildMode = buildMode == BuildMode_Values.Msbuild;
+#endif
+            if(msBuildMode)
+			{
+#if GX_17_OR_GREATER
+                string msBuildOptions = generator.Properties.GetPropertyValue<string>(Properties.CSHARP.MsbuildOptions) ?? string.Empty;
+                if(!msBuildOptions.ToLower().Contains("/p:configuration=debug"))
+				{
+                    warningMessage = "C# generator property 'MSBuild options' does not contain '/p:Configuration=Debug': Debug may not work";
+                    return false;
+				}
+#endif
+            }
+            else
+			{
+                string compilerOptions = generator.Properties.GetPropertyValue<string>(Properties.CSHARP.CompilerFlags) ?? string.Empty;
+                if(!compilerOptions.ToLower().Contains("/debug"))
+				{
+                    warningMessage = "C# generator property 'Compiler options' does not contain '/debug': Debug may not work";
+                    return false;
+				}
+            }
+
+            return true;
         }
 
     }

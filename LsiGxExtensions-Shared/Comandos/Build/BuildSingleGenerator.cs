@@ -30,7 +30,11 @@ namespace LSI.Packages.Extensiones.Comandos.Build
         /// <summary>
         /// Generator to run
         /// </summary>
+#if GX_17_OR_GREATER
+        private GxGenerator Generator;
+#else
         private GxEnvironment Generator;
+#endif
 
         /// <summary>
         /// Compile process. It can be null
@@ -51,7 +55,11 @@ namespace LSI.Packages.Extensiones.Comandos.Build
         /// Constructor
         /// </summary>
         /// <param name="generator">Generator to run</param>
+#if GX_17_OR_GREATER
+        public BuildSingleGenerator(GxGenerator generator, bool specifyPendingObjects)
+#else
         public BuildSingleGenerator(GxEnvironment generator, bool specifyPendingObjects)
+#endif
         {
             Generator = generator;
             SpecifyPendingObjects = specifyPendingObjects;

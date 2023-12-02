@@ -47,11 +47,15 @@ namespace LSI.Packages.Extensiones.MsBuild
                 using (LSI.Packages.Extensiones.Utilidades.Logging.Log log =
                     new LSI.Packages.Extensiones.Utilidades.Logging.Log())
                 {
-                    Dictionary<GxEnvironment, List<KBObject>> mainsByGenerator = 
+#if GX_17_OR_GREATER
+                    Dictionary<GxGenerator, List<KBObject>> mainsByGenerator = 
                         MainsGx.GetMainsByGenerator(this.KB.DesignModel.Environment.TargetModel);
-
+#else
+                    Dictionary<GxEnvironment, List<KBObject>> mainsByGenerator =
+                        MainsGx.GetMainsByGenerator(this.KB.DesignModel.Environment.TargetModel);
+#endif
                     // Check each generator
-                    foreach (GxEnvironment generator in mainsByGenerator.Keys)
+                    foreach (var generator in mainsByGenerator.Keys)
                     {
 
                         if ( !string.IsNullOrEmpty(Generator) && generator.Description.ToLower() != Generator.ToLower())
@@ -82,7 +86,11 @@ namespace LSI.Packages.Extensiones.MsBuild
         /// <summary>
         /// Kind of RSP files repair on win / c# environment
         /// </summary>
+#if GX_17_OR_GREATER
+        private CustomWinCompiler.RepairRspsOption GetRepairRspValue(GxGenerator generator)
+#else
         private CustomWinCompiler.RepairRspsOption GetRepairRspValue(GxEnvironment generator)
+#endif
         {
             if( string.IsNullOrEmpty(RepairRsp))
                 RepairRsp = "default";
@@ -113,9 +121,15 @@ namespace LSI.Packages.Extensiones.MsBuild
         /// <param name="mains">Main objects to compile</param>
         /// <param name="generator">Generator of the main objects</param>
         /// <param name="isWeb">True if the generator is web</param>
+#if GX_17_OR_GREATER
         private void CompileGenerator(Log log, 
-            List<KBObject> mains, GxEnvironment generator, 
+            List<KBObject> mains, GxGenerator generator, 
             bool isWeb)
+#else
+        private void CompileGenerator(Log log,
+            List<KBObject> mains, GxEnvironment generator,
+            bool isWeb)
+#endif
         {
             // Define the compilation process
             BuildProcess buildProcess;
