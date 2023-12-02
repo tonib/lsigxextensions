@@ -1054,9 +1054,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\LsiGxExtensions-Gx16\GeneXusPackage.package">
+    <EmbeddedResource Include="..\LsiGxExtensions-Gx16\GeneXusPackage.package">
       <Link>GeneXusPackage.package</Link>
-    </None>
+    </EmbeddedResource>
     <None Include="..\LsiGxExtensions-Gx16\LsiExtensions.targets">
       <Link>LsiExtensions.targets</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -605,7 +605,7 @@
     <Content Include="Resources\VSIcons\WindowsGroups_7309.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="GeneXusPackage.package" />
+    <EmbeddedResource Include="GeneXusPackage.package" />
     <None Include="LsiExtensions.targets">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
