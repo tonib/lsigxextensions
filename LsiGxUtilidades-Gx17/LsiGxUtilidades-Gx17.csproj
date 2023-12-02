@@ -178,9 +178,478 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\BuscadorAsignaciones.cs">
+      <Link>Utilidades\AnalisisCodigo\BuscadorAsignaciones.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\BuscadorConditions.cs">
+      <Link>Utilidades\AnalisisCodigo\BuscadorConditions.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\BuscadorEventos.cs">
+      <Link>Utilidades\AnalisisCodigo\BuscadorEventos.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\BuscadorLecturasEscrituras.cs">
+      <Link>Utilidades\AnalisisCodigo\BuscadorLecturasEscrituras.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\BuscadorReferenciasAtributo.cs">
+      <Link>Utilidades\AnalisisCodigo\BuscadorReferenciasAtributo.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\BuscadorReferenciasTabla.cs">
+      <Link>Utilidades\AnalisisCodigo\BuscadorReferenciasTabla.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\BuscadorTokensSdtGx.cs">
+      <Link>Utilidades\AnalisisCodigo\BuscadorTokensSdtGx.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\EnumeratedDomainsFinder.cs">
+      <Link>Utilidades\AnalisisCodigo\EnumeratedDomainsFinder.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\GxSourcesFinder.cs">
+      <Link>Utilidades\AnalisisCodigo\GxSourcesFinder.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Llamadas\CallInfoBuilder.cs">
+      <Link>Utilidades\AnalisisCodigo\Llamadas\CallInfoBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Llamadas\CallPemExpression.cs">
+      <Link>Utilidades\AnalisisCodigo\Llamadas\CallPemExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Llamadas\CallsFinder.cs">
+      <Link>Utilidades\AnalisisCodigo\Llamadas\CallsFinder.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Llamadas\Edicion\EditorLlamadas.cs">
+      <Link>Utilidades\AnalisisCodigo\Llamadas\Edicion\EditorLlamadas.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Llamadas\Edicion\Estado.cs">
+      <Link>Utilidades\AnalisisCodigo\Llamadas\Edicion\Estado.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Llamadas\Edicion\InfoCambioLlamada.cs">
+      <Link>Utilidades\AnalisisCodigo\Llamadas\Edicion\InfoCambioLlamada.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Llamadas\Edicion\InfoCambioLlamadasObjeto.cs">
+      <Link>Utilidades\AnalisisCodigo\Llamadas\Edicion\InfoCambioLlamadasObjeto.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Llamadas\Edicion\IOperacionLlamada.cs">
+      <Link>Utilidades\AnalisisCodigo\Llamadas\Edicion\IOperacionLlamada.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Llamadas\Edicion\OpAgregarParametro.cs">
+      <Link>Utilidades\AnalisisCodigo\Llamadas\Edicion\OpAgregarParametro.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Llamadas\Edicion\OpQuitarParametro.cs">
+      <Link>Utilidades\AnalisisCodigo\Llamadas\Edicion\OpQuitarParametro.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Llamadas\Edicion\OpReemplazarLlamador.cs">
+      <Link>Utilidades\AnalisisCodigo\Llamadas\Edicion\OpReemplazarLlamador.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Llamadas\GxCallInfo.cs">
+      <Link>Utilidades\AnalisisCodigo\Llamadas\GxCallInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Llamadas\Llamada.cs">
+      <Link>Utilidades\AnalisisCodigo\Llamadas\Llamada.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\ObjectBaseReplacer.cs">
+      <Link>Utilidades\AnalisisCodigo\ObjectBaseReplacer.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\ObjectPEMGx.cs">
+      <Link>Utilidades\AnalisisCodigo\ObjectPEMGx.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\ObjectsModifiedByUserFinder.cs">
+      <Link>Utilidades\AnalisisCodigo\ObjectsModifiedByUserFinder.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\OrphanAttributesFinder.cs">
+      <Link>Utilidades\AnalisisCodigo\OrphanAttributesFinder.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\ParsedCode.cs">
+      <Link>Utilidades\AnalisisCodigo\ParsedCode.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\ParsedCodeFinder.cs">
+      <Link>Utilidades\AnalisisCodigo\ParsedCodeFinder.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\ParserGx.cs">
+      <Link>Utilidades\AnalisisCodigo\ParserGx.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Reglas\BuscadorReglas.cs">
+      <Link>Utilidades\AnalisisCodigo\Reglas\BuscadorReglas.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Reglas\ParameterElement.cs">
+      <Link>Utilidades\AnalisisCodigo\Reglas\ParameterElement.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Reglas\ReglaDefault.cs">
+      <Link>Utilidades\AnalisisCodigo\Reglas\ReglaDefault.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Reglas\ReglaHidden.cs">
+      <Link>Utilidades\AnalisisCodigo\Reglas\ReglaHidden.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Reglas\ReglaOrder.cs">
+      <Link>Utilidades\AnalisisCodigo\Reglas\ReglaOrder.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Reglas\ReglaParm.cs">
+      <Link>Utilidades\AnalisisCodigo\Reglas\ReglaParm.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Reglas\ReglaUpdate.cs">
+      <Link>Utilidades\AnalisisCodigo\Reglas\ReglaUpdate.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\RemoveLogicalOperatorsDots.cs">
+      <Link>Utilidades\AnalisisCodigo\RemoveLogicalOperatorsDots.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\SubroutinesFinder.cs">
+      <Link>Utilidades\AnalisisCodigo\SubroutinesFinder.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\TokensFinder.cs">
+      <Link>Utilidades\AnalisisCodigo\TokensFinder.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Tokens\ControlsTokenReferences.cs">
+      <Link>Utilidades\AnalisisCodigo\Tokens\ControlsTokenReferences.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Tokens\ControlTokenFinder.cs">
+      <Link>Utilidades\AnalisisCodigo\Tokens\ControlTokenFinder.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Tokens\FiltroIndirecionToken.cs">
+      <Link>Utilidades\AnalisisCodigo\Tokens\FiltroIndirecionToken.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Tokens\FiltroTiposToken.cs">
+      <Link>Utilidades\AnalisisCodigo\Tokens\FiltroTiposToken.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Tokens\TipoIndireccion.cs">
+      <Link>Utilidades\AnalisisCodigo\Tokens\TipoIndireccion.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Tokens\TipoToken.cs">
+      <Link>Utilidades\AnalisisCodigo\Tokens\TipoToken.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Tokens\TokenGx.cs">
+      <Link>Utilidades\AnalisisCodigo\Tokens\TokenGx.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\UnreferencedObjectsFinder.cs">
+      <Link>Utilidades\AnalisisCodigo\UnreferencedObjectsFinder.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\VariablesFinder.cs">
+      <Link>Utilidades\AnalisisCodigo\VariablesFinder.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Variables\ConditionsVariablesReferences.cs">
+      <Link>Utilidades\AnalisisCodigo\Variables\ConditionsVariablesReferences.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Variables\FormVariablesReferences.cs">
+      <Link>Utilidades\AnalisisCodigo\Variables\FormVariablesReferences.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Variables\MainCodeVariablesReferences.cs">
+      <Link>Utilidades\AnalisisCodigo\Variables\MainCodeVariablesReferences.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Variables\ObjectVariablesReferences.cs">
+      <Link>Utilidades\AnalisisCodigo\Variables\ObjectVariablesReferences.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Variables\PartVariablesReferences.cs">
+      <Link>Utilidades\AnalisisCodigo\Variables\PartVariablesReferences.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Variables\ReportLayoutVariablesReferences.cs">
+      <Link>Utilidades\AnalisisCodigo\Variables\ReportLayoutVariablesReferences.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AnalisisCodigo\Variables\RulesVariablesReferences.cs">
+      <Link>Utilidades\AnalisisCodigo\Variables\RulesVariablesReferences.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\AtributoGx.cs">
+      <Link>Utilidades\AtributoGx.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\CallsAnalisys\BuscadorReferenciasMain.cs">
+      <Link>Utilidades\CallsAnalisys\BuscadorReferenciasMain.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\CallsAnalisys\FullGraphBuilder.cs">
+      <Link>Utilidades\CallsAnalisys\FullGraphBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\CallsAnalisys\GraphVisitState.cs">
+      <Link>Utilidades\CallsAnalisys\GraphVisitState.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\CallsAnalisys\KbSignaturesCache.cs">
+      <Link>Utilidades\CallsAnalisys\KbSignaturesCache.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\CallsAnalisys\ObjectsByGeneratorFinder.cs">
+      <Link>Utilidades\CallsAnalisys\ObjectsByGeneratorFinder.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\CallsAnalisys\ObjectsGraph.cs">
+      <Link>Utilidades\CallsAnalisys\ObjectsGraph.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\CallsAnalisys\PartialGraphBuilder.cs">
+      <Link>Utilidades\CallsAnalisys\PartialGraphBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\CodeGeneration\AssignmentsGenerator.cs">
+      <Link>Utilidades\CodeGeneration\AssignmentsGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\CodeGeneration\ForEachGenerator.cs">
+      <Link>Utilidades\CodeGeneration\ForEachGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\CodeGeneration\NewGenerator.cs">
+      <Link>Utilidades\CodeGeneration\NewGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\CodeGeneration\ProcedureForEachGenerator.cs">
+      <Link>Utilidades\CodeGeneration\ProcedureForEachGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\CodeGeneration\ProcedureGenerator.cs">
+      <Link>Utilidades\CodeGeneration\ProcedureGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\CodigoGenerado.cs">
+      <Link>Utilidades\CodigoGenerado.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\Compression\Compressor.cs">
+      <Link>Utilidades\Compression\Compressor.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\Compression\ZipOperation.cs">
+      <Link>Utilidades\Compression\ZipOperation.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\CSharpWin\CSharpUtils.cs">
+      <Link>Utilidades\CSharpWin\CSharpUtils.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\CSharpWin\GeneratedSourceFilesCache.cs">
+      <Link>Utilidades\CSharpWin\GeneratedSourceFilesCache.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\CSharpWin\ObjectSourceFiles.cs">
+      <Link>Utilidades\CSharpWin\ObjectSourceFiles.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\CSharpWin\RspFile.cs">
+      <Link>Utilidades\CSharpWin\RspFile.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\CSharpWin\UnusedFiles\UnusedFile.cs">
+      <Link>Utilidades\CSharpWin\UnusedFiles\UnusedFile.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\CSharpWin\UnusedFiles\UnusedFilesFinderBase.cs">
+      <Link>Utilidades\CSharpWin\UnusedFiles\UnusedFilesFinderBase.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\CSharpWin\UnusedFiles\UnusedSourceFiles.cs">
+      <Link>Utilidades\CSharpWin\UnusedFiles\UnusedSourceFiles.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\CSharpWin\UnusedFiles\UnusedSpecificationFilesFinder.cs">
+      <Link>Utilidades\CSharpWin\UnusedFiles\UnusedSpecificationFilesFinder.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\CSharpWin\UnusedFiles\UnusedWinBinFilesFinder.cs">
+      <Link>Utilidades\CSharpWin\UnusedFiles\UnusedWinBinFilesFinder.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\DataTypeInfo.cs">
+      <Link>Utilidades\DataTypeInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\Entorno.cs">
+      <Link>Utilidades\Entorno.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\EventoGX.cs">
+      <Link>Utilidades\EventoGX.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\GxClassExtensions\CommandDataExtensions.cs">
+      <Link>Utilidades\GxClassExtensions\CommandDataExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\GxClassExtensions\DataSelectorExtensions.cs">
+      <Link>Utilidades\GxClassExtensions\DataSelectorExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\GxClassExtensions\HashSetExtensions.cs">
+      <Link>Utilidades\GxClassExtensions\HashSetExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\GxClassExtensions\ICallableInfoExtensions.cs">
+      <Link>Utilidades\GxClassExtensions\ICallableInfoExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\GxClassExtensions\IParserObjectBaseExtensions.cs">
+      <Link>Utilidades\GxClassExtensions\IParserObjectBaseExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\GxClassExtensions\ITypedObjectExtensions.cs">
+      <Link>Utilidades\GxClassExtensions\ITypedObjectExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\GxClassExtensions\KBObjectPartCollectionExtensions.cs">
+      <Link>Utilidades\GxClassExtensions\KBObjectPartCollectionExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\GxClassExtensions\KBObjectPartExtensions.cs">
+      <Link>Utilidades\GxClassExtensions\KBObjectPartExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\GxClassExtensions\ObjClassLsi.cs">
+      <Link>Utilidades\GxClassExtensions\ObjClassLsi.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\GxClassExtensions\ObjectBaseExtensions.cs">
+      <Link>Utilidades\GxClassExtensions\ObjectBaseExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\GxClassExtensions\PatternInstanceElementExtensions.cs">
+      <Link>Utilidades\GxClassExtensions\PatternInstanceElementExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\GxClassExtensions\ProductVersionHelperExtensions.cs">
+      <Link>Utilidades\GxClassExtensions\ProductVersionHelperExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\GxClassExtensions\SDPanelExtensions.cs">
+      <Link>Utilidades\GxClassExtensions\SDPanelExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\GxClassExtensions\SDTLevelExtensions.cs">
+      <Link>Utilidades\GxClassExtensions\SDTLevelExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\GxClassExtensions\VariableExtensions.cs">
+      <Link>Utilidades\GxClassExtensions\VariableExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\GxClassExtensions\VariablesPartExtensions.cs">
+      <Link>Utilidades\GxClassExtensions\VariablesPartExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\KBaseGX.cs">
+      <Link>Utilidades\KBaseGX.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\KBSync\KBSyncInfo.cs">
+      <Link>Utilidades\KBSync\KBSyncInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\KBSync\KBSyncObjectInfo.cs">
+      <Link>Utilidades\KBSync\KBSyncObjectInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\KBSync\KBSyncObjectRef.cs">
+      <Link>Utilidades\KBSync\KBSyncObjectRef.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\KeywordGx.cs">
+      <Link>Utilidades\KeywordGx.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\LayoutGx.cs">
+      <Link>Utilidades\LayoutGx.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\Logging\BackgroundWorkerLogger.cs">
+      <Link>Utilidades\Logging\BackgroundWorkerLogger.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\Logging\Log.cs">
+      <Link>Utilidades\Logging\Log.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\Logging\PlainTextLogger.cs">
+      <Link>Utilidades\Logging\PlainTextLogger.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\MainsGx.cs">
+      <Link>Utilidades\MainsGx.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\ParteObjetoKb.cs">
+      <Link>Utilidades\ParteObjetoKb.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\Reflection\DependenciesWalker.cs">
+      <Link>Utilidades\Reflection\DependenciesWalker.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\Reflection\SerializableDictionary.cs">
+      <Link>Utilidades\Reflection\SerializableDictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\Reflection\SerializableKeyValue.cs">
+      <Link>Utilidades\Reflection\SerializableKeyValue.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\Reflection\UtilidadesReflexion.cs">
+      <Link>Utilidades\Reflection\UtilidadesReflexion.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\Sdts\StdGX.cs">
+      <Link>Utilidades\Sdts\StdGX.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\Threading\ColaTareas.cs">
+      <Link>Utilidades\Threading\ColaTareas.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\Threading\CommandDelegatorBase.cs">
+      <Link>Utilidades\Threading\CommandDelegatorBase.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\Threading\IExecutable.cs">
+      <Link>Utilidades\Threading\IExecutable.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\Threading\NativeWindowEnumerator.cs">
+      <Link>Utilidades\Threading\NativeWindowEnumerator.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\Threading\ProcessChooser.cs">
+      <Link>Utilidades\Threading\ProcessChooser.cs</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\Threading\ProcessChooser.designer.cs">
+      <Link>Utilidades\Threading\ProcessChooser.designer.cs</Link>
+      <DependentUpon>ProcessChooser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\Threading\ProcessLogger.cs">
+      <Link>Utilidades\Threading\ProcessLogger.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\Threading\ProcessUtils.cs">
+      <Link>Utilidades\Threading\ProcessUtils.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\TipoOperacion.cs">
+      <Link>Utilidades\TipoOperacion.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\TipoReferenciaTabla.cs">
+      <Link>Utilidades\TipoReferenciaTabla.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\UI\ClipboardTable.cs">
+      <Link>Utilidades\UI\ClipboardTable.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\UI\ControlUtils.cs">
+      <Link>Utilidades\UI\ControlUtils.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\UI\GridObjetos.cs">
+      <Link>Utilidades\UI\GridObjetos.cs</Link>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\UI\ListBoxTypeAhead.cs">
+      <Link>Utilidades\UI\ListBoxTypeAhead.cs</Link>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\UI\ListBoxUtils.cs">
+      <Link>Utilidades\UI\ListBoxUtils.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\UI\RefObjetoGX.cs">
+      <Link>Utilidades\UI\RefObjetoGX.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\UI\SearchKbObjectsToolWindowBase.cs">
+      <Link>Utilidades\UI\SearchKbObjectsToolWindowBase.cs</Link>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\UI\SearchToolWindowBase.cs">
+      <Link>Utilidades\UI\SearchToolWindowBase.cs</Link>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\UI\SelectGenerator.cs">
+      <Link>Utilidades\UI\SelectGenerator.cs</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\UI\SelectGenerator.designer.cs">
+      <Link>Utilidades\UI\SelectGenerator.designer.cs</Link>
+      <DependentUpon>SelectGenerator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\UI\SelectKbObject.cs">
+      <Link>Utilidades\UI\SelectKbObject.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\UI\SortableList.cs">
+      <Link>Utilidades\UI\SortableList.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\UI\ToolWindowBase.cs">
+      <Link>Utilidades\UI\ToolWindowBase.cs</Link>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\UI\UISearchBase.cs">
+      <Link>Utilidades\UI\UISearchBase.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\Validation\IValidator.cs">
+      <Link>Utilidades\Validation\IValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\Validation\ValidationService.cs">
+      <Link>Utilidades\Validation\ValidationService.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\Validation\ValidationTask.cs">
+      <Link>Utilidades\Validation\ValidationTask.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\Variables\VariableGX.cs">
+      <Link>Utilidades\Variables\VariableGX.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\VS\CompilerError.cs">
+      <Link>Utilidades\VS\CompilerError.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\VS\CompilerLog.cs">
+      <Link>Utilidades\VS\CompilerLog.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\VS\VisualStudio.cs">
+      <Link>Utilidades\VS\VisualStudio.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\WinForms\ControlWinForm.cs">
+      <Link>Utilidades\WinForms\ControlWinForm.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\WinForms\EnumeradorWinform.cs">
+      <Link>Utilidades\WinForms\EnumeradorWinform.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxUtilidades-Gx16\Utilidades\WinForms\WinFormGx.cs">
+      <Link>Utilidades\WinForms\WinFormGx.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <Import Project="..\LsiGxUtilidades-Shared\LsiGxUtilidades-Shared.projitems" Label="Shared" />
+  <ItemGroup>
+    <EmbeddedResource Include="..\LsiGxUtilidades-Gx16\Utilidades\Threading\ProcessChooser.resx">
+      <Link>Utilidades\Threading\ProcessChooser.resx</Link>
+      <DependentUpon>ProcessChooser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\LsiGxUtilidades-Gx16\Utilidades\UI\GridObjetos.resx">
+      <Link>Utilidades\UI\GridObjetos.resx</Link>
+      <DependentUpon>GridObjetos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\LsiGxUtilidades-Gx16\Utilidades\UI\SelectGenerator.resx">
+      <Link>Utilidades\UI\SelectGenerator.resx</Link>
+      <DependentUpon>SelectGenerator.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

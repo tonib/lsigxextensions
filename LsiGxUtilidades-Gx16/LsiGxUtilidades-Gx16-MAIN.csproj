@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{81CADF5A-2FB2-4A12-B637-E55F52AA6C85}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LSI.Packages.Extensiones</RootNamespace>
+    <AssemblyName>LSI.Packages.Extensiones.Utilidades</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;GX_16;GX_15_OR_GREATER;GX_16_OR_GREATER</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;GX_16;GX_15_OR_GREATER;GX_16_OR_GREATER</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Artech.Architecture.BL.Framework">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Architecture.BL.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Architecture.Common">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Architecture.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Architecture.Interfaces">
+      <HintPath>$(GX_PROGRAM_DIR_GX16)\Artech.Architecture.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Architecture.Language">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Architecture.Language.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Architecture.UI.Framework">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Architecture.UI.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Common">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Common.Controls">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Common.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Common.Framework">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Common.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Common.Helpers">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Common.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Common.Language">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Common.Language.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Common.Properties">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Common.Properties.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Core.UI">
+      <HintPath>$(GX_PROGRAM_DIR_GX16)\Artech.Core.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.FrameworkDE">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.FrameworkDE.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Genexus.Common">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Genexus.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.GXplorer.Common">
+      <HintPath>$(GX_PROGRAM_DIR_GX16)\Artech.GXplorer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Layers.Framework">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Layers.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.MsBuild.Common">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.MsBuild.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Packages.Patterns">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Packages.Patterns.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Patterns.WorkWithDevices">
+      <HintPath>$(GX_PROGRAM_DIR_GX16)\Packages\Patterns\WorkWithDevices\Artech.Patterns.WorkWithDevices.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Template.Base">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Template.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Template.Helper">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Template.Helper.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Template.Parser">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Template.Parser.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.Architecture.Common">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Udm.Architecture.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.BL">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Udm.BL.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.Data">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Udm.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.Framework">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Udm.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.Layers">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Udm.Layers.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.Layers.BL">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Udm.Layers.BL.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.Layers.Common">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Udm.Layers.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.Layers.Data.SQL">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Udm.Layers.Data.SQL.dll</HintPath>
+    </Reference>
+    <Reference Include="Connector">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Connector.dll</HintPath>
+    </Reference>
+    <Reference Include="DeklaritLibrary">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\DeklaritLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\PublicAssemblies\EnvDTE.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="GxDataLayer">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\GxDataLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=e44a2bc38ed2c13c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\BuscadorAsignaciones.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\BuscadorConditions.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\BuscadorEventos.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\BuscadorLecturasEscrituras.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\BuscadorReferenciasAtributo.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\BuscadorReferenciasTabla.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\BuscadorTokensSdtGx.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\EnumeratedDomainsFinder.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\GxSourcesFinder.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Llamadas\CallInfoBuilder.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Llamadas\CallPemExpression.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Llamadas\CallsFinder.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Llamadas\Edicion\EditorLlamadas.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Llamadas\Edicion\Estado.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Llamadas\Edicion\InfoCambioLlamada.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Llamadas\Edicion\InfoCambioLlamadasObjeto.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Llamadas\Edicion\IOperacionLlamada.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Llamadas\Edicion\OpAgregarParametro.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Llamadas\Edicion\OpQuitarParametro.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Llamadas\Edicion\OpReemplazarLlamador.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Llamadas\GxCallInfo.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Llamadas\Llamada.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\ObjectBaseReplacer.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\ObjectPEMGx.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\ObjectsModifiedByUserFinder.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\OrphanAttributesFinder.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\ParsedCode.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\ParsedCodeFinder.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\ParserGx.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Reglas\BuscadorReglas.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Reglas\ParameterElement.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Reglas\ReglaDefault.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Reglas\ReglaHidden.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Reglas\ReglaOrder.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Reglas\ReglaParm.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Reglas\ReglaUpdate.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\RemoveLogicalOperatorsDots.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\SubroutinesFinder.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\TokensFinder.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Tokens\ControlsTokenReferences.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Tokens\ControlTokenFinder.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Tokens\FiltroIndirecionToken.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Tokens\FiltroTiposToken.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Tokens\TipoIndireccion.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Tokens\TipoToken.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Tokens\TokenGx.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\UnreferencedObjectsFinder.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\VariablesFinder.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Variables\ConditionsVariablesReferences.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Variables\FormVariablesReferences.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Variables\MainCodeVariablesReferences.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Variables\ObjectVariablesReferences.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Variables\PartVariablesReferences.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Variables\ReportLayoutVariablesReferences.cs" />
+    <Compile Include="Utilidades\AnalisisCodigo\Variables\RulesVariablesReferences.cs" />
+    <Compile Include="Utilidades\AtributoGx.cs" />
+    <Compile Include="Utilidades\CallsAnalisys\BuscadorReferenciasMain.cs" />
+    <Compile Include="Utilidades\CallsAnalisys\FullGraphBuilder.cs" />
+    <Compile Include="Utilidades\CallsAnalisys\GraphVisitState.cs" />
+    <Compile Include="Utilidades\CallsAnalisys\KbSignaturesCache.cs" />
+    <Compile Include="Utilidades\CallsAnalisys\ObjectsByGeneratorFinder.cs" />
+    <Compile Include="Utilidades\CallsAnalisys\ObjectsGraph.cs" />
+    <Compile Include="Utilidades\CallsAnalisys\PartialGraphBuilder.cs" />
+    <Compile Include="Utilidades\CodeGeneration\AssignmentsGenerator.cs" />
+    <Compile Include="Utilidades\CodeGeneration\ForEachGenerator.cs" />
+    <Compile Include="Utilidades\CodeGeneration\NewGenerator.cs" />
+    <Compile Include="Utilidades\CodeGeneration\ProcedureForEachGenerator.cs" />
+    <Compile Include="Utilidades\CodeGeneration\ProcedureGenerator.cs" />
+    <Compile Include="Utilidades\CodigoGenerado.cs" />
+    <Compile Include="Utilidades\Compression\Compressor.cs" />
+    <Compile Include="Utilidades\Compression\ZipOperation.cs" />
+    <Compile Include="Utilidades\CSharpWin\CSharpUtils.cs" />
+    <Compile Include="Utilidades\CSharpWin\GeneratedSourceFilesCache.cs" />
+    <Compile Include="Utilidades\CSharpWin\ObjectSourceFiles.cs" />
+    <Compile Include="Utilidades\CSharpWin\RspFile.cs" />
+    <Compile Include="Utilidades\CSharpWin\UnusedFiles\UnusedFile.cs" />
+    <Compile Include="Utilidades\CSharpWin\UnusedFiles\UnusedFilesFinderBase.cs" />
+    <Compile Include="Utilidades\CSharpWin\UnusedFiles\UnusedSourceFiles.cs" />
+    <Compile Include="Utilidades\CSharpWin\UnusedFiles\UnusedSpecificationFilesFinder.cs" />
+    <Compile Include="Utilidades\CSharpWin\UnusedFiles\UnusedWinBinFilesFinder.cs" />
+    <Compile Include="Utilidades\DataTypeInfo.cs" />
+    <Compile Include="Utilidades\Entorno.cs" />
+    <Compile Include="Utilidades\EventoGX.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\CommandDataExtensions.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\DataSelectorExtensions.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\HashSetExtensions.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\ICallableInfoExtensions.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\IParserObjectBaseExtensions.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\ITypedObjectExtensions.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\KBObjectPartCollectionExtensions.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\KBObjectPartExtensions.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\ObjClassLsi.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\ObjectBaseExtensions.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\PatternInstanceElementExtensions.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\ProductVersionHelperExtensions.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\SDPanelExtensions.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\SDTLevelExtensions.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\VariableExtensions.cs" />
+    <Compile Include="Utilidades\GxClassExtensions\VariablesPartExtensions.cs" />
+    <Compile Include="Utilidades\KBaseGX.cs" />
+    <Compile Include="Utilidades\KBSync\KBSyncInfo.cs" />
+    <Compile Include="Utilidades\KBSync\KBSyncObjectInfo.cs" />
+    <Compile Include="Utilidades\KBSync\KBSyncObjectRef.cs" />
+    <Compile Include="Utilidades\KeywordGx.cs" />
+    <Compile Include="Utilidades\LayoutGx.cs" />
+    <Compile Include="Utilidades\Logging\BackgroundWorkerLogger.cs" />
+    <Compile Include="Utilidades\Logging\Log.cs" />
+    <Compile Include="Utilidades\Logging\PlainTextLogger.cs" />
+    <Compile Include="Utilidades\MainsGx.cs" />
+    <Compile Include="Utilidades\ParteObjetoKb.cs" />
+    <Compile Include="Utilidades\Reflection\DependenciesWalker.cs" />
+    <Compile Include="Utilidades\Reflection\SerializableDictionary.cs" />
+    <Compile Include="Utilidades\Reflection\SerializableKeyValue.cs" />
+    <Compile Include="Utilidades\Reflection\UtilidadesReflexion.cs" />
+    <Compile Include="Utilidades\Sdts\StdGX.cs" />
+    <Compile Include="Utilidades\Threading\ColaTareas.cs" />
+    <Compile Include="Utilidades\Threading\CommandDelegatorBase.cs" />
+    <Compile Include="Utilidades\Threading\IExecutable.cs" />
+    <Compile Include="Utilidades\Threading\NativeWindowEnumerator.cs" />
+    <Compile Include="Utilidades\Threading\ProcessChooser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilidades\Threading\ProcessChooser.Designer.cs">
+      <DependentUpon>ProcessChooser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilidades\Threading\ProcessLogger.cs" />
+    <Compile Include="Utilidades\Threading\ProcessUtils.cs" />
+    <Compile Include="Utilidades\TipoOperacion.cs" />
+    <Compile Include="Utilidades\TipoReferenciaTabla.cs" />
+    <Compile Include="Utilidades\UI\ClipboardTable.cs" />
+    <Compile Include="Utilidades\UI\ControlUtils.cs" />
+    <Compile Include="Utilidades\UI\GridObjetos.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Utilidades\UI\ListBoxTypeAhead.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Utilidades\UI\ListBoxUtils.cs" />
+    <Compile Include="Utilidades\UI\RefObjetoGX.cs" />
+    <Compile Include="Utilidades\UI\SearchKbObjectsToolWindowBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Utilidades\UI\SearchToolWindowBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Utilidades\UI\SelectGenerator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilidades\UI\SelectGenerator.Designer.cs">
+      <DependentUpon>SelectGenerator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilidades\UI\SelectKbObject.cs" />
+    <Compile Include="Utilidades\UI\SortableList.cs" />
+    <Compile Include="Utilidades\UI\ToolWindowBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Utilidades\UI\UISearchBase.cs" />
+    <Compile Include="Utilidades\Validation\IValidator.cs" />
+    <Compile Include="Utilidades\Validation\ValidationService.cs" />
+    <Compile Include="Utilidades\Validation\ValidationTask.cs" />
+    <Compile Include="Utilidades\Variables\VariableGX.cs" />
+    <Compile Include="Utilidades\VS\CompilerError.cs" />
+    <Compile Include="Utilidades\VS\CompilerLog.cs" />
+    <Compile Include="Utilidades\VS\VisualStudio.cs" />
+    <Compile Include="Utilidades\WinForms\ControlWinForm.cs" />
+    <Compile Include="Utilidades\WinForms\EnumeradorWinform.cs" />
+    <Compile Include="Utilidades\WinForms\WinFormGx.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Utilidades\Threading\ProcessChooser.resx">
+      <DependentUpon>ProcessChooser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilidades\UI\GridObjetos.resx">
+      <DependentUpon>GridObjetos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilidades\UI\SelectGenerator.resx">
+      <DependentUpon>SelectGenerator.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

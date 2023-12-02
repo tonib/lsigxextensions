@@ -227,9 +227,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LsiGxUtilidades-Gx16\LsiGxUtilidades-Gx16.csproj">
+    <ProjectReference Include="..\LsiGxUtilidades-Gx16\LsiGxUtilidades-Gx16-MAIN.csproj">
       <Project>{81cadf5a-2fb2-4a12-b637-e55f52aa6c85}</Project>
-      <Name>LsiGxUtilidades-Gx16</Name>
+      <Name>LsiGxUtilidades-Gx16-MAIN</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="..\LsiGxExtensions-Shared\LsiGxExtensions-Shared.projitems" Label="Shared" />
