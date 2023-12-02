@@ -3,12 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32802.440
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LsiGxPrivateExtensions", "..\..\ExtensionesGXPrivadas\trunk\LsiGxPrivateExtensions\LsiGxPrivateExtensions.csproj", "{8417B9F1-835A-4157-9754-8C4002E36A5D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TranslationsCommon", "..\..\ExtensionesGXPrivadas\trunk\TranslationsCommon\TranslationsCommon.csproj", "{824DE892-63EA-4740-85E3-01BC5FBD2161}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TranslationsServer", "..\..\ExtensionesGXPrivadas\trunk\TranslationsServer\TranslationsServer.csproj", "{D5BCCC6A-03B5-4077-B678-D6A120B28651}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LsiGxUtilidades-XEv3", "LsiGxUtilidades-XEv3\LsiGxUtilidades-XEv3.csproj", "{CBD60E66-51B3-45C7-8E42-A28FDDA58CD8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LsiGxExtensions-XEv3", "LsiGxExtensions-XEv3\LsiGxExtensions-XEv3.csproj", "{2B383796-CC63-4C26-A1EF-F6F9DF9EC05E}"
@@ -17,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
+		Pendiente.txt = Pendiente.txt
+		PrepareProduction.ps1 = PrepareProduction.ps1
 		SetEnvironmentVariables.bat = SetEnvironmentVariables.bat
 	EndProjectSection
 EndProject
@@ -56,24 +52,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8417B9F1-835A-4157-9754-8C4002E36A5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8417B9F1-835A-4157-9754-8C4002E36A5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8417B9F1-835A-4157-9754-8C4002E36A5D}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{8417B9F1-835A-4157-9754-8C4002E36A5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8417B9F1-835A-4157-9754-8C4002E36A5D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8417B9F1-835A-4157-9754-8C4002E36A5D}.Release|x86.ActiveCfg = Release|Any CPU
-		{824DE892-63EA-4740-85E3-01BC5FBD2161}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{824DE892-63EA-4740-85E3-01BC5FBD2161}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{824DE892-63EA-4740-85E3-01BC5FBD2161}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{824DE892-63EA-4740-85E3-01BC5FBD2161}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{824DE892-63EA-4740-85E3-01BC5FBD2161}.Release|Any CPU.Build.0 = Release|Any CPU
-		{824DE892-63EA-4740-85E3-01BC5FBD2161}.Release|x86.ActiveCfg = Release|Any CPU
-		{D5BCCC6A-03B5-4077-B678-D6A120B28651}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D5BCCC6A-03B5-4077-B678-D6A120B28651}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D5BCCC6A-03B5-4077-B678-D6A120B28651}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{D5BCCC6A-03B5-4077-B678-D6A120B28651}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D5BCCC6A-03B5-4077-B678-D6A120B28651}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D5BCCC6A-03B5-4077-B678-D6A120B28651}.Release|x86.ActiveCfg = Release|Any CPU
 		{CBD60E66-51B3-45C7-8E42-A28FDDA58CD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CBD60E66-51B3-45C7-8E42-A28FDDA58CD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBD60E66-51B3-45C7-8E42-A28FDDA58CD8}.Debug|x86.ActiveCfg = Debug|Any CPU

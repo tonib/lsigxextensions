@@ -492,8 +492,6 @@
     <None Include="$(MSBuildThisFileDirectory)MsBuild\Template.msbuild">
       <SubType>Designer</SubType>
     </None>
-    <None Include="$(MSBuildThisFileDirectory)Pendiente.txt" />
-    <None Include="$(MSBuildThisFileDirectory)PrepareProduction.ps1" />
     <None Include="$(MSBuildThisFileDirectory)README.txt" />
     <None Include="$(MSBuildThisFileDirectory)Resources\actividad.gif" />
     <None Include="$(MSBuildThisFileDirectory)Resources\data_info.json" />
