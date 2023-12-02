@@ -226,6 +226,592 @@
     <Compile Include="$(GX_SDK_DIR_GX17)\Src\CommonPackageInfo.cs">
       <Link>Properties\CommonPackageInfo.cs</Link>
     </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\ArreglarProblemas.cs">
+      <Link>Comandos\ArreglarProblemas.cs</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\ArreglarProblemas.designer.cs">
+      <Link>Comandos\ArreglarProblemas.designer.cs</Link>
+      <DependentUpon>ArreglarProblemas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\AddVariableAutocomplete.cs">
+      <Link>Comandos\Autocomplete\AddVariableAutocomplete.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\Autocomplete.cs">
+      <Link>Comandos\Autocomplete\Autocomplete.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\AutocompleteContext.cs">
+      <Link>Comandos\Autocomplete\AutocompleteContext.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\AutocompleteItem.cs">
+      <Link>Comandos\Autocomplete\AutocompleteItem.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\AutocompleteItemsGeneration.cs">
+      <Link>Comandos\Autocomplete\AutocompleteItemsGeneration.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\BalancedChars.cs">
+      <Link>Comandos\Autocomplete\BalancedChars.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\CallStatusFinder.cs">
+      <Link>Comandos\Autocomplete\CallStatusFinder.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\Calls\CallInfo.cs">
+      <Link>Comandos\Autocomplete\Calls\CallInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\Calls\CallInfoFinder.cs">
+      <Link>Comandos\Autocomplete\Calls\CallInfoFinder.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\Calls\CallInfoTree.cs">
+      <Link>Comandos\Autocomplete\Calls\CallInfoTree.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\Calls\CallMatcher.cs">
+      <Link>Comandos\Autocomplete\Calls\CallMatcher.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\Commands\AllowedScope.cs">
+      <Link>Comandos\Autocomplete\Commands\AllowedScope.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\Commands\CommandDefinition.cs">
+      <Link>Comandos\Autocomplete\Commands\CommandDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\Commands\CommandsAutocomplete.cs">
+      <Link>Comandos\Autocomplete\Commands\CommandsAutocomplete.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\Commands\ScopeId.cs">
+      <Link>Comandos\Autocomplete\Commands\ScopeId.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\CodeTokenizer.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\CodeTokenizer.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\DataDefinition\ColumnBoolean.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\DataDefinition\ColumnBoolean.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\DataDefinition\ColumnDebugString.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\DataDefinition\ColumnDebugString.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\DataDefinition\ColumnEnum.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\DataDefinition\ColumnEnum.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\DataDefinition\ColumnInfo.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\DataDefinition\ColumnInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\DataDefinition\ColumnIntCategory.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\DataDefinition\ColumnIntCategory.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\DataDefinition\ColumnStringCategory.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\DataDefinition\ColumnStringCategory.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\DataDefinition\ColumnStringHashMurmur.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\DataDefinition\ColumnStringHashMurmur.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\DataDefinition\DataInfo.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\DataDefinition\DataInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\DataDefinition\DataInfoV12.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\DataDefinition\DataInfoV12.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\DataDefinition\DataInfoV13.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\DataDefinition\DataInfoV13.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\DataDefinition\DataInfoV14.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\DataDefinition\DataInfoV14.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\DataDefinition\GxNameSplitter.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\DataDefinition\GxNameSplitter.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\DataDefinition\MurmurHash2.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\DataDefinition\MurmurHash2.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\IndexedList.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\IndexedList.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\KbPredictorInfo.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\KbPredictorInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\ModelGeneration\ExportTrainObjects.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\ModelGeneration\ExportTrainObjects.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\ModelGeneration\GenerateModelTW.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\ModelGeneration\GenerateModelTW.cs</Link>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\ModelGeneration\GenerateModelTW.designer.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\ModelGeneration\GenerateModelTW.designer.cs</Link>
+      <DependentUpon>GenerateModelTW.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\ModelGeneration\PythonVEnv.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\ModelGeneration\PythonVEnv.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\ModelGeneration\TrainModel.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\ModelGeneration\TrainModel.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\PemTokenizer.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\PemTokenizer.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\PredictionGeneration\ColumnPrediction.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\PredictionGeneration\ColumnPrediction.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\PredictionGeneration\PredictionCache.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\PredictionGeneration\PredictionCache.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\PredictionGeneration\PredictionResult.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\PredictionGeneration\PredictionResult.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\PredictionGeneration\Predictor.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\PredictionGeneration\Predictor.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\PredictionGeneration\PredictorBase.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\PredictionGeneration\PredictorBase.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\PredictionGeneration\PredictorInput.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\PredictionGeneration\PredictorInput.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\PredictionGeneration\PredictorLite.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\PredictionGeneration\PredictorLite.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\TokenContext.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\TokenContext.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\TokenInfo.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\TokenInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\TokenizedPart.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\TokenizedPart.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\TokenKeysEx.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\TokenKeysEx.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\TokensList.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\TokensList.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\WordTypeKey.cs">
+      <Link>Comandos\Autocomplete\GxPredictor\WordTypeKey.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\KbNames\AttributeNameInfo.cs">
+      <Link>Comandos\Autocomplete\KbNames\AttributeNameInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\KbNames\ControlNameInfo.cs">
+      <Link>Comandos\Autocomplete\KbNames\ControlNameInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\KbNames\FunctionNameInfo.cs">
+      <Link>Comandos\Autocomplete\KbNames\FunctionNameInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\KbNames\HashedNames.cs">
+      <Link>Comandos\Autocomplete\KbNames\HashedNames.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\KbNames\ITimestamped.cs">
+      <Link>Comandos\Autocomplete\KbNames\ITimestamped.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\KbNames\KbObjectNameInfo.cs">
+      <Link>Comandos\Autocomplete\KbNames\KbObjectNameInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\KbNames\NamespaceNames.cs">
+      <Link>Comandos\Autocomplete\KbNames\NamespaceNames.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\KbNames\ObjectNameInfo.cs">
+      <Link>Comandos\Autocomplete\KbNames\ObjectNameInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\KbNames\ObjectNamesCache.cs">
+      <Link>Comandos\Autocomplete\KbNames\ObjectNamesCache.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\KbNames\ObjectPartType.cs">
+      <Link>Comandos\Autocomplete\KbNames\ObjectPartType.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\KbNames\OpenObjectsPrefech.cs">
+      <Link>Comandos\Autocomplete\KbNames\OpenObjectsPrefech.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\KbNames\Sdts\SdtNodeNameInfo.cs">
+      <Link>Comandos\Autocomplete\KbNames\Sdts\SdtNodeNameInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\KbNames\Sdts\SdtStructureInfo.cs">
+      <Link>Comandos\Autocomplete\KbNames\Sdts\SdtStructureInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\KbNames\Sdts\SdtStructuresCache.cs">
+      <Link>Comandos\Autocomplete\KbNames\Sdts\SdtStructuresCache.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\KbNames\Tables\TableName.cs">
+      <Link>Comandos\Autocomplete\KbNames\Tables\TableName.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\KbNames\Tables\TablesCache.cs">
+      <Link>Comandos\Autocomplete\KbNames\Tables\TablesCache.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\KbNames\Trie.cs">
+      <Link>Comandos\Autocomplete\KbNames\Trie.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\KbNames\TypedNameInfo.cs">
+      <Link>Comandos\Autocomplete\KbNames\TypedNameInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\KbNames\VariableNameInfo.cs">
+      <Link>Comandos\Autocomplete\KbNames\VariableNameInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\LineParser.cs">
+      <Link>Comandos\Autocomplete\LineParser.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\ObjectsInfoCache\ObjectContextCache.cs">
+      <Link>Comandos\Autocomplete\ObjectsInfoCache\ObjectContextCache.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\ObjectsInfoCache\ObjectControls.cs">
+      <Link>Comandos\Autocomplete\ObjectsInfoCache\ObjectControls.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\OutlineState.cs">
+      <Link>Comandos\Autocomplete\OutlineState.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\ParmsInfo\ParametersInfo.cs">
+      <Link>Comandos\Autocomplete\ParmsInfo\ParametersInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\ParmsInfo\ParmDocumentationParser.cs">
+      <Link>Comandos\Autocomplete\ParmsInfo\ParmDocumentationParser.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\PredictionBindings\AutocompletePrediction.cs">
+      <Link>Comandos\Autocomplete\PredictionBindings\AutocompletePrediction.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\PredictionBindings\HashesCombinator.cs">
+      <Link>Comandos\Autocomplete\PredictionBindings\HashesCombinator.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\PredictionBindings\ProbableAttributes.cs">
+      <Link>Comandos\Autocomplete\PredictionBindings\ProbableAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\PredictionBindings\TokenizedAutocompleteItem.cs">
+      <Link>Comandos\Autocomplete\PredictionBindings\TokenizedAutocompleteItem.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\SubNames.cs">
+      <Link>Comandos\Autocomplete\SubNames.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\TextStreamExtensions.cs">
+      <Link>Comandos\Autocomplete\TextStreamExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\AndroidTools.cs">
+      <Link>Comandos\Build\AndroidTools.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\BuildLogControl.cs">
+      <Link>Comandos\Build\BuildLogControl.cs</Link>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\BuildLogControl.designer.cs">
+      <Link>Comandos\Build\BuildLogControl.designer.cs</Link>
+      <DependentUpon>BuildLogControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\BuildProcess.cs">
+      <Link>Comandos\Build\BuildProcess.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\BuildQueryObjects.cs">
+      <Link>Comandos\Build\BuildQueryObjects.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\BuildSingleGenerator.cs">
+      <Link>Comandos\Build\BuildSingleGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\BuildSingleGeneratorDlg.cs">
+      <Link>Comandos\Build\BuildSingleGeneratorDlg.cs</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\BuildSingleGeneratorDlg.designer.cs">
+      <Link>Comandos\Build\BuildSingleGeneratorDlg.designer.cs</Link>
+      <DependentUpon>BuildSingleGeneratorDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\CleanObjectInfoCache.cs">
+      <Link>Comandos\Build\CleanObjectInfoCache.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\CompileModules.cs">
+      <Link>Comandos\Build\CompileModules.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\CustomWinCompiler.cs">
+      <Link>Comandos\Build\CustomWinCompiler.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\GeneratorMains.cs">
+      <Link>Comandos\Build\GeneratorMains.cs</Link>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\GeneratorMains.designer.cs">
+      <Link>Comandos\Build\GeneratorMains.designer.cs</Link>
+      <DependentUpon>GeneratorMains.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\Production\CopyProduction.cs">
+      <Link>Comandos\Build\Production\CopyProduction.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\Production\EnvironmentTask.cs">
+      <Link>Comandos\Build\Production\EnvironmentTask.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\Production\EnvironmentType.cs">
+      <Link>Comandos\Build\Production\EnvironmentType.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\Production\ExecuteScript.cs">
+      <Link>Comandos\Build\Production\ExecuteScript.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\Production\PrepareProduction.cs">
+      <Link>Comandos\Build\Production\PrepareProduction.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\Production\PrepareProductionDlg.cs">
+      <Link>Comandos\Build\Production\PrepareProductionDlg.cs</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\Production\PrepareProductionDlg.designer.cs">
+      <Link>Comandos\Build\Production\PrepareProductionDlg.designer.cs</Link>
+      <DependentUpon>PrepareProductionDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\Production\ProductionTask.cs">
+      <Link>Comandos\Build\Production\ProductionTask.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\Production\ProductionTaskDlg.cs">
+      <Link>Comandos\Build\Production\ProductionTaskDlg.cs</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\Production\ProductionTaskDlg.designer.cs">
+      <Link>Comandos\Build\Production\ProductionTaskDlg.designer.cs</Link>
+      <DependentUpon>ProductionTaskDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\Production\ZipProduction.cs">
+      <Link>Comandos\Build\Production\ZipProduction.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\RemoveBackupFiles.cs">
+      <Link>Comandos\Build\RemoveBackupFiles.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\RemoveBackupFilesDlg.cs">
+      <Link>Comandos\Build\RemoveBackupFilesDlg.cs</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\RemoveBackupFilesDlg.designer.cs">
+      <Link>Comandos\Build\RemoveBackupFilesDlg.designer.cs</Link>
+      <DependentUpon>RemoveBackupFilesDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\RepairRspConfirm.cs">
+      <Link>Comandos\Build\RepairRspConfirm.cs</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\RepairRspConfirm.designer.cs">
+      <Link>Comandos\Build\RepairRspConfirm.designer.cs</Link>
+      <DependentUpon>RepairRspConfirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\RepairRspFiles.cs">
+      <Link>Comandos\Build\RepairRspFiles.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\WorkWithMains.cs">
+      <Link>Comandos\Build\WorkWithMains.cs</Link>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Build\WorkWithMains.designer.cs">
+      <Link>Comandos\Build\WorkWithMains.designer.cs</Link>
+      <DependentUpon>WorkWithMains.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\BuscarReferenciasMain.cs">
+      <Link>Comandos\BuscarReferenciasMain.cs</Link>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\BuscarReferenciasMain.designer.cs">
+      <Link>Comandos\BuscarReferenciasMain.designer.cs</Link>
+      <DependentUpon>BuscarReferenciasMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\BuscarReferenciasToolWindow.cs">
+      <Link>Comandos\BuscarReferenciasToolWindow.cs</Link>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\BuscarReferenciasToolWindow.designer.cs">
+      <Link>Comandos\BuscarReferenciasToolWindow.designer.cs</Link>
+      <DependentUpon>BuscarReferenciasToolWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\CopyParmRule.cs">
+      <Link>Comandos\CopyParmRule.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\EditarConfiguracion.cs">
+      <Link>Comandos\EditarConfiguracion.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\EditObjectCallsTW.cs">
+      <Link>Comandos\EditObjectCallsTW.cs</Link>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\EditObjectCallsTW.designer.cs">
+      <Link>Comandos\EditObjectCallsTW.designer.cs</Link>
+      <DependentUpon>EditObjectCallsTW.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Edit\AddVariable\AddVariableFastKey.cs">
+      <Link>Comandos\Edit\AddVariable\AddVariableFastKey.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Edit\AddVariable\CustomVariablesCreator.cs">
+      <Link>Comandos\Edit\AddVariable\CustomVariablesCreator.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Edit\ObjectsInfoClipboard.cs">
+      <Link>Comandos\Edit\ObjectsInfoClipboard.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Edit\PasteAsStringLiteral.cs">
+      <Link>Comandos\Edit\PasteAsStringLiteral.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\GxSourcesSearchTW.cs">
+      <Link>Comandos\GxSourcesSearchTW.cs</Link>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\GxSourcesSearchTW.designer.cs">
+      <Link>Comandos\GxSourcesSearchTW.designer.cs</Link>
+      <DependentUpon>GxSourcesSearchTW.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\InsertarForEach.cs">
+      <Link>Comandos\InsertarForEach.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\InsertarNew.cs">
+      <Link>Comandos\InsertarNew.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\KBSync\KBSyncExportInfo.cs">
+      <Link>Comandos\KBSync\KBSyncExportInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\KBSync\KBSyncReviewInfo.cs">
+      <Link>Comandos\KBSync\KBSyncReviewInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\KBSync\KBSyncReviewResultTW.cs">
+      <Link>Comandos\KBSync\KBSyncReviewResultTW.cs</Link>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\KBSync\KBSyncReviewResultTW.designer.cs">
+      <Link>Comandos\KBSync\KBSyncReviewResultTW.designer.cs</Link>
+      <DependentUpon>KBSyncReviewResultTW.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\ObjectsModifiedByUser.cs">
+      <Link>Comandos\ObjectsModifiedByUser.cs</Link>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\ObjectsModifiedByUser.designer.cs">
+      <Link>Comandos\ObjectsModifiedByUser.designer.cs</Link>
+      <DependentUpon>ObjectsModifiedByUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\OpenDocumentation.cs">
+      <Link>Comandos\OpenDocumentation.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Procedures\CrearProcAsignarAtributo.cs">
+      <Link>Comandos\Procedures\CrearProcAsignarAtributo.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Procedures\CrearProcBorradoRegistro.cs">
+      <Link>Comandos\Procedures\CrearProcBorradoRegistro.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Procedures\CrearProcInsercion.cs">
+      <Link>Comandos\Procedures\CrearProcInsercion.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Procedures\CrearProcObtenerValor.cs">
+      <Link>Comandos\Procedures\CrearProcObtenerValor.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Refactoring\ExtractDataSelector.cs">
+      <Link>Comandos\Refactoring\ExtractDataSelector.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Refactoring\ExtractProcedure.cs">
+      <Link>Comandos\Refactoring\ExtractProcedure.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\ReorderWinTab.cs">
+      <Link>Comandos\ReorderWinTab.cs</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\ReorderWinTab.designer.cs">
+      <Link>Comandos\ReorderWinTab.designer.cs</Link>
+      <DependentUpon>ReorderWinTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\ReplaceVariablesAttributeBased.cs">
+      <Link>Comandos\ReplaceVariablesAttributeBased.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\ReplaceVariablesAttributeBasedWindow.cs">
+      <Link>Comandos\ReplaceVariablesAttributeBasedWindow.cs</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\ReplaceVariablesAttributeBasedWindow.designer.cs">
+      <Link>Comandos\ReplaceVariablesAttributeBasedWindow.designer.cs</Link>
+      <DependentUpon>ReplaceVariablesAttributeBasedWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\RevisarFuentesReports.cs">
+      <Link>Comandos\RevisarFuentesReports.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Sdts\CrearProcActualizacionSdt.cs">
+      <Link>Comandos\Sdts\CrearProcActualizacionSdt.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Sdts\CrearProcCargaSdt.cs">
+      <Link>Comandos\Sdts\CrearProcCargaSdt.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Sdts\CrearProcInsercionSdt.cs">
+      <Link>Comandos\Sdts\CrearProcInsercionSdt.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Sdts\CrearSdtDeTabla.cs">
+      <Link>Comandos\Sdts\CrearSdtDeTabla.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\TamMaximoWinform.cs">
+      <Link>Comandos\TamMaximoWinform.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\UnreferencedObjectsToolWindow.cs">
+      <Link>Comandos\UnreferencedObjectsToolWindow.cs</Link>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\UnreferencedObjectsToolWindow.designer.cs">
+      <Link>Comandos\UnreferencedObjectsToolWindow.designer.cs</Link>
+      <DependentUpon>UnreferencedObjectsToolWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\ValidacionObjetos\AtributosHuerfanos.cs">
+      <Link>Comandos\ValidacionObjetos\AtributosHuerfanos.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\ValidacionObjetos\CheckVariables.cs">
+      <Link>Comandos\ValidacionObjetos\CheckVariables.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\ValidacionObjetos\DeprecatedObjectsCalled.cs">
+      <Link>Comandos\ValidacionObjetos\DeprecatedObjectsCalled.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\ValidacionObjetos\ListarErroresWinform.cs">
+      <Link>Comandos\ValidacionObjetos\ListarErroresWinform.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\ValidacionObjetos\ObjectsNoFolder.cs">
+      <Link>Comandos\ValidacionObjetos\ObjectsNoFolder.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\ValidacionObjetos\UnreferencedPrintblocks.cs">
+      <Link>Comandos\ValidacionObjetos\UnreferencedPrintblocks.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\ValidacionObjetos\ValidarObjeto.cs">
+      <Link>Comandos\ValidacionObjetos\ValidarObjeto.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\ValidacionObjetos\ValidateSelectedObjects.cs">
+      <Link>Comandos\ValidacionObjetos\ValidateSelectedObjects.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\VerificarBorradoTransaccion.cs">
+      <Link>Comandos\VerificarBorradoTransaccion.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\CommandKeys.cs">
+      <Link>CommandKeys.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\CommandManager.cs">
+      <Link>CommandManager.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\ConfigurationWindow.cs">
+      <Link>ConfigurationWindow.cs</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\ConfigurationWindow.designer.cs">
+      <Link>ConfigurationWindow.designer.cs</Link>
+      <DependentUpon>ConfigurationWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\LsiExtensionsConfiguration.cs">
+      <Link>LsiExtensionsConfiguration.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\MsBuild\LsiBuildQuerys.cs">
+      <Link>MsBuild\LsiBuildQuerys.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\MsBuild\LsiCompileTask.cs">
+      <Link>MsBuild\LsiCompileTask.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\MsBuild\LsiDeleteBackups.cs">
+      <Link>MsBuild\LsiDeleteBackups.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\MsBuild\LsiLogSectionEnd.cs">
+      <Link>MsBuild\LsiLogSectionEnd.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\MsBuild\LsiLogSectionStart.cs">
+      <Link>MsBuild\LsiLogSectionStart.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\MsBuild\LsiMsBuildTask.cs">
+      <Link>MsBuild\LsiMsBuildTask.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\MsBuild\LsiPrepareProduction.cs">
+      <Link>MsBuild\LsiPrepareProduction.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\MsBuild\LsiSendEmail.cs">
+      <Link>MsBuild\LsiSendEmail.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\MsBuild\MsBuildLog.cs">
+      <Link>MsBuild\MsBuildLog.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Package.cs">
+      <Link>Package.cs</Link>
+    </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Resources.Designer.cs">
+      <Link>Resources.Designer.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -234,7 +820,249 @@
       <Name>LsiGxUtilidades-Gx17</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="..\LsiGxExtensions-Shared\LsiGxExtensions-Shared.projitems" Label="Shared" />
+  <ItemGroup>
+    <EmbeddedResource Include="..\LsiGxExtensions-Gx16\Comandos\ArreglarProblemas.resx">
+      <Link>Comandos\ArreglarProblemas.resx</Link>
+      <DependentUpon>ArreglarProblemas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\LsiGxExtensions-Gx16\Comandos\Autocomplete\GxPredictor\ModelGeneration\GenerateModelTW.resx">
+      <Link>Comandos\Autocomplete\GxPredictor\ModelGeneration\GenerateModelTW.resx</Link>
+      <DependentUpon>GenerateModelTW.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\LsiGxExtensions-Gx16\Comandos\Build\BuildLogControl.resx">
+      <Link>Comandos\Build\BuildLogControl.resx</Link>
+      <DependentUpon>BuildLogControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\LsiGxExtensions-Gx16\Comandos\Build\BuildSingleGeneratorDlg.resx">
+      <Link>Comandos\Build\BuildSingleGeneratorDlg.resx</Link>
+      <DependentUpon>BuildSingleGeneratorDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\LsiGxExtensions-Gx16\Comandos\Build\GeneratorMains.resx">
+      <Link>Comandos\Build\GeneratorMains.resx</Link>
+      <DependentUpon>GeneratorMains.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\LsiGxExtensions-Gx16\Comandos\Build\Production\PrepareProductionDlg.resx">
+      <Link>Comandos\Build\Production\PrepareProductionDlg.resx</Link>
+      <DependentUpon>PrepareProductionDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\LsiGxExtensions-Gx16\Comandos\Build\Production\ProductionTaskDlg.resx">
+      <Link>Comandos\Build\Production\ProductionTaskDlg.resx</Link>
+      <DependentUpon>ProductionTaskDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\LsiGxExtensions-Gx16\Comandos\Build\RemoveBackupFilesDlg.resx">
+      <Link>Comandos\Build\RemoveBackupFilesDlg.resx</Link>
+      <DependentUpon>RemoveBackupFilesDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\LsiGxExtensions-Gx16\Comandos\Build\RepairRspConfirm.resx">
+      <Link>Comandos\Build\RepairRspConfirm.resx</Link>
+      <DependentUpon>RepairRspConfirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\LsiGxExtensions-Gx16\Comandos\Build\WorkWithMains.resx">
+      <Link>Comandos\Build\WorkWithMains.resx</Link>
+      <DependentUpon>WorkWithMains.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\LsiGxExtensions-Gx16\Comandos\BuscarReferenciasMain.resx">
+      <Link>Comandos\BuscarReferenciasMain.resx</Link>
+      <DependentUpon>BuscarReferenciasMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\LsiGxExtensions-Gx16\Comandos\BuscarReferenciasToolWindow.resx">
+      <Link>Comandos\BuscarReferenciasToolWindow.resx</Link>
+      <DependentUpon>BuscarReferenciasToolWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\LsiGxExtensions-Gx16\Comandos\EditObjectCallsTW.resx">
+      <Link>Comandos\EditObjectCallsTW.resx</Link>
+      <DependentUpon>EditObjectCallsTW.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\LsiGxExtensions-Gx16\Comandos\GxSourcesSearchTW.resx">
+      <Link>Comandos\GxSourcesSearchTW.resx</Link>
+      <DependentUpon>GxSourcesSearchTW.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\LsiGxExtensions-Gx16\Comandos\KBSync\KBSyncReviewResultTW.resx">
+      <Link>Comandos\KBSync\KBSyncReviewResultTW.resx</Link>
+      <DependentUpon>KBSyncReviewResultTW.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\LsiGxExtensions-Gx16\Comandos\ObjectsModifiedByUser.resx">
+      <Link>Comandos\ObjectsModifiedByUser.resx</Link>
+      <DependentUpon>ObjectsModifiedByUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\LsiGxExtensions-Gx16\Comandos\ReorderWinTab.resx">
+      <Link>Comandos\ReorderWinTab.resx</Link>
+      <DependentUpon>ReorderWinTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\LsiGxExtensions-Gx16\Comandos\ReplaceVariablesAttributeBasedWindow.resx">
+      <Link>Comandos\ReplaceVariablesAttributeBasedWindow.resx</Link>
+      <DependentUpon>ReplaceVariablesAttributeBasedWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\LsiGxExtensions-Gx16\Comandos\UnreferencedObjectsToolWindow.resx">
+      <Link>Comandos\UnreferencedObjectsToolWindow.resx</Link>
+      <DependentUpon>UnreferencedObjectsToolWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\LsiGxExtensions-Gx16\ConfigurationWindow.resx">
+      <Link>ConfigurationWindow.resx</Link>
+      <DependentUpon>ConfigurationWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\LsiGxExtensions-Gx16\Resources.resx">
+      <Link>Resources.resx</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\LsiGxExtensions-Gx16\Catalog.xml">
+      <Link>Catalog.xml</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Comandos\Build\bldAssemblies.cs.txt">
+      <Link>Comandos\Build\bldAssemblies.cs.txt</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\LICENSE.txt">
+      <Link>LICENSE.txt</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\MsBuild\CompilationEmailTemplate.htm">
+      <Link>MsBuild\CompilationEmailTemplate.htm</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\actividad.gif">
+      <Link>Resources\actividad.gif</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\Ayuda.gif">
+      <Link>Resources\Ayuda.gif</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\error.ico">
+      <Link>Resources\error.ico</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\Formula.ico">
+      <Link>Resources\Formula.ico</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\Grid_Add.gif">
+      <Link>Resources\Grid_Add.gif</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\Grid_Build.gif">
+      <Link>Resources\Grid_Build.gif</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\Grid_Check.gif">
+      <Link>Resources\Grid_Check.gif</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\Grid_Delete.gif">
+      <Link>Resources\Grid_Delete.gif</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\Grid_Edit.gif">
+      <Link>Resources\Grid_Edit.gif</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\Grid_Refresh.gif">
+      <Link>Resources\Grid_Refresh.gif</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\Grid_Run.gif">
+      <Link>Resources\Grid_Run.gif</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\Grid_UpdateDB.gif">
+      <Link>Resources\Grid_UpdateDB.gif</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\help.ico">
+      <Link>Resources\help.ico</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\Lsi.ico">
+      <Link>Resources\Lsi.ico</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\LsiImport.ico">
+      <Link>Resources\LsiImport.ico</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\Objetos.ico">
+      <Link>Resources\Objetos.ico</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\ok.ico">
+      <Link>Resources\ok.ico</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\processing.ico">
+      <Link>Resources\processing.ico</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\VSIcons\applycodechanges_6548.png">
+      <Link>Resources\VSIcons\applycodechanges_6548.png</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\VSIcons\BreakpointEnabled_6584_16x.png">
+      <Link>Resources\VSIcons\BreakpointEnabled_6584_16x.png</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\VSIcons\BreakpointsWindow_6557.png">
+      <Link>Resources\VSIcons\BreakpointsWindow_6557.png</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\VSIcons\build_Solution_16xLG.png">
+      <Link>Resources\VSIcons\build_Solution_16xLG.png</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\VSIcons\Compile_191.png">
+      <Link>Resources\VSIcons\Compile_191.png</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\VSIcons\CSharpProject_SolutionExplorerNode.png">
+      <Link>Resources\VSIcons\CSharpProject_SolutionExplorerNode.png</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\VSIcons\CustomActionsEditor_5850.png">
+      <Link>Resources\VSIcons\CustomActionsEditor_5850.png</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\VSIcons\Diagram_8283.ico">
+      <Link>Resources\VSIcons\Diagram_8283.ico</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\VSIcons\Executequery_9958.png">
+      <Link>Resources\VSIcons\Executequery_9958.png</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\VSIcons\ExtractMethod_6786.ico">
+      <Link>Resources\VSIcons\ExtractMethod_6786.ico</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\VSIcons\Find_5650.ico">
+      <Link>Resources\VSIcons\Find_5650.ico</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\VSIcons\FormRunHS.png">
+      <Link>Resources\VSIcons\FormRunHS.png</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\VSIcons\Hammer_Builder_16xLG.png">
+      <Link>Resources\VSIcons\Hammer_Builder_16xLG.png</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\VSIcons\HelpVS.ico">
+      <Link>Resources\VSIcons\HelpVS.ico</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\VSIcons\HelpVS.png">
+      <Link>Resources\VSIcons\HelpVS.png</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\VSIcons\refresh_16xLG.png">
+      <Link>Resources\VSIcons\refresh_16xLG.png</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\VSIcons\Shortcut_8169.ico">
+      <Link>Resources\VSIcons\Shortcut_8169.ico</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\VSIcons\startwithoutdebugging_6556.png">
+      <Link>Resources\VSIcons\startwithoutdebugging_6556.png</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\VSIcons\Strings_7959.ico">
+      <Link>Resources\VSIcons\Strings_7959.ico</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\VSIcons\Symbols_Pause_16xLG.png">
+      <Link>Resources\VSIcons\Symbols_Pause_16xLG.png</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\VSIcons\Table_748.ico">
+      <Link>Resources\VSIcons\Table_748.ico</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\VSIcons\WindowsForm_817.ico">
+      <Link>Resources\VSIcons\WindowsForm_817.ico</Link>
+    </Content>
+    <Content Include="..\LsiGxExtensions-Gx16\Resources\VSIcons\WindowsGroups_7309.ico">
+      <Link>Resources\VSIcons\WindowsGroups_7309.ico</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\LsiGxExtensions-Gx16\GeneXusPackage.package">
+      <Link>GeneXusPackage.package</Link>
+    </None>
+    <None Include="..\LsiGxExtensions-Gx16\LsiExtensions.targets">
+      <Link>LsiExtensions.targets</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\LsiGxExtensions-Gx16\MsBuild\build.ps1">
+      <Link>MsBuild\build.ps1</Link>
+    </None>
+    <None Include="..\LsiGxExtensions-Gx16\MsBuild\Template.msbuild">
+      <Link>MsBuild\Template.msbuild</Link>
+    </None>
+    <None Include="..\LsiGxExtensions-Gx16\Resources\data_info.json">
+      <Link>Resources\data_info.json</Link>
+    </None>
+    <None Include="..\LsiGxExtensions-Gx16\Resources\model.tflite">
+      <Link>Resources\model.tflite</Link>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -245,7 +1073,7 @@
   -->
   <PropertyGroup>
     <PostBuildEvent>copy /Y ..\..\..\libraries\TfLiteNetWrapper\tensorflowlite_c.dll .
-"$(GX_SDK_DIR_GX17)\Tools\Updater" ..\..\..\LsiGxExtensions-Shared\Catalog.xml ..\..\ "$(GX_PROGRAM_DIR_GX16)"\ $(Configuration)
+"$(GX_SDK_DIR_GX17)\Tools\Updater" ..\..\..\LsiGxExtensions-Gx16\Catalog.xml ..\..\ "$(GX_PROGRAM_DIR_GX16)"\ $(Configuration)
 "$(GX_PROGRAM_DIR_GX17)"\Genexus /install
 </PostBuildEvent>
   </PropertyGroup>

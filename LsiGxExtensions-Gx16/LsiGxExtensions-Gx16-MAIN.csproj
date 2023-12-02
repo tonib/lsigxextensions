@@ -1,0 +1,631 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A34C3E65-FEA1-42CD-BAD6-E8E8A4F5300D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LSI.Packages.Extensiones</RootNamespace>
+    <AssemblyName>LSI.Packages.Extensiones</AssemblyName>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <OutputPath>bin\Debug\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <DebugType>full</DebugType>
+    <DefineConstants>TRACE;DEBUG;GX_16;GX_15_OR_GREATER;GX_16_OR_GREATER</DefineConstants>
+    <Optimize>false</Optimize>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+    <DefineConstants>GX_16;GX_15_OR_GREATER;GX_16_OR_GREATER</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ActiproSoftware.Shared.Net20, Version=1.0.102.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR_GX16)\ActiproSoftware.Shared.Net20.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ActiproSoftware.SyntaxEditor.Net20, Version=4.0.283.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR_GX16)\ActiproSoftware.SyntaxEditor.Net20.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ActiproSoftware.WinUICore.Net20, Version=1.0.102.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR_GX16)\ActiproSoftware.WinUICore.Net20.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.Architecture.BL.Framework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR_GX16)\Artech.Architecture.BL.Framework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.Architecture.Common">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Architecture.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Architecture.Interfaces">
+      <HintPath>$(GX_PROGRAM_DIR_GX16)\Artech.Architecture.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Architecture.Language">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Architecture.Language.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Architecture.UI.Framework">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Architecture.UI.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Common">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Common.Controls">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Common.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Common.Framework">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Common.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Common.Helpers">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Common.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Common.Language">
+      <HintPath>$(GX_PROGRAM_DIR_GX16)\Artech.Common.Language.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.Common.Properties, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR_GX16)\Artech.Common.Properties.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.Common.Language">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Common.Language.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Common.Properties">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Common.Properties.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.FrameworkDE">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.FrameworkDE.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Genexus.Common">
+      <HintPath>$(GX_PROGRAM_DIR_GX16)\Artech.Genexus.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.GXplorer.BL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR_GX16)\Packages\Artech.GXplorer.BL.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.Genexus.UI.Common">
+      <HintPath>$(GX_PROGRAM_DIR_GX16)\Artech.Genexus.UI.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.GXplorer.BL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_PROGRAM_DIR_GX16)\Packages\Artech.GXplorer.BL.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.GXplorer.Common">
+      <HintPath>$(GX_PROGRAM_DIR_GX16)\Artech.GXplorer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Layers.Framework">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Layers.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.MsBuild.Common">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.MsBuild.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Packages.Patterns">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Packages.Patterns.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Artech.Patterns.WorkWithDevices">
+      <HintPath>$(GX_PROGRAM_DIR_GX16)\Packages\Patterns\WorkWithDevices\Artech.Patterns.WorkWithDevices.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Template.Base">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Template.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Template.Helper">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Template.Helper.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Template.Parser">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Template.Parser.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.Architecture.Common">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Udm.Architecture.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.BL">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Udm.BL.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.Data">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Udm.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.Framework">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Udm.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.Layers">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Udm.Layers.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.Layers.BL">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Udm.Layers.BL.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.Layers.Common">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Udm.Layers.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Artech.Udm.Layers.Data.SQL">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Artech.Udm.Layers.Data.SQL.dll</HintPath>
+    </Reference>
+    <Reference Include="Connector">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Connector.dll</HintPath>
+    </Reference>
+    <Reference Include="DeklaritLibrary">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\DeklaritLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="GxDataLayer">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\GxDataLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Microsoft.Build.Utilities.v4.0" />
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=e44a2bc38ed2c13c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder">
+      <HintPath>$(GX_SDK_DIR_GX16)\Bin\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="newtonsoft.json">
+      <HintPath>$(GX_PROGRAM_DIR_GX16)\newtonsoft.json.dll</HintPath>
+    </Reference>
+    <Reference Include="SmartPropertyGrid">
+      <HintPath>$(GX_PROGRAM_DIR_GX16)\SmartPropertyGrid.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Management.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\WindowsPowerShell\v1.0\System.Management.Automation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TfLiteNetWrapper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libraries\TfLiteNetWrapper\TfLiteNetWrapper.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(GX_SDK_DIR_GX16)\Src\CommonPackageInfo.cs">
+      <Link>Properties\CommonPackageInfo.cs</Link>
+    </Compile>
+    <Compile Include="Comandos\ArreglarProblemas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Comandos\ArreglarProblemas.Designer.cs">
+      <DependentUpon>ArreglarProblemas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Comandos\Autocomplete\AddVariableAutocomplete.cs" />
+    <Compile Include="Comandos\Autocomplete\Autocomplete.cs" />
+    <Compile Include="Comandos\Autocomplete\AutocompleteContext.cs" />
+    <Compile Include="Comandos\Autocomplete\AutocompleteItem.cs" />
+    <Compile Include="Comandos\Autocomplete\AutocompleteItemsGeneration.cs" />
+    <Compile Include="Comandos\Autocomplete\BalancedChars.cs" />
+    <Compile Include="Comandos\Autocomplete\CallStatusFinder.cs" />
+    <Compile Include="Comandos\Autocomplete\Calls\CallInfo.cs" />
+    <Compile Include="Comandos\Autocomplete\Calls\CallInfoFinder.cs" />
+    <Compile Include="Comandos\Autocomplete\Calls\CallInfoTree.cs" />
+    <Compile Include="Comandos\Autocomplete\Calls\CallMatcher.cs" />
+    <Compile Include="Comandos\Autocomplete\Commands\AllowedScope.cs" />
+    <Compile Include="Comandos\Autocomplete\Commands\CommandDefinition.cs" />
+    <Compile Include="Comandos\Autocomplete\Commands\CommandsAutocomplete.cs" />
+    <Compile Include="Comandos\Autocomplete\Commands\ScopeId.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\CodeTokenizer.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\DataDefinition\ColumnBoolean.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\DataDefinition\ColumnDebugString.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\DataDefinition\ColumnEnum.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\DataDefinition\ColumnInfo.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\DataDefinition\ColumnIntCategory.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\DataDefinition\ColumnStringCategory.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\DataDefinition\ColumnStringHashMurmur.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\DataDefinition\DataInfo.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\DataDefinition\DataInfoV12.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\DataDefinition\DataInfoV13.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\DataDefinition\DataInfoV14.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\DataDefinition\GxNameSplitter.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\DataDefinition\MurmurHash2.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\IndexedList.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\KbPredictorInfo.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\ModelGeneration\ExportTrainObjects.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\ModelGeneration\GenerateModelTW.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Comandos\Autocomplete\GxPredictor\ModelGeneration\GenerateModelTW.Designer.cs">
+      <DependentUpon>GenerateModelTW.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Comandos\Autocomplete\GxPredictor\ModelGeneration\PythonVEnv.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\ModelGeneration\TrainModel.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\PemTokenizer.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\PredictionGeneration\ColumnPrediction.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\PredictionGeneration\PredictionCache.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\PredictionGeneration\PredictionResult.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\PredictionGeneration\Predictor.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\PredictionGeneration\PredictorBase.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\PredictionGeneration\PredictorInput.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\PredictionGeneration\PredictorLite.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\TokenContext.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\TokenInfo.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\TokenizedPart.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\TokenKeysEx.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\TokensList.cs" />
+    <Compile Include="Comandos\Autocomplete\GxPredictor\WordTypeKey.cs" />
+    <Compile Include="Comandos\Autocomplete\KbNames\AttributeNameInfo.cs" />
+    <Compile Include="Comandos\Autocomplete\KbNames\ControlNameInfo.cs" />
+    <Compile Include="Comandos\Autocomplete\KbNames\FunctionNameInfo.cs" />
+    <Compile Include="Comandos\Autocomplete\KbNames\HashedNames.cs" />
+    <Compile Include="Comandos\Autocomplete\KbNames\ITimestamped.cs" />
+    <Compile Include="Comandos\Autocomplete\KbNames\KbObjectNameInfo.cs" />
+    <Compile Include="Comandos\Autocomplete\KbNames\NamespaceNames.cs" />
+    <Compile Include="Comandos\Autocomplete\KbNames\ObjectNameInfo.cs" />
+    <Compile Include="Comandos\Autocomplete\KbNames\ObjectNamesCache.cs" />
+    <Compile Include="Comandos\Autocomplete\KbNames\ObjectPartType.cs" />
+    <Compile Include="Comandos\Autocomplete\KbNames\OpenObjectsPrefech.cs" />
+    <Compile Include="Comandos\Autocomplete\KbNames\Sdts\SdtNodeNameInfo.cs" />
+    <Compile Include="Comandos\Autocomplete\KbNames\Sdts\SdtStructureInfo.cs" />
+    <Compile Include="Comandos\Autocomplete\KbNames\Sdts\SdtStructuresCache.cs" />
+    <Compile Include="Comandos\Autocomplete\KbNames\Tables\TableName.cs" />
+    <Compile Include="Comandos\Autocomplete\KbNames\Tables\TablesCache.cs" />
+    <Compile Include="Comandos\Autocomplete\KbNames\Trie.cs" />
+    <Compile Include="Comandos\Autocomplete\KbNames\TypedNameInfo.cs" />
+    <Compile Include="Comandos\Autocomplete\KbNames\VariableNameInfo.cs" />
+    <Compile Include="Comandos\Autocomplete\LineParser.cs" />
+    <Compile Include="Comandos\Autocomplete\ObjectsInfoCache\ObjectContextCache.cs" />
+    <Compile Include="Comandos\Autocomplete\ObjectsInfoCache\ObjectControls.cs" />
+    <Compile Include="Comandos\Autocomplete\OutlineState.cs" />
+    <Compile Include="Comandos\Autocomplete\ParmsInfo\ParametersInfo.cs" />
+    <Compile Include="Comandos\Autocomplete\ParmsInfo\ParmDocumentationParser.cs" />
+    <Compile Include="Comandos\Autocomplete\PredictionBindings\AutocompletePrediction.cs" />
+    <Compile Include="Comandos\Autocomplete\PredictionBindings\HashesCombinator.cs" />
+    <Compile Include="Comandos\Autocomplete\PredictionBindings\ProbableAttributes.cs" />
+    <Compile Include="Comandos\Autocomplete\PredictionBindings\TokenizedAutocompleteItem.cs" />
+    <Compile Include="Comandos\Autocomplete\SubNames.cs" />
+    <Compile Include="Comandos\Autocomplete\TextStreamExtensions.cs" />
+    <Compile Include="Comandos\Build\AndroidTools.cs" />
+    <Compile Include="Comandos\Build\BuildLogControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Comandos\Build\BuildLogControl.Designer.cs">
+      <DependentUpon>BuildLogControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Comandos\Build\BuildProcess.cs" />
+    <Compile Include="Comandos\Build\BuildQueryObjects.cs" />
+    <Compile Include="Comandos\Build\BuildSingleGenerator.cs" />
+    <Compile Include="Comandos\Build\BuildSingleGeneratorDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Comandos\Build\BuildSingleGeneratorDlg.Designer.cs">
+      <DependentUpon>BuildSingleGeneratorDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Comandos\Build\CleanObjectInfoCache.cs" />
+    <Compile Include="Comandos\Build\CompileModules.cs" />
+    <Compile Include="Comandos\Build\CustomWinCompiler.cs" />
+    <Compile Include="Comandos\Build\GeneratorMains.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Comandos\Build\GeneratorMains.Designer.cs">
+      <DependentUpon>GeneratorMains.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Comandos\Build\Production\CopyProduction.cs" />
+    <Compile Include="Comandos\Build\Production\EnvironmentTask.cs" />
+    <Compile Include="Comandos\Build\Production\EnvironmentType.cs" />
+    <Compile Include="Comandos\Build\Production\ExecuteScript.cs" />
+    <Compile Include="Comandos\Build\Production\PrepareProduction.cs" />
+    <Compile Include="Comandos\Build\Production\PrepareProductionDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Comandos\Build\Production\PrepareProductionDlg.Designer.cs">
+      <DependentUpon>PrepareProductionDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Comandos\Build\Production\ProductionTask.cs" />
+    <Compile Include="Comandos\Build\Production\ProductionTaskDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Comandos\Build\Production\ProductionTaskDlg.Designer.cs">
+      <DependentUpon>ProductionTaskDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Comandos\Build\Production\ZipProduction.cs" />
+    <Compile Include="Comandos\Build\RemoveBackupFiles.cs" />
+    <Compile Include="Comandos\Build\RemoveBackupFilesDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Comandos\Build\RemoveBackupFilesDlg.Designer.cs">
+      <DependentUpon>RemoveBackupFilesDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Comandos\Build\RepairRspConfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Comandos\Build\RepairRspConfirm.Designer.cs">
+      <DependentUpon>RepairRspConfirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Comandos\Build\RepairRspFiles.cs" />
+    <Compile Include="Comandos\Build\WorkWithMains.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Comandos\Build\WorkWithMains.Designer.cs">
+      <DependentUpon>WorkWithMains.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Comandos\BuscarReferenciasMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Comandos\BuscarReferenciasMain.Designer.cs">
+      <DependentUpon>BuscarReferenciasMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Comandos\BuscarReferenciasToolWindow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Comandos\BuscarReferenciasToolWindow.Designer.cs">
+      <DependentUpon>BuscarReferenciasToolWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Comandos\CopyParmRule.cs" />
+    <Compile Include="Comandos\EditarConfiguracion.cs" />
+    <Compile Include="Comandos\EditObjectCallsTW.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Comandos\EditObjectCallsTW.Designer.cs">
+      <DependentUpon>EditObjectCallsTW.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Comandos\Edit\AddVariable\AddVariableFastKey.cs" />
+    <Compile Include="Comandos\Edit\AddVariable\CustomVariablesCreator.cs" />
+    <Compile Include="Comandos\Edit\ObjectsInfoClipboard.cs" />
+    <Compile Include="Comandos\Edit\PasteAsStringLiteral.cs" />
+    <Compile Include="Comandos\GxSourcesSearchTW.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Comandos\GxSourcesSearchTW.Designer.cs">
+      <DependentUpon>GxSourcesSearchTW.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Comandos\InsertarForEach.cs" />
+    <Compile Include="Comandos\InsertarNew.cs" />
+    <Compile Include="Comandos\KBSync\KBSyncExportInfo.cs" />
+    <Compile Include="Comandos\KBSync\KBSyncReviewInfo.cs" />
+    <Compile Include="Comandos\KBSync\KBSyncReviewResultTW.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Comandos\KBSync\KBSyncReviewResultTW.Designer.cs">
+      <DependentUpon>KBSyncReviewResultTW.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Comandos\ObjectsModifiedByUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Comandos\ObjectsModifiedByUser.Designer.cs">
+      <DependentUpon>ObjectsModifiedByUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Comandos\OpenDocumentation.cs" />
+    <Compile Include="Comandos\Procedures\CrearProcAsignarAtributo.cs" />
+    <Compile Include="Comandos\Procedures\CrearProcBorradoRegistro.cs" />
+    <Compile Include="Comandos\Procedures\CrearProcInsercion.cs" />
+    <Compile Include="Comandos\Procedures\CrearProcObtenerValor.cs" />
+    <Compile Include="Comandos\Refactoring\ExtractDataSelector.cs" />
+    <Compile Include="Comandos\Refactoring\ExtractProcedure.cs" />
+    <Compile Include="Comandos\ReorderWinTab.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Comandos\ReorderWinTab.Designer.cs">
+      <DependentUpon>ReorderWinTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Comandos\ReplaceVariablesAttributeBased.cs" />
+    <Compile Include="Comandos\ReplaceVariablesAttributeBasedWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Comandos\ReplaceVariablesAttributeBasedWindow.Designer.cs">
+      <DependentUpon>ReplaceVariablesAttributeBasedWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Comandos\RevisarFuentesReports.cs" />
+    <Compile Include="Comandos\Sdts\CrearProcActualizacionSdt.cs" />
+    <Compile Include="Comandos\Sdts\CrearProcCargaSdt.cs" />
+    <Compile Include="Comandos\Sdts\CrearProcInsercionSdt.cs" />
+    <Compile Include="Comandos\Sdts\CrearSdtDeTabla.cs" />
+    <Compile Include="Comandos\TamMaximoWinform.cs" />
+    <Compile Include="Comandos\UnreferencedObjectsToolWindow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Comandos\UnreferencedObjectsToolWindow.Designer.cs">
+      <DependentUpon>UnreferencedObjectsToolWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Comandos\ValidacionObjetos\AtributosHuerfanos.cs" />
+    <Compile Include="Comandos\ValidacionObjetos\CheckVariables.cs" />
+    <Compile Include="Comandos\ValidacionObjetos\DeprecatedObjectsCalled.cs" />
+    <Compile Include="Comandos\ValidacionObjetos\ListarErroresWinform.cs" />
+    <Compile Include="Comandos\ValidacionObjetos\ObjectsNoFolder.cs" />
+    <Compile Include="Comandos\ValidacionObjetos\UnreferencedPrintblocks.cs" />
+    <Compile Include="Comandos\ValidacionObjetos\ValidarObjeto.cs" />
+    <Compile Include="Comandos\ValidacionObjetos\ValidateSelectedObjects.cs" />
+    <Compile Include="Comandos\VerificarBorradoTransaccion.cs" />
+    <Compile Include="CommandKeys.cs" />
+    <Compile Include="CommandManager.cs" />
+    <Compile Include="ConfigurationWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigurationWindow.Designer.cs">
+      <DependentUpon>ConfigurationWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LsiExtensionsConfiguration.cs" />
+    <Compile Include="MsBuild\LsiBuildQuerys.cs" />
+    <Compile Include="MsBuild\LsiCompileTask.cs" />
+    <Compile Include="MsBuild\LsiDeleteBackups.cs" />
+    <Compile Include="MsBuild\LsiLogSectionEnd.cs" />
+    <Compile Include="MsBuild\LsiLogSectionStart.cs" />
+    <Compile Include="MsBuild\LsiMsBuildTask.cs" />
+    <Compile Include="MsBuild\LsiPrepareProduction.cs" />
+    <Compile Include="MsBuild\LsiSendEmail.cs" />
+    <Compile Include="MsBuild\MsBuildLog.cs" />
+    <Compile Include="Package.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LsiGxUtilidades-Gx16\LsiGxUtilidades-Gx16-MAIN.csproj">
+      <Project>{81cadf5a-2fb2-4a12-b637-e55f52aa6c85}</Project>
+      <Name>LsiGxUtilidades-Gx16-MAIN</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Comandos\ArreglarProblemas.resx">
+      <DependentUpon>ArreglarProblemas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comandos\Autocomplete\GxPredictor\ModelGeneration\GenerateModelTW.resx">
+      <DependentUpon>GenerateModelTW.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comandos\Build\BuildLogControl.resx">
+      <DependentUpon>BuildLogControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comandos\Build\BuildSingleGeneratorDlg.resx">
+      <DependentUpon>BuildSingleGeneratorDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comandos\Build\GeneratorMains.resx">
+      <DependentUpon>GeneratorMains.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comandos\Build\Production\PrepareProductionDlg.resx">
+      <DependentUpon>PrepareProductionDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comandos\Build\Production\ProductionTaskDlg.resx">
+      <DependentUpon>ProductionTaskDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comandos\Build\RemoveBackupFilesDlg.resx">
+      <DependentUpon>RemoveBackupFilesDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comandos\Build\RepairRspConfirm.resx">
+      <DependentUpon>RepairRspConfirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comandos\Build\WorkWithMains.resx">
+      <DependentUpon>WorkWithMains.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comandos\BuscarReferenciasMain.resx">
+      <DependentUpon>BuscarReferenciasMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comandos\BuscarReferenciasToolWindow.resx">
+      <DependentUpon>BuscarReferenciasToolWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comandos\EditObjectCallsTW.resx">
+      <DependentUpon>EditObjectCallsTW.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comandos\GxSourcesSearchTW.resx">
+      <DependentUpon>GxSourcesSearchTW.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comandos\KBSync\KBSyncReviewResultTW.resx">
+      <DependentUpon>KBSyncReviewResultTW.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comandos\ObjectsModifiedByUser.resx">
+      <DependentUpon>ObjectsModifiedByUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comandos\ReorderWinTab.resx">
+      <DependentUpon>ReorderWinTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comandos\ReplaceVariablesAttributeBasedWindow.resx">
+      <DependentUpon>ReplaceVariablesAttributeBasedWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comandos\UnreferencedObjectsToolWindow.resx">
+      <DependentUpon>UnreferencedObjectsToolWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigurationWindow.resx">
+      <DependentUpon>ConfigurationWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Catalog.xml" />
+    <Content Include="Comandos\Build\bldAssemblies.cs.txt" />
+    <Content Include="LICENSE.txt" />
+    <Content Include="MsBuild\CompilationEmailTemplate.htm" />
+    <Content Include="Resources\actividad.gif" />
+    <Content Include="Resources\Ayuda.gif" />
+    <Content Include="Resources\error.ico" />
+    <Content Include="Resources\Formula.ico" />
+    <Content Include="Resources\Grid_Add.gif" />
+    <Content Include="Resources\Grid_Build.gif" />
+    <Content Include="Resources\Grid_Check.gif" />
+    <Content Include="Resources\Grid_Delete.gif" />
+    <Content Include="Resources\Grid_Edit.gif" />
+    <Content Include="Resources\Grid_Refresh.gif" />
+    <Content Include="Resources\Grid_Run.gif" />
+    <Content Include="Resources\Grid_UpdateDB.gif" />
+    <Content Include="Resources\help.ico" />
+    <Content Include="Resources\Lsi.ico" />
+    <Content Include="Resources\LsiImport.ico" />
+    <Content Include="Resources\Objetos.ico" />
+    <Content Include="Resources\ok.ico" />
+    <Content Include="Resources\processing.ico" />
+    <Content Include="Resources\VSIcons\applycodechanges_6548.png" />
+    <Content Include="Resources\VSIcons\BreakpointEnabled_6584_16x.png" />
+    <Content Include="Resources\VSIcons\BreakpointsWindow_6557.png" />
+    <Content Include="Resources\VSIcons\build_Solution_16xLG.png" />
+    <Content Include="Resources\VSIcons\Compile_191.png" />
+    <Content Include="Resources\VSIcons\CSharpProject_SolutionExplorerNode.png" />
+    <Content Include="Resources\VSIcons\CustomActionsEditor_5850.png" />
+    <Content Include="Resources\VSIcons\Diagram_8283.ico" />
+    <Content Include="Resources\VSIcons\Executequery_9958.png" />
+    <Content Include="Resources\VSIcons\ExtractMethod_6786.ico" />
+    <Content Include="Resources\VSIcons\Find_5650.ico" />
+    <Content Include="Resources\VSIcons\FormRunHS.png" />
+    <Content Include="Resources\VSIcons\Hammer_Builder_16xLG.png" />
+    <Content Include="Resources\VSIcons\HelpVS.ico" />
+    <Content Include="Resources\VSIcons\HelpVS.png" />
+    <Content Include="Resources\VSIcons\refresh_16xLG.png" />
+    <Content Include="Resources\VSIcons\Shortcut_8169.ico" />
+    <Content Include="Resources\VSIcons\startwithoutdebugging_6556.png" />
+    <Content Include="Resources\VSIcons\Strings_7959.ico" />
+    <Content Include="Resources\VSIcons\Symbols_Pause_16xLG.png" />
+    <Content Include="Resources\VSIcons\Table_748.ico" />
+    <Content Include="Resources\VSIcons\WindowsForm_817.ico" />
+    <Content Include="Resources\VSIcons\WindowsGroups_7309.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GeneXusPackage.package" />
+    <None Include="LsiExtensions.targets">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="MsBuild\build.ps1" />
+    <None Include="MsBuild\Template.msbuild" />
+    <None Include="Resources\data_info.json" />
+    <None Include="Resources\model.tflite" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>copy /Y ..\..\..\libraries\TfLiteNetWrapper\tensorflowlite_c.dll .
+"$(GX_SDK_DIR_GX16)\Tools\Updater" ..\..\..\LsiGxExtensions-Gx16\Catalog.xml ..\..\ "$(GX_PROGRAM_DIR_GX16)"\ $(Configuration)
+"$(GX_PROGRAM_DIR_GX16)"\Genexus /install
+</PostBuildEvent>
+  </PropertyGroup>
+</Project>
