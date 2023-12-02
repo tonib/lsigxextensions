@@ -182,8 +182,13 @@ namespace LSI.Packages.Extensiones.Comandos.Build
             try
             {
                 SubscribeGXOutput();
+#if GX_16_OR_GREATER
+                if (!GenexusBLServices.Generators.Generate(workingSet.WorkingModel,
+                    Generator.Generator, false))
+#else
                 if (!GenexusBLServices.Generators.Generate(workingSet.WorkingModel,
                     Generator.Generator))
+#endif
                     return false;
             }
             finally

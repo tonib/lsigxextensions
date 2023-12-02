@@ -676,7 +676,7 @@ namespace LSI.Packages.Extensiones {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a LSI.Extensions documentation (v3.5.0).
+        ///   Busca una cadena traducida similar a LSI.Extensions documentation (v4.4.0).
         /// </summary>
         internal static string OpenDocumentation {
             get {

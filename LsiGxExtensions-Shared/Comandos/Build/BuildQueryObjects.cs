@@ -85,7 +85,11 @@ namespace LSI.Packages.Extensiones.Comandos.Build
                         {
                             // Do the build:
                             BuildEventHandler build = new BuildEventHandler(TargetModel);
+#if GX_16_OR_GREATER
+                            build.Handle(false);
+#else
                             build.Handle();
+#endif
                         }
                         else
                             log.Output.AddLine("No query objects found");

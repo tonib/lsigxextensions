@@ -8,4 +8,7 @@ SETX GX_PROGRAM_DIR_EV3 "C:\Program Files (x86)\ARTech\GeneXus\GeneXusXEv3"
 SETX GX_SDK_DIR_GX15 "C:\Program Files (x86)\GeneXus\GeneXus15PlatformSDK"
 SETX GX_PROGRAM_DIR_GX15 "C:\Program Files (x86)\GeneXus\GeneXus15"
 
+SETX GX_SDK_DIR_GX16 "C:\Program Files (x86)\GeneXus\GeneXus16PlatformSDK"
+SETX GX_PROGRAM_DIR_GX16 "C:\Program Files (x86)\GeneXus\GeneXus16"
+
 PAUSE

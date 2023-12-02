@@ -5,13 +5,13 @@
 #################################
 
 # Extensions version:
-$ExtensionsVersion = "3.4.0"
+$ExtensionsVersion = "4.3.0"
 
 # Extensions project path
-$PublicExtensionsPath = "D:\kbases\subversion\lsigxextensions\branches\branch-GX15\LsiGxExtensions"
+$PublicExtensionsPath = "D:\kbases\subversion\lsigxextensions\branches\branch-GX16\LsiGxExtensions"
 
 # Private extensions path
-$PrivateExtensionsPath = "D:\kbases\subversion\ExtensionesGXPrivadas\branches\branch-GX15\LsiGxPrivateExtensions"
+$PrivateExtensionsPath = "D:\kbases\subversion\ExtensionesGXPrivadas\branches\branch-GX16\LsiGxPrivateExtensions"
 
 # Compression tool
 If ( Test-Path "C:\Archivos de programa\WinRAR\WinRAR.exe" ) 
@@ -62,11 +62,11 @@ $MsBuild = "C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe"
 #################################
 
 # Public extensions
-$PathZipBin = $PublicExtensionsPath + "\LsiExtensions-" + $ExtensionsVersion + "_Gx15.zip"
+$PathZipBin = $PublicExtensionsPath + "\LsiExtensions-" + $ExtensionsVersion + "_Gx16.zip"
 ZipProjectResults $PublicExtensionsPath ( "LSI.Packages.Extensiones.dll" , "LSI.Packages.Extensiones.Utilidades.dll" , "LsiExtensions.targets" , "TfLiteNetWrapper.dll" , "tensorflowlite_c.dll" ) $PathZipBin
 
 # Private extensions
-$PathZipBin = $PublicExtensionsPath + "\LsiExtensionesPrivadas-" + $ExtensionsVersion + "_Gx15.zip"
+$PathZipBin = $PublicExtensionsPath + "\LsiExtensionesPrivadas-" + $ExtensionsVersion + "_Gx16.zip"
 ZipProjectResults $PrivateExtensionsPath ( "ExCSS.dll" , "HtmlAgilityPack.dll" , "LSI.Packages.PrivateExtensions.dll" ) $PathZipBin
 
 & PAUSE

@@ -325,8 +325,6 @@ GX 15:
 - Probar BuildQueryObjects, cambiado recalculo del SQL
 - Probar Package.OnKBOpening, cambiado id de Genexus
 
-----------------------------------------------------------------
-
 Informacion de parametros:
 	- Rendimiento
 	- ERROR: Sigue fallando. Escribir "PSliGenPedCnfAlm( &PathArchivo | )", cancelar el autocompletado, escribir ", "
