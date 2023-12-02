@@ -366,61 +366,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Catalog.xml" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\abrircsharp.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\addvariable.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\arreglos.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\bootstrap-3.2.0-dist\css\bootstrap-theme.css" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\bootstrap-3.2.0-dist\css\bootstrap-theme.min.css" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\bootstrap-3.2.0-dist\css\bootstrap.css" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\bootstrap-3.2.0-dist\css\bootstrap.min.css" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\bootstrap-3.2.0-dist\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\bootstrap-3.2.0-dist\js\bootstrap.js" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\bootstrap-3.2.0-dist\js\bootstrap.min.js" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\buildall.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\codigo-autocompletado.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\codigo-parametros.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\compile.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\configuracion.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\configuracion.shtml" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\confirmacionrebuild.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\confirmacionrebuild.shtml" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\copiartabla.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\css\shThemeGenexus.css" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\customcompile.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\debug.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\editrsp.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\favicon.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\fuentes.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\gxcompile.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\js\shBrushGenexus.js" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\js\shBrushXml.js" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\js\shCore.js" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\llamadas.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\logo.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\modificadosporusuario.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\modificadosporusuario.shtml" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\msbuild.shtml" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\nousados.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\pegarcomoliteral.shtml" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\plantilla.shtml" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\prediccion-entreno.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\prediccion-prediccion.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\prediccion.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\prediccion.shtml" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\prediccion_como.shtml" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\produccion.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\reemplazarvariables.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\refactorizaciones.shtml" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\referencias.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\referenciasmain.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\run.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\startdebug.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\tareaproduccion.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\verificarrsp.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\versionabrirkb.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\versionabrirkb.shtml" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\wwmains.png" />
-    <Content Include="$(MSBuildThisFileDirectory)documentacion\wwmains.shtml" />
     <Content Include="$(MSBuildThisFileDirectory)LICENSE.txt" />
     <Content Include="$(MSBuildThisFileDirectory)Resources\Ayuda.gif" />
     <Content Include="$(MSBuildThisFileDirectory)Resources\error.ico" />
@@ -452,39 +397,6 @@
     <Content Include="$(MSBuildThisFileDirectory)Resources\VSIcons\WindowsGroups_7309.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)documentacion\atrbasedon.shtml" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\bootstrap-3.2.0-dist\css\bootstrap-theme.css.map" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\bootstrap-3.2.0-dist\css\bootstrap.css.map" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\bootstrap-3.2.0-dist\fonts\glyphicons-halflings-regular.eot" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\bootstrap-3.2.0-dist\fonts\glyphicons-halflings-regular.ttf" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\bootstrap-3.2.0-dist\fonts\glyphicons-halflings-regular.woff" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\borradotrn.shtml" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\buscartexto.png" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\buscartexto.shtml" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\busquedamains.shtml" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\cabecera.shtml" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\changelog.shtml" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\codigo.shtml" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\copiartabla.shtml" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\css\estilos.css" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\css\shCore.css" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\css\shCoreDefault.css" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\fuentes.shtml" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\head.shtml" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\index.shtml" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\llamadas.shtml" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\noreferenciados.shtml" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\ordentab.shtml" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\ordertabcontrol.png" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\pie.shtml" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\procedures.shtml" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\redimensionarwinform.shtml" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\referencias.shtml" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\sdts.shtml" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\sync.png" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\sync.shtml" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\syntaxhighlighter.shtml" />
-    <None Include="$(MSBuildThisFileDirectory)documentacion\verificacion.shtml" />
     <None Include="$(MSBuildThisFileDirectory)LsiExtensions.targets">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -508,7 +420,5 @@
     <None Include="$(MSBuildThisFileDirectory)Resources\LsiImport.ico" />
     <None Include="$(MSBuildThisFileDirectory)Resources\model.tflite" />
     <None Include="$(MSBuildThisFileDirectory)Resources\Objetos.ico" />
-    <None Include="$(MSBuildThisFileDirectory)Tests_ev2.xpz" />
-    <None Include="$(MSBuildThisFileDirectory)Tests_ev3.xpz" />
   </ItemGroup>
 </Project>
