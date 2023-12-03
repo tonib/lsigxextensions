@@ -39,9 +39,6 @@
     <DefineConstants>GX_16;GX_15_OR_GREATER;GX_16_OR_GREATER;GX_17_OR_GREATER</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Artech.Architecture.BL.Framework">
-      <HintPath>$(GX_SDK_DIR_GX17)\Bin\Artech.Architecture.BL.Framework.dll</HintPath>
-    </Reference>
     <Reference Include="ActiproSoftware.Shared.Net20, Version=1.0.102.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(GX_PROGRAM_DIR_GX17)\ActiproSoftware.Shared.Net20.dll</HintPath>
@@ -106,11 +103,6 @@
     </Reference>
     <Reference Include="Artech.Genexus.Common">
       <HintPath>$(GX_PROGRAM_DIR_GX17)\Artech.Genexus.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Artech.GXplorer.BL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(GX_PROGRAM_DIR_GX17)\Packages\Artech.GXplorer.BL.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Artech.Genexus.UI.Common">
       <HintPath>$(GX_PROGRAM_DIR_GX17)\Artech.Genexus.UI.Common.dll</HintPath>

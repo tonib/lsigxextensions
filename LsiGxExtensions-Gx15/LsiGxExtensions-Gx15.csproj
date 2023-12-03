@@ -39,9 +39,6 @@
     <DefineConstants>GX_15;GX_15_OR_GREATER</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Artech.Architecture.BL.Framework">
-      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Artech.Architecture.BL.Framework.dll</HintPath>
-    </Reference>
     <Reference Include="ActiproSoftware.Shared.Net20, Version=1.0.102.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(GX_PROGRAM_DIR_GX15)\ActiproSoftware.Shared.Net20.dll</HintPath>
@@ -83,11 +80,6 @@
     <Reference Include="Artech.Common.Helpers">
       <HintPath>$(GX_SDK_DIR_GX15)\Bin\Artech.Common.Helpers.dll</HintPath>
     </Reference>
-    <Reference Include="Artech.Common.Properties, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(GX_PROGRAM_DIR_GX15)\Artech.Common.Properties.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Artech.Common.Language">
       <HintPath>$(GX_PROGRAM_DIR_GX15)\Artech.Common.Language.dll</HintPath>
       <Private>False</Private>
@@ -109,11 +101,6 @@
     <Reference Include="Artech.Genexus.Common">
       <HintPath>$(GX_PROGRAM_DIR_GX15)\Artech.Genexus.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Artech.GXplorer.BL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(GX_PROGRAM_DIR_GX15)\Packages\Artech.GXplorer.BL.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Artech.Genexus.UI.Common">
       <HintPath>$(GX_PROGRAM_DIR_GX15)\Artech.Genexus.UI.Common.dll</HintPath>
       <Private>False</Private>
@@ -131,9 +118,6 @@
     </Reference>
     <Reference Include="Artech.MsBuild.Common">
       <HintPath>$(GX_SDK_DIR_GX15)\Bin\Artech.MsBuild.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Artech.Packages.Patterns">
-      <HintPath>$(GX_SDK_DIR_GX15)\Bin\Artech.Packages.Patterns.dll</HintPath>
     </Reference>
     <Reference Include="Artech.Packages.Language">
       <HintPath>$(GX_PROGRAM_DIR_GX15)\Packages\Artech.Packages.Language.dll</HintPath>
