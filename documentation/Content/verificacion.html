@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+
+	<head>
+	    <title>LSI.Extensiones - Verificación de objetos</title>
+		<!--#include file="./head.html" -->
+	</head>
+	
+	<body>
+	    <!--#include file="./cabecera.html" -->
+	    
+		<h2>Verificación de objetos</h2>
+		<p>
+		    Este conjunto de extensiones permite verificar y, en algunos casos, arreglar errores lógicos
+		    de objetos. La verificación se puede <a href="#configuracion">configurar</a> para que se haga 
+		    automáticamente al guardar
+		    un objeto, o se puede lanzar seleccionando una opción del menú de las extensiones manualmente.
+		    En ambos casos, la ejecución de la verificación se hace en segundo plano, y no bloquea la 
+		    interface de usuario de GeneXus.
+		    En caso de encontrar problemas en el objeto, estos se describen en la ventana de Output. Un
+		    ejemplo de la salida sería este:
+		</p>
+		
+		<pre class="loggx">
+========== LSI.Extensiones started ==========
+error: Objeto PPrueba: Hay variables referenciandas que no existen:
+flgref
+mnucod
+mnusel
+warning: Objeto PPrueba: Hay variables sólo usadas en la regla parm:
+achilipu
+warning: Objeto PPrueba: Hay variables no usadas:
+arriquitaun
+sdocid
+var1
+var2
+var3
+warning: Objeto PPrueba: Hay variables sólo leidas:
+mnucod
+mnusel
+warning: Objeto PPrueba: Hay variables sólo escritas:
+flgref
+Tiempo de ejecución: 340 ms.
+TIEMPO TOTAL: Tiempo de ejecución: 341 ms.
+LSI.Extensiones Failed
+</pre>
+		
+		<p>
+		    Los tests a hacer sobre los objetos se pueden configurar en la ventana 
+		    <a href="#configuracion">configuración</a>. Los tests se hacen sobre un único objeto 
+		    a la vez, y permite revisar los siguientes problemas:
+		</p>
+		
+		<!-- ******************** REVISION DE VARIABLES ******************** -->
+		
+		<h3>Revisión de variables / atributos</h3>
+		
+		<h4>Variables declaradas y no usadas</h4>
+		<p>
+		    Se revisa el objeto en busca de variables declaradas y no usadas en ninguna parte del objeto.
+		</p>
+		
+		
+		<h4>Variables sólo usadas en la UI/Conditions</h4>
+		<p>
+		    Se revisa el objeto en busca de variables que se muestran en la interface de usuario 
+		    (en Win Forms / Web Forms / Printblocks de listados), y no usadas en ninguna otra parte del 
+		    objeto. Esto significa que la variable siempre se mostraría con su valor por defecto, y 
+		    suele ser un error.
+		</p>
+		<p>
+		    También revisa variable sólo referenciadas en la parte de Conditions, y que por tanto, a las
+		    cuales nunca se habría asignado un valor.
+		</p>
+				
+	
+		<h4>Variables sólo usadas en la regla parm</h4>
+		<p>
+		    Se revisan variables que son pasadas como parámetro al objeto, y que no són usadas en ninguna
+		    otra parte del objeto: Ni en otras parte de las Rules ni en otras partes del objeto.
+		</p>
+		
+		<h4>Variables autodefinidas</h4>
+		<p>
+		    Genexus, con el objetivo de agilizar el trabajo, tiene la inteligencia para declarar 
+		    automáticamente variables en función de su nombre: Si una variable está 
+		    declarada con el mismo nombre que un atributo, la autodefinirá del tipo del atributo. Sin
+		    embargo, en algunos casos, esto puede ser fuente de sutiles errores de programación. Si se copia
+		    un bloque de código de un objeto a otro, se te puede olvidar asignar una variable que está 
+		    siendo usada en dicho bloque. La extensión avisa de qué variables hay autodefinidas. Si son
+		    correctas, basta con, manualmente, cortarlas de la categoría de autodefinidas y pegarlas en 
+		    la categoría principal de variables.
+		</p>
+		
+		<h4>Variables no declaradas y usadas</h4>
+		<p>
+		    Este error, evidentemente, lo da el especificador de GeneXus, pero se podía avisar sin coste de
+		    rendimiento por parte de la extensión, así que se muestra. Da un mensaje de error en el caso
+		    que se encuentre una referencia a una variable no declarada.
+		</p>
+		
+		<h4>Variables declaradas como N(4)</h4>
+		<p>
+		    En Genexus, cuando se declara una variable y ésta no tiene el mismo nombre que un atributo, 
+		    por defecto le pone un tipo Numeric(4). Si la variable no ha de tener este tipo, se edita la 
+		    declaración de la variable, y se le pone la deseada.
+		</p>
+		<p>
+		    Este test tiene como por objectivo evitar 
+		    el olvidarse este cambio, que nos ha provocado algunos errores en aplicaciones en producción. 
+		    Si una variable está definida como N(4), no está basada en un atributo o domínio, y no
+		    tiene como nombre una sóla letra (p.ej &amp;i, &amp;j, que se suelen usar como indices para recorrer
+		    vectores o listas ) la extensión da un aviso. 
+		</p>
+		<p>
+		    Si una variable ha de tener realmente una declaración de tipo N(4), el test también ignora variables
+		    que en su descripción contengan un texto "n4". El añadir este texto automáticamente 
+		    puede hacerse con la opción de <a href="#arregloerrores">arreglo de errores automático</a>.
+		</p>
+		
+        <a id="huerfanos"></a>
+		<h4>Atributos huérfanos (fuera de FOR EACHs / NEWs)</h4>
+		<p>
+		    El test revisa referencias a atributos fuera de sentencias X/FOR EACH y X/NEW. Por ejemplo,
+		    en un procedimento, las referencias a los atributos Atributo2 y Atributo3 suelen ser
+		    errores:
+		</p>
+<pre class="brush: genexus">
+FOR EACH
+    &amp;Variable1 = Atributo1
+    DO 'Subrutina'
+ENDFOR
+&amp;Variable2 = Atributo2
+    
+SUB 'Subrutina'
+    &amp;Variable3 = Atributo3
+ENDSUB
+</pre>
+        <p>Hay una opción en la <a href="configuracion.html">configuración</a> para indicar si hay que reportar estas referencias o no.</p>
+		<p>
+		    Las transacciones no se revisan. En el caso de
+		    Win/WebForms, sólo se revisan si el form no contiene referencias a atributos en alguna de
+		    las siguientes formas:
+		</p>
+		<ul>
+		    <li>Si el form (la UI) contiene atributos, el objeto no se revisa</li>
+		    <li>
+		        Si el objeto contiene atributos en un evento Load (o GridXXX.Load) fuera de un 
+		        FOR EACH, el objeto no se revisa
+		    </li>
+		    <li>Si el objeto tiene una regla hidden con atributos, no se revisa</li>
+		</ul>
+		
+		<h4>Variables siempre nulas con initial value</h4>
+		<p>
+		    Se da un aviso si se tienen variables con un prefijo en el nombre que indica que son 
+		    siempre nulas, y tienen asignada la propiedad "Initial value". En LSI, las variables que 
+		    empiezan por "z" (p.ej. &amp;zCliCod), se asume que son siempre nulas. Si resulta que tiene
+		    valor, es un error. Estos prefijos se pueden indicar en la 
+		    <a href="#configuracion">configuración</a>.
+		</p>
+
+		<!-- ******************** REVISION AVANZADA ******************** -->
+		<h3>Revisiones avanzadas (más lentas)</h3>
+		<p>
+		    Estas son un conjunto de revisiones que requieren ver cuales son los objetos llamados
+		    por el objeto a revisar y que son mucho más lentas que el resto:
+		</p>
+		
+		<h4>Variables sólo leidas/escritas</h4>
+		<p>
+		    Revisa variables que sólo son leidas o escritas en el objeto. 
+		</p>
+		<p>
+		    En el caso
+		    que una variable vaya a tener siempre un valor nulo, en LSI tenemos como estandar de codificación
+		    ponerle un prefijo "z". Por ejemplo una variable basada en un atributo llamado CliCod que siempre
+		    vaya a ser nula tiene un nombre "&amp;zCliCod". Las variables cuyo nombre empieza con este
+		    prefijo no dan aviso de que son sólo leidas. Estos prefijos se pueden indicar en la 
+		    <a href="#configuracion">configuración</a>.
+ 		</p>
+ 		<p>
+ 		    Si una variable tiene la propiedad "Initial value" asignada, puede considerarse siempre 
+ 		    escrita o no, dependiendo de lo indicado en el campo "Report read only variables with
+ 		    'Initial value'" de la <a href="#configuracion">configuración</a>. Si este campo está
+ 		    marcado y una variable sólo leida tiene un 'Initial value', será reportada.
+ 		</p>
+ 		
+		<h4>Check out: parameters not assigned / in: parameters assigned</h4>
+		<p>
+		    Revisa variables declaradas como out: en la regla parm y que no se escriben en ninguna
+		    parte del objeto.
+		</p>
+		<p>
+		    También revisa variables parametro declaradas como in: y que se asigna directamente, o se 
+		    pasan en llamadas a objetos en parámetros declarados como out:. Si se pasa a un parámetro
+		    declarado como inout: no se da ningún aviso (puede que sólo se lea).
+		</p>
+		
+		<h4>Llamadas a objetos con un número de parámetros incorrecto</h4>
+		<p>
+		    Revisa que las llamadas a objetos tengan el número de parametros esperado. Si el número
+		    es distinto, da un aviso.
+		</p>
+		
+		<!-- ******************** OTRAS REVISIONES ******************** -->
+		<h3>Otras revisiones</h3>
+		
+		<h4>Objeto sin carpeta / módulo asignado</h4>
+		<p>
+		    Revisa que el objeto tenga la propiedad "Module/Folder" asignada, es decir, que no valga 
+		    "Root module"
+		</p>
+		
+		<h4>Printblocks no usados</h4>
+		<p>
+		    En procedimientos, da un aviso si hay printblocks que no se imprimen nunca. 
+		    No se avisa sobre el prinblock que se crea por defecto cuando se crea el procedure, 
+		    si este está vacio.
+		</p>
+		
+        <h4>Uso de objetos obsoletos</h4>
+        <p>
+            Se da un aviso si en el objeto se están usando objetos marcados como obsoletos. Para marcar
+            los objetos como obsoletos hay que incluir el texto "[DEPRECATED]" en su descripción. Este
+            texto se puede cambiar por otro en la <a href="#configuracion">configuración</a>.<br />
+            Se pueden marcar como obsoleto cualquier objeto llamable y atributo. También se pueden
+            marcar tablas como obsoletas, pero la extensión no avisará hasta que se haya especificado el
+            objeto, con lo que no tiene mucha utilidad.
+        </p>
+
+		<!-- ******************** REVISION DE WINFORMS ******************** -->
+		<h3>Revisión de Winforms</h3>
+		
+		<h4>Revisar tamaño en Win Forms</h4>
+		<p>
+		    Cuando se crea un Win Form en GeneXus se tiene que tener en mente el tamaño máximo que estos
+		    pueden tener en el monitor del cliente: Si la resolución mínima de un monitor 
+		    requerida para ejecutar una aplicación es de 1024 x 768 (por ejemplo), los winforms 
+		    (transacciones y worpanels) creados
+		    para dicha aplicación han de cumplir con dicha restricción: De otro caso, se mostrarán 
+		    barras de scroll que pueden molestar al usuario.
+		</p>
+		<p>
+		    Por ello, esta extensión permite definir un tamaño máximo para los winforms (Win Transactions, 
+		    Workpanels) y dar un aviso si el tamaño del formulario supera dichas dimensiones.
+		    En la <a href="#configuracion">configuración</a> se establece cual es el tamaño máximo que 
+		    puede tener un WinForm y si hay que dar un aviso o no si dicho tamaño supera el máximo.
+		</p>
+		
+		<h4>Regla hidden declarada</h4>
+		<p>
+		    Desde GeneXus X, la regla hidden está obsoleta. Esta extensión avisa si hay dicha regla
+		    en los objetos WinForm. La opción de <a href="#arregloerrores">
+		    arreglar errores automaticamente</a> permite mover los 
+		    elementos de dicha regla al grid del objeto en WinForms como ocultos. Sólo se aplica a
+		    Win Forms (no a Web Panels). 
+		    Este test puede deshabilitarse en la <a href="#configuracion">configuración</a>.
+		</p>
+		
+		<h4>Campos invisibles en grids de Win Forms y no usados en otra parte del objeto</h4>
+		<p>
+		    Revisa campos (variables/atributos) que aparecen en grids de WorkPanels, que serán siempre 
+		    invisibles (columnas marcadas como 
+		    Visible = false en el editor del grid, y cuya propiedad .Visible no sea referenciada en 
+		    otra parte del objeto), y que no sean utilizados en ninguna otra parte del objeto.
+		</p>
+		
+		<h3>Marcar una variable para que no se den avisos sobre ella</h3>
+		<p>
+		    Es posible marcar una variable para que no se de ningún aviso sobre ella, añadiendo en su
+		    descripción un texto "[NOCHECK]". Tambien se puede indicar, en la <a href="configuracion.html">configuración</a>,
+			una lista de nombres de variables que no hay que revisar en ningún objeto. Esto puede ser útil en el caso
+			de usar Patterns que generan código automáticamente.
+		</p>
+		
+		<!-- ******************** CONFIGURACION DE VERIFICACIONES ******************** -->
+		<a id="configuracion"></a>
+		<h2>Configuración de las verificaciones</h2>
+		<p>
+		    La configuración de las verificaciones se indica en el 
+		    <a href="configuracion.html">menú Lsi.Extensions &gt; Lsi.Extensions configuration&hellip;</a>, 
+		    en la pestaña Check objects. Allí se puede indicar si hay que ejecutar los tests
+		    automáticamente o no cada vez que se guarda un objeto, y qué tests ejecutar.
+		</p>
+
+		<a id="verificacionmanual"></a>
+		<h2>Lanzar manualmente la verificación</h2>
+		<p>
+		    La extensión se puede lanzar para el objeto actual desde el menú Lsi.Extensions &gt; 
+		    Object verifications &gt; Check current object (atajo de menú <kbd>Ctrl+F8</kbd>). El objeto debe
+		    estar guardado y sin cambios antes de lanzar la verificación.
+		</p>
+        <p>
+            También se puede lanzar la verificación para la lista de objetos actualmente seleccionados (p.ej. desde
+            <i>Work with objects</i>) en Lsi.Extensions &gt; Object verifications &gt; Check selected objects.
+        </p>
+		
+        <a id="arregloerrores"></a>
+		<h2>Arreglo automático de errores</h2>
+		<p>
+		    La extensión permite arreglar automáticamente los siguientes errores de los descritos
+		    anterioremente:
+		</p>
+		<ul>
+		    <li>Borrar las variables no usadas</li>
+		    <li>Marcar las variables N(4) como declaradas correctamente</li>
+		    <li>Mover los elementos de la regla hidden al grid del objeto</li>
+		</ul>
+        <p>
+            Para lanzar el arreglo hay que selecciónar el menú Lsi.Extensiones &gt; Verificaciones &gt;
+            Arreglar problemas del objeto (atajo de menú <kbd>Ctrl+F9</kbd>). Aparecerá la siguiente ventana:
+        </p>
+        <p style="text-align: center">
+            <a href="./arreglos.png">
+	            <img alt="Imagen arreglos" class="img-responsive" style="display:inline" src="./arreglos.png" />
+	        </a>
+	    </p>
+        <table class="table table-bordered">
+            <tr>
+                <td><b>Delete following ununsed variables</b></td>
+                <td>
+                    Muestra la lista de variables declaradas. Si se marca esta opción, las
+                    variable se borrarán.
+                </td>
+            </tr>
+            <tr>
+                <td><b>Agregar "N4" a la descripción de las siguientes variables</b></td>
+                <td>
+                    Esta opción sólo aparece si en la <a href="#configuracion">configuración</a> se 
+                    indicó "Revisar variables N(4)". Indica la lista de variables en las que en su
+                    descripción se va a añadir un texto "n4". P.ej. si una variable tenia una descripción
+                    "Código de cliente", finalmente su descripción quedará "Código de cliente n4".
+                </td>
+            </tr>
+            <tr>
+                <td><b>Borrar regla hidden</b></td>
+                <td>
+                    Si se marca esta opción, todas las variables/atributos que aparezcan en la regla
+                    hidden del objeto se moverán al grid del objeto, marcadas como ocultas.
+                    Sólo se aplica a Workpanels, no a Webpanels.
+                </td>
+            </tr>
+            <tr>
+                <td><b>Replace operators old syntax</b></td>
+                <td>
+                    Esto es útil en objetos antiguos en los que aun se usa la sintaxis con puntos 
+                    para operadores booleanos (".AND.", ".OR.", ".NOT."), para hacer un poco más claro
+                    el código.
+                    Si se marca, se revisa el código del objeto y se quitan los puntos de dichos
+                    operadores.
+                </td>
+            </tr>
+        </table>
+        
+        <div class="bs-callout bs-callout-warning">
+    		<h2>Limitaciones</h2>
+		    <ul>
+		        <li>
+		            Hay objetos que actualmente no se revisan por esta extensión: Dashboards, DataProviders, 
+		            instancias de patterns.
+		        </li>
+		        <li>
+		            La verificación y arreglo de la regla hidden no se aplica a objetos Web, 
+		            sólo a WinForms (WorkPanels).
+		        </li>
+		        <li>
+		            No se hacen verificaciones sobre variables array (No son reportadas por 
+		            IHasVariableReferences).
+		        </li>
+		        <li>
+		            No se da aviso de variables sólo leidas/escritas para variables External objects/
+		            Extended types. Estas variables al crearse ya pueden tener valores (p.ej. HttpRequest).
+		        </li>
+                <li>
+                    En llamadas a miembros de variables de tipo External objects, los parametros no se revisan
+                    y se asume que son siempre de lectura / escritura. P.ej. en 
+                    &amp;ExternalObject.Miembro( &amp;x ), la variable &amp;x se asume que se lee y se escribe.
+                    No está soportado el revisar la definición del miembro llamado para saber si los parametros 
+                    son de lectura y/o escritura.
+                </li>
+		        <li>
+		            A efectos de búsqueda de variables sólo leidas/escritas, si una variable aparece en un 
+		            win/webform siempre se considera leida y escrita, aunque siempre sea de sólo lectura.
+		        </li>
+		        <li>
+		            Los tests avanzados no se revisan en reglas de transacciones: 
+		            Si una variable aparece en las reglas de una transacción siempre se considera leida y 
+		            escrita, tampoco se revisan errores en llamadas a objetos, etc.
+		        </li>
+		        <li>
+		            Variables que aparecen en reglas default se consideran siempre leidas y escritas.
+		        </li>
+		        <li>
+		            Mientra se hace una importación de objetos o un update desde el GxServer se 
+		            deshabilita la verficación, para evitar revisar los objetos importados, 
+		            ya que estos pueden dar falsos positivos.
+		        </li>
+		        <li>
+		            Los parametros declarados en el comando
+		            <a href="http://wiki.genexus.com/commwiki/servlet/wiki?Multiple+methods+in+Web+services,">Stub</a> 
+		            no se tienen en cuenta.
+		        </li>
+		    </ul>
+		</div>
+		
+		<!--#include file="./pie.html" -->
+	</body>
+	
+</html>

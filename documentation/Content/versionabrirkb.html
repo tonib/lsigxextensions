@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+	<head>
+	    <title>LSI.Extensiones - Verificar versión de GX en apertura de KB</title>
+		<!--#include file="./head.html" -->
+	</head>
+	
+	<body>
+	    <!--#include file="./cabecera.html" -->
+	    
+		<h2>Verificar versión de GX en apertura de KB</h2>
+		<p>
+            Cuando se abre una KBase que estaba en una cierta versión de Genexus (p.ej Ev3), si se abre
+            con otra versión (p.ej. Gx15), el propio Genexus da un aviso de si se quiere abrir con dicha versión.
+            No lo hace si se abre la KB con un Genexus de la misma versión (p.ej. Ev3U3), pero con un Upgrade (nº menor de versión)
+            distinto (p.ej Ev3U9), y esto puede provocar problemas si se hace un <i>Build all</i>
+        </p>
+		<p>
+            Esta extensión verifica este caso. Si se intenta abrir una KB con un Upgrade distinto al con que se trabajó
+            en la KB por última vez (CUALQUIER diferencia en el nº de versión), muestra una ventana de confirmación. 
+            Si esta se cancela, la KB no se abre:
+        </p>
+		
+        <p style="text-align: center">
+            <a href="./versionabrirkb.png">
+                <img alt="Aviso abrir KB" class="img-responsive" style="display:inline" src="./versionabrirkb.png" />
+            </a>
+        </p>
+
+        <p>
+            Esta extensión no se puede deshabilitar.
+        </p>
+
+		<!--#include file="./pie.html" -->
+	</body>
+	
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>LSI.Extensiones</title>
+		<!--#include file="./head.html" -->
+	</head>
+	<body>
+        <!--#include file="./cabecera.html" -->
+        
+        <div class="jumbotron">
+            <p class="text-center">
+                <img src="logo.png" class="img-responsive" style="display:inline" alt="Lsi.Extensiones" /><br />
+                <strong>LSI.Extensiones</strong> es un conjunto de extensiones
+	            para <a href="http://www.genexus.es/">GeneXus</a> hechas por 
+	            <a href="http://lsisoluciones.com">LSI</a>
+	        </p>
+        </div>
+        <p>
+            Esta es la documentación para la version 2.11.0 / 3.4.0 / 4.3.0 / 5.1.0. La compatibilidad de las versiones
+            de las extensiones respecto a las versiones de Genexus es la siguiente:
+        </p>
+        <table class="table table-bordered">
+            <tr><th>Versión extensiones</th><th>Versión Genexus</th></tr>
+            <tr><td>1.X.X</td><td>Ev2, cualquier upgrade</td></tr>
+            <tr><td>2.0 hasta 2.2</td><td>Ev3, hasta el upgrade 2</td></tr>
+            <tr><td>2.3 y posteriores</td><td>Ev3, (probado con los upgrades 3 y 9)</td></tr>
+            <tr><td>3.X</td><td>Genexus 15</td></tr>
+            <tr><td>4.X</td><td>Genexus 16, (probado con los upgrades 4 y 9)</td></tr>
+            <tr><td>5.X</td><td>Genexus 17, (probado con el upgrade 2)</td></tr>
+        </table>
+        <p>
+            Los cambios entre versiones se pueden consultar <a href="changelog.html">aquí</a>.
+        </p>
+        
+        <p>Las extensiones disponibles son estas:</p>
+        
+	    <table class="table table-bordered">
+	    
+	        <tr>
+	            <td>
+	                <a href="verificacion.html">Verificación y arreglo de errores de objetos</a>
+	            </td>
+	            <td>
+	                Permite hacer una serie de tests en busca de errores lógicos de un objeto:
+	                Variables que no se utilizan, que sólo se leen/escriben, parametros no utilizados, 
+	                etc. También incluye una función para arreglar algunos de estos errores
+	            </td>
+	        </tr>
+	        
+	        <tr>
+                <td>
+                    <a href="referencias.html">Buscar referencias a objetos</a> 
+                </td>
+                <td>
+                    Utilidad para buscar referencias a objetos con más detalle de las que permite el 
+                    <i>browser</i> de GeneXus: 
+                    Buscar donde se escribe un atributo, donde se usa un cierto campo de un 
+                    SDT, donde se escribe, inserta, actualiza o borra una tabla, objetos que declaran
+                    variables de un cierto tipo, etc.
+                </td>
+            </tr>	
+            
+            <tr>
+                <td>
+                    <a href="llamadas.html">Edición de llamadas a objetos</a>
+                </td>
+                <td>
+	                Utilidad para agregar o quitar un parámetro en llamadas a un objeto, o
+	                para reemplazar llamadas a un objeto por otro.
+	            </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <a href="refactorizaciones.html">Refactorizaciones</a>
+                </td>
+                <td>
+	                Utilidades para extraer código de un procedimiento / eventos de un form a un nuevo
+	                procedimiento, y un conjunto de condiciones a un nuevo Data Selector.
+	            </td>
+            </tr>
+            
+            <tr>
+                <td><a href="sync.html">Sincronización de kbases</a></td>
+                <td>
+                    Utilidad para revisar que no se pierdan cambios en exportaciones de una kbase 
+                    a otra, cuando ambas kbases son versiones distintas de la misma aplicación.
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <a href="noreferenciados.html">
+                        Buscar atributos y objetos no usados
+                    </a>
+                </td>
+                <td>
+                    Utilidad para buscar objetos y atributos no usados.
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <a href="wwmains.html">
+                        Trabajar con mains
+                    </a>
+                </td>
+                <td>
+                    Ventana para trabajar con objetos main de la kbase.
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <a href="confirmacionrebuild.html">
+                        Confirmación para <i>Rebuild all</i>
+                    </a>
+                </td>
+                <td>
+                    Pide confimación antes de lanzar un <i>Rebuild all</i>.
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <a href="versionabrirkb.html">
+                        Verificar versión de GX en apertura de KB
+                    </a>
+                </td>
+                <td>
+                    Pide confirmación para abrir un KB con un Upgrade (versión)
+                    distinto de Genexus
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <a href="pegarcomoliteral.html">
+                        Pegar un texto como literal
+                    </a>
+                </td>
+                <td>
+                    Pega un texto como un literal de Genexus.
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <a href="modificadosporusuario.html">
+                        Objetos modificados por un usuario
+                    </a>
+                </td>
+                <td>
+                    Permite buscar objetos modificados por un usuario desde una fecha, aunque estos objetos
+                    hayan sido modificados posteriormente por otro usuario.
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <a href="fuentes.html">Revisar fuentes tipográficas</a>
+                </td>
+                <td>
+                    Revisa que el equipo tenga instaladas todas las fuentes referenciadas en objetos 
+                    listado de la kbase.
+                </td>
+            </tr>
+	        <tr>
+	            <td>
+	                <a href="procedures.html">Procedimientos</a>
+	            </td>
+	            <td>
+	                Funciones para crear procedimientos para crear y borrar registros,
+	                y para devolver y actualizar valores de un atributo en la BBDD.
+	            </td>
+	        </tr>
+	        
+	        <tr>
+	            <td>
+	                <a href="codigo.html">Código</a>
+	            </td>
+	            <td>
+	                Utilidades para agilizar la edición de código.
+                </td>
+	        </tr>
+
+            <tr>
+                <td>
+                    <a href="prediccion.html">Predicción de código</a>
+                </td>
+                <td>
+                    Un modelo de <i>Machine learning</i> para predicción de
+                    código.
+                </td>
+            </tr>
+
+	        <tr>
+	            <td>
+	                <a href="sdts.html">STDs</a>
+	            </td>
+	            <td>
+	                Utilidades para crear un SDT basado en la estructura de una tabla, y para crear 
+	                procedimientos que inserten o actualizen un registro con valores de un SDT.
+	            </td>
+	        </tr>
+              
+            <tr>
+                <td>
+                    <a href="ordentab.html">Reordenar las páginas de un tab control en un winform</a>
+                </td>
+                <td>
+                    Permite cambiar el orden de las páginas de un tab en un Workpanel / Transaction.
+                </td>
+            </tr>  
+            
+            <tr>
+                <td>
+                    <a href="redimensionarwinform.html">Redimensionar winform a su tamaño máximo</a>
+                </td>
+                <td>
+                    Redimensiona un WinForm al tamaño máximo permitido según restricciones de
+                    requerimientos mínimos.
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <a href="borradotrn.html">Verificar reorganización en borrado de transacciones</a>
+                </td>
+                <td>
+                    Verifica si el borrado de una transacción provocará o no una 
+                    reorganización en la base de datos.
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <a href="busquedamains.html">
+                        Buscar objetos Main que referencian a una lista de objetos
+                    </a>
+                </td>
+                <td>
+                    Busca los objetos marcados como Main que referencian de alguna forma a una lista de 
+                    objetos.
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <a href="atrbasedon.html">
+                        Cambiar atributo base de variables
+                    </a>
+                </td>
+                <td>
+                    Utilidad para reemplazar variables basadas en un atributo por otro atributo en toda
+                    la kbase.
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <a href="buscartexto.html">
+                        Buscar patrones de texto
+                    </a>
+                </td>
+                <td>
+                    Permite buscar texto en fuentes de objetos (rules, procedure, etc.)
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <a href="msbuild.html">
+                        Tareas de MsBuild
+                    </a>
+                </td>
+                <td>
+                    Una conjunto de tareas de utilidad para MsBuild.
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <a href="copiartabla.html">
+                        Copiar objetos al portapapeles como tabla
+                    </a>
+                </td>
+                <td>
+                    Permite copiar información de los objetos seleccionados al 
+                    portapapeles en formato tabular.
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <a href="configuracion.html">
+                        Configuración
+                    </a>
+                </td>
+                <td>
+                    Opciones de configuración de las extensiones
+                </td>
+            </tr>
+            
+	    </table>
+	    	    
+	    <h2>Instalación</h2>
+        <p>
+            Los binarios se puede descargar desde aqui: 
+            <a href="http://sourceforge.net/projects/lsigxextensions/files/">http://sourceforge.net/projects/lsigxextensions/files/</a>.
+            Una vez descargado el archivo ZIP de la última versión, existen varias formas de instalar la 
+            extensión. La forma más segura de instalar la extensión es de forma manual:
+        </p>
+        
+        <ol>
+            <li>Cerrar todos los Genexus en ejecución</li>
+            <li>
+                Descomprimir en contenido del zip en la carpeta 
+                C:\Program Files (x86)\Artech\GeneXus\GeneXusXEv3\Packages
+            </li>
+            <li>
+                Ejecutar <code>"C:\Program Files (x86)\Artech\GeneXus\GeneXusXEv3\Genexus.exe" /Install</code>
+            </li>
+        </ol>
+                
+        <h2>Desinstalación</h2>
+        <p>En caso de querer desinstalar la extensión hay que borrar los siguientes archivos de la carpeta 
+           "C:\Program Files (x86)\Artech\GeneXus\GeneXusXEv3\Packages":
+        </p>
+        <ul>
+            <li>LSI.Packages.Extensiones.Utilidades.dll</li>
+            <li>LSI.Packages.Extensiones.dll</li>
+            <li>LsiExtensions.targets</li>
+        </ul>
+        <p>
+            y despues, por si acaso, ejecutar 
+            <code>"C:\Program Files (x86)\Artech\GeneXus\GeneXusXEv3\Genexus.exe" /Install</code>
+        </p>
+        
+        <h2>Código fuente</h2>
+	    <p>
+	         El código actual está disponible por subversion:
+	    </p>
+	    <pre>svn checkout svn://svn.code.sf.net/p/lsigxextensions/code/lsigxextensions-code</pre>
+        <p>
+            También puede descargase y ver en <a href="http://sourceforge.net/p/lsigxextensions/code/HEAD/tree/">http://sourceforge.net/p/lsigxextensions/code/HEAD/tree/</a>.
+        </p>
+        <p>
+            El código fuente de los scripts Python para la <a href="prediccion.html">prediccción de código</a> está en 
+            <a href="https://github.com/tonib/multihead-rnn-classifier">https://github.com/tonib/multihead-rnn-classifier</a>
+        </p>
+
+        <h2>Licencia y otros</h2>
+        <p>
+            La página principal del proyecto en sourceforge es 
+            <a href="http://sourceforge.net/projects/lsigxextensions">
+                http://sourceforge.net/projects/lsigxextensions/
+            </a><br />
+            La licencia del proyecto es <a href="https://es.wikipedia.org/wiki/Licencia_MIT">MIT</a>.<br />
+            Los bugs, parches y peticiones se pueden crear 
+            <a href="http://sourceforge.net/p/lsigxextensions/tickets/">aquí</a>. Hay que tener
+            <a href="https://sourceforge.net/user/registration">una cuenta creada</a> 
+            en sourceforge para poder hacerlo.<br />
+            La página de la extensión en el Genexus Marketplace es 
+            <a href="http://marketplace.genexus.com/product.aspx?lsiextensiones,es">http://marketplace.genexus.com/product.aspx?lsiextensiones,es</a>.<br />
+	    </p>
+        <p>
+            Este proyecto usa/contiene el siguiente software:
+            <ul>
+                <li>
+                    <a href="https://github.com/jitbit/MurmurHash.net">MurmurHash.net</a>, bajo licencia <a href="https://github.com/jitbit/MurmurHash.net/blob/master/LICENSE">MIT</a>
+                </li>
+                <li>
+                    <a href="https://github.com/tensorflow/tensorflow">Tensorflow Lite (C API)</a>, bajo licencia 
+                    <a href="https://github.com/tensorflow/tensorflow/blob/master/LICENSE">Apache</a>
+                </li>
+            </ul>
+        </p>
+	    <!--#include file="./pie.html" -->
+	</body>
+</html>

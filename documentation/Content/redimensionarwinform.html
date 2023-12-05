@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+	<head>
+	    <title>LSI.Extensiones - Redimensionar winform a su tamaño máximo</title>
+		<!--#include file="./head.html" -->
+	</head>
+	
+	<body>
+	    <!--#include file="./cabecera.html" -->
+	    
+		<h2>Redimensionar winform a su tamaño máximo</h2>
+		<p>
+		    Cuado se hace una aplicación en entorno Win, normalmente se establecen un requermimiento
+		    mínimo de la resolución que ha de tener la pantalla en los equipos cliente. Por ejemplo,
+		    se puede requerir que la resolución mínima sea de 1024 x 768. 
+		</p>
+		<p>
+		    Esta extensión redimensiona el Winform del objeto actual a ese tamaño máximo establecido.
+		    La extensión se encuentra en el menú LSI.Extensiones &gt; Poner el tamaño máximo del
+		    Winform. El tamaño máximo que puede tener el winform se define en 
+		    <a href="verificacion.html#configuracion">la ventana de configuración de las 
+		    verificaciones</a>.
+		</p>
+		
+		<div class="bs-callout bs-callout-warning">
+		    <h3>Limitaciones</h3>
+		    <ul>
+		        <li>
+		            Se ha de estar visualizando la parte de WinForm para que realmente se modifique 
+		            el winform. Por ejemplo, si se está viendo la parte de Events del winform, los cambios
+		            no se aplican.
+		        </li>
+		        <li>
+		            No es posible redimensionar winforms a un tamaño superior al de la resolución actual
+		            de la pantalla.
+		        </li>
+		    </ul>
+		</div>
+		
+		<!--#include file="./pie.html" -->
+	</body>
+	
+</html>

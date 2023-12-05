@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="es">
+
+	<head>
+	    <title>LSI.Extensiones - Trabajar con mains</title>
+		<!--#include file="./head.html" -->
+	</head>
+	
+	<body>
+	    <!--#include file="./cabecera.html" -->
+	    
+		<h2>Trabajar con mains</h2>
+		<p>
+		    Es una ventana de utilidad para trabajar con objetos main. Tiene una serie de
+		    herramientas generales para cualquier generador, otras específicas para C#, 
+		    otras específicas de C# / Win, y otras para Android.
+		</p>
+			    
+		<h2>Herramientas generales</h2>
+		<p>
+		    La ventana de Trabajar con mains se encuentra en el menú Lsi.Extensions
+		    &gt; Toolwindows &gt; Work with mains. El atajo de teclado para abrirla es 
+		    <kbd>Ctrl+M</kbd>. La ventana, en un entorno C# / Win, tiene el siguiente aspecto:
+		</p>
+		
+		<p style="text-align:center">
+		    <a href="./wwmains.png">
+		        <img class="img-responsive" style="display:inline" alt="Trabajar con mains" src="wwmains.png" />
+		    </a>
+		</p>
+		
+		<p>
+		    En esta ventana se muestra una pestaña por cada generador disponible en la kbase
+		    actual. Para cada generador, se muestra la lista de los objetos main que usan
+		    dicho generador. En la parte inferior se muestran pestañas para los logs de los
+		    procesos que se hayan ejecutado en esta ventana.
+		</p>
+		<p>
+		    Las operaciones disponibles para cualquier generador son las 
+		    siguientes:
+		</p>
+		
+		<table class="table table-bordered">
+		    <tr>
+		        <td><b>Botón "Refresh"</b></td>
+		        <td>
+		            Refresca la lista de generadores y mains. Usar este botón si se añade o
+		            quita un main / generador.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td>
+		            <b>Ejecutar el objeto main</b><br />
+		            <img src="run.png" alt="Ejecutar" /> / menú Run &gt; Run / <kbd>Enter</kbd>
+		        </td>
+		        <td>
+		            Lanza la ejecución del objeto main seleccionado en la lista tal cual
+		            está compilado actualmente, sin especificarlo / generarlo. Esta operacion
+		            también se puede lanzar haciendo doble click en la lista.
+		        </td>
+		    </tr>
+		    
+		    <tr>
+		        <td>
+		            <b>Build all con el generador actual</b><br />
+		            <img src="buildall.png" alt="Build all con el generador actual" /> /
+		            menú Build &gt; Build all with this generator / <kbd>Alt+A</kbd>
+		        </td>
+		        <td>
+		            Ejecuta un build para generar los objetos main del generador de la pestaña
+		            actualmente seleccionada. En concreto hace lo siguiente:
+		            <ul>
+		                <li>
+		                    Abre una ventana en la que se pregunta si hay que especificar los objetos
+                            pendientes. Por defecto no se especifican.
+		                </li>
+		                <li>
+		                    Genera los objetos especificados, solo con el generador actual
+		                </li>
+		                <li>
+		                    Compila los objetos main que usen el generador actual y que llaman a 
+		                    alguno de los objetos especificados durante el proceso.
+		                </li>
+		            </ul>
+		            En caso que hubiera objetos que ya estuvieran especificados previamente, pero
+		            no generados, por ejemplo porque se cortó un Build All, este proceso no los 
+		            especificará pero si los generará. Esto puede hacer que queden mains pendientes
+		            de compilar. En este caso, hay que compilarlos manualmente con la operación
+		            "Compilar" que se describe a continuación.<br />
+		            Mientras se está ejecutando esta operación no se pueden lanzar ningún
+		            build (Build all, Rebuild all, etc) en la kbase.
+		        </td>
+		    </tr>
+		    
+		    <tr>
+		        <td>
+		            <b>Compilar</b><br />
+		            <img src="compile.png" alt="Compilar" /> / menú Build &gt; Genexus compilation /
+		            <kbd>Alt+G</kbd>
+		        </td>
+		        <td>
+		            Compila los main seleccionados con los fuentes generados actualmente. No
+		            se especifica / genera nada.
+		        </td>
+		    </tr>
+		    
+		    <tr>
+		        <td>
+		            <b>Generar los objetos query</b><br />
+		            Build &gt; Build query objects
+		        </td>
+		        <td>
+		            Genera todos los objetos Query del entorno actual, sin especificar / generar nada.
+		        </td>
+		    </tr>
+		</table>
+		
+		<h2>Herramientas especificas para C#</h2>
+		
+		<p>
+		    Las siguientes operaciones están disponibles sólo para generadores C# win y web:
+		</p>
+		
+		<table class="table table-bordered">
+		    <tr>
+		        <td>
+		            <b>Depurar main en ejecución</b><br />
+		            <img src="debug.png" alt="Depurar" /> / menú Run &gt; Debug running instance /
+		            <kbd>Alt+D</kbd>
+		        </td>
+		        <td>
+		            Esta operación se puede aplicar sobre un main que esté actualmente en 
+		            ejecución. Al usarla se abre el Visual Studio y se asocia el proceso
+		            del main actualmente seleccionado en la lista para depurarlo. <br />
+		            Para poder usar esta opción el main debe estar
+		            compilado con opciones de depuración. Para ello hay que añadir la opción
+		            "/debug" en la propiedad "Compiler flags" del generador. 
+		            <br />
+		            En caso de depurar una aplicación web, se intentará asociar cualquier proceso
+		            con nombre "w3p.exe" en ejecución. Si es una aplicación win, se intentará
+		            asociar cualquier proceso con nombre [nombredelmain].exe. En caso que exista
+		            más de uno, se pedirá qué proceso asociar.
+		            <br />
+		            La versión de Visual Studio a usar para depurar se indica en la ventana de 
+		            <a href="configuracion.html">configuración</a>.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td>
+		            <b>Editar RSP del main</b><br />
+		            <img src="editrsp.png" alt="Editar RSP" /> / menú Tools &gt; 
+		            Edit RSP / <kbd>Alt+S</kbd>
+		        </td>
+		        <td>
+		            Esta operación en el generador c# win sólo está disponible si la propiedad
+		            "Assemblies structure" del generador vale "By main".<br />
+		            Abre el editor de texto asociado para ver el contenido del archivo RSP
+		            del main. El archivo RSP contiene las opciones de compilacion del main,
+		            y la lista de fuentes generados que se compilan para generar ejecutable
+		            del main.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td>
+		            <b>Abrir archivo fuente de un objeto</b><br />
+		            <img src="abrircsharp.png" alt="Abrir archivo fuente" /> / menú Tools &gt; 
+		            Open object source file... / <kbd>Alt+F</kbd>
+		        </td>
+		        <td>
+		            Abre el archivo fuente c# de un objeto en el Visual Studio. Al usar
+		            esta opción se pide de qué objeto abrir el archivo fuente, y despues se
+		            abre. También abre el objeto en Genexus.
+		            <br />
+		            La versión de Visual Studio a usar para abrir el archivo se indica en la ventana de 
+		            <a href="configuracion.html">configuración</a>.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Botón "Production..."</b></td>
+		        <td>
+		            Abre una ventana con la gestión para preparar la versión de producción para 
+		            instalar en el cliente. Esta gestión se describe a continuación.
+		        </td>
+		    </tr>
+		</table>
+		    
+		<a id="produccion"></a>
+		<h3>Preparar producción en un entorno C#</h3>
+		<p>
+		    Esta gestión ofrece algunas herramientas para preparar una versión de producción
+		    a instalar en el cliente de una aplicación generada en C#. Permite definir y ejecutar 
+		    automáticamente tareas que hay que hacer cada vez que se prepara la producción. 
+		</p>
+		<p>
+		    La definición de las tareas a ejecutar se guarda en la kbase, en el archivo 
+		    [DirectorioKbase]\LsiExtensions\production.xml. El archivo se guarda automáticamente al
+		    cerrar la ventana de edición de las tareas de la producción. Se puede copiar de una
+		    kbase a otra manualmente.
+		</p>
+		<p>
+		    Las tareas soportadas son las siguientes:
+		</p>
+		<ul>
+	        <li>Crear un archivo comprimido con la aplicación.</li>
+	        <li>Hacer una copia de la aplicación</li>
+	        <li>Ejecutar un <a href="http://es.wikipedia.org/wiki/Windows_PowerShell">script Powershell</a></li>
+	    </ul>
+		    
+		<p>
+		    A la ventana de la gestión de producción se accede
+		    pulsando el botón "Production...". Tiene el siguiente aspecto:
+		</p>
+		<p style="text-align:center">
+		    <a href="./produccion.png">
+		        <img class="img-responsive" style="display:inline" alt="Ventana de produccion" src="produccion.png" />
+		    </a>
+		</p>
+		<table class="table table-bordered">
+		    <tr>
+		        <td>
+		            <b>File patterns to ignore</b>
+		        </td>
+		        <td>
+		            Indica los patrones de nombres de los archivos que estan en la carpeta de la aplicación 
+		            que no hay que copiar / comprimir. Si hay más de un patrón, se separan con
+		            el caracter puntos y coma.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td>
+		            <b>Copy file images.txt to bin folder</b>
+		        </td>
+		        <td>
+		            Sólo se aplica a entornos Win. Indica si hay que copiar el archivo Images.txt de la 
+		            carpeta de generación a la carpeta bin.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>New... / Edit... / Remove</b></td>
+		        <td>
+		            Agrega, modifica o borra tareas para prepara la producción. Hacer doble click sobre una
+		            tarea es equivalente a pulsar el botón "Edit..."
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Move up / Move down</b></td>
+		        <td>
+		            Cambia el orden en que se ejecutan las tareas de la producción: Mueve arriba o abajo
+		            la tarea seleccionada.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Close</b></td>
+		        <td>
+		            Cierra la ventana de la producción y guarda los cambios hechos en las tareas a ejecutar.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Run selected tasks</b></td>
+		        <td>
+		            Ejecuta las tareas de la producción actualmente seleccionadas en la lista. 
+		            Antes da un aviso de los archivos y carpetas que se van a reemplazar durante el proceso.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Prepare production (run all tasks)</b></td>
+		        <td>
+		            Ejecuta las tareas de la producción de la kbase. Antes da un aviso de los archivos y 
+		            carpetas que se van a reemplazar durante el proceso.
+		        </td>
+		    </tr>
+		</table>
+
+        <p>La ventana de edición de una tarea para prepara la producción es la siguiente:</p>
+        <p style="text-align:center">
+		    <a href="./tareaproduccion.png">
+		        <img class="img-responsive" style="display:inline" alt="Tarea de produccion" src="tareaproduccion.png" />
+		    </a>
+		</p>
+
+        <table class="table table-bordered">
+		    <tr>
+		        <td>
+		            <b>Task type</b>
+		        </td>
+		        <td>
+		            El tipo de tarea a ejecutar:
+		            <ul>
+		                <li>
+		                    Compress: Comprime la carpeta web o la carpeta bin, dependiendo de si el generador
+		                    es win o web, con el programa compresor indicado en la configuración.<br />
+		                    La compresión se hace con un programa externo. La configuración de qué programa
+		                    usar se indica en la ventana de <a href="configuracion.html">configuración</a>.
+		                </li>
+		                <li>
+		                    Copy: Copia la carpeta web/bin a un cierto destino. En este caso, en el campo
+		                    "Dest. directory (web folder)" / "Dest. directory (bin folder)" se indica a qué
+		                    carpeta se copiará la aplicación.
+		                </li>
+		                <li>
+		                    Powershell script: Ejecuta un script powershell. Esto puede ser util para ejecutar
+		                    tareas mas complejas (actualizar una base de datos, subir el archivo a un FTP, etc.).
+		                    Al script se le pasan varias variables predefinidas: 
+							<dl>
+								<dt>$LASTCOPYDESTINATION</dt>
+								<dd>El path de destino de la última tarea de tipo "Copy" ejecutada</dd>
+
+								<dt>$MODELPATH</dt>
+								<dd>El path del modelo del que se está preparando la producción</dd>
+								<dt>$GXENVNAME</dt>
+								<dd>El nombre del <i>Environment</i> seleccionado actualmente en la KBase</dd>
+							</dl>
+		                </li>
+		            </ul>
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Environment type</b></td>
+		        <td>
+		            Sólo se aplica a tareas de tipo Copy / Compress. Indica si tarea se aplica a los programas
+		            creados por los generadores web o los generadores win.		            
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Zip path</b></td>
+		        <td>
+		            Sólo se aplica si la tarea es de tipo Compress. Indica el path del archivo comprimido 
+		            donde se va a guardar la aplicación. En caso que la aplicación sea Win se comprime
+		            la carpeta bin de la aplicación. Si es Web, se comprime la carpeta web.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Dest. directory </b></td>
+		        <td>
+		            Sólo se aplica si la tarea es de tipo Copy. Indica el path de la carpeta a la que
+		            se va a copiar la aplicación. Si es una aplicación Win se copia la carpeta bin. Si
+		            es web, se copia la carpeta web. La carpeta de destino se reemplaza con la actual
+		            de la aplicación.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Script path</b></td>
+		        <td>
+		            Sólo se aplica si la tarea es de tipo Powershell script. Indica el path del script
+		            a ejecutar.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Keep current client.exe.config / web.config file</b></td>
+		        <td>
+		            Sólo se aplica si la tarea es de tipo Copy. Si este campo está marcado y la caperta
+		            de destino ya existe, al copiar la nueva producción no se sobreescribirá el archivo de 
+		            configuración de la aplicación (client.exe.config / web.config) que existe actualmente.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Stop IIS before copy and start after copy</b></td>
+		        <td>
+		            Sólo se aplica si la tarea es de tipo Copy y el entorno es de tipo Web. Si esta opción está
+		            marcada, antes de iniciar la copia de la aplicación se intentará parar el servicio del IIS
+		            en la maquina destino de la copia, y se iniciará al finalizarla.<br />
+		            IIS suele mantener bloqueos sobre los directorios de las aplicaciones web, impidiendo 
+		            que se borren si la aplicación se está ejecutando. El objetivo de esta marca es evitar que
+		            falle la copia por este motivo. <br />
+		            El equipo en el que hay que parar el IIS se decide según la caperta de destino de la
+		            copia. Si es un path <a href="https://msdn.microsoft.com/en-us/library/gg465305.aspx">UNC</a>
+		            (\\equipo\carpetacompartida\directorio) se asume que el equipo es el de la ruta. En cualquier
+		            otro caso, se asume que hay que parar el IIS en el equipo local.<br />
+		            El usuario que ejecuta el proceso de producción debería pertenecer al grupo de administradores
+		            del equipo en el que se va a reiniciar el IIS. Si no, es muy probable que el reinicio falle
+		            (no ha sido probado).
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Keep a backup of the current destination directory</b></td>
+		        <td>
+		            Sólo se aplica si la tarea es de tipo Copy. En caso que la carpeta de destino
+		            exista actualmente, esta se renombrará con un sufijo "-old". Esto es útil para
+		            evitar por error perder archivos que se hubieran creado manualmente dentro de la
+		            carpeta destino. En caso que al ejecutar el proceso ya existiera una carpeta
+		            con sufijo "-old", esta se borrará al preparar la producción.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Enabled</b></td>
+		        <td>
+		            Indica si la tarea está habilitada. Si no está habilitada, no se ejecutará
+		            al preparar la producción.
+		        </td>
+		    </tr>
+		</table>
+        
+		<h2>Herramientas especificas para C# / win</h2>
+		
+		<p>
+		    Las siguientes operaciones están disponibles sólo para el generador C# win:
+		</p>
+		
+		<table class="table table-bordered">
+		    <tr>
+		        <td>
+		            <b>Iniciar un main con depuración</b><br />
+		            <img src="startdebug.png" alt="Iniciar con depuración" /> / menú Run &gt; 
+		            Start debugging
+		        </td>
+		        <td>
+		            Abre el Visual Studio y asocia el ejecutable del main seleccionado en la lista
+		            para poder depurarlo, sin iniciar su ejecución.
+		            <br />
+		            Esto es útil cuando se quiere depurar el inicio de ejecución del main. Para
+		            arrancar la ejecución del main, hay que pulsar el botón de iniciar con
+		            depuración en el Visual Studio.<br />
+		            Para poder usar esta opción el main debe estar compilado con opciones 
+		            de depuración. Para ello hay que añadir la opción "/debug" en la 
+		            propiedad "Compiler flags" del generador. <br />
+		            La versión de Visual Studio a usar para depurar se indica en la ventana de 
+		            <a href="configuracion.html">configuración</a>.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td>
+		            <b>Compilación personalizada</b><br />
+		            <img src="customcompile.png" alt="Compilación personalizada" /> / 
+		            menú Build &gt; Custom compile / <kbd>Alt+C</kbd>
+		        </td>
+		        <td>
+		            Esta operación sólo está disponible si la propiedad
+		            "Assemblies structure" del generador vale "By main".<br />
+		            Esta operación compila los objetos main seleccionados, sin especificar /
+		            generar nada. Se diferencia de la compilación que hace Genexus en lo 
+		            siguiente:
+		            <ul>
+		                <li>Compila siempre el main, esté pendiente o no de compilar.</li>
+		                <li>
+		                    No compila nada mas que los mains seleccionados: Genexus puede
+		                    compilar otros mains que esten pendientes.
+		                </li>
+		                <li>
+		                    Hace una revisión de los archivos RSP de los main a compilar,
+		                    por si falta incluir algun archivo fuente.
+		                </li>
+		            </ul>
+		            Las revisión de los archivos RSP que tiene que hacer la compilación se
+		            indica en el campo "RSP repair with custom compilation" que aparece en
+		            la parte inferior de la ventana:
+		            <ul>
+		                <li>
+		                    Repair all: Añade en los archivos RSP los fuentes que faltan
+		                </li>
+		                <li>
+		                    Repair BC only: Revisa que en los RSP no falten archivos asociados
+		                    a Bussines components. No revisa otros archivos
+		                </li>
+		                <li>Do not repair: No revisa los archivos RSP</li>
+		            </ul>
+		        </td>
+		    </tr>
+		    <tr>
+		        <td>
+		            <a id="repararRsp"></a>
+		            <b>Reparar archivos RSP</b><br />
+		            <img src="verificarrsp.png" alt="Reparar RSPs" /> / 
+		            menú Tools &gt; Repair all RSPs... / <kbd>Alt+E</kbd>
+		        </td>
+		        <td>
+		            Esta operación sólo está disponible si la propiedad
+		            "Assemblies structure" del generador vale "By main".<br />
+		            Permite revisar los archivos RSP buscando si falta incluir archivos
+		            fuente en ellos. Al usar esta opción aparece una ventana preguntado
+		            si solo hay que revisar. En este caso, se revisan los archivos RSP y 
+		            se indica que archivos falta, sin modificar nada. <br />
+		            Si se indica que no sólo hay que revisar, el proceso modificará los
+		            archivos RSP para añadir los fuentes que faltan.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td>
+		            <a id="borrarBackups"></a>
+		            <b>Borrar archivos de backup</b><br />
+		            menú Tools &gt; Remove backup files...
+		        </td>
+		        <td>
+		            La reparación de RSPs y la compilacion pueden generar archivos de backup en
+		            la carpeta del modelo. Esta opción permite borrarlos. Al usar esta opción
+		            se abrirá una ventana indicando los archivos de backup encontrados. Si se
+		            confirma dicha ventanta, los archivos se borrarán.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td>
+		            <b>Quitar un archivo fuente de todos los RSPs</b><br />
+		            menú Tools &gt; Remove entry from all RSPs...
+		        </td>
+		        <td>
+		            Permite quitar un archivo fuente de todos los RSPs. Al usar esta opción se abrirá
+		            la seleccion de archivos, para indicar qué archivo quitar, y al confirmar se quitará
+		            la entrada correspondiente a dicho archivo de todos los RSPs del modelo actual.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Botón "Zip modules"</b></td>
+		        <td>
+		            Esta operación sólo está disponible si la propiedad
+		            "Assemblies structure" del generador vale "By main".<br />
+		            Esta operación está hecha con el objetivo de poner una actualización parcial
+		            de la aplicación en un cliente. Por ejemplo, si se ha detectado un error
+		            en un cierto módulo, y se desea poner una actualización de éste, sin llevar
+		            toda la aplicación entera.<br />
+		            Esta operación comprime las dlls de los mains seleccionados en un archivo, 
+		            añadiendo también el archivo Genexus.Programs.Commons.dll (incluye las
+		            definiciones de SDTs, dominios, etc). El archivo comprimido se genera en la
+		            carpeta indicada en la ventana de 
+		            <a href="configuracion.html">configuración</a>. <br />
+		            Al usar esta operación se lanza el proceso de compresión y se abre el Explorador
+		            de Windows con la carpeta en la que se ha generado el archivo comprimido.
+		        </td>
+		    </tr>
+		</table>
+		
+		<h3>Notas sobre la reparación de RSPs</h3>
+		<p>
+		    Las operaciones de compilación personalizada y reparación de RSPs mantienen una caché
+		    de los nombres de los archivos fuentes generados por cada objeto, necesaria para que 
+		    estos procesos sean más rápidos. Esta caché se guarda
+		    en la kbase, en el archivo [DirectorioKbase]\LsiExtensions\SourceFilesCache.xml. La 
+		    primera vez que se haga la reparación de RPSs esta cache se genera por completo y
+		    puede tardar bastante tiempo, dependiendo del tamaño de la kbase. Las siguientes veces
+		    tardará mucho menos.
+		</p>
+		<p>
+		    En caso de instalar una nueva versión de las extensiones, o si la cache quedase corrupta,
+		    puede ser necesario regenerar esta cache. Se puede borrar usando el botón 
+		    "Clean kbase objects cached information..." en la ventana
+		    de <a href="configuracion.html">configuración</a>.
+		</p>
+		<div class="bs-callout bs-callout-warning">
+    		<h2>Limitaciones</h2>
+		    <ul>
+		        <li>
+		            La reparación de RSPs no revisa todos los tipos de objetos, sólo los mas comunes: 
+		            Procedures, transacciones, workpanels, etc. Los dominios enumerados, por ejemplo,
+		            no se revisan.
+		        </li>
+		        <li>
+		            La reparación de RPSs sólo añade objetos que se usan y que no se han incluido en 
+		            los archivos RSP,
+		            no quita objetos del RSP que hayan dejado de usarse.
+		        </li>
+		    </ul>
+		</div>
+		
+		<h2>Herramientas específicas para Android</h2>
+		<p>
+		    Las siguientes operaciones están disponibles sólo para el generador de Smart devices / 
+		    Android, y se encuentran todas en el menú "Android" de la pestaña del generador de
+		    Smart devices: 
+		</p>
+		<table class="table table-bordered">
+		    <tr>
+		        <td>
+		            <b>Abrir archivo fuente de un External Object</b><br />
+		            <img src="abrircsharp.png" alt="Abrir archivo fuente" /> / menú Tools &gt; 
+		            Open object source file... / <kbd>Alt+F</kbd>
+		        </td>
+		        <td>
+		            Abre el archivo fuente de un External Object. Al usar
+		            esta opción se pide de qué objeto abrir el archivo fuente, y despues se
+		            abre con el editor de texto indicado en la 
+		            <a href="configuracion.html">configuración</a>.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td>
+		            <b>Abrir directorio de los APIs de Genexus de la kbase (Solo para Ev3)</b><br />
+		            Menú Android &gt; Open GX APIs sources directory
+		        </td>
+		        <td>
+		            Abre en el Explorador de Windows la carpeta que contiene los fuentes de los
+		            APIs de Genexus para Android. Esta carpeta es [DIRECTORIO-DEL-MODELO]\mobile\Android\FlexibleClient\src\com\artech\android\api.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td>
+		            <b>Editar el archivo UserExternalApiFactory.java  (Solo para Ev3)</b><br />
+		            Menú Android &gt; UserExternalApiFactory.java
+		        </td>
+		        <td>
+		            Abre el archivo 
+		            [DIRECTORIO-DEL-MODELO]\mobile\Android\FlexibleClient\src\com\artech\externalapi\UserExternalApiFactory.java
+		            con editor de texto indicado en la <a href="configuracion.html">configuración</a>.
+		        </td>
+		    </tr>
+		</table>
+		
+		<!--#include file="./pie.html" -->
+	</body>
+	
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+
+	<head>
+	    <title>LSI.Extensiones - Búsqueda de referencias</title>
+		<!--#include file="./head.html" -->
+	</head>
+	
+	<body>
+	    <!--#include file="./cabecera.html" -->
+	    
+		<h2>Búsqueda de referencias</h2>
+		<p>
+		    GeneXus contiene un <i>browser</i> que permite buscar qué objetos están referenciado a otro
+		    objeto (campo de la base de datos, tabla, procedimiento, etc). Esta búsqueda es extremadamente
+		    útil, pero se puede refinar aun más. El objetivo de estas 
+		    extensiones es dar más opciones de búsqueda sobre las referencias que guarda en la Kbase 
+		    GeneXus:
+		</p>
+		
+		<ul>
+		    <li>
+		        Buscar donde se escribe y/o lee un atributo de la base de datos, sin tener en cuenta
+		        variables basadas en el atributo.
+		    </li>
+		    <li>
+		        Buscar donde se inserta, borra o actualiza una tabla de la base de datos.
+		    </li>
+		    <li>Buscar donde referencia a un campo/función de un SDT / BC</li>
+		    <li>
+		        Buscar objetos donde se declaran variables de un cierto tipo. Por ejemplo, donde se usan
+		        variables del tipo ExcelDocument.
+		    </li>
+		    <li>Buscar donde referencia a un campo/función de un dominio enumerado</li>
+		    <li>
+		        Buscar objetos referenciados por un generador: Objetos que se van a generar con dicho
+		        generador
+		     </li>
+		</ul>
+		
+		<p>
+		    Estas búsquedas están agrupadas en la opción de menú <i>Lsi.Extensions &gt; Tool Windows
+		    &gt; Search references</i>. El formato de la ventana es el siguiente:
+		</p>
+		<p style="text-align:center">
+		    <a href="./referencias.png">
+		        <img class="img-responsive" style="display:inline" alt="Imagen referencias" src="./referencias.png" />
+		    </a>
+		</p>
+		
+		<table class="table table-bordered">
+		    <tr>
+		        <td><b>Type</b></td>
+		        <td>
+		            Indica el tipo de objeto al que buscar referencias:
+		            <ul>
+		                <li>Attribute</li>
+		                <li>Table</li>
+		                <li>BC</li>
+		                <li>SDT</li>
+		                <li>Variables (by type)</li>
+		            </ul>
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Object / V.Type / Generator</b></td>
+		        <td>
+		            <p>
+		                Si el título indica "Object", es el nombre del objeto al que buscar referencias. 
+		                Pulsando el botón "..." se abre la selección de dicho objeto.
+		            </p>
+		            <p>
+		                Si el título indica "V.Type", es el nombre del tipo de la variable de la que buscar
+		                variables. Por ejemplo: "varchar" o "exceldocument". El texto se busca tal cual aparece
+		                en la columna "Type" de la parte de variables del objeto.
+		            </p>
+		            <p>
+		                Si el título indica "Generator", es la descripción del generador desde el que
+		                buscar referencias.
+		            </p>
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Member</b></td>
+		        <td>
+		            Sólo se aplica si el tipo de objeto es BC o SDT.  Aquí se indica si se quiere
+		            buscar una referencia a un campo o a una funcion de un SDT.<br />
+		            En el campo adyacente se indica el nombre del campo / función (p.ej. "toxml" o 
+		            "save") del SDT/BC del que buscar referencias.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Only objects that reference to table</b></td>
+		        <td>
+		            Sólo se aplica si el tipo de objeto a buscar es atributo.
+		            Aquí se puede indicar el nombre de una tabla. Si se indica, sólo se buscarán
+		            objetos que hagan referencia a dicha tabla. Si se buscan escrituras del 
+		            atributo, sólo se buscarán objetos que referencien a dicha tabla con operaciones
+		            de inserción / actualización. Si se buscan lecturas / escrituras del atributo
+		            se buscarán objetos que referencien de cualquier forma a la tabla.<br />
+		            Si el campo se deja en blanco, se ignorará.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Buscar (checkboxes)</b></td>
+		        <td>
+		            Sólo se aplica si el tipo de objeto es atributo o tabla. Aquí se indica qué tipo
+		            de referencias buscar al atributo/tabla. Para los atributos pueden ser una de 
+		            estas dos:
+		            <ul>
+		                <li>Lecturas y escrituras</li>
+		                <li>Escrituras</li>
+		            </ul>
+		            Y para tablas pueden ser una o más de estas:
+		            <ul>
+		                <li>Inserciones</li>
+		                <li>Escrituras (actualizaciones)</li>
+		                <li>Lecturas</li>
+		                <li>Borrados</li>
+		            </ul>
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Only specifiable objects</b></td>
+		        <td>
+		            Sólo se aplica si se buscan referencias desde un generador. Si está marcado, sólo se
+		            muestran los objetos especificables. Esto puede ser útil si se quieren hacer un rebuild
+		            sólo de los objetos generados por dicho generador. En este caso, se puede hacer la
+		            busqueda marcando este campo, seleccionar todos los objetos de la lista y hacer un
+		            <i>Rebuild with these only</i>.
+		        </td>
+		    </tr>
+		    <tr>
+		        <td><b>Botón buscar/cancelar</b></td>
+		        <td>
+		            Lanza la búsqueda de referencias, que se ejecuta en segundo plano. Mientras se 
+		            ejecuta la búsqueda, se puede usar este mismo botón para cancelarla.
+		        </td>
+		    </tr>
+		</table>
+		
+		<h3>Búsqueda de referencias a atributos</h3>
+		<p>
+		    Permite buscar referencias de lectura/escritura o escritura a atributos de la KBase. 
+		    Hace dos tipos de búsquedas: 
+		</p>
+		<ol>
+		    <li>Busca que objetos referencia al atributo directamente</li>
+		    <li>
+		        Si el atributo se referencia en Bussiness Components, busca además en que objetos se 
+		        referencia a dichos BC, y en estos se busca referencias al campo correspondiente del
+		        atributo.
+		    </li>
+		</ol>
+		<p>
+		    Si se buscan referencias de lectura, mira si el atributo es referenciado en cualquier
+		    parte del objeto, excepto en las variables. Si se buscan referencias de escritura, se
+		    revisa si el objeto escribe el atributo de alguna forma.
+		</p>
+		<div class="bs-callout bs-callout-warning">
+		    <h4>Limitaciones</h4>
+		    <ul>
+		        <li>
+	                Las referencias al atributo por instancias de variables de tipo BC pueden dar falsos
+	                positivos: Sólo buscan referencias al miembro
+	                correspondiente al atributo de los BC, pero no se revisa si el BC se llega a leer o
+	                escribirse en la base de datos.
+	            </li>
+	            <li>
+	                Las instancias de los patterns no se revisan y darán posibles falsos positivos.
+	            </li>
+		    </ul>
+		</div>
+		<p>
+		    Los posibles falsos positivos aparecen con el fondo gris en la lista de resultados.
+		</p>
+		
+		
+		<h3>Búsqueda de referencias a tablas</h3>
+		<p>
+		    Permite buscar referencias a tablas según el tipo de operación (lectura, escritura, 
+		    inserción y/o actualización). Hace dos tipos de búsquedas:
+		</p>
+		<ol>
+		    <li>Busca operaciones directas sobre la tabla</li>
+		    <li>
+		        Busca operaciones en la tabla a traves del BC. Esto es, busca llamadas a save(),
+		        delete(), load() de BC que referencien a la tabla.
+		    </li>
+		</ol>
+		<div class="bs-callout bs-callout-warning">
+		    <h4>Limitaciones</h4>
+		    <ul>
+		        <li>
+		            Todos los objetos de la kbase han de estar especificados antes de poder usar esta
+		            búsqueda.
+		        </li>
+		        <li>
+		            Las operaciones de inserción/actualización a traves de BC no pueden distinguirse, porque
+		            ambas llaman a la funcion Save(). Pueden dar falsos positivos.
+		        </li>
+		        <li>
+		            En las instancias de patterns y dashboards, las llamadas a funciones de BC 
+		            no se revisan y pueden dar posibles falsos positivos si referncian a BC con el campo
+		            atributo buscado.
+		        </li>
+		    </ul>
+		</div>
+		<p>
+		    Los posibles falsos positivos aparecen con el fondo gris en la lista de resultados.
+		</p>
+		
+		<h3>Búsqueda de referencias a un campo de un SDT/BC</h3>
+		<p>
+		    Busca objetos que referencien de alguna forma a un campo o a un función miembro de un SDT
+		    o BC. La busqueda del miembro del SDT se hace en cualquier posición de una expresión que
+		    haga referencia a una variable basada en un SDT, o en cualquier otro SDT que haga referencia
+		    al SDT buscado.<br />
+		    Por ejemplo, si se tienen dos SDTs:
+		</p>
+		
+		<pre>
+SDT1 
+{
+    Campo1: N(4)
+    Campo2: N(4)
+}
+SDT2
+{
+    Lista: Coleccion de SDT1
+}
+		</pre>
+		<p>
+		    Si se buscan referencias al miembro "Campo1" del SDT1, los objeto que contengan expresiones
+		    como "&amp;SDT1.Campo1" o "&amp;SDT2.Lista.item(1).Campo1" se encontrarán.<br />
+		    Lo mismo se aplica a la busqueda de funciones. Por ejemplo, se puede buscar referencias
+		    a la función "save" de un BC ("&amp;BC.save()") o "fromxml" ("&amp;SDT1.FromXml(&amp;Xml)")
+		</p>
+		<div class="bs-callout bs-callout-warning">
+		    <h4>Limitaciones</h4>
+		    <ul>
+		        <li>
+		            No se revisan Dashboards, DataProviders ni instancias de patterns. 
+		            Los objetos de este tipo que contengan alguna referencia a alguno de los SDTs/BC 
+		            buscados darán un falso positivo.
+		        </li>
+		    </ul>
+		</div>
+		<p>
+		    Los posibles falsos positivos aparecen con el fondo gris en la lista de resultados.
+		</p>
+		
+		<h3>Búsqueda de refencias a un campo/función de un dominio enumerado</h3>
+		<p>
+		    Busca referencias a un campo o función de un dominio que tiene valores enumerados. Por ejemplo,
+		    se pueden buscar referencias a Dominio.ValorEnumerado, o a Dominio.EnumerationDescription().
+		    En el campo "Object" se indica el nombre del dominio enumerado y en el campo "Member" se
+		    indica el nombre del valor enumerado o la función a buscar.
+		</p>
+		<div class="bs-callout bs-callout-warning">
+		    <h4>Limitaciones</h4>
+		    <ul>
+		        <li>
+		            No se revisan Dashboards, DataProviders ni instancias de patterns. 
+		            Los objetos de este tipo que contengan alguna referencia al dominio darán un falso 
+		            positivo.
+		        </li>
+		        <li>
+		            Cuando una variable basada en el dominio del dominio enumerado se pone en un win/webform, 
+		            normalmente se pone como una <i>List box</i> o un <i>Combo box</i>, que contendrá
+		            todos los valores del dominio enumerado. Estas referencias se ignoran cuando se 
+		            buscan referencias a un valor del dominio enumerado.
+		        </li>
+		    </ul>
+		</div>
+		<p>
+		    Los posibles falsos positivos aparecen con el fondo gris en la lista de resultados.
+		</p>
+		
+		<h3>Búsqueda de variables por tipo</h3>
+		<p>
+		    Busca objetos que tenga una parte de variables (procedures, webpanels, etc) y que contengan
+		    al menos una variable del tipo indicado. El texto se busca tal cual aparece
+		    en la columna "Type" de la parte de variables del objeto.
+		</p>
+		<div class="bs-callout bs-callout-warning">
+		    <h4>Limitaciones</h4>
+		    <ul>
+		        <p>
+		            No se revisan Dashboards, DataProviders ni instancias de patterns. 
+		        </p>
+		    </ul>
+		</div>
+		
+		<h3>Buscar objetos referenciados por uno o varios generadores</h3>
+		<p>
+		    Busca los objetos llamables referenciados por uno o más generadores: Busca todos los objetos main del
+		    generador y busca los objetos llamables referenciados por cada uno de los main. Si alguno
+		    de los objetos llama a otro main, este se ignora.
+		</p>
+		<p>
+		    Esta extension sólo busca objetos llamables (que implementan la interface <i>ICallable</i>).
+		    Esto significa que objeto a los que no se puede "llamar" desde código con un call / upd no
+		    se tienen en cuenta: atributos, tablas, etc.
+		</p>
+		<p>
+		    Si se marca el campo <i>Only specifiable objects</i> se marca, los objetos no especificables
+		    pero si llamables (External objects, SDTs, etc.) no se mostrarán. Esto es útil si se quiere
+		    hacer un rebuild de los objetos referenciados por el generador.
+		</p>
+        <p>
+            Si todos los generadores seleccionados son del mismo tipo (Win o Web), y se encuentra un objeto
+            que referencia a otro que no es del mismo tipo (p.ej. un Workpanel que referencia a un Webpanel), no
+            se reporta el objeto referenciado.
+        </p>
+		<div class="bs-callout bs-callout-warning">
+		    <h4>Limitaciones</h4>
+		    <ul>
+		        <p>
+		            El generador de Smart Devices no está soportado por esta función.
+		        </p>
+		    </ul>
+		</div>
+		
+		<!--#include file="./pie.html" -->
+	</body>
+	
+</html>

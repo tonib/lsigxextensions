@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+	<head>
+	    <title>LSI.Extensiones - Revisar fuentes tipográficas kbase</title>
+		<!--#include file="./head.html" -->
+	</head>
+	
+	<body>
+	    <!--#include file="./cabecera.html" -->
+	    
+		<h2>Revisar fuentes tipográficas kbase</h2>
+		<p>
+		    En los listados, en los controles se hace referencia a la fuente tipográfica con que
+		    se ha de imprimir el control. En caso que el equipo en que se genere el objeto del listado
+		    no tenga la fuente referenciada en un control, en el código generado la fuente se 
+		    substituye por otra parecida. 
+		</p>
+		<p>
+		    Esta extensión permite detectar este caso: Revisa todos los controles en los layouts de los
+		    reports y da un mensaje en caso que el equipo que ejecuta la extensión no tenga instalada
+		    la fuente. Sólo revisa objetos de tipo procedure (no revisa win/web forms ni ningún otro).
+		</p>
+		<p>
+		    La extensión se encuentra en el menú <i>LSI.Extensions &gt; Object verifications &gt; 
+		    Check report fonts</i>. Los mensajes se muestran en la ventana Output:
+        </p>
+		    
+		<p style="text-align:center">
+		    <a href="./fuentes.png">
+		        <img class="img-responsive" style="display:inline" alt="Imagen fuentes" src="./fuentes.png" />
+		    </a>
+		</p>
+		
+		<!--#include file="./pie.html" -->
+	</body>
+	
+</html>

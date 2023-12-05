@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+	<head>
+	    <title>LSI.Extensiones - SDTs</title>
+		<!--#include file="./head.html" -->
+	</head>
+	
+	<body>
+	    <!--#include file="./cabecera.html" -->
+	    
+		<h2>SDTs</h2>
+		<p>
+		    Este conjunto de extensiones permiten agilizar operaciones de persistencia de SDTs en la
+		    base de datos. Se encuentran en el menú Lsi.Extensiones &gt; SDTs.
+		</p>
+		
+		<h3>Crear un SDT copiando la estructura de una tabla</h3>
+		<p>
+		    Pide al usuario la seleccion de una tabla de la KBase, y crea un SDT con todos
+		    los atributos, formula o no, de una tabla. El SDT se crea con el nombre 
+		    [NombreDeLaTabla]Sdt.
+		</p>
+		
+		<h3>Crear un procedimiento para cargar un SDT desde una tabla</h3>
+		<p>
+		    Pide al usuario la seleccion de una tabla y un SDT de la kbase, y crea un procedimiento
+		    para cargar un registro de dicha tabla con sus valores en dicho SDT.
+		</p>
+		
+		<h3>Crear procedimiento para actualizar registro con valores de un SDT</h3>
+		<p>
+		    Pide al usuario la seleccion de una tabla y un SDT de la kbase, y crea un procedimiento
+		    para actualizar un registro de dicha tabla con sus valores en dicho SDT. El procedimiento
+		    no intenta escribir atributos que sean formulas.
+		</p>
+		
+		<h3>Crear procedimiento para insertar registro con valores de un SDT</h3>
+		<p>
+		    Pide al usuario la seleccion de una tabla y un SDT de la kbase, y crea un procedimiento
+		    para insertar un registro de dicha tabla con sus valores en dicho SDT. El procedimiento
+		    no intenta escribir atributos que sean formulas.
+		</p>
+		
+		<div class="bs-callout bs-callout-warning">
+		    <h3>Limitaciones</h3>
+		    <ul>
+		        <li>
+		            No se soportan niveles anidades en los SDTs, solo los campos en el nivel principal.
+		        </li>
+		    </ul>
+		</div>
+		
+		<!--#include file="./pie.html" -->
+	</body>
+	
+</html>
