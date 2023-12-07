@@ -10,7 +10,7 @@ def replace_ssi_with_content(target_directory, html_content):
     for match in matches:
         print("Match", match)
         include_file_path = os.path.join( target_directory, match )
-        with open(include_file_path, 'r') as include_file:
+        with open(include_file_path, 'r', encoding='utf-8') as include_file:
             include_content = include_file.read()
             include_directive = f'<!--#include file="{match}" -->'
             html_content = html_content.replace(include_directive, include_content)
@@ -19,11 +19,11 @@ def replace_ssi_with_content(target_directory, html_content):
 
 def process_html_file(target_directory, file_path):
     print("Reading", file_path)
-    with open(file_path, 'r') as html_file:
+    with open(file_path, 'r', encoding='utf-8') as html_file:
         html_content = html_file.read()
         modified_html_content = replace_ssi_with_content(target_directory, html_content)
 
-    with open(file_path, 'w') as modified_file:
+    with open(file_path, 'w', encoding='utf-8') as modified_file:
         modified_file.write(modified_html_content)
 
 def process_html_files(target_directory):
