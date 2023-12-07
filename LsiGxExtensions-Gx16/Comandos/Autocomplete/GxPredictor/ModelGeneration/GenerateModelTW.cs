@@ -539,7 +539,7 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete.GxPredictor.ModelGenera
 
         private void BtnAyuda_Click(object sender, EventArgs e)
         {
-            OpenDocumentation.Open("prediccion.shtml");
+            OpenDocumentation.Open("prediccion.html");
         }
 	}
 }

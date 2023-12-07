@@ -89,7 +89,7 @@ namespace LSI.Packages.Extensiones.Comandos.Build
 
         private void RemoveBackupFiles_HelpButtonClicked(object sender, CancelEventArgs e)
         {
-            OpenDocumentation.Open("wwmains.shtml#borrarBackups");
+            OpenDocumentation.Open("wwmains.html#borrarBackups");
         }
 
     }

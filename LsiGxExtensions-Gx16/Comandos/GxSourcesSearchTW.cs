@@ -144,7 +144,7 @@ namespace LSI.Packages.Extensiones.Comandos
         /// </summary>
         private void BtnAyuda_Click(object sender, EventArgs e)
         {
-            OpenDocumentation.Open("buscartexto.shtml");
+            OpenDocumentation.Open("buscartexto.html");
         }
 
     }

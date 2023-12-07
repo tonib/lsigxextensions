@@ -194,7 +194,7 @@ namespace LSI.Packages.Extensiones.Comandos.Build.Production
         /// </summary>
         private void PrepareProductionDlg_HelpButtonClicked(object sender, CancelEventArgs e)
         {
-            OpenDocumentation.Open("wwmains.shtml#produccion");
+            OpenDocumentation.Open("wwmains.html#produccion");
         }
 
         /// <summary>

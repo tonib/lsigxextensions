@@ -35,7 +35,7 @@ namespace LSI.Packages.Extensiones.Comandos.Build
         /// </summary>
         private void RepairRspConfirm_HelpButtonClicked(object sender, CancelEventArgs e)
         {
-            OpenDocumentation.Open("wwmains.shtml#repararRsp");
+            OpenDocumentation.Open("wwmains.html#repararRsp");
         }
 
     }

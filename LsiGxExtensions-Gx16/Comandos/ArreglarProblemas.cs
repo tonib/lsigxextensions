@@ -189,7 +189,7 @@ namespace LSI.Packages.Extensiones.Comandos
         /// </summary>
         private void ArreglarProblemas_HelpButtonClicked(object sender, CancelEventArgs e)
         {
-            OpenDocumentation.Open("verificacion.shtml#arregloerrores");
+            OpenDocumentation.Open("verificacion.html#arregloerrores");
         }
     }
 }

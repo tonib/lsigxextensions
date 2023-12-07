@@ -49,7 +49,7 @@ namespace LSI.Packages.Extensiones.Comandos.Build
 
         private void BuildSingleGeneratorDlg_HelpButtonClicked(object sender, CancelEventArgs e)
         {
-            OpenDocumentation.Open("wwmains.shtml");
+            OpenDocumentation.Open("wwmains.html");
         }
     }
 }

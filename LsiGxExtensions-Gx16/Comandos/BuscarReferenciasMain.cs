@@ -186,7 +186,7 @@ namespace LSI.Packages.Extensiones.Comandos
         /// </summary>
         private void BtnAyuda_Click(object sender, EventArgs e)
         {
-            OpenDocumentation.Open("busquedamains.shtml");
+            OpenDocumentation.Open("busquedamains.html");
         }
 
         /// <summary>

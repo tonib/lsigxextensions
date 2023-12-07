@@ -249,7 +249,7 @@ namespace LSI.Packages.Extensiones
         /// </summary>
         private void VentanaConfiguracion_HelpButtonClicked(object sender, CancelEventArgs e)
         {
-            OpenDocumentation.Open("configuracion.shtml");
+            OpenDocumentation.Open("configuracion.html");
         }
 
         private void RevisarChecksAvanzados(bool cambiarChecks)

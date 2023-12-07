@@ -465,7 +465,7 @@ namespace LSI.Packages.Extensiones.Comandos
         /// </summary>
         private void BtnAyuda_Click(object sender, EventArgs e)
         {
-            OpenDocumentation.Open("referencias.shtml");
+            OpenDocumentation.Open("referencias.html");
         }
 
         /// <summary>

@@ -177,7 +177,7 @@ namespace LSI.Packages.Extensiones.Comandos.KBSync
 
         private void BtnHelp_Click(object sender, EventArgs e)
         {
-            OpenDocumentation.Open("sync.shtml");
+            OpenDocumentation.Open("sync.html");
         }
 
     }

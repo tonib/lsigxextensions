@@ -227,7 +227,7 @@ namespace LSI.Packages.Extensiones.Comandos
         /// </summary>
         private void ReorderWinTab_HelpButtonClicked(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            OpenDocumentation.Open("ordentab.shtml");
+            OpenDocumentation.Open("ordentab.html");
         }
 
     }

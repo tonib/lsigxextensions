@@ -75,7 +75,7 @@ namespace LSI.Packages.Extensiones.Comandos
 
         private void BtnAyuda_Click(object sender, EventArgs e)
         {
-            OpenDocumentation.Open("modifiedbyuser.shtml");
+            OpenDocumentation.Open("modificadosporusuario.html");
         }
     }
 

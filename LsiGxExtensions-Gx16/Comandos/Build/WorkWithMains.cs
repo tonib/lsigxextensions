@@ -426,7 +426,7 @@ namespace LSI.Packages.Extensiones.Comandos.Build
         /// </summary>
         private void BtnHelp_Click(object sender, EventArgs e)
         {
-            OpenDocumentation.Open("wwmains.shtml");
+            OpenDocumentation.Open("wwmains.html");
         }
 
     }

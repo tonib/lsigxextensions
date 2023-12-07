@@ -207,7 +207,7 @@ namespace LSI.Packages.Extensiones.Comandos
         /// </summary>
         private void ReplaceVariablesAttributeBasedWindow_HelpButtonClicked(object sender, CancelEventArgs e)
         {
-            OpenDocumentation.Open("atrbasedon.shtml");
+            OpenDocumentation.Open("atrbasedon.html");
         }
 
 

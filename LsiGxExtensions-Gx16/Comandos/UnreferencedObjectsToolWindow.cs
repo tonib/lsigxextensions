@@ -340,7 +340,7 @@ namespace LSI.Packages.Extensiones.Comandos
         /// </summary>
         private void BtnHelp_Click(object sender, EventArgs e)
         {
-            OpenDocumentation.Open("noreferenciados.shtml");
+            OpenDocumentation.Open("noreferenciados.html");
         }
 
     }

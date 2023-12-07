@@ -31,7 +31,7 @@ namespace LSI.Packages.Extensiones.Comandos
         {
             try
             {
-                string url = "http://lsigxextensions.sf.net/";
+                string url = "https://tonib.github.io/lsigxextensions-docs/";
                 if (page != null)
                     url += page;
                 Process.Start(url);
