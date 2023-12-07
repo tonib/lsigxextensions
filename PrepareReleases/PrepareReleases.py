@@ -28,8 +28,12 @@ def get_version_number(filename):
    ls = info['FileVersionLS']
    return f"{HIWORD(ms)}.{LOWORD(ms)}.{HIWORD(ls)}.{LOWORD(ls)}"
    
-def prepare_project_release(project_dir: str, gx_version_name: str, catalog_path="LsiGxExtensions-Gx16\\Catalog.xml"):
+def prepare_project_release(project_dir: str, gx_version_name: str, catalog_path="..\\LsiGxExtensions-Gx16\\Catalog.xml", zip_name="LsiExtensions"):
 
+    if not os.path.exists(ReleaseDir):
+        print("Creating directory", ReleaseDir)
+        os.makedirs(ReleaseDir)
+        
     # Get project name
     project_file_path = next(iter(glob.glob(f'{project_dir}/*.csproj')), None)
     if not project_file_path:
@@ -51,7 +55,7 @@ def prepare_project_release(project_dir: str, gx_version_name: str, catalog_path
     version = get_version_number(os.path.join(project_dir, "bin\\Release", DllToGetVersion))
     
     # Create zip
-    zip_path = os.path.join(ReleaseDir, f'LsiExtensions-{version}_{gx_version_name}.zip')
+    zip_path = os.path.join(ReleaseDir, f'{zip_name}-{version}_{gx_version_name}.zip')
     print("Crating zip", zip_path)
     with zipfile.ZipFile(zip_path, 'w') as zipMe:        
         for file in files_to_zip:
@@ -61,12 +65,9 @@ def prepare_project_release(project_dir: str, gx_version_name: str, catalog_path
 # Script execution
 ##############################################
 
-if not os.path.exists(ReleaseDir):
-    print("Creating directory", ReleaseDir)
-    os.makedirs(ReleaseDir)
-        
-prepare_project_release("LsiGxExtensions-XEv3", 'XEv3')
-prepare_project_release("LsiGxExtensions-Gx15", 'Gx15')
-prepare_project_release("LsiGxExtensions-Gx16", 'Gx16')
-prepare_project_release("LsiGxExtensions-Gx17", 'Gx17')
-prepare_project_release("LsiGxExtensions-Gx18", 'Gx18')
+if __name__ == "__main__":
+    prepare_project_release("..\\LsiGxExtensions-XEv3", 'XEv3')
+    prepare_project_release("..\\LsiGxExtensions-Gx15", 'Gx15')
+    prepare_project_release("..\\LsiGxExtensions-Gx16", 'Gx16')
+    prepare_project_release("..\\LsiGxExtensions-Gx17", 'Gx17')
+    prepare_project_release("..\\LsiGxExtensions-Gx18", 'Gx18')
