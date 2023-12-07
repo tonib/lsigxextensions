@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using Artech.Architecture.Common.Objects;
 using Artech.Genexus.Common.Services;
 using Artech.GXplorer.Common.Handlers;
 using Artech.GXplorer.Common.Objects;
+using Artech.GXplorer.Common.Parts;
 using LSI.Packages.Extensiones.Utilidades;
 using LSI.Packages.Extensiones.Utilidades.Logging;
 
@@ -40,7 +42,10 @@ namespace LSI.Packages.Extensiones.Comandos.Build
             foreach (QueryObject q in TargetModel.GetDesignModel().GetObjects<QueryObject>())
             {
                 q.LoadVirtualParts();
-#if GX_15_OR_GREATER
+#if GX_18_OR_GREATER
+                // TODO: Check this
+                QuerySQLSentencePart.CalculateAndUpdateSQLSentences(new List<QueryObject> { q }, out var _, out var _, out var _);
+#elif GX_15_OR_GREATER
                 // TODO: Gx15: Check this is working
                 // Gx15: QueryCacheInfoPart does not longer exists...
                 q.QuerySQLSentencePart.CalculateAndUpdateSQLSentence();
