@@ -13,8 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 		LICENSE.txt = LICENSE.txt
 		Pendiente.txt = Pendiente.txt
-		PrepareProduction.ps1 = PrepareProduction.ps1
-		README.txt = README.txt
+		README.md = README.md
 		SetEnvironmentVariables.bat = SetEnvironmentVariables.bat
 	EndProjectSection
 EndProject
