@@ -1007,17 +1007,12 @@ namespace LSI.Packages.Extensiones.Comandos.Build
         {
             // Get the main source file for the object
             ObjectSourceFiles sourceFiles = GeneratedSourceFilesCache.Cache(UIServices.KB.CurrentKB).GetSourceFiles(o);
-			IEnumerable<string> sourceFilePaths = sourceFiles.GetAllSourceFiles(o);
+			IEnumerable<string> sourceFilePaths = sourceFiles.GetAllSourceFiles(o, IsCSharpWebGenerator);
             if (!sourceFilePaths.Any())
             {
                 MessageBox.Show($"Source file for {o.QualifiedName} cannot be calculated");
                 return;
             }
-
-            // Calculate real paths
-            if (IsCSharpWebGenerator)
-                sourceFilePaths = sourceFilePaths.Select(path => Path.Combine("web", path));
-            sourceFilePaths = sourceFilePaths.Select(path => Entorno.GetTargetDirectoryFilePath(path));
 
             // Remove non existing
             var nonExisting = sourceFilePaths.Where(path => !File.Exists(path));
@@ -1036,7 +1031,7 @@ namespace LSI.Packages.Extensiones.Comandos.Build
 
             // Open extra files
             var vs = new VisualStudio(LsiExtensionsConfiguration.Load().VisualStudioComId);
-            sourceFilesList.ForEach(path => vs.EditFile(path, 1));
+            sourceFilesList.ForEach(path => vs.EditFile(path, -1));
 
             // Open main file last, to set it visible
             // TODO: Allow to search by event / sub name

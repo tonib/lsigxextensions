@@ -312,8 +312,8 @@ namespace LSI.Packages.Extensiones.Utilidades.CSharpWin
         /// Get list of all source files for object
         /// </summary>
         /// <param name="o">Object to get source files</param>
-        /// <returns>Source files. Main source file will be the first element</returns>
-        public List<string> GetAllSourceFiles(KBObject o)
+        /// <returns>Source files, absolute paths. Main source file will be the first element</returns>
+        public List<string> GetAllSourceFiles(KBObject o, bool isCSharpWebGenerator)
 		{
             var sourceFiles = ModuleSourceFiles.Select(f => GetModulePath(f, o.Module))
                 .Union(CommonsSourceFiles.Select(f => GetModulePath(f, o.Module)))
@@ -326,6 +326,25 @@ namespace LSI.Packages.Extensiones.Utilidades.CSharpWin
             {
                 sourceFiles.Remove(mainSourceFile);
                 sourceFiles.Insert(0, mainSourceFile);
+            }
+
+            // Calculate real paths
+            if (isCSharpWebGenerator)
+                sourceFiles = sourceFiles.Select(path => Path.Combine("web", path)).ToList();
+            sourceFiles = sourceFiles.Select(path => Entorno.GetTargetDirectoryFilePath(path)).ToList();
+
+            if(o is SDPanel)
+			{
+                // Ugly hack: Some (not all) sdpanels have an extra file sdsvc_xxx_Level_Detail
+                // I thik is only generated for panels with dinamic comboboxes and so
+                // Return only if exists
+                string sdsvcPath = $"sdsvc_{o.GetSignificantName().ToLower()}_level_detail.cs";
+                sdsvcPath = GetModulePath(sdsvcPath, o.Module);
+                if (isCSharpWebGenerator)
+                    sdsvcPath = Path.Combine("web", sdsvcPath);
+                sdsvcPath = Entorno.GetTargetDirectoryFilePath(sdsvcPath);
+                if (File.Exists(sdsvcPath))
+                    sourceFiles.Add(sdsvcPath);
             }
             return sourceFiles;
         }

@@ -171,7 +171,8 @@ namespace LSI.Packages.Extensiones.Utilidades.VS
         /// Sacado de http://stackoverflow.com/questions/350323/open-a-file-in-visual-studio-at-a-specific-line-number
         /// </summary>
         /// <param name="filePath">Parth al archivo CS a abrir</param>
-        /// <param name="lineNumber"Line number where to put cursor. TODO: 1 == first line?</param>
+        /// <param name="lineNumber"Line number where to put cursor. TODO: 1 == first line?
+        /// If < 0, no line will be selected</param>
         public void EditFile(string filePath, int lineNumber)
         {
             EnvDTE.Window w = Dte.ItemOperations.OpenFile(filePath, Constants.vsViewKindCode);
@@ -179,7 +180,8 @@ namespace LSI.Packages.Extensiones.Utilidades.VS
 
             object o = Dte.ActiveDocument;
             TextSelection s = Dte.ActiveDocument.Selection as TextSelection;
-            s.GotoLine(lineNumber, true);
+            if(lineNumber >= 0)
+                s.GotoLine(lineNumber, true);
         }
 
         /// <summary>
