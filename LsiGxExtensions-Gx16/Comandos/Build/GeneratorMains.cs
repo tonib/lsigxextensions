@@ -1006,30 +1006,41 @@ namespace LSI.Packages.Extensiones.Comandos.Build
         private void OpenCSharpSource(KBObject o)
         {
             // Get the main source file for the object
-            ObjectSourceFiles sourceFiles =
-            GeneratedSourceFilesCache.Cache(UIServices.KB.CurrentKB).GetSourceFiles(o);
-            string mainSourceFileName = sourceFiles.GetMainSourceFile(o);
-            if (mainSourceFileName == null)
+            ObjectSourceFiles sourceFiles = GeneratedSourceFilesCache.Cache(UIServices.KB.CurrentKB).GetSourceFiles(o);
+			IEnumerable<string> sourceFilePaths = sourceFiles.GetAllSourceFiles(o);
+            if (!sourceFilePaths.Any())
             {
-                MessageBox.Show("Main source file for " + o.QualifiedName + " cannot be determined");
+                MessageBox.Show($"Source file for {o.QualifiedName} cannot be calculated");
                 return;
             }
 
-            // Open the source file:
-            // TODO: Allow to search by event / sub name
-            string filePath = mainSourceFileName;
+            // Calculate real paths
             if (IsCSharpWebGenerator)
-                filePath = "web\\" + filePath;
-            filePath = Entorno.GetTargetDirectoryFilePath(filePath);
+                sourceFilePaths = sourceFilePaths.Select(path => Path.Combine("web", path));
+            sourceFilePaths = sourceFilePaths.Select(path => Entorno.GetTargetDirectoryFilePath(path));
 
-            if (!File.Exists(filePath))
-            {
-                MessageBox.Show("File " + filePath + " does not exist");
-                return;
+            // Remove non existing
+            var nonExisting = sourceFilePaths.Where(path => !File.Exists(path));
+            sourceFilePaths = sourceFilePaths.Except(nonExisting);
+            if(nonExisting.Any())
+			{
+                MessageBox.Show("These file does not exists:" + Environment.NewLine + string.Join(Environment.NewLine, nonExisting.ToArray()));
             }
+            if (!sourceFilePaths.Any())
+                return;
 
-            new VisualStudio(LsiExtensionsConfiguration.Load().VisualStudioComId)
-                .EditFile(filePath, "void executePrivate( )");
+            // Get main source file
+			List<string> sourceFilesList = sourceFilePaths.ToList();
+            string mainFilePath = sourceFilesList[0];
+            sourceFilesList.RemoveAt(0);
+
+            // Open extra files
+            var vs = new VisualStudio(LsiExtensionsConfiguration.Load().VisualStudioComId);
+            sourceFilesList.ForEach(path => vs.EditFile(path, 1));
+
+            // Open main file last, to set it visible
+            // TODO: Allow to search by event / sub name
+            vs.EditFile(mainFilePath, "void executePrivate( )");
 
             // Open the object, to see the source
             UIServices.Objects.Open(o, OpenDocumentOptions.CurrentVersion);

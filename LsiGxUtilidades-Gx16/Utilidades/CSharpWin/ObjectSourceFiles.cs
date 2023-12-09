@@ -16,6 +16,9 @@ using Artech.Genexus.Common.Parts.Form.DOM;
 using Artech.Genexus.Common.Types;
 using System.IO;
 using Artech.Patterns.WorkWithDevices.Objects;
+using Artech.Packages.Patterns.Objects;
+using LSI.Packages.Extensiones.Utilidades.GxClassExtensions;
+using Artech.Patterns.WorkWithDevices;
 
 namespace LSI.Packages.Extensiones.Utilidades.CSharpWin
 {
@@ -27,7 +30,7 @@ namespace LSI.Packages.Extensiones.Utilidades.CSharpWin
         /// <summary>
         /// Object's last update. Used to detect if we need to refresh the files list.
         /// </summary>
-        public int VersionId;
+        private int VersionId;
 
         /// <summary>
         /// Generated source file names that should be included into the module RSP. They dont
@@ -75,28 +78,28 @@ namespace LSI.Packages.Extensiones.Utilidades.CSharpWin
         /// Function used by the serializer to decide if CommonsSourceFiles should be serialized
         /// </summary>
         /// <returns>True if CommonsSourceFiles should be serialized</returns>
-        public bool ShouldSerializeCommonsSourceFiles()
-        {
-            return CommonsSourceFiles != null && CommonsSourceFiles.Count > 0;
-        }
+        //public bool ShouldSerializeCommonsSourceFiles()
+        //{
+        //    return CommonsSourceFiles != null && CommonsSourceFiles.Count > 0;
+        //}
 
         /// <summary>
         /// Function used by the serializer to decide if IsMain should be serialized
         /// </summary>
         /// <returns>True if IsMain should be serialized</returns>
-        public bool ShouldSerializeIsMain()
-        {
-            return IsMain;
-        }
+        //public bool ShouldSerializeIsMain()
+        //{
+        //    return IsMain;
+        //}
 
         /// <summary>
         /// Function used by the serializer to decide if IsBC should be serialized
         /// </summary>
         /// <returns>True if IsBC should be serialized</returns>
-        public bool ShouldSerializeIsBC()
-        {
-            return IsBC;
-        }
+        //public bool ShouldSerializeIsBC()
+        //{
+        //    return IsBC;
+        //}
         
         /// <summary>
         /// Get the object program file name
@@ -204,7 +207,7 @@ namespace LSI.Packages.Extensiones.Utilidades.CSharpWin
             return CommonsSourceFiles.Select(x => GetModulePath(x, modulesTable)).ToList();
         }
 
-        private string GetGridFilename(KBObject o, KeyValuePair<GridElement, int> pair)
+        private string GetWinformGridFilename(KBObject o, KeyValuePair<GridElement, int> pair)
         {
             string number = pair.Value.ToString();
             if (number.Length < 2)
@@ -256,7 +259,19 @@ namespace LSI.Packages.Extensiones.Utilidades.CSharpWin
                 WinFormGx wf = new WinFormGx(o);
                 Dictionary<GridElement, int> gridsPosition = wf.GetGridPositions();
                 foreach (KeyValuePair<GridElement, int> pair in gridsPosition)
-                    ModuleSourceFiles.Add(GetGridFilename(o, pair));
+                    ModuleSourceFiles.Add(GetWinformGridFilename(o, pair));
+            }
+
+            if(o is SDPanel sd)
+			{
+                // Special case. Add grids
+                var grids = sd.PatternPart.PanelElement.LsiEnumerateDescendants().Where(element => element.Type == InstanceElements.LayoutGrid);
+                foreach (PatternInstanceElement element in grids)
+                {
+                    string controlName = element.Attributes.GetPropertyValue("ControlName") as string ?? "";
+                    ModuleSourceFiles.Add($"{sd.Name}_level_detail_{controlName}.cs");
+                }
+                return;
             }
 
             if (o is Transaction && KBaseGX.EsBussinessComponent(o))
@@ -291,8 +306,28 @@ namespace LSI.Packages.Extensiones.Utilidades.CSharpWin
                     // Add program.cs
                     ModuleSourceFiles.Add(programName);
             }
-
         }
 
+        /// <summary>
+        /// Get list of all source files for object
+        /// </summary>
+        /// <param name="o">Object to get source files</param>
+        /// <returns>Source files. Main source file will be the first element</returns>
+        public List<string> GetAllSourceFiles(KBObject o)
+		{
+            var sourceFiles = ModuleSourceFiles.Select(f => GetModulePath(f, o.Module))
+                .Union(CommonsSourceFiles.Select(f => GetModulePath(f, o.Module)))
+                .ToList();
+            if (MainEntryFile != null)
+                sourceFiles.Add(GetModulePath(MainEntryFile, o.Module));
+
+            string mainSourceFile = this.GetMainSourceFile(o);
+            if (mainSourceFile != null)
+            {
+                sourceFiles.Remove(mainSourceFile);
+                sourceFiles.Insert(0, mainSourceFile);
+            }
+            return sourceFiles;
+        }
     }
 }

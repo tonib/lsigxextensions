@@ -1,3 +1,5 @@
+eSTA LANZANdo una excepcion al cerar gx16
+
 - Revision de variables no usadas: Reportar los external objects, no se reportan
 
 - WWMains: Al abrir un fuente c# de un objeto sd panel, ademas del detail, abrir los fuentes de todos los grids (+99)
@@ -114,16 +116,6 @@
 - Hacer pruebas sin la prediccion de codigo activada
 
 - Error: He abierto una kb en gx17 u10 que se abrio por ultima vez con gx17 u2 y no ha dado ningun aviso. Ha dejado de nfuncionar el control?
-
-- Fernando:
-	hola Toni
-	una pequeña sugerencia para un futuro update de las LSI extensiones
-	cuando utilizas un patrón hay variables que crea por defecto, las utilices o no, si las borras las vuelve a crear, por ejemplo:
-	isauthorized
-	securityfunctionalitykeys
-	quizás estaría bueno agregar una lista de excepciones a tener en cuenta en el warning There are unused variables, si una variable está en esa lista, no la muestra como warning.
-	Por ampliar, esto también pasa al controlar el N4 y otras cosas. Son variables que se crean de forma automática y sobre las que no tienes ningún control
-	es una simple idea de mejora, con 0,0 de urgencia, o igual no crees que corresponda agregar esto, lo que consideres
 
 - Debug con el VS:
 	- En el equipo de fernando, en gx17 ha dado error que la dll dte.env (o algo asi) no existia. ver exactamente que dll y donde ha dado
