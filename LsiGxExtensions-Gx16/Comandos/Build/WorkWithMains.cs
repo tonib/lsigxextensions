@@ -161,7 +161,11 @@ namespace LSI.Packages.Extensiones.Comandos.Build
                 if (!UIServices.IsKBAvailable)
                     return;
 
-                TxtTargetModel.Text = Entorno.TargetDirectory;
+                string targetDir = Entorno.TargetDirectory;
+                TxtTargetModel.Text = targetDir ?? "";
+                if (targetDir == null)
+                    // No kb
+                    return;
 
                 // Get mains for each generator
 #if GX_17_OR_GREATER

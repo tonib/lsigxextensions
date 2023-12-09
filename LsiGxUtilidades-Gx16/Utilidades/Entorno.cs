@@ -285,16 +285,19 @@ namespace LSI.Packages.Extensiones.Utilidades
         /// </summary>
         /// <param name="targetModel">The model. If its null, the current IU target model will be
         /// used</param>
-        /// <returns>Absolute path of the model</returns>
+        /// <returns>Absolute path of the model. null if there is no kb</returns>
         static public string GetTargetDirectory(KBModel targetModel)
         {
             if (targetModel == null)
                 targetModel = UIServices.KB.WorkingEnvironment?.TargetModel;
+            if (targetModel == null)
+                return null;
             return Path.Combine(targetModel.KB.Location, targetModel.TargetPath);
         }
 
         /// <summary>
-        /// Current environment destination directory absolute path
+        /// Current environment destination directory absolute path. null if there is
+        /// no kb
         /// </summary>
         static public string TargetDirectory
         {

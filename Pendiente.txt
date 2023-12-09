@@ -1,9 +1,5 @@
-eSTA LANZANdo una excepcion al cerar gx16
 
 - Revision de variables no usadas: Reportar los external objects, no se reportan
-
-- WWMains: Al abrir un fuente c# de un objeto sd panel, ademas del detail, abrir los fuentes de todos los grids (+99)
-  Abrir tambien el sdsvc_* (es donde estan las llamadas a los data providers). Ej. dprzdocimpbul -> sdsvc_dprzdocimpbul_level_detail
 
 - Si abres una kb de gx18 con gx16 no da ningun aviso. Que lo de la extension
 
