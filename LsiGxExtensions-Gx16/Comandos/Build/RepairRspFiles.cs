@@ -15,6 +15,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.IO;
 using LSI.Packages.Extensiones.Utilidades.Logging;
+using Artech.Genexus.Common.Entities;
 
 namespace LSI.Packages.Extensiones.Comandos.Build
 {
@@ -81,6 +82,11 @@ namespace LSI.Packages.Extensiones.Comandos.Build
         private KBModel TargetModel;
 
         /// <summary>
+        /// Compiler options for current model
+        /// </summary>
+        private string ModelCompilerOptions;
+
+        /// <summary>
         /// False (this class does not use the build functions of genexus)
         /// </summary>
         override public bool IsInternalGxBuild { get { return false; } }
@@ -98,6 +104,17 @@ namespace LSI.Packages.Extensiones.Comandos.Build
             // Get kbase modules:
             ModulesTable = Module.GetAll(targetModel).ToDictionary(x => x.Guid);
             TargetModel = targetModel;
+
+            // Get the win c# generator:
+            GxModel gxModel = targetModel.GetAs<GxModel>();
+#if GX_17_OR_GREATER
+            var generators = gxModel.Generators;
+#else
+            var generators = gxModel.Environments;
+#endif
+            var winCSharpGenerator = generators.FirstOrDefault(g => g.Generator == (int)GeneratorType.CSharpWin);
+            if (winCSharpGenerator != null)
+                ModelCompilerOptions = winCSharpGenerator.Properties.GetPropertyValue<string>(Properties.CSHARP.CompilerFlags) ?? string.Empty;
         }
 
         private ObjectsGraph BuildGraph()
@@ -188,6 +205,18 @@ namespace LSI.Packages.Extensiones.Comandos.Build
 
         private bool RepairRspFile(string mainName, IEnumerable<string> sourceFiles, RspFile rsp)
         {
+            bool rspUpdated = false;
+
+            if (!RepairOnlyBC && rsp.CompilerOptions != ModelCompilerOptions)
+			{
+                LogLine($"Wrong compiler options for {mainName}. Current: '{rsp.CompilerOptions}', new: '{ModelCompilerOptions}'");
+                if (!JustTest)
+                {
+                    rsp.CompilerOptions = ModelCompilerOptions;
+                    rspUpdated = true;
+                }
+            }
+
             List<string> missingFiles = rsp.NotContained(sourceFiles);
             if (missingFiles.Count > 0)
             {
@@ -203,18 +232,20 @@ namespace LSI.Packages.Extensiones.Comandos.Build
                     else
                         LogErrorLine(filename + " (It does not exists, not added to RSP)");
                 }
-
-                if (!JustTest)
-                {
-                    // Repair RSP
-                    string backupFile = Entorno.DoFileBackup(rsp.RspPath, false);
-                    if( Verbose )
-                        LogLine("RSP backup saved on " + backupFile);
+                if(!JustTest)
                     rsp.AddFiles(filesToAdd);
-                    rsp.Save();
-                    return true;
-                }
+                rspUpdated = true;
             }
+            if (rspUpdated && !JustTest)
+            {
+                // Repair RSP
+                string backupFile = Entorno.DoFileBackup(rsp.RspPath, false);
+                if (Verbose)
+                    LogLine("RSP backup saved on " + backupFile);
+                rsp.Save();
+                return true;
+            }
+
             return false;
         }
 

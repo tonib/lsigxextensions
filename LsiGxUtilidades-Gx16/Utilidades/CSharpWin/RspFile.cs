@@ -24,6 +24,11 @@ namespace LSI.Packages.Extensiones.Utilidades.CSharpWin
     {
 
         /// <summary>
+        /// Line index for compiler options
+        /// </summary>
+        private const int LINE_IDX_COMPILER_OPTIONS = 2;
+
+        /// <summary>
         /// List with RSP file lines 
         /// </summary>
         private List<string> ContentLines;
@@ -31,12 +36,26 @@ namespace LSI.Packages.Extensiones.Utilidades.CSharpWin
         /// <summary>
         /// Object source file lines, normalized (lowercase and trimmed)
         /// </summary>
-        public HashSet<string> SourceLines = new HashSet<string>();
+        public HashSet<string> SourceLines = new HashSet<string>(); 
 
         /// <summary>
         /// Full RSP file path
         /// </summary>
         public string RspPath { get; private set; }
+
+        /// <summary>
+        /// Compiler options stored in RSP file
+        /// </summary>
+        public string CompilerOptions
+		{
+            get => ContentLines.Count <= LINE_IDX_COMPILER_OPTIONS ? "" : ContentLines[LINE_IDX_COMPILER_OPTIONS];
+            set
+			{
+                if (ContentLines.Count <= LINE_IDX_COMPILER_OPTIONS)
+                    throw new Exception("RSP file too small");
+                ContentLines[LINE_IDX_COMPILER_OPTIONS] = value;
+            }
+        }
 
         /// <summary>
         /// Constructor. It reads the RSP file content for the object

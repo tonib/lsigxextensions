@@ -1,4 +1,6 @@
 
+- El proponer nombre para una nueva variable no propone nombres de external objects
+
 - Revision de variables no usadas: Reportar los external objects, no se reportan
 
 - Si abres una kb de gx18 con gx16 no da ningun aviso. Que lo de la extension

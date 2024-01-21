@@ -30,7 +30,7 @@ namespace LSI.Packages.Extensiones.Utilidades.CSharpWin
         /// <summary>
         /// Object's last update. Used to detect if we need to refresh the files list.
         /// </summary>
-        private int VersionId;
+        public int VersionId;
 
         /// <summary>
         /// Generated source file names that should be included into the module RSP. They dont
