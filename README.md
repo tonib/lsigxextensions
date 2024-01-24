@@ -2,6 +2,12 @@
 This is a set of extensions for Genexus. See detailed documentation at 
 [https://tonib.github.io/lsigxextensions-docs/](https://tonib.github.io/lsigxextensions-docs/).
 
+## Download binaries
+
+Binaries can be downloaded from 
+https://sourceforge.net/projects/lsigxextensions/files/ or 
+https://marketplace.genexus.com/product.aspx?lsiextensiones,en
+
 ## Build from sources
 
 Edit SetEnvironmentVariables.bat and set the directories for Genexus and Genexus 
