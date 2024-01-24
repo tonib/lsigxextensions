@@ -41,7 +41,7 @@
 - Hay un error al proponer los nombres de controles en SDPanels: Los controles de los titulos de los tabs no aparecen...
   Ej KB Sga, DEazTraCon, escribir TabRec (no propone nada). Escribir TabRec. (aparecen los miembros)
 
-- Verificaciones: No dejar menter un bucle FOR &i = 1... denro de otro bucle FOR &i = 1 ... CON LA MISMA VARIABLE INDICE!!!
+- Verificaciones: No dejar meter un bucle FOR &i = 1... denro de otro bucle FOR &i = 1 ... CON LA MISMA VARIABLE INDICE!!!
 
 - Traducciones:
 	- Los "Initial values" de los SDTs deberian ir siempre traducidos? (HAY UN ERROR DE GENEXUS CON ESTO)
