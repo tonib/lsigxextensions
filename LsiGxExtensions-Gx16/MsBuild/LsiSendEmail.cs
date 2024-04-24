@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Net;
 using System.Net.Mail;
+using System.Security.Authentication;
+using System.Threading;
 using Artech.Architecture.Common.Services;
 using Artech.MsBuild.Common;
 using LSI.Packages.Extensiones.Utilidades;
@@ -116,16 +118,50 @@ namespace LSI.Packages.Extensiones.MsBuild
                         return true;
                     }
 
-                    SmtpClient smtp = new SmtpClient(EmailHost);
-                    smtp.EnableSsl = Ssl;
-                    smtp.Port = Port;
-                    smtp.Timeout = TimeoutMiliseconds;
+#if GX_15_OR_GREATER
+                    // Starting .NET 4, SmtpClient implements IDisposable and should do the damn logout from mail server
+                    using (var smtp = new SmtpClient(EmailHost))
+                    {
+#else
+                        // NET 3.5 stuff:
+                        SmtpClient smtp = new SmtpClient(EmailHost);
 
-                    if (!string.IsNullOrEmpty(EmailUserName) || !string.IsNullOrEmpty(EmailPassword))
-                        smtp.Credentials = new NetworkCredential(EmailUserName, EmailPassword);
+                        // Use TLS 1.2
+                        // https://stackoverflow.com/questions/43240611/net-framework-3-5-and-tls-1-2
+                        const SslProtocols _Tls12 = (SslProtocols)0x00000C00;
+                        const SecurityProtocolType Tls12 = (SecurityProtocolType)_Tls12;
+                        ServicePointManager.SecurityProtocol = Tls12;
+#endif
 
-                    smtp.Send(CreateEmail(log));
-                    log.Output.AddLine("Email sent");
+
+                        smtp.EnableSsl = Ssl;
+                        smtp.Port = Port;
+                        smtp.Timeout = TimeoutMiliseconds;
+
+                        if (!string.IsNullOrEmpty(EmailUserName) || !string.IsNullOrEmpty(EmailPassword))
+                        {
+                            smtp.UseDefaultCredentials = false;
+                            smtp.Credentials = new NetworkCredential(EmailUserName, EmailPassword);
+                        }
+
+                        smtp.Send(CreateEmail(log));
+
+                        // NET 3.5 workarrounds:
+                        // La implementacion que trae .NET del correo no tiene soporte para desconectar la sesion....
+                        // Esto fuerza la desconexion en breve. 
+                        // Un bug conocido es que no manda el comando QUIT. Esta solventado en la version 4 de .NET
+                        // En esa version, el SmtpClient implementa la interface IDisposable, asi que habria que llamar
+                        // a dispose()
+                        // Ver http://stackoverflow.com/questions/968506/optimal-way-to-send-mail-with-smtpclient
+                        smtp.ServicePoint.MaxIdleTime = 2;
+                        smtp.ServicePoint.ConnectionLimit = 1;
+                        Thread.Sleep(10);
+
+                        log.Output.AddLine("Email sent");
+
+#if GX_15_OR_GREATER
+                    } 
+#endif
                 }
 
                 MsBuildLog.Instance.Clear();
