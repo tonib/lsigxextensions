@@ -211,7 +211,7 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="TfLiteNetWrapper">
-      <HintPath>libraries\TfLiteNetWrapper\TfLiteNetWrapper.dll</HintPath>
+      <HintPath>..\libraries\TfLiteNetWrapper\TfLiteNetWrapper.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -807,12 +807,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LsiGxUtilidades-Gx17\LsiGxUtilidades-Gx17.csproj">
-      <Project>{b2385f9c-41bc-4cff-b1e5-f7ea69bdd828}</Project>
-      <Name>LsiGxUtilidades-Gx17</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="..\LsiGxExtensions-Gx16\Comandos\ArreglarProblemas.resx">
       <Link>Comandos\ArreglarProblemas.resx</Link>
       <DependentUpon>ArreglarProblemas.cs</DependentUpon>
@@ -1054,6 +1048,12 @@
     <None Include="..\LsiGxExtensions-Gx16\Resources\model.tflite">
       <Link>Resources\model.tflite</Link>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LsiGxUtilidades-Gx18\LsiGxUtilidades-Gx18.csproj">
+      <Project>{977f8795-af26-4e5b-a713-1af06d538658}</Project>
+      <Name>LsiGxUtilidades-Gx18</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
