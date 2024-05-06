@@ -403,7 +403,8 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete.GxPredictor.DataDefinit
 						ObjectPartType.SDPanelRules,
 
 						ObjectPartType.WorkPanelConditions , ObjectPartType.WebPanelConditions , ObjectPartType.ProcedureConditions ,
-						ObjectPartType.SDPanelConditions
+						ObjectPartType.SDPanelConditions,
+						ObjectPartType.ProcedureWwPlus, ObjectPartType.TransactionEventsWwPlus, ObjectPartType.WebPanelEventsWwPlus
 					};
 				}
                 return _SupportedPartTypes;

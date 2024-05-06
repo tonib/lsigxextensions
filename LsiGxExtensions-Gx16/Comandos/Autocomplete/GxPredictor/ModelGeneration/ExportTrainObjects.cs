@@ -216,6 +216,8 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete.GxPredictor.ModelGenera
 			ILanguageInfo languageInfo = PartTypeHelper.GetLanguageInfoFor(docPartTye.ObjectType, docPartTye.PartType);
             document.LoadLanguageFromXml(languageInfo.Colorizer.ConfigurationFile, 0);
 
+            // TODO: Do not export wwplus parts
+
             DocumentsPerType.Add(partType, document);
             return document;
         }

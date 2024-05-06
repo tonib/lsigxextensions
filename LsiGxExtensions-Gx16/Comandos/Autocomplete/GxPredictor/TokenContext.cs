@@ -107,6 +107,13 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete.GxPredictor
 				PartType = TrainedSdRulesPart;
 			else if (partType.Equals(ObjectPartType.SDPanelConditions))
 				PartType = TrainedSdConditionsPart;
+			// Same with wwplus parts. TODO: I have not had chance to test SD Panels with wwplus. Probably will need the same
+			else if (partType.Equals(ObjectPartType.ProcedureWwPlus))
+				PartType = ObjectPartType.Procedure;
+			else if (partType.Equals(ObjectPartType.TransactionEventsWwPlus))
+				PartType = ObjectPartType.TransactionEvents;
+			else if (partType.Equals(ObjectPartType.WebPanelEventsWwPlus))
+				PartType = ObjectPartType.WebPanelEvents;
 			else
 				PartType = partType;
 		}

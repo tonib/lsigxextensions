@@ -50,25 +50,30 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete.Commands
 
 		static private ObjectPartType[] EventsAndProcedures => 
             new ObjectPartType[] { ObjectPartType.Procedure , ObjectPartType.TransactionEvents ,
-                ObjectPartType.WebPanelEvents , ObjectPartType.WorkPanelEvents, ObjectPartType.SDPanelEvents };
+                ObjectPartType.WebPanelEvents , ObjectPartType.WorkPanelEvents, ObjectPartType.SDPanelEvents,
+                ObjectPartType.ProcedureWwPlus, ObjectPartType.TransactionEventsWwPlus, ObjectPartType.WebPanelEventsWwPlus };
 
         static private ObjectPartType[] EventsAndProceduresButTransactions =>
             new ObjectPartType[] { ObjectPartType.Procedure , 
-                ObjectPartType.WebPanelEvents ,ObjectPartType.WorkPanelEvents, ObjectPartType.SDPanelEvents };
+                ObjectPartType.WebPanelEvents ,ObjectPartType.WorkPanelEvents, ObjectPartType.SDPanelEvents,
+                ObjectPartType.ProcedureWwPlus, ObjectPartType.WebPanelEventsWwPlus };
 
         /// <summary>
         /// All events, but transaction events
         /// </summary>
         static private ObjectPartType[] PanelEvents =>
             new ObjectPartType[] { ObjectPartType.WebPanelEvents ,ObjectPartType.WorkPanelEvents,
-            ObjectPartType.SDPanelEvents };
+            ObjectPartType.SDPanelEvents,
+            ObjectPartType.WebPanelEventsWwPlus };
 
         /// <summary>
         /// Panel and transaction events
         /// </summary>
         static private ObjectPartType[] Events =>
             new ObjectPartType[] { ObjectPartType.WebPanelEvents, ObjectPartType.WorkPanelEvents ,
-                ObjectPartType.TransactionEvents, ObjectPartType.SDPanelEvents };
+                ObjectPartType.TransactionEvents, ObjectPartType.SDPanelEvents,
+                ObjectPartType.TransactionEventsWwPlus, ObjectPartType.WebPanelEventsWwPlus
+            };
 
         /// <summary>
         /// Conditions parts

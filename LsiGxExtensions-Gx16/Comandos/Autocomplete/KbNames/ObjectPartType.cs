@@ -22,21 +22,28 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete.KbNames
         /// </summary>
         public Guid PartType;
 
+        // Work with plus adds it's own part types (¯\_(ツ)_/¯)
+        private static readonly Guid ProcedurePartWwplus = new Guid("73ea6ce6-5ef1-4dd5-8d8a-62057920a70b");
+        private static readonly Guid EventsPartWwplus = new Guid("572deeff-da39-4934-ae0e-8590f0228bd5");
+
         public static readonly ObjectPartType Empty = new ObjectPartType();
 
 		public static readonly ObjectPartType ProcedureRules = new ObjectPartType(ObjClass.Procedure, Artech.Genexus.Common.PartType.Rules);
 		public static readonly ObjectPartType Procedure = new ObjectPartType(ObjClass.Procedure, Artech.Genexus.Common.PartType.Procedure);
         public static readonly ObjectPartType ProcedureConditions = new ObjectPartType(ObjClass.Procedure, Artech.Genexus.Common.PartType.Conditions);
+        public static readonly ObjectPartType ProcedureWwPlus = new ObjectPartType(ObjClass.Procedure, ProcedurePartWwplus);
 
-		public static readonly ObjectPartType WorkPanelRules = new ObjectPartType(ObjClass.WorkPanel, Artech.Genexus.Common.PartType.Rules);
+        public static readonly ObjectPartType WorkPanelRules = new ObjectPartType(ObjClass.WorkPanel, Artech.Genexus.Common.PartType.Rules);
 		public static readonly ObjectPartType WorkPanelEvents = new ObjectPartType(ObjClass.WorkPanel, Artech.Genexus.Common.PartType.Events);
         public static readonly ObjectPartType WorkPanelConditions = new ObjectPartType(ObjClass.WorkPanel, Artech.Genexus.Common.PartType.Conditions);
 
 		public static readonly ObjectPartType TransactionRules = new ObjectPartType(ObjClass.Transaction, Artech.Genexus.Common.PartType.Rules);
 		public static readonly ObjectPartType TransactionEvents = new ObjectPartType(ObjClass.Transaction, Artech.Genexus.Common.PartType.Events);
+        public static readonly ObjectPartType TransactionEventsWwPlus = new ObjectPartType(ObjClass.Transaction, EventsPartWwplus);
 
-		public static readonly ObjectPartType WebPanelRules = new ObjectPartType(ObjClass.WebPanel, Artech.Genexus.Common.PartType.Rules);
+        public static readonly ObjectPartType WebPanelRules = new ObjectPartType(ObjClass.WebPanel, Artech.Genexus.Common.PartType.Rules);
 		public static readonly ObjectPartType WebPanelEvents = new ObjectPartType(ObjClass.WebPanel, Artech.Genexus.Common.PartType.Events);
+        public static readonly ObjectPartType WebPanelEventsWwPlus = new ObjectPartType(ObjClass.WebPanel, EventsPartWwplus);
         public static readonly ObjectPartType WebPanelConditions = new ObjectPartType(ObjClass.WebPanel, Artech.Genexus.Common.PartType.Conditions);
 
 		// These SOMETIMES (not always) give me a "Lsi.Extensions exception : System.TypeInitializationException: Se produjo una excepción en el inicializador de tipo de 'LSI.Packages.Extensiones.Comandos.Autocomplete.Commands.CommandsAutocomplete'. ---> System.TypeInitializationException: The type initializer for 'LSI.Packages.Extensiones.Comandos.Autocomplete.KbNames.ObjectPartType' threw an exception. ---> System.IO.FileNotFoundException: Could not load file or assembly 'Artech.Patterns.WorkWithDevices, Version=10.1.0.0, Culture=neutral, PublicKeyToken=6f5bf81c27b6b8aa' or one of its dependencies. El sistema no puede encontrar el archivo especificado."

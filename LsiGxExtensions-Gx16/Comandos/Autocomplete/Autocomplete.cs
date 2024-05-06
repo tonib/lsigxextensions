@@ -81,6 +81,7 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete
             SupportedPartTypes = new List<ObjectPartType>();
 			SupportedPartTypes.Add(ObjectPartType.ProcedureRules);
 			SupportedPartTypes.Add(ObjectPartType.Procedure);
+            SupportedPartTypes.Add(ObjectPartType.ProcedureWwPlus);
             SupportedPartTypes.Add(ObjectPartType.ProcedureConditions);
 
 			SupportedPartTypes.Add(ObjectPartType.WorkPanelRules);
@@ -89,9 +90,11 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete
 
 			SupportedPartTypes.Add(ObjectPartType.TransactionRules);
 			SupportedPartTypes.Add(ObjectPartType.TransactionEvents);
+            SupportedPartTypes.Add(ObjectPartType.TransactionEventsWwPlus);
 
-			SupportedPartTypes.Add(ObjectPartType.WebPanelRules);
+            SupportedPartTypes.Add(ObjectPartType.WebPanelRules);
 			SupportedPartTypes.Add(ObjectPartType.WebPanelEvents);
+            SupportedPartTypes.Add(ObjectPartType.WebPanelEventsWwPlus);
             SupportedPartTypes.Add(ObjectPartType.WebPanelConditions);
 
 			SupportedPartTypes.Add(ObjectPartType.SDPanelRules);
