@@ -10,9 +10,14 @@
 		<!--#include file="./cabecera.html" -->
 
 		<h2>Log de cambios</h2>
-		<h3>6.2</h3>
+		<h3>6.1</h3>
 		<ul>
 			<li>Autocompletado: Soporte para las partes que crea el WorkWithPlus</li>
+			<li>
+				Arreglado error: Daba un aviso incorrecto de nº de parametros incorrectos en llamadas concatenadas del tipo
+				"Objeto.Udp(&amp;Variable).Trim()". Asumia incorrectamente que la llamada al objeto era la ulitma función de la cadena
+				de llamadas (en este caso Trim()).
+			</li>
 		</ul>
 
 		<h3>6.0.1</h3>

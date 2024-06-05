@@ -92,11 +92,13 @@ namespace LSI.Packages.Extensiones.Utilidades.AnalisisCodigo.Llamadas
         {
             List<ObjectBase> expressionComponents = ObjectPEMGx.ConvertirALista(expression);
 
+            // This was failing with calls like "PGetNombreCliente.Udp(&IntComCardCodigo).Trim()". It was taking "Trim()" as the called function, and it
+            // should be ".Upd(...)"
             // Check last component, to find call information:
-            ObjectBase lastComponent = expressionComponents[expressionComponents.Count - 1];
-            CallFunction = lastComponent as Function;
-            if (CallFunction != null)
-                CallFunctionName = CallFunction.Name as RuleName;
+            //ObjectBase lastComponent = expressionComponents[expressionComponents.Count - 1];
+            //CallFunction = lastComponent as Function;
+            //if (CallFunction != null)
+            //    CallFunctionName = CallFunction.Name as RuleName;
 
             // Extract the module part
             ExtractModuleName(expressionComponents, modulesNames);
@@ -109,7 +111,17 @@ namespace LSI.Packages.Extensiones.Utilidades.AnalisisCodigo.Llamadas
 
             // Get only the object name
             if (ObjectName is Function)
+            {
+                // Call is "ObjectName(...)"
                 ObjectName = ((Function)ObjectName).Name;
+            }
+            else if(expressionComponents.Count > 0)
+            {
+                // Call should be ObjectName.XXX()
+                CallFunction = expressionComponents[0] as Function;
+                if (CallFunction != null)
+                    CallFunctionName = CallFunction.Name as RuleName;
+            }
 
             // Remaining are the funcions / ww sections
             Extras = expressionComponents;

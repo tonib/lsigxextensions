@@ -1067,7 +1067,8 @@
   <PropertyGroup>
     <PostBuildEvent>copy /Y ..\..\..\libraries\TfLiteNetWrapper\tensorflowlite_c.dll .
 "$(GX_SDK_DIR_GX18U7)\Tools\Updater" ..\..\..\LsiGxExtensions-Gx16\Catalog.xml ..\..\ "$(GX_PROGRAM_DIR_GX18U7)"\ $(Configuration)
-"$(GX_PROGRAM_DIR_GX18U7)"\Genexus /install
+REM Currently it takes an insane amount of time to do a /Install, so removed
+REM "$(GX_PROGRAM_DIR_GX18U7)"\Genexus /install
 </PostBuildEvent>
   </PropertyGroup>
 </Project>
