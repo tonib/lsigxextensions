@@ -221,12 +221,26 @@ namespace LSI.Packages.Extensiones.Comandos.Build.Production
 			}
 		}
 
+        private byte[] ToBytes()
+		{
+            XmlSerializer serializer = new XmlSerializer(typeof(PrepareProduction));
+            using (MemoryStream mStream = new MemoryStream())
+            using (TextWriter writer = new StreamWriter(mStream))
+            {
+                serializer.Serialize(writer, this);
+                mStream.Flush();
+                return mStream.ToArray();
+            }
+        }
+
 		/// <summary>
 		/// Save this as the current kb production configuration
 		/// </summary>
 		public void Save(KnowledgeBase kb)
         {
-            // string path = Entorno.GetLsiExtensionsFilePath(kb, PRODUCTIONFILENAME);
+			// string path = Entorno.GetLsiExtensionsFilePath(kb, PRODUCTIONFILENAME);
+
+			byte[] cfgBytes = ToBytes();
 
             WikiFileKBObject kbFile = ProductionSettingsFileObj(kb.DesignModel);
             if (kbFile == null)
@@ -237,16 +251,16 @@ namespace LSI.Packages.Extensiones.Comandos.Build.Production
                 kbFile.BlobPart.SetPropertyValue(WikiBlobPart.PROP_FILE_NAME, Path.GetFileName(PRODUCTIONKBFILENAME));
                 kbFile.BlobPart.SetPropertyValue(WikiBlobPart.PROP_FILE_EXT, Path.GetExtension(PRODUCTIONKBFILENAME));
             }
+            else
+			{
+                // Avoid create a new file version if content is the same
+                byte[] currentBytes = kbFile.BlobPart?.Data?.GetBytes();
+                if (currentBytes != null && currentBytes.SequenceEqual(cfgBytes))
+                    return;
+			}
 
-            XmlSerializer serializer = new XmlSerializer(typeof(PrepareProduction));
-            using (MemoryStream mStream = new MemoryStream())
-            using (TextWriter writer = new StreamWriter(mStream))
-            {
-                serializer.Serialize(writer, this);
-                mStream.Flush();
-                kbFile.BlobPart.Data = BinaryStream.FromBytes(mStream.ToArray());
-                kbFile.Save();
-            }
+            kbFile.BlobPart.Data = BinaryStream.FromBytes(cfgBytes);
+            kbFile.Save();
         }
 
         private void UpdateImagesTxt() 
