@@ -1,4 +1,7 @@
 ﻿using Artech.Architecture.Common.Objects;
+using Artech.Common;
+using Artech.Genexus.Common;
+using Artech.Genexus.Common.Wiki;
 using LSI.Packages.Extensiones.Utilidades;
 using LSI.Packages.Extensiones.Utilidades.Logging;
 using System;
@@ -6,6 +9,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace LSI.Packages.Extensiones.Comandos.Build.Production
 {
@@ -16,9 +20,14 @@ namespace LSI.Packages.Extensiones.Comandos.Build.Production
     {
 
         /// <summary>
-        /// Production configuration storage filename
+        /// Production configuration storage filename, as external file
         /// </summary>
         private const string PRODUCTIONFILENAME = "production.xml";
+
+        /// <summary>
+        /// Production configuration storage filename, as kb file
+        /// </summary>
+        private const string PRODUCTIONKBFILENAME = "lsigx_production_xml";
 
         /// <summary>
         /// List of file patterns ("*.ini" as example) to not include on the production
@@ -154,45 +163,90 @@ namespace LSI.Packages.Extensiones.Comandos.Build.Production
             return production;
         }
 
-        /// <summary>
-        /// Load the current kb production configuration. If it does not exists, it will return
-        /// a default production
-        /// </summary>
-        /// <returns>The kb production, or default production if it was not found</returns>
-        static public PrepareProduction LoadKbProduction(KBModel targetModel)
-        {
-            // Dont handle exceptions: If the file cannot be open, launch an exception
+        static private WikiFileKBObject ProductionSettingsFileObj(KBModel designModel) => 
+            WikiFileKBObject.Get(designModel, new QualifiedName(PRODUCTIONKBFILENAME));
+
+        static private void CheckMigration(KBModel designModel)
+		{
+            // Dont handle exceptions: If the file cannot be open, launch an exception. Otherwise, file changes may be lost
             //try
             //{
-            string path = Entorno.GetLsiExtensionsFilePath(targetModel.KB, PRODUCTIONFILENAME);
+            string path = Entorno.GetLsiExtensionsFilePath(designModel.KB, PRODUCTIONFILENAME);
             if (!File.Exists(path))
-                return CreateDefaultProduction(targetModel);
+                return;
 
-            XmlSerializer serializer = new XmlSerializer(typeof(PrepareProduction));
-            TextReader reader = new StreamReader(path);
-            PrepareProduction info = (PrepareProduction)serializer.Deserialize(reader);
-            reader.Close();
-            info.Setup(targetModel);
-            return info;
-            //}
-            //catch(Exception ex)
-            //{
-            //    Log.MostrarExcepcion(ex);
-            //    return CreateDefaultProduction();
-            //}
+            WikiFileKBObject kbFile = ProductionSettingsFileObj(designModel);
+            if (kbFile == null)
+            {
+                // Starting from v6.0.2, configuration file is stored as kb file. Do migration:
+                kbFile = new WikiFileKBObject(designModel);
+                kbFile.Name = PRODUCTIONKBFILENAME;
+                kbFile.BlobPart.Data = BinaryStream.FromPath(path);
+                kbFile.BlobPart.SetPropertyValue(WikiBlobPart.PROP_FILE_NAME, Path.GetFileName(PRODUCTIONKBFILENAME));
+                kbFile.BlobPart.SetPropertyValue(WikiBlobPart.PROP_FILE_EXT, Path.GetExtension(PRODUCTIONKBFILENAME));
+                kbFile.Save();
+            }
+   //         }
+   //         catch(Exception ex)
+			//{
+   //             Log.ShowException(ex);
+			//}
         }
 
-        /// <summary>
-        /// Save this as the current kb production configuration
-        /// </summary>
-        public void SaveToFile(KnowledgeBase kb)
+		/// <summary>
+		/// Load the current kb production configuration. If it does not exists, it will return
+		/// a default production
+		/// </summary>
+		/// <returns>The kb production, or default production if it was not found</returns>
+		static public PrepareProduction LoadKbProduction(KBModel designModel, KBModel targetModel)
+		{
+			// Dont handle exceptions: If the file cannot be open, launch an exception. Otherwise, file changes may be lost
+			//string path = Entorno.GetLsiExtensionsFilePath(targetModel.KB, PRODUCTIONFILENAME);
+			//if (!File.Exists(path))
+			//    return CreateDefaultProduction(targetModel);
+
+			CheckMigration(designModel);
+
+			var obj = ProductionSettingsFileObj(designModel);
+			if (obj == null)
+				return CreateDefaultProduction(targetModel);
+
+			XmlSerializer serializer = new XmlSerializer(typeof(PrepareProduction));
+			using (var objStream = obj.BlobPart.Data.GetStream())
+			using (TextReader reader = new StreamReader(objStream))
+			{
+				PrepareProduction info = (PrepareProduction)serializer.Deserialize(reader);
+				info.Setup(targetModel);
+				return info;
+			}
+		}
+
+		/// <summary>
+		/// Save this as the current kb production configuration
+		/// </summary>
+		public void Save(KnowledgeBase kb)
         {
-            string path = Entorno.GetLsiExtensionsFilePath(kb, PRODUCTIONFILENAME);
+            // string path = Entorno.GetLsiExtensionsFilePath(kb, PRODUCTIONFILENAME);
+
+            WikiFileKBObject kbFile = ProductionSettingsFileObj(kb.DesignModel);
+            if (kbFile == null)
+            {
+                // Starting from v6.0.2, configuration file is stored as kb file:
+                kbFile = new WikiFileKBObject(kb.DesignModel);
+                kbFile.Name = PRODUCTIONKBFILENAME;
+                kbFile.BlobPart.SetPropertyValue(WikiBlobPart.PROP_FILE_NAME, Path.GetFileName(PRODUCTIONKBFILENAME));
+                kbFile.BlobPart.SetPropertyValue(WikiBlobPart.PROP_FILE_EXT, Path.GetExtension(PRODUCTIONKBFILENAME));
+            }
 
             XmlSerializer serializer = new XmlSerializer(typeof(PrepareProduction));
-            TextWriter writer = new StreamWriter(path);
-            serializer.Serialize(writer, this);
-            writer.Close();
+            using (MemoryStream mStream = new MemoryStream())
+            using (TextWriter writer = new StreamWriter(mStream))
+            {
+                serializer.Serialize(writer, this);
+                mStream.Flush();
+                kbFile.BlobPart.Data = BinaryStream.FromBytes(mStream.ToArray());
+                kbFile.Save();
+            }
         }
 
         private void UpdateImagesTxt() 

@@ -38,7 +38,8 @@ namespace LSI.Packages.Extensiones.MsBuild
                         return true;
                     }
 
-                    PrepareProduction production = PrepareProduction.LoadKbProduction(KB.DesignModel.Environment.TargetModel);
+                    PrepareProduction production = PrepareProduction.LoadKbProduction(KB.DesignModel, 
+                        KB.DesignModel.Environment.TargetModel);
                     RunBuildProcess(production, log, "Prepare production", false);
                     
                     return true;

@@ -37,7 +37,8 @@ namespace LSI.Packages.Extensiones.Comandos.Build.Production
 
             this.GeneratorTab = generatorTab;
 
-            PrepareProduction production = PrepareProduction.LoadKbProduction(UIServices.KB.CurrentKB.DesignModel.Environment.TargetModel);
+            PrepareProduction production = PrepareProduction.LoadKbProduction(UIServices.KB.CurrentKB.DesignModel, 
+                UIServices.KB.CurrentKB.DesignModel.Environment.TargetModel);
             TxtTargetDir.Text = production.TargetDirectory;
             TxtIgnorePatterns.Text = production.PatternsToIgnoreText;
             ChkCopyImagesTxt.Checked = production.CopyImagesTxt;
@@ -112,7 +113,7 @@ namespace LSI.Packages.Extensiones.Comandos.Build.Production
         {
             try
             {
-                CurrentProduction.SaveToFile(UIServices.KB.CurrentKB);
+                CurrentProduction.Save(UIServices.KB.CurrentKB);
             }
             catch (Exception ex)
             {
