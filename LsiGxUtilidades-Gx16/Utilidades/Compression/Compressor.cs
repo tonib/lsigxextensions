@@ -102,8 +102,15 @@ namespace LSI.Packages.Extensiones.Utilidades.Compression
                 zipInfo.FilesToCompress.Select(x => "\"" + x.Trim() + "\"").ToArray()
                 );
 
-            string zipPath = zipInfo.DestinationPathWithoutExtension;
-            zipPath += "." + CompressorFilesExtension;
+            string zipPath;
+            if (!Path.HasExtension(zipInfo.DestinationPath))
+            {
+                // Add configured extension
+                zipPath = zipInfo.DestinationPathWithoutExtension;
+                zipPath += "." + CompressorFilesExtension;
+            }
+            else
+                zipPath = zipInfo.DestinationPath;
             zipPath = "\"" + zipPath + "\"";
 
             string cmdLine;
