@@ -31,11 +31,22 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete.GxPredictor.DataDefinit
 		/// </summary>
 		private int NGroups;
 
-		public GxNameSplitter(int nGroups)
+		/// <summary>
+		/// True if groups should be converted to lowercase
+		/// </summary>
+		private bool ToLowerCase;
+
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="nGroups">Number of word groups to retrieve</param>
+		/// <param name="toLowerCase">True if words should be converted to lowercase</param>
+		public GxNameSplitter(int nGroups, bool toLowerCase = true)
 		{
 			if (nGroups <= 0)
 				throw new ArgumentException("nGroups must to be > 0");
 			NGroups = nGroups;
+			ToLowerCase = toLowerCase;
 		}
 
         /// <summary>
@@ -61,12 +72,12 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete.GxPredictor.DataDefinit
 						//XzFacCan
 						// 0123456
 						//  ^  ^
-						groups.Add(name.Substring(lastUpperIdx, i - lastUpperIdx).ToLower());
+						AddGroup(groups, name.Substring(lastUpperIdx, i - lastUpperIdx));
 
 						if (groups.Count == (NGroups - 1))
 						{
 							// This character, and everything after, will be the last group
-							groups.Add(name.Substring(i).ToLower());
+							AddGroup(groups, name.Substring(i));
 							return groups;
 						}
 
@@ -76,7 +87,7 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete.GxPredictor.DataDefinit
 				}
 
 				// Add last group (will never be empty)
-				groups.Add(name.Substring(lastUpperIdx).ToLower());
+				AddGroup(groups, name.Substring(lastUpperIdx));
 			}
 
 			// Pad with empty strings, up to NGroups
@@ -86,11 +97,18 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete.GxPredictor.DataDefinit
 			return groups;
 		}
 
+		private void AddGroup(List<string> groups, string group)
+		{
+			if (ToLowerCase)
+				group = group.ToLower();
+			groups.Add(group);
+		}
+
 		/// <summary>
 		/// Split a name
 		/// </summary>
 		/// <param name="name">Name to split</param>
-		/// <returns>Name groups, padded with empty strings up to NGroups. Groups are lowercase</returns>
+		/// <returns>Name groups, padded with empty strings up to NGroups</returns>
 		public List<string> Split(string name)
         {
 			if (LastName != null && LastName == name)
