@@ -50,6 +50,8 @@
 			this.BtnBorRegistro = new System.Windows.Forms.Button();
 			this.ChkSoloReglaParm = new System.Windows.Forms.CheckBox();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.txtVarNamesNoCheck = new System.Windows.Forms.TextBox();
+			this.label16 = new System.Windows.Forms.Label();
 			this.ChkOrphanInsideSubs = new System.Windows.Forms.CheckBox();
 			this.ChkAlwaysNullIIniValue = new System.Windows.Forms.CheckBox();
 			this.ChkNoFolder = new System.Windows.Forms.CheckBox();
@@ -123,8 +125,7 @@
 			this.chkDebugPredictionModel = new System.Windows.Forms.CheckBox();
 			this.chkUppercaseKeywords = new System.Windows.Forms.CheckBox();
 			this.ChkAutocomplete = new System.Windows.Forms.CheckBox();
-			this.label16 = new System.Windows.Forms.Label();
-			this.txtVarNamesNoCheck = new System.Windows.Forms.TextBox();
+			this.BtnIgnoreHttpsErr = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.grpWinforms.SuspendLayout();
 			this.groupBox3.SuspendLayout();
@@ -359,6 +360,22 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "General";
 			// 
+			// txtVarNamesNoCheck
+			// 
+			this.txtVarNamesNoCheck.Location = new System.Drawing.Point(372, 164);
+			this.txtVarNamesNoCheck.Name = "txtVarNamesNoCheck";
+			this.txtVarNamesNoCheck.Size = new System.Drawing.Size(350, 20);
+			this.txtVarNamesNoCheck.TabIndex = 13;
+			// 
+			// label16
+			// 
+			this.label16.AutoSize = true;
+			this.label16.Location = new System.Drawing.Point(15, 167);
+			this.label16.Name = "label16";
+			this.label16.Size = new System.Drawing.Size(351, 13);
+			this.label16.TabIndex = 12;
+			this.label16.Text = "Do not check these variable names (comma separated, no &&, ex: a, b, c):";
+			// 
 			// ChkOrphanInsideSubs
 			// 
 			this.ChkOrphanInsideSubs.AutoSize = true;
@@ -573,7 +590,7 @@
 			this.tabPage2.Location = new System.Drawing.Point(4, 22);
 			this.tabPage2.Name = "tabPage2";
 			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(840, 530);
+			this.tabPage2.Size = new System.Drawing.Size(753, 561);
 			this.tabPage2.TabIndex = 1;
 			this.tabPage2.Text = "Work with mains";
 			this.tabPage2.UseVisualStyleBackColor = true;
@@ -921,7 +938,7 @@
 			this.tabPage3.Location = new System.Drawing.Point(4, 22);
 			this.tabPage3.Name = "tabPage3";
 			this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage3.Size = new System.Drawing.Size(840, 530);
+			this.tabPage3.Size = new System.Drawing.Size(753, 561);
 			this.tabPage3.TabIndex = 2;
 			this.tabPage3.Text = "Autocomplete";
 			this.tabPage3.UseVisualStyleBackColor = true;
@@ -1123,21 +1140,15 @@
 			this.ChkAutocomplete.UseVisualStyleBackColor = true;
 			this.ChkAutocomplete.CheckedChanged += new System.EventHandler(this.ChkAutocomplete_CheckedChanged);
 			// 
-			// label16
+			// BtnIgnoreHttpsErr
 			// 
-			this.label16.AutoSize = true;
-			this.label16.Location = new System.Drawing.Point(15, 167);
-			this.label16.Name = "label16";
-			this.label16.Size = new System.Drawing.Size(351, 13);
-			this.label16.TabIndex = 12;
-			this.label16.Text = "Do not check these variable names (comma separated, no &&, ex: a, b, c):";
-			// 
-			// txtVarNamesNoCheck
-			// 
-			this.txtVarNamesNoCheck.Location = new System.Drawing.Point(372, 164);
-			this.txtVarNamesNoCheck.Name = "txtVarNamesNoCheck";
-			this.txtVarNamesNoCheck.Size = new System.Drawing.Size(350, 20);
-			this.txtVarNamesNoCheck.TabIndex = 13;
+			this.BtnIgnoreHttpsErr.Location = new System.Drawing.Point(13, 12);
+			this.BtnIgnoreHttpsErr.Name = "BtnIgnoreHttpsErr";
+			this.BtnIgnoreHttpsErr.Size = new System.Drawing.Size(195, 23);
+			this.BtnIgnoreHttpsErr.TabIndex = 4;
+			this.BtnIgnoreHttpsErr.Text = "Ignore invalid HTTPS certificates";
+			this.BtnIgnoreHttpsErr.UseVisualStyleBackColor = true;
+			this.BtnIgnoreHttpsErr.Click += new System.EventHandler(this.BtnIgnoreHttpsErr_Click);
 			// 
 			// ConfigurationWindow
 			// 
@@ -1146,6 +1157,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.BtnCancelar;
 			this.ClientSize = new System.Drawing.Size(781, 669);
+			this.Controls.Add(this.BtnIgnoreHttpsErr);
 			this.Controls.Add(this.tabControl1);
 			this.Controls.Add(this.BtnBorRegistro);
 			this.Controls.Add(this.BtnCancelar);
@@ -1282,5 +1294,6 @@
 		private System.Windows.Forms.CheckBox chkCreateVariables;
 		private System.Windows.Forms.Label label16;
 		private System.Windows.Forms.TextBox txtVarNamesNoCheck;
+		private System.Windows.Forms.Button BtnIgnoreHttpsErr;
 	}
 }

@@ -15,6 +15,7 @@ using LSI.Packages.Extensiones.Utilidades.VS;
 using LSI.Packages.Extensiones.Comandos.Autocomplete;
 using Artech.Architecture.UI.Framework.Services;
 using LSI.Packages.Extensiones.Utilidades.GxClassExtensions;
+using LSI.Packages.Extensiones.Utilidades.Logging;
 
 namespace LSI.Packages.Extensiones
 {
@@ -519,5 +520,24 @@ namespace LSI.Packages.Extensiones
 			ChkOrphanInsideSubs.Enabled = ChkAtributosHuerfanos.Checked;
 		}
 
+		private void BtnIgnoreHttpsErr_Click(object sender, EventArgs e)
+		{
+            try
+            {
+                if (MessageBox.Show("This will disable HTTPS certificates validation " +
+                    "until Genexus is closed. Are you sure you want to continue?",
+                    "Confirm",
+                    MessageBoxButtons.OKCancel) != DialogResult.OK)
+                    return;
+
+                System.Net.ServicePointManager.ServerCertificateValidationCallback = (a, b, c, d) => true;
+
+                MessageBox.Show("HTTPS certificates validation disabled");
+            }
+            catch(Exception ex)
+			{
+                Log.ShowException(ex);
+			}
+        }
 	}
 }
