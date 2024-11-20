@@ -206,7 +206,7 @@
     <value>Check reports fonts...</value>
   </data>
   <data name="OpenDocumentation" xml:space="preserve">
-    <value>LSI.Extensions documentation (v6.0.1)</value>
+    <value>LSI.Extensions documentation (v6.1)</value>
   </data>
   <data name="Ayuda" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>resources\help.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

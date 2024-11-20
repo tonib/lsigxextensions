@@ -6,32 +6,39 @@
 		<!--#include file="./head.html" -->
 	</head>
 	
-	<body>
-	    <!--#include file="./cabecera.html" -->
-	    
-		<h2>Configuración</h2>
-		<p>
-		    La ventana en la que se indica la configuración de las extensiones se encuentra
-		    en el menú Lsi.Extensions &gt; LSI.Extensions configuration&hellip;. La ventana
-		    tiene el siguiente aspecto:
-		</p>
-		
-		<p style="text-align: center">
-		    <a href="./configuracion.png">
-	            <img alt="Imagen cofiguración" class="img-responsive" style="display:inline" src="./configuracion.png" />
-	        </a>
-	    </p>
-		
-		<p>
-		    La configuración se guarda por cada equipo y usuario de Windows, en el registro de 
-		    Windows, en la clave HKEY_CURRENT_USER\Software\LsiExtensions.
-		</p>
-		
-		<h3>Check Objects</h3>
-		Aquí se indican los tests a hacer sobre los objetos Genexus durante las verificaciones.
-		El significado de los campos se puede consultar en la 
-		<a href="verificacion.html">documentación de la verificacion de objetos</a>.
-		
+    <body>
+        <!--#include file="./cabecera.html" -->
+
+        <h2>Configuración</h2>
+        <p>
+            La ventana en la que se indica la configuración de las extensiones se encuentra
+            en el menú Lsi.Extensions &gt; LSI.Extensions configuration&hellip;. La ventana
+            tiene el siguiente aspecto:
+        </p>
+
+        <p style="text-align: center">
+            <a href="./configuracion.png">
+                <img alt="Imagen cofiguración" class="img-responsive" style="display:inline" src="./configuracion.png" />
+            </a>
+        </p>
+
+        <p>
+            La configuración se guarda por cada equipo y usuario de Windows, en el registro de
+            Windows, en la clave HKEY_CURRENT_USER\Software\LsiExtensions.
+        </p>
+
+        <h3>Botón <i>Ignore invalid HTTPS certificates</i></h3>
+        <p>
+            Deshabilita la verificación de certificados HTTPS, desde que se pulsa el botón, hasta que se cierre Genexus.
+            Puede user útil, por ejemplo, si se tienen que importar servicios web de un servidor local con un certificado
+            autofirmado.
+        </p>
+        
+        <h3>Check Objects</h3>
+        Aquí se indican los tests a hacer sobre los objetos Genexus durante las verificaciones.
+        El significado de los campos se puede consultar en la
+        <a href="verificacion.html">documentación de la verificacion de objetos</a>.
+
         <table class="table table-bordered">
             <tr>
                 <td><b>Ask confirmation for Rebuild all / Rebuild Main</b></td>
@@ -41,28 +48,28 @@
             </tr>
         </table>
 
-		<h3>Work with mains</h3>
-		<p>
-		    Aquí se guarda la configuración que se usa en las operaciones disponibles en la 
-		    <a href="wwmains.html">toolwindow Work with mains</a>. Los significados de los campos
-		    son los siguientes:
-		</p>
-		
-		<table class="table table-bordered">
+        <h3>Work with mains</h3>
+        <p>
+            Aquí se guarda la configuración que se usa en las operaciones disponibles en la
+            <a href="wwmains.html">toolwindow Work with mains</a>. Los significados de los campos
+            son los siguientes:
+        </p>
+
+        <table class="table table-bordered">
             <tr>
                 <td><b>Visual studio COM Id string / botones VS 2008, 20120, etc.</b></td>
                 <td>
                     Permite indicar qué versión de Visual Studio utilizar a la hora de depurar y
                     abrir archivos fuente en entornos C#. La versión se identifica por el
-                    identificador 
-                    <a href="http://es.wikipedia.org/wiki/Component_Object_Model">COM</a> 
+                    identificador
+                    <a href="http://es.wikipedia.org/wiki/Component_Object_Model">COM</a>
                     que ha dado Microsoft a la versión del Visual Studio. <br />
                     Los botones "VS XXXX" establecen el campo con los ids conocidos para las
                     versiones indicadas. <br />
                     No parece existir una
                     lista oficial de los ids que da Microsoft al Visual Studio, así que en
                     caso de buscar el ID para una cierta versión hay que acudir a google, por
-                    ejemplo buscando 
+                    ejemplo buscando
                     <a href="https://www.google.es/#q=Marshal.GetActiveObject+visual+studio+2008">
                         https://www.google.es/#q=Marshal.GetActiveObject+visual+studio+2008
                     </a>.
@@ -79,7 +86,7 @@
             <tr>
                 <td><b>Zip modules / Files to add always</b></td>
                 <td>
-                    Indica los archivos a añadir siempre en el zip generado cuando se comprimen 
+                    Indica los archivos a añadir siempre en el zip generado cuando se comprimen
                     módulos usando el botón "Zip modules" en Work with mains.
                     Sólo se aplica con el generador C#.
                     Se puede indicar más de uno, separándolos con el caracter ";".
@@ -98,18 +105,18 @@
                 <td><b>C# / Win generator: Add System.Environment.Exit(0) call to mains with custom compilation</b></td>
                 <td>
                     Sólo se aplica a entornos C# win, si la propiedad
-		            "Assemblies structure" del generador vale "By main", 
-		            cuando se ejecuta la operación de compilación
-                    personalizada. Si este campo está marcado, se añade añade una llamada a 
+                    "Assemblies structure" del generador vale "By main",
+                    cuando se ejecuta la operación de compilación
+                    personalizada. Si este campo está marcado, se añade añade una llamada a
                     <code>System.Environment.Exit(0)</code> a la finalización de la ejecución
-                    de los objetos main. Esto evita un bug en ejecución del main por el cual, 
+                    de los objetos main. Esto evita un bug en ejecución del main por el cual,
                     a veces, al intentar salir del programa este no se cierra.
                 </td>
             </tr>
             <tr>
                 <td><b>Compressor</b></td>
                 <td>
-                    Aquí se indica qué programa compresor hay que utilizar a la hora de 
+                    Aquí se indica qué programa compresor hay que utilizar a la hora de
                     comprimir archivos:
                     <ul>
                         <li>
@@ -145,7 +152,7 @@
                 <td><b>Text editor</b></td>
                 <td>
                     Editor con el que abrir los fuentes de los External Objects de Android al
-                    abrirlos desde Work With Mains 
+                    abrirlos desde Work With Mains
                 </td>
             </tr>
             <tr>
@@ -154,16 +161,16 @@
                     Esta opción es sólo util si se usa el generador C# win, con la propiedad
                     "Assemblies structure" establecida a "By main".<br />
                     En este caso, se mantiene una caché de los nombres de archivos fuente generados
-                    por cada objeto. Esta caché se guarda, por kbase, en en memoria y en el 
+                    por cada objeto. Esta caché se guarda, por kbase, en en memoria y en el
                     archivo [DirectorioKBase]\LsiExtensions\SourceFilesCache.xml. Se usa para
                     reparar los archivos RSP y para la operación de compilación personalizada.<br />
-                    Este botón permite borrar esta caché: Borrar el archivo indicado, y la 
+                    Este botón permite borrar esta caché: Borrar el archivo indicado, y la
                     información que se mantuviera en memoria. Esto puede ser necesario al instalar
                     una nueva versión de las extensiones, o si esta caché hubiera quedado corrupta.
                 </td>
             </tr>
         </table>
-        
+
         <h3>Autocomplete</h3>
         <p>
             Aquí se configuran las siguientes extensiones:
@@ -178,7 +185,7 @@
             En la documentación de estas extensiones se puede consultar el significado de estos campos.
         </p>
 
-		<!--#include file="./pie.html" -->
-	</body>
+        <!--#include file="./pie.html" -->
+    </body>
 	
 </html>

@@ -27,8 +27,8 @@ using Artech.Architecture.Common.Packages;
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("6e0659a9-ffe1-4d2c-a4ff-4d6c7eeae365")]
-[assembly: AssemblyVersion("6.0.1")]
-[assembly: AssemblyFileVersion("6.0.1")]
+[assembly: AssemblyVersion("6.1.0")]
+[assembly: AssemblyFileVersion("6.1.0")]
 
 // Version information for an assembly consists of the following four values:
 //
