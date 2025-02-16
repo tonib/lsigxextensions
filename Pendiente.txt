@@ -1,3 +1,33 @@
+ERROR: kb sga, objeto PPrzPreLin:
+	Si se cambia la linea:
+	PPckCarUbi( &CfgSdt, &PckCode, &PckLin, &PckUbiLin, '', -1, '', '', &PckLinSdt, &PckUbiSdt, &MsgErr )
+	por
+	PckListasPicking.PPckCarUbi( &CfgSdt, &PckCode, &PckLin, &PckUbiLin, '', -1, '', '', &PckLinSdt, &PckUbiSdt, &MsgErr )
+	Da un warning erroneo:
+	warning: Object PrzPreparacionPickingPorZonas.PPrzPreLin: There are only read variables:
+	pcklinsdt
+	pckubisdt
+
+Error:
+Si tienes esto en un sd panel:
+Event AppLifecycle.AppStateChanged(&StateNow,&StateOld)
+...
+EndEvent
+Reporta incorrectamente que las variables &StateNow / &StateOld son solo leidas: Las asigna genexus
+
+- Autocompletado: SDTs. Si escribes un texto y no hay ningun campo que empiece por ese texto, autoseleccionar el 
+	primer campo que contenga ese texto (el mas probable, si hay mas de uno) (+1)
+
+- Si se hace enter en un comentario de linea simple ( // ) a mitad de linea (no al final), ir a la siguiente linea
+  ya con el // puesto al principio de la linea
+
+- Poner una tecla rapida para poder abrir la ayuda en el wiki de genexus, con la palaba actual en el editor de texto
+
+- Autocierre de strings:
+	* Si se escribe "!", se podria añadir el cierre de comillas -> !'|'
+	* Si estas dentro de un string y pulsas Enter, que se autocierre el string, añada el + y salta
+	  a la siguiente linea, dejando la sintaxis correcta.
+	  Tambien estaria bien que si se pulsara Ctrl (o Alt o algo), añadiera un + NewLine() + 
 
 - El proponer nombre para una nueva variable no propone nombres de external objects
 
@@ -37,7 +67,6 @@
    at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
    at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
 
-- Autocierre de strings. Si se escribe "!", se podria añadir el cierre de comillas -> !'|'
 - Hay un error al proponer los nombres de controles en SDPanels: Los controles de los titulos de los tabs no aparecen...
   Ej KB Sga, DEazTraCon, escribir TabRec (no propone nada). Escribir TabRec. (aparecen los miembros)
 
@@ -81,7 +110,8 @@
 		
 - Documentar: Arreglo errores buscando referencias a SDPanels (ej. buscando referencias desde mains)
 
-- Llamadas a funcion format: no se verifica que los %NUMERO cuadren con el nº de parametro (madre mia)
+- Llamadas a funcion format: no se verifica que los %NUMERO cuadren con el nº de parametro (madre mia).
+	Ademas, solo soportan 9 parametros... Es ridiculo
 
 - &ColeccionSdts.Sort( 'a.b, c' ):
 	Verificar que las propiedades indicadas existan (se puede hacer si hay cache de SDTs). Si no existen, el programa se cuelga en tiempo de ejecucion

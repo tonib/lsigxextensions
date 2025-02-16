@@ -113,7 +113,9 @@ namespace LSI.Packages.Extensiones.Utilidades.AnalisisCodigo.Llamadas
             if (ObjectName is Function)
             {
                 // Call is "ObjectName(...)"
-                ObjectName = ((Function)ObjectName).Name;
+                CallFunction = (Function)ObjectName;
+                CallFunctionName = CallFunction.Name as RuleName;
+                ObjectName = CallFunction.Name;
             }
             else if(expressionComponents.Count > 0)
             {
