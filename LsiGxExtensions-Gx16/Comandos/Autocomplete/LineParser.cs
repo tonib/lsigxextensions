@@ -6,7 +6,9 @@ using System.Linq;
 
 namespace LSI.Packages.Extensiones.Comandos.Autocomplete
 {
-
+    /// <summary>
+    /// Info about a text line in code editor
+    /// </summary>
     public class LineParser
     {
 

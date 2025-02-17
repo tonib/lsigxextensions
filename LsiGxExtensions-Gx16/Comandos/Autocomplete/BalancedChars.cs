@@ -1,4 +1,6 @@
 ﻿using ActiproSoftware.SyntaxEditor;
+using Artech.FrameworkDE.Text;
+using LSI.Packages.Extensiones.Comandos.Autocomplete.GxPredictor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,10 +28,48 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete
             if (CheckOverwriteCloseChar(syntaxEditor, e))
                 return true;
 
+            if (CheckEnterOnCommentOrString(syntaxEditor, e))
+                return true;
+
             return CheckDeleteOpenChar(syntaxEditor, e);
         }
 
-        private static bool CheckDeleteOpenChar(SyntaxEditor syntaxEditor, KeyTypingEventArgs e)
+        /// <summary>
+        /// Checks if a Enter has been pressed in the middle of a string constant or a single line comment
+        /// </summary>
+        /// <param name="syntaxEditor"></param>
+        /// <param name="e"></param>
+        /// <returns></returns>
+		private static bool CheckEnterOnCommentOrString(SyntaxEditor syntaxEditor, KeyTypingEventArgs e)
+		{
+            if (e.KeyData != Keys.Enter)
+                return false;
+
+            TextStream textStream = syntaxEditor.Document.GetTextStream(syntaxEditor.Caret.Offset);
+			IToken token = textStream?.Token;
+            if (token == null)
+                return false;
+
+            string currentTokenKey = token.Key;
+            if(currentTokenKey == TokenKeysEx.CommentWhitespaceToken || currentTokenKey == TokenKeysEx.CommentWordToken)
+			{
+                // Enter in a single line comment. Check is not at the line end
+                int lengthToLineEnd = textStream.DocumentLine.EndOffset - syntaxEditor.Caret.Offset;
+                string textToLineEnd = syntaxEditor.Document.GetSubstring(syntaxEditor.Caret.Offset, lengthToLineEnd);
+                if(textToLineEnd.Trim().Length > 0)
+				{
+                    // Continue the comment line in a new line
+                    e.Cancel = true;
+                    syntaxEditor.SelectedView.InsertSurroundingText(Environment.NewLine +
+                        new string(' ', textStream.DocumentLine.IndentAmount) + "// ", "");
+                    return true;
+				}
+            }
+
+            return false;
+        }
+
+		private static bool CheckDeleteOpenChar(SyntaxEditor syntaxEditor, KeyTypingEventArgs e)
         {
             if (e.KeyData != Keys.Back)
                 return false;

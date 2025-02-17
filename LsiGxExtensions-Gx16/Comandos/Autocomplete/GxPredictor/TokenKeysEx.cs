@@ -6,7 +6,10 @@ using System.Text;
 
 namespace LSI.Packages.Extensiones.Comandos.Autocomplete.GxPredictor
 {
-    public abstract class TokenKeysEx : TokenKeys
+	/// <summary>
+	/// TokenKeys (editor token definitions) extensions
+	/// </summary>
+	public abstract class TokenKeysEx : TokenKeys
     {
 
 		// Tokens not defined at TokenKeys
@@ -15,6 +18,16 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete.GxPredictor
         public const string RealNumberToken = "RealNumberToken";
         public const string IntegerNumberToken = "IntegerNumberToken";
         public const string OperatorToken = "OperatorToken";
+
+		/// <summary>
+		/// Single line comment content
+		/// </summary>
+		public const string CommentWordToken = "CommentWordToken";
+
+		/// <summary>
+		/// Single line coment whitespace (not at the end of the comment, that is CommentEndToken)
+		/// </summary>
+		public const string CommentWhitespaceToken = "CommentWhitespaceToken";
 
 		/// <summary>
 		/// Single line comment end (line break)
