@@ -53,7 +53,7 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete
             string currentTokenKey = token.Key;
             if(currentTokenKey == TokenKeysEx.CommentWhitespaceToken || currentTokenKey == TokenKeysEx.CommentWordToken)
 			{
-                // Enter in a single line comment. Check is not at the line end
+                // Enter inside a single line comment. Check is not at the line end
                 int lengthToLineEnd = textStream.DocumentLine.EndOffset - syntaxEditor.Caret.Offset;
                 string textToLineEnd = syntaxEditor.Document.GetSubstring(syntaxEditor.Caret.Offset, lengthToLineEnd);
                 if(textToLineEnd.Trim().Length > 0)
@@ -66,6 +66,52 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete
 				}
             }
 
+            bool isStringConstant = false, isAtEnd = false;
+            string endStringToken = null;
+            string stringDelimiter = null;
+            if(currentTokenKey == TokenKeysEx.CharacterWhitespaceToken || currentTokenKey == TokenKeysEx.CharacterWordToken || 
+                currentTokenKey == TokenKeysEx.CharacterEndToken)
+			{
+                isStringConstant = true;
+                stringDelimiter = "'";
+                isAtEnd = currentTokenKey == TokenKeysEx.CharacterEndToken;
+                endStringToken = TokenKeysEx.CharacterEndToken;
+            }
+            else if(currentTokenKey == TokenKeysEx.StringWordToken || currentTokenKey == TokenKeysEx.StringWhitespaceToken ||
+                currentTokenKey == TokenKeysEx.StringEndToken)
+			{
+                isStringConstant = true;
+                stringDelimiter = "\"";
+                isAtEnd = currentTokenKey == TokenKeysEx.StringEndToken;
+                endStringToken = TokenKeysEx.StringEndToken;
+            }
+            if(isStringConstant)
+			{
+                // Enter inside a string literal. Continue the literal on the next line
+                int textLength;
+                if (isAtEnd)
+                    textLength = 0;
+                else
+                {
+                    // Search next string end, only in the current line
+                    int endOfLineOffset = textStream.DocumentLine.EndOffset;
+                    while (textStream.Token != null && textStream.Token.Key != endStringToken && textStream.Token.StartOffset < endOfLineOffset)
+                        textStream.GoToNextToken();
+                    if (textStream.Token == null || textStream.Token.StartOffset >= endOfLineOffset)
+                        return false;
+
+                    textLength = textStream.Token.StartOffset - syntaxEditor.Caret.Offset;
+                }
+
+                string nextLineText = syntaxEditor.Document.GetSubstring(syntaxEditor.Caret.Offset, textLength);
+
+                // Continue the comment line in a new line
+                e.Cancel = true;
+                syntaxEditor.SelectedView.InsertSurroundingText(stringDelimiter + " +" + 
+                    Environment.NewLine +
+                    new string(' ', textStream.DocumentLine.IndentAmount) + stringDelimiter, "");
+                return true;
+            }
             return false;
         }
 

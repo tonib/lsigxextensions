@@ -2,9 +2,6 @@
 - Autocompletado: SDTs. Si escribes un texto y no hay ningun campo que empiece por ese texto, autoseleccionar el 
 	primer campo que contenga ese texto (el mas probable, si hay mas de uno) (+1)
 
-- Si se hace enter en un comentario de linea simple ( // ) a mitad de linea (no al final), ir a la siguiente linea
-  ya con el // puesto al principio de la linea
-
 - Poner una tecla rapida para poder abrir la ayuda en el wiki de genexus, con la palaba actual en el editor de texto
 
 - Autocierre de strings:

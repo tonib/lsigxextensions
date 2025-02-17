@@ -19,6 +19,11 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete.GxPredictor
         public const string IntegerNumberToken = "IntegerNumberToken";
         public const string OperatorToken = "OperatorToken";
 
+		public const string CharacterWhitespaceToken = "CharacterWhitespaceToken";
+		public const string CharacterWordToken = "CharacterWordToken";
+		public const string StringWordToken = "StringWordToken";
+		public const string StringWhitespaceToken = "StringWhitespaceToken";
+
 		/// <summary>
 		/// Single line comment content
 		/// </summary>
@@ -33,6 +38,8 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete.GxPredictor
 		/// Single line comment end (line break)
 		/// </summary>
 		public const string CommentEndToken = "CommentEndToken";
+
+
 
 		public const string FcnNpWordToken = "FcnNpWordToken";
         public const string DeprecatedWordToken = "DeprecatedWordToken";
