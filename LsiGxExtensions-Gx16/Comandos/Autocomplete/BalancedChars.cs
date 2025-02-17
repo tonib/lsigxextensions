@@ -3,6 +3,7 @@ using Artech.FrameworkDE.Text;
 using LSI.Packages.Extensiones.Comandos.Autocomplete.GxPredictor;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -42,7 +43,12 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete
         /// <returns></returns>
 		private static bool CheckEnterOnCommentOrString(SyntaxEditor syntaxEditor, KeyTypingEventArgs e)
 		{
-            if (e.KeyData != Keys.Enter)
+            // TODO: Refactoring, create tow different methos for this (comments / string literals)
+
+            //Debug.WriteLine(e.KeyData);
+            //Debug.WriteLine("***" + e.KeyChar + "---");
+            bool isEnterShift = e.KeyData == (Keys.Enter | Keys.Shift);
+            if (e.KeyData != Keys.Enter && !isEnterShift)
                 return false;
 
             TextStream textStream = syntaxEditor.Document.GetTextStream(syntaxEditor.Caret.Offset);
@@ -87,7 +93,7 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete
             }
             if(isStringConstant)
 			{
-                // Enter inside a string literal. Continue the literal on the next line
+                // Enter inside a string literal. Continue the literal at the next line
                 int textLength;
                 if (isAtEnd)
                     textLength = 0;
@@ -107,7 +113,8 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete
 
                 // Continue the comment line in a new line
                 e.Cancel = true;
-                syntaxEditor.SelectedView.InsertSurroundingText(stringDelimiter + " +" + 
+                string currentLineEnd = isEnterShift ? " + NewLine() +" : " +";
+                syntaxEditor.SelectedView.InsertSurroundingText(stringDelimiter + currentLineEnd + 
                     Environment.NewLine +
                     new string(' ', textStream.DocumentLine.IndentAmount) + stringDelimiter, "");
                 return true;
