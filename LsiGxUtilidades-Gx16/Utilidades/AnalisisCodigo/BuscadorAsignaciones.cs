@@ -44,7 +44,8 @@ namespace LSI.Packages.Extensiones.Utilidades.AnalisisCodigo
             /// </summary>
             public bool AlsoReads
             {
-                get { return IsForTo || IsIncrement; }
+                // Command event is for Events with parameters (ex. Event AppLifecycle.AppStateChanged(&StateNow, &StateOld))
+                get { return IsForTo || IsIncrement || AssignmentStatement is CommandEvent; }
             }
 
             public bool IsIncrement
@@ -390,6 +391,23 @@ namespace LSI.Packages.Extensiones.Utilidades.AnalisisCodigo
                 // Ver si es una sentencia for
                 if (BuscarFor(node, state))
                     return;
+
+                // Check if it's a Event with parameters. In this case, parameters are written, in the same sense of a for each
+                // Example: Event "AppLifecycle.AppStateChanged( &StateNow, &StateOld )" in sd main: &StateNow and &StateOld are written
+                if(node is CommandEvent cmdEvent && cmdEvent.Parameters != null)
+				{
+                    foreach(ObjectBase parameter in cmdEvent.Parameters)
+					{
+                        // The second and furter parameters are ListItem, and the real parameters is the content
+                        ObjectBase parameterContent = parameter;
+                        if (parameterContent is ListItem listItem)
+                            parameterContent = listItem.Content;
+
+                        // Here the parent is the event
+                        if (Token.EsToken(state.OwnerObject, parameterContent, cmdEvent))
+                            BusquedaActual.NuevoResultado(cmdEvent, parameterContent, state);
+                    }
+				}
             }
 
             if (BuscarMiembrosModificadores)

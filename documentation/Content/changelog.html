@@ -13,8 +13,13 @@
 		<h3>6.2</h3>
 		<ul>
 			<li>
-				Arreglado error al revisar variables leidas / escritas en llamadas a objetos, al indicar el nombre del módulo: Podía reporta que había
-				variables sólo leidas en la llamada.
+				Arreglado error al revisar variables leidas / escritas en llamadas a objetos, al indicar el nombre del módulo: 
+				Podía reporta que había variables sólo leidas en la llamada.
+			</li>
+			<li>
+				Arreglado error al revisar variables leidas / escritas en llamadas a objetos, usar variables en Event. Ej en 
+				<code>Event AppLifecycle.AppStateChanged( &amp;StateNow, &amp;StateOld )</code>, si las variables no se usaban
+				en ninguna otra parte, se reportaba que sólo eran leidas.
 			</li>
 		</ul>
 
