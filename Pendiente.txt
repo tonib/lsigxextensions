@@ -1,7 +1,4 @@
 
-- Error: Configuracion extensiones: Si pones que comprima con extension zip, la opcion del 7zip deberia ser -tzip, on -t7z
-  Lo que propone por defecto esta mal
-
 - Error al mostrar la informacion de los parametros en las reglas prompt, si el nombre del objeto tiene puesto un modulo. Ej, kb jobmanager:
 	Prompt( SBO.ClientePrompt, &FiltroTareas.IntComCardCodigo );
 	No autocompleta codigo y muestra la info de los parametros

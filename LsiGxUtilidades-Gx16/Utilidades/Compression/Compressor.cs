@@ -31,7 +31,7 @@ namespace LSI.Packages.Extensiones.Utilidades.Compression
 
         public const string ZIP7CMDLINE = @"a -t7z {1} {0} ";
 
-        public const string ZIP7EXTENSION = @"zip";
+        public const string ZIP7EXTENSION = @"7z";
 
         public const string ZIP7EXCLUDEOPT = @"-xr!{0}";
 
