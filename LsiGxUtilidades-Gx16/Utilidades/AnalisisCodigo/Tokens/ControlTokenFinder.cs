@@ -396,7 +396,8 @@ namespace LSI.Packages.Extensiones.Utilidades.AnalisisCodigo.Tokens
                 element.Type == InstanceElements.FilterSearchAttribute ||
                 //element.Type == InstanceElements.FilterAttribute ||
                 element.Type == InstanceElements.BreakByAttribute ||
-                element.Type == InstanceElements.OrderAttribute;
+                element.Type == InstanceElements.OrderAttribute ||
+                element.Type == InstanceElements.LayoutComponent;
         }
 
     }

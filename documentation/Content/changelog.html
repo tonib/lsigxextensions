@@ -17,9 +17,13 @@
 				Podía reporta que había variables sólo leidas en la llamada.
 			</li>
 			<li>
-				Arreglado error al revisar variables leidas / escritas en llamadas a objetos, usar variables en Event. Ej en 
+				Arreglado error al revisar variables leidas / escritas en llamadas a objetos, al usar variables en Event. Ej en 
 				<code>Event AppLifecycle.AppStateChanged( &amp;StateNow, &amp;StateOld )</code>, si las variables no se usaban
 				en ninguna otra parte, se reportaba que sólo eran leidas.
+			</li>
+			<li>
+				Arreglado error al revisar variables leidas / escritas en llamadas a objetos: En los SD Panel, al añadir un control
+				Component en el form, las variables referenciadas en los parametros del control no se consideraban leidas.
 			</li>
 			<li>
 				Al pulsar Enter en una línea de comentario de código, si no es al final de la línea, el comentario se continua en la siguiente línea.

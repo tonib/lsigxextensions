@@ -1,33 +1,9 @@
-- Error, reporta variables solo leida cuando tambien se escribe. Kb sga, objeto DArtCon, se escribe en el event start,
-  se lee en la creacion de un compnente en la UI, se pasa como parametro
-	warning: Object ArtArticulos.DArtCon: There are only written variables:
-	autorizadomodificarstock
 
 - Error. En la creacion de variables con Ctrl+May+C, al seleccionar el texto con el atributo en el que tiene que basar la variable a veces
   no funciona. probar en almac 12.51, TTarProHis, linea "&HtpCgpCd2Old = Old( HtpCgpCd2 );", seleccionar "HtpCgpCd2"
 
 - Error: Configuracion extensiones: Si pones que comprima con extension zip, la opcion del 7zip deberia ser -tzip, on -t7z
   Lo que propone por defecto esta mal
-
-- Error: Equipo de milton, el hacer debug con el VS no funciona:
-	---------------------------
-	---------------------------
-	System.IO.FileNotFoundException: No se puede cargar el archivo o ensamblado 'EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' ni una de sus dependencias. El sistema no puede encontrar el archivo especificado.
-	File name: 'EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'
-	   at LSI.Packages.Extensiones.Utilidades.VS.VisualStudio..ctor(String visualStudioComId)
-	   at LSI.Packages.Extensiones.Comandos.Build.GeneratorMains.DebugCsharpWeb()
-	   at LSI.Packages.Extensiones.Comandos.Build.GeneratorMains.BtnDebug_Click(Object sender, EventArgs e)
-	AVS: El registro del enlace de ensamblado está desactivado.
-	Para habilitar el registro de errores del enlace de ensamblado, establezca el valor de Registro [HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD) como 1.
-	Nota: existe una disminución del rendimiento asociada registro de errores del enlace de ensamblado.
-	Para desactivar esta característica, elimine el valor de Registro [HKLM\Software\Microsoft\Fusion!EnableLog].
-	---------------------------
-	Aceptar   
-	---------------------------
-	Ver esto: 
-	https://kb.blackbaud.com/knowledgebase/Article/192381
-	https://stackoverflow.com/questions/56241316/winforms-application-on-rider-gives-the-error-could-not-load-file-or-assembly
-
 
 - Error al mostrar la informacion de los parametros en las reglas prompt, si el nombre del objeto tiene puesto un modulo. Ej, kb jobmanager:
 	Prompt( SBO.ClientePrompt, &FiltroTareas.IntComCardCodigo );
