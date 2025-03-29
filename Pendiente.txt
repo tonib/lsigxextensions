@@ -1,7 +1,4 @@
 
-- Error. En la creacion de variables con Ctrl+May+C, al seleccionar el texto con el atributo en el que tiene que basar la variable a veces
-  no funciona. probar en almac 12.51, TTarProHis, linea "&HtpCgpCd2Old = Old( HtpCgpCd2 );", seleccionar "HtpCgpCd2"
-
 - Error: Configuracion extensiones: Si pones que comprima con extension zip, la opcion del 7zip deberia ser -tzip, on -t7z
   Lo que propone por defecto esta mal
 

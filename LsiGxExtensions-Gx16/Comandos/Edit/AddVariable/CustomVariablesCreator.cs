@@ -26,7 +26,7 @@ namespace LSI.Packages.Extensiones.Comandos.Edit.AddVariable
             if (LsiExtensionsConfiguration.PrivateExtensionsInstalled && varName.EndsWith("Lis") && varName.Length > 3)
             {
                 // At LSI collections are declared with a "lis" postfix
-                Variable v = CreateFromPartialName(varName.Substring(0, varName.Length - 3), true);
+                Variable v = CreateFromPartialName(varName.Substring(0, varName.Length - 3));
                 if(v != null)
                 {
                     v = v.LsiCloneRenamed(varName);
@@ -35,10 +35,10 @@ namespace LSI.Packages.Extensiones.Comandos.Edit.AddVariable
                 }
             }
 
-            return CreateFromPartialName(varName, false);
+            return CreateFromPartialName(varName);
         }
 
-        private Variable CreateFromPartialName(string varName, bool createFromGenexus)
+        private Variable CreateFromPartialName(string varName)
         {
             Variable v;
 
@@ -55,14 +55,11 @@ namespace LSI.Packages.Extensiones.Comandos.Edit.AddVariable
             if (v != null)
                 return v;
 
-            if (createFromGenexus)
-            {
-                // Check if Genexus has a default data type for this variable name
-                v = new Variable(varName, Variables);
-                DataType.SetDefault(v);
-                if (!v.LsiHasDefaultType())
-                    return v;
-            }
+            // Check if Genexus has a default data type for this variable name
+            v = new Variable(varName, Variables);
+            DataType.SetDefault(v);
+            if (!v.LsiHasDefaultType())
+                return v;
 
             return null;
         }
@@ -74,7 +71,7 @@ namespace LSI.Packages.Extensiones.Comandos.Edit.AddVariable
                 return null;
 
             string lowerName = varName.ToLower();
-            if (lowerName == "flgerr" || lowerName == "flgok" || lowerName == "confirmado")
+            if (lowerName == "flgerr" || lowerName == "flgok" || lowerName == "confirmado" || lowerName == "ok")
             {
                 Variable v = new Variable(varName, Variables);
                 v.Type = eDBType.Boolean;

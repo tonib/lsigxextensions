@@ -13,11 +13,19 @@
 		<h3>6.2</h3>
 		<ul>
 			<li>
-				Arreglado error al revisar variables leidas / escritas en llamadas a objetos, al indicar el nombre del módulo: 
+				Al pulsar Enter en una línea de comentario de código, si no es al final de la línea, el comentario se continua en la siguiente línea.
+			</li>
+			<li>
+				Al pulsar Enter dentro de un literal string, se continua el string literal en la siguiente línea.
+				Si se pulsa Shift + Enter, se añade una llamada a NewLine() al final de la línea actual.
+			</li>
+
+			<li>
+				Arreglado error al revisar variables leidas / escritas en llamadas a objetos, al indicar el nombre del módulo:
 				Podía reporta que había variables sólo leidas en la llamada.
 			</li>
 			<li>
-				Arreglado error al revisar variables leidas / escritas en llamadas a objetos, al usar variables en Event. Ej en 
+				Arreglado error al revisar variables leidas / escritas en llamadas a objetos, al usar variables en Event. Ej en
 				<code>Event AppLifecycle.AppStateChanged( &amp;StateNow, &amp;StateOld )</code>, si las variables no se usaban
 				en ninguna otra parte, se reportaba que sólo eran leidas.
 			</li>
@@ -26,11 +34,8 @@
 				Component en el form, las variables referenciadas en los parametros del control no se consideraban leidas.
 			</li>
 			<li>
-				Al pulsar Enter en una línea de comentario de código, si no es al final de la línea, el comentario se continua en la siguiente línea.
-			</li>
-			<li>
-				Al pulsar Enter dentro de un literal string, se continua el string literal en la siguiente línea.
-				Si se pulsa Shift + Enter, se añade una llamada a NewLine() al final de la línea actual.
+				Arreglado error al crear una nueva variable con Ctrl + May + C: Al seleccionar un texto en el que basarse para crear la
+				variable, no funcionaba.
 			</li>
 		</ul>
 
