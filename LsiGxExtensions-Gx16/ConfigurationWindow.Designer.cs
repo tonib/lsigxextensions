@@ -1081,9 +1081,10 @@
 			this.chkAutocloseParenthesis.AutoSize = true;
 			this.chkAutocloseParenthesis.Location = new System.Drawing.Point(47, 41);
 			this.chkAutocloseParenthesis.Name = "chkAutocloseParenthesis";
-			this.chkAutocloseParenthesis.Size = new System.Drawing.Size(214, 17);
+			this.chkAutocloseParenthesis.Size = new System.Drawing.Size(432, 17);
 			this.chkAutocloseParenthesis.TabIndex = 1;
-			this.chkAutocloseParenthesis.Text = "Autoclose parenthesis and string quotes";
+			this.chkAutocloseParenthesis.Text = "Autoclose parenthesis and string quotes. Handle Enter key in comments / string li" +
+    "terals";
 			this.chkAutocloseParenthesis.UseVisualStyleBackColor = true;
 			// 
 			// cmbParmInfo

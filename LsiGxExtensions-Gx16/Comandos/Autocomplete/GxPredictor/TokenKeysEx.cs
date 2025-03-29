@@ -39,7 +39,10 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete.GxPredictor
 		/// </summary>
 		public const string CommentEndToken = "CommentEndToken";
 
-
+		/// <summary>
+		/// Other special tokens inside a single line comment
+		/// </summary>
+		public const string CommentDefaultToken = "CommentDefaultToken";
 
 		public const string FcnNpWordToken = "FcnNpWordToken";
         public const string DeprecatedWordToken = "DeprecatedWordToken";

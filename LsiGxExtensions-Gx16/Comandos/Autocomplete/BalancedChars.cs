@@ -57,7 +57,8 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete
                 return false;
 
             string currentTokenKey = token.Key;
-            if(currentTokenKey == TokenKeysEx.CommentWhitespaceToken || currentTokenKey == TokenKeysEx.CommentWordToken)
+            if(currentTokenKey == TokenKeysEx.CommentWhitespaceToken || currentTokenKey == TokenKeysEx.CommentWordToken || 
+                currentTokenKey == TokenKeysEx.CommentDefaultToken)
 			{
                 // Enter inside a single line comment. Check is not at the line end
                 int lengthToLineEnd = textStream.DocumentLine.EndOffset - syntaxEditor.Caret.Offset;
