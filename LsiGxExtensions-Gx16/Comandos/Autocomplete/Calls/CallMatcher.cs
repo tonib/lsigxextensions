@@ -96,8 +96,11 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete.Calls
 				return false;
 			if (nextTokens[0].Key != TokenKeys.IdentifierToken)
 				return false;
-			// TODO: This will discard calls without parameters... OK? (ex. "udp( Object )")
-			if (Document.GetTokenText(nextTokens[1]) != ",")
+			// TODO: This will discard calls without parameters... OK? (ex. "udp( Object )"). NO IS NOT OK, FIX THIS
+			// TODO: it can be a "call( module1.module2..object, ... ) or call( object , .... ). If there are modules, this will fail
+			// TODO: as next token will be ","
+			string tokenText = Document.GetTokenText(nextTokens[1]);
+			if (tokenText != ",")
 				return false;
 
 			NameToken = nextTokens[0];

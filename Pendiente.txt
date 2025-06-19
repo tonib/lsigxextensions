@@ -1,7 +1,30 @@
 
+ERROR: Arreglar error en CallMatcher.CheckCallParenthesisObject
+	Falla si hay nombres de modulos en la llamada (ver TODO)
+
+ERROR. Al importar un atributo desde sap, si se pone como dominio "TRutUSRTipRut, Transporte", da error "Field U_TipoRuta: Domain TRutUSRTipRut, Transporte not found"
+Importacion de campos de SAP: Puede que haya problemas con los tamaños de campos.
+	El campo OMRC.FirmCode en la documentacion pone que es Int(6), pero en hana y en sql server esta declado como 
+	smallint (16 bits, -32000 / 32000). Ver si es siempre asi. Si es asi, asignar la propiedad "Range value" para evitar errores
+
+Paste as gx literal:
+	Ver si se puede mejorar. Si se copia esto:
+	coalesce( OMRC."U_IncluirB2B", '' ) <> 'N'
+	Pega esto:
+	'coalesce( OMRC."U_IncluirB2B", ' + "''" + ' ) <> ' + "'" + 'N' + "'" + ''
+	Se puede simplicar a esto:
+	'coalesce( OMRC."U_IncluirB2B", ' + "'' ) <> 'N'"
+
+La busqueda por propiedades de Genexus NO funciona (al menos en Gx19U9): Buscas objetos con propiedad "Expose as web service" =
+true y no encuentra nada. Hacer una propia, o añadir una pestaña de "Web Services" en el Work With mains, o algo
+
 - Error al mostrar la informacion de los parametros en las reglas prompt, si el nombre del objeto tiene puesto un modulo. Ej, kb jobmanager:
 	Prompt( SBO.ClientePrompt, &FiltroTareas.IntComCardCodigo );
 	No autocompleta codigo y muestra la info de los parametros
+
+- En la lista de autocompletado de los campos de un SDT, mostrar las descripciones de los campos
+- En la lista de autocompletado de los campos de un SDT, si se escribe una parte del nombre de un campo, y no hay ningun campo que
+  empieze por este texto, seleccionar un campo que contenga ese texto (el mas probable)
 
 - Autocompletado: SDTs. Si escribes un texto y no hay ningun campo que empiece por ese texto, autoseleccionar el 
 	primer campo que contenga ese texto (el mas probable, si hay mas de uno) (+1)

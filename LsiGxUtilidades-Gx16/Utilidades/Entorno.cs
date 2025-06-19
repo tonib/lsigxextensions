@@ -451,5 +451,71 @@ namespace LSI.Packages.Extensiones.Utilidades
             return backupPath;
         }
 
+        private static string RemoveDiacritics(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+                return input;
+
+            // Normalize to FormD (decomposes accented characters)
+            string normalized = input.Normalize(NormalizationForm.FormD);
+
+            // Build a new string excluding characters of type NonSpacingMark
+            StringBuilder resultBuilder = new StringBuilder();
+            foreach (char c in normalized)
+            {
+                UnicodeCategory category = CharUnicodeInfo.GetUnicodeCategory(c);
+                if (category != UnicodeCategory.NonSpacingMark)
+                {
+                    resultBuilder.Append(c);
+                }
+            }
+
+            // Re-normalize to FormC to ensure standard composed form
+            return resultBuilder.ToString().Normalize(NormalizationForm.FormC);
+        }
+
+        /// <summary>
+        /// Change name to make it a valid gx identifier nane
+        /// </summary>
+        /// <param name="name">Name to make valid</param>
+        /// <returns>Valid name</returns>
+        static public string MakeValidName(string name)
+        {
+            // Hacks
+            name = name
+                .Replace("ñ", "ny")
+                .Replace("Ñ", "Ny")
+                .Replace("ç", "c")
+                .Replace("Ç", "C");
+
+            // Remove diacritics (accents and stuff)
+            name = RemoveDiacritics(name);
+
+            string newName = "";
+            for (int i = 0; i < name.Length; i++)
+            {
+                char c = name[i];
+                char lowerC = Char.ToLower(c);
+                if (Char.IsDigit(c) || c == '_' || (lowerC >= 'a' && lowerC <= 'z'))
+                {
+                    // Set uppercase each word first letter
+                    if (Char.IsLetter(c) && (i == 0 || !Char.IsLetter(name[i - 1])))
+                        newName += Char.ToUpper(c);
+                    else
+                        newName += c;
+                }
+            }
+
+            if (newName == "")
+                return "Empty";
+
+            if (Char.IsNumber(newName[0]))
+            {
+                // Genexus does no allow start a domain code by number ("_" either)
+                newName = "N" + newName;
+            }
+
+            return newName;
+        }
     }
 }
