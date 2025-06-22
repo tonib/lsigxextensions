@@ -90,34 +90,45 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete.PredictionBindings
 
             double maxProbability = 0;
             IntelliPromptMemberListItem maxProbabilityItem = null;
-            foreach (IntelliPromptMemberListItem item in memberList)
+
+            // If there is any Intelliprompt item that starts with the typed text, search by prefix
+            // If not, user does not know what is typing: Search items that contain typed text
+            // Do not compare with Text: It can contain extra text. The real text will be AutoCompletePreText
+            var membersToCheck = memberList
+                .Cast<IntelliPromptMemberListItem>()
+                .Where(item => item.AutoCompletePreText.StartsWith(prefix, StringComparison.OrdinalIgnoreCase));
+            if(!membersToCheck.Any())
+			{
+                membersToCheck = memberList
+                    .Cast<IntelliPromptMemberListItem>()
+                    .Where(item => item.AutoCompletePreText.IndexOf(prefix, StringComparison.OrdinalIgnoreCase) >= 0);
+            }
+
+            foreach (IntelliPromptMemberListItem item in membersToCheck)
             {
-                // Do not compare with Text: It can contain extra text. The real text will be AutoCompletePreText
+                
                 // string itemNameLowercase = item.Text.ToLower();
                 string itemNameLowercase = item.AutoCompletePreText.ToLower();
-                if (itemNameLowercase.StartsWith(prefix))
+                double probability;
+                if (itemNameLowercase == prefix)
                 {
-                    double probability;
-                    if (itemNameLowercase == prefix)
-                    {
-                        // Explanation: Predictor will fail. Ex.: There are attributes called "FacFec" and "FacFecCre"
-                        // If the user types "FacFec", the predictor can predict "FacFecCre". If this happens, ignore
-                        // prediction and set the typed name as the most probable
-                        probability = double.MaxValue;
-                    }
-                    else
-                    {
-                        TokenizedAutocompleteItem tokenizedItem = tokenGenerator(item, itemNameLowercase);
-                        probability = prediction.KbInfo.DataInfo.GetTokenProbability(tokenizedItem.Token, prediction);
-                        if (debug)
-                            tokenizedItem.AddDebugInfo(item, probability, prediction);
-                    }
+                    // Explanation: Predictor will fail. Ex.: There are attributes called "FacFec" and "FacFecCre"
+                    // If the user types "FacFec", the predictor can predict "FacFecCre". If this happens, ignore
+                    // prediction and set the typed name as the most probable
+                    probability = double.MaxValue;
+                }
+                else
+                {
+                    TokenizedAutocompleteItem tokenizedItem = tokenGenerator(item, itemNameLowercase);
+                    probability = prediction.KbInfo.DataInfo.GetTokenProbability(tokenizedItem.Token, prediction);
+                    if (debug)
+                        tokenizedItem.AddDebugInfo(item, probability, prediction);
+                }
 
-                    if (probability > maxProbability)
-                    {
-                        maxProbability = probability;
-                        maxProbabilityItem = item;
-                    }
+                if (probability > maxProbability)
+                {
+                    maxProbability = probability;
+                    maxProbabilityItem = item;
                 }
             }
             if (maxProbabilityItem != null)

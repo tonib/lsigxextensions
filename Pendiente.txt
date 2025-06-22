@@ -1,8 +1,4 @@
 
-- Error al mostrar la informacion de los parametros en las reglas prompt, si el nombre del objeto tiene puesto un modulo. Ej, kb jobmanager:
-	Prompt( SBO.ClientePrompt, &FiltroTareas.IntComCardCodigo );
-	No autocompleta codigo y muestra la info de los parametros
-
 Importacion de campos de SAP: Puede que haya problemas con los tamaños de campos.
 	El campo OMRC.FirmCode en la documentacion pone que es Int(6), pero en hana y en sql server esta declado como 
 	smallint (16 bits, -32000 / 32000). Ver si es siempre asi. Si es asi, asignar la propiedad "Range value" para evitar errores
