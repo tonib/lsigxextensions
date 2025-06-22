@@ -101,11 +101,52 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete.Calls
 			// TODO: as next token will be ","
 			string tokenText = Document.GetTokenText(nextTokens[1]);
 			if (tokenText != ",")
+			{
+				// Check if it contains module names (ex. "call( module1.module2. ... objectname")
+				if(tokenText == ".")
+				{
+					// It looks like it contains modules names. Skip them
+					return SkipModuleNames(stream);
+				}
 				return false;
+			}
 
 			NameToken = nextTokens[0];
 			ParmSeparators.Add(nextTokens[1]);
 			return true;
+		}
+
+		/// <summary>
+		/// Check if it's a "call( module1.module2. ... .object )" call. In this case, skip modules names
+		/// </summary>
+		/// <param name="stream">Document stream pointing to the call open parenthesis</param>
+		/// <returns>True if it was a object call, False otherwise</returns>
+		private bool SkipModuleNames(TextStream stream)
+		{
+			int nTokensToPeek = 4;
+			while (true)
+			{
+				List<IToken> tokens = stream.LsiPeekNextTokens(nTokensToPeek);
+				if (tokens.Count < nTokensToPeek)
+					return false;
+
+				IToken preLastToken = tokens[tokens.Count - 2], lastToken = tokens[tokens.Count - 1];
+				if (!(preLastToken.Key == TokenKeys.IdentifierToken && Document.GetTokenText(lastToken) == "."))
+				{
+					// Modules chain finished:
+					if (preLastToken.Key != TokenKeys.IdentifierToken)
+						return false;
+					string tokenText = Document.GetTokenText(lastToken);
+					if (tokenText != ",")
+						return false;
+
+					NameToken = preLastToken;
+					ParmSeparators.Add(lastToken);
+					return true;
+				}
+
+				nTokensToPeek += 2;
+			}
 		}
 
 		/// <summary>

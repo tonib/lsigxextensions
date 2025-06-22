@@ -37,11 +37,15 @@
 				Component en el form, las variables referenciadas en los parametros del control no se consideraban leidas.
 			</li>
 			<li>
-				Arreglado error al crear una nueva variable con Ctrl + May + C: Al seleccionar un texto en el que basarse para crear la
-				variable, no funcionaba.
+				Arreglado error al crear una nueva variable con Ctrl + May + C: Al seleccionar un texto en el que basarse para crear la variable, no funcionaba.
 			</li>
 			<li>
 				Arreglado error en la ventana de configuracion, la extension propuesta para 7z era incorrecta (zip en lugar de 7z)
+			</li>
+			<li>
+				Arreglado error al buscar llamadas llamadas del tipo "prompt( modulo.objeto, &amp;x )". Si
+				la llamada al objeto contenia modulos, no mostraba correctamente los parametros. Esto podia afectar
+				a varias extensiones
 			</li>
 		</ul>
 
