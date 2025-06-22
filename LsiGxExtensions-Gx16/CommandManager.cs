@@ -106,11 +106,6 @@ namespace LSI.Packages.Extensiones
             cmd = new CommandKey(Package.Guid, "WorkWithMains");
             AddCommand(cmd, new ExecHandler(ShowToolWindow<WorkWithMains>), new QueryHandler(QueryInKB));
 
-            // Option in selection contextual menus to copy objects information as table to the clipboard
-            cmd = new CommandKey(Package.Guid, ToolWindowBase.COPYOBJECTSASTABLECMD);
-            AddCommand(cmd, new ExecHandler(ObjectsInfoClipboard.CopyObjectsAsTable), 
-                new QueryHandler(ObjectsInfoClipboard.Query));
-
             // Extract selected code to new procedure
             cmd = new CommandKey(Package.Guid, "ExtractProcedure");
             AddCommand(cmd, new ExecHandler(ExtractProcedure.Execute), new QueryHandler(ExtractProcedure.Query));
@@ -122,10 +117,6 @@ namespace LSI.Packages.Extensiones
             // Open documentation
             cmd = new CommandKey(Package.Guid, "OpenDocumentation");
             AddCommand(cmd, new ExecHandler(ExecuteCommand<OpenDocumentation>), qAlways);
-
-            // Paste clipboard content as a genexus string literal
-            cmd = new CommandKey(Package.Guid, "PasteAsStringLiteral");
-            AddCommand(cmd, new ExecHandler(ExecuteCommand<PasteAsStringLiteral>), new QueryHandler(PasteAsStringLiteral.Query));
 
             // Objects modified by users
             cmd = new CommandKey(Package.Guid, "ObjectsModifiedByUser");
@@ -150,6 +141,23 @@ namespace LSI.Packages.Extensiones
             // Verify selected objects
             cmd = new CommandKey(Package.Guid, "VerifySelectedObjects");
             AddCommand(cmd, new ExecHandler(ExecuteCommand<ValidateSelectedObjects>), qSelectionNavigator);
+
+            #region Menu edit
+
+            // Option in selection contextual menus to copy objects information as table to the clipboard
+            cmd = new CommandKey(Package.Guid, ToolWindowBase.COPYOBJECTSASTABLECMD);
+            AddCommand(cmd, new ExecHandler(ObjectsInfoClipboard.CopyObjectsAsTable),
+                new QueryHandler(ObjectsInfoClipboard.Query));
+
+            // Paste clipboard content as a genexus string literal
+            cmd = new CommandKey(Package.Guid, "PasteAsStringLiteral");
+            AddCommand(cmd, new ExecHandler(ExecuteCommand<PasteAsStringLiteral>), new QueryHandler(PasteAsStringLiteral.Query));
+
+            // Copy enum domain values to clipboard
+            cmd = new CommandKey(Package.Guid, "CopyEnumValues");
+            AddCommand(cmd, new ExecHandler(CopyEnumValues.Execute), new QueryHandler(CopyEnumValues.Query));
+
+            #endregion
 
         }
 

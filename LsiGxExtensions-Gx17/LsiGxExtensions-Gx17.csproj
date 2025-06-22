@@ -620,6 +620,9 @@
     <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Edit\AddVariable\CustomVariablesCreator.cs">
       <Link>Comandos\Edit\AddVariable\CustomVariablesCreator.cs</Link>
     </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Edit\CopyEnumValues.cs">
+      <Link>Comandos\Edit\CopyEnumValues.cs</Link>
+    </Compile>
     <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Edit\ObjectsInfoClipboard.cs">
       <Link>Comandos\Edit\ObjectsInfoClipboard.cs</Link>
     </Compile>

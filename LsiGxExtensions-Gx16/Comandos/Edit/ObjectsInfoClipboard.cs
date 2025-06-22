@@ -8,6 +8,7 @@ using Artech.Common.Framework.Commands;
 using Artech.Common.Framework.Selection;
 using LSI.Packages.Extensiones.Utilidades.Logging;
 using LSI.Packages.Extensiones.Utilidades.UI;
+using LSI.Packages.Extensiones.Utilidades.GxClassExtensions;
 
 namespace LSI.Packages.Extensiones.Comandos.Edit
 {
@@ -16,22 +17,6 @@ namespace LSI.Packages.Extensiones.Comandos.Edit
     /// </summary>
     public class ObjectsInfoClipboard
     {
-
-        /// <summary>
-        /// Get the selected objects on the current context (current MDI window?)
-        /// </summary>
-        /// <param name="commandData">Command data sent by Genexus</param>
-        /// <returns>The set of selected objects</returns>
-        static private IEnumerable<KBObject> SelectedObjects(CommandData commandData)
-        {
-            ISelectionContainer selectionContainer = commandData.Context as ISelectionContainer;
-            if (selectionContainer == null || selectionContainer.Count <= 0)
-                return Enumerable.Empty<KBObject>();
-            if (selectionContainer.SelectedObjects == null)
-                return Enumerable.Empty<KBObject>();
-            return selectionContainer.SelectedObjects.OfType<KBObject>();
-        }
-
         /// <summary>
         /// Update the command status
         /// </summary>
@@ -42,7 +27,7 @@ namespace LSI.Packages.Extensiones.Comandos.Edit
         {
             try
             {
-                if (SelectedObjects(commandData).Any())
+                if (commandData.LsiSelectedObjects<KBObject>().Any())
                     status.State = CommandState.Enabled;
                 else
                     status.State = CommandState.Disabled;
@@ -68,7 +53,7 @@ namespace LSI.Packages.Extensiones.Comandos.Edit
                                        "Last User" };
                 ClipboardTable table = new ClipboardTable( columns );
                 List<string> row = new List<string>();
-                foreach (KBObject o in SelectedObjects(commandData))
+                foreach (KBObject o in commandData.LsiSelectedObjects<KBObject>())
                 {
                     row.Add(o.Name);
                     row.Add(o.TypeDescriptor.Name);

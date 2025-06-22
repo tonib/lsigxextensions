@@ -619,6 +619,9 @@
     <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Edit\AddVariable\CustomVariablesCreator.cs">
       <Link>Comandos\Edit\AddVariable\CustomVariablesCreator.cs</Link>
     </Compile>
+    <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Edit\CopyEnumValues.cs">
+      <Link>Comandos\Edit\CopyEnumValues.cs</Link>
+    </Compile>
     <Compile Include="..\LsiGxExtensions-Gx16\Comandos\Edit\ObjectsInfoClipboard.cs">
       <Link>Comandos\Edit\ObjectsInfoClipboard.cs</Link>
     </Compile>
@@ -805,6 +808,12 @@
       <Link>Resources.Designer.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LsiGxUtilidades-Gx18\LsiGxUtilidades-Gx18.csproj">
+      <Project>{977f8795-af26-4e5b-a713-1af06d538658}</Project>
+      <Name>LsiGxUtilidades-Gx18</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\LsiGxExtensions-Gx16\Comandos\ArreglarProblemas.resx">
@@ -1048,12 +1057,6 @@
     <None Include="..\LsiGxExtensions-Gx16\Resources\model.tflite">
       <Link>Resources\model.tflite</Link>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LsiGxUtilidades-Gx18\LsiGxUtilidades-Gx18.csproj">
-      <Project>{977f8795-af26-4e5b-a713-1af06d538658}</Project>
-      <Name>LsiGxUtilidades-Gx18</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

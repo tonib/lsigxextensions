@@ -373,4 +373,7 @@
   <data name="model" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\model.tflite;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="CopyEnumValues" xml:space="preserve">
+    <value>Copy enum domain values to clipboard</value>
+  </data>
 </root>

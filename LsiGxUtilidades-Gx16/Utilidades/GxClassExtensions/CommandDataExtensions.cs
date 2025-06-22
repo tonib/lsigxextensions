@@ -1,8 +1,12 @@
-﻿using Artech.Architecture.UI.Framework.Editors;
+﻿using Artech.Architecture.Common.Objects;
+using Artech.Architecture.UI.Framework.Editors;
 using Artech.Common.Framework.Commands;
+using Artech.Common.Framework.Selection;
 using Artech.FrameworkDE.Text;
 using Artech.Patterns.WorkWithDevices.Editor;
 using Artech.Patterns.WorkWithDevices.Editor.Virtuals;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace LSI.Packages.Extensiones.Utilidades.GxClassExtensions
 {
@@ -60,6 +64,22 @@ namespace LSI.Packages.Extensiones.Utilidades.GxClassExtensions
             }
 
             return editor;
+        }
+
+        /// <summary>
+        /// Get the selected objects on the current context (current MDI window?)
+        /// </summary>
+        /// <typeparam name="T">The type of the objects to be selected</typeparam>
+        /// <param name="commandData">Command data sent by Genexus</param>
+        /// <returns>The set of selected objects</returns>
+        static public IEnumerable<T> LsiSelectedObjects<T>(this CommandData commandData)
+        {
+            ISelectionContainer selectionContainer = commandData.Context as ISelectionContainer;
+            if (selectionContainer == null || selectionContainer.Count <= 0)
+                return Enumerable.Empty<T>();
+            if (selectionContainer.SelectedObjects == null)
+                return Enumerable.Empty<T>();
+            return selectionContainer.SelectedObjects.OfType<T>();
         }
     }
 }

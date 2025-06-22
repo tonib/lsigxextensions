@@ -131,7 +131,9 @@
 
     <!-- Generate model to predict code -->
     <CommandDefinition id="GenerateModel" imageType="ico" image="Objetos" />
-    
+
+    <!-- Copy enum domain values to clipboard -->
+    <CommandDefinition id="CopyEnumValues" imageType="ico" image="Table_748" context="selection" />
     
   </Commands>
 
@@ -243,7 +245,10 @@
 
           <!-- Paste text as multiline Genexus string -->
           <Command refid="PasteAsStringLiteral"/>
-          
+
+          <!-- Paste text as multiline Genexus string -->
+          <Command refid="CopyEnumValues"/>
+
         </Popup>
         
         <!--Toolwindows menu-->

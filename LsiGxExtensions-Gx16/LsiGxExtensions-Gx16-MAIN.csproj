@@ -396,6 +396,7 @@
     </Compile>
     <Compile Include="Comandos\Edit\AddVariable\AddVariableFastKey.cs" />
     <Compile Include="Comandos\Edit\AddVariable\CustomVariablesCreator.cs" />
+    <Compile Include="Comandos\Edit\CopyEnumValues.cs" />
     <Compile Include="Comandos\Edit\ObjectsInfoClipboard.cs" />
     <Compile Include="Comandos\Edit\PasteAsStringLiteral.cs" />
     <Compile Include="Comandos\GxSourcesSearchTW.cs">
