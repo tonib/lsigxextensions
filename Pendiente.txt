@@ -1,4 +1,6 @@
 
+Support for Ctrl + Up  / Ctrl + Down in intellisense tooltip in SUBs selection (methods  SubNames.SuggestSubIdentifiers / context.CursorInDoIdentifier)
+
 Importacion de campos de SAP: Puede que haya problemas con los tamaños de campos.
 	El campo OMRC.FirmCode en la documentacion pone que es Int(6), pero en hana y en sql server esta declado como 
 	smallint (16 bits, -32000 / 32000). Ver si es siempre asi. Si es asi, asignar la propiedad "Range value" para evitar errores

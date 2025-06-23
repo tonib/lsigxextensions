@@ -450,21 +450,86 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete
             if (!LsiExtensionsConfiguration.Load().CustomAutocomplete)
                 return;
 
-            // TODO: Don't do this inside comments
-            if ((e.KeyData & (Keys.Alt | Keys.Control)) != 0)
-                return;
-
             SyntaxEditor syntaxEditor = sender as SyntaxEditor;
             if (syntaxEditor == null)
                 return;
 
+            SearchInAutocopleteTooltip(syntaxEditor, e);
+
+            // TODO: Don't do this inside comments
+            if ((e.KeyData & (Keys.Alt | Keys.Control)) != 0)
+                return;
+
             BalancedChars.KeyTyping(syntaxEditor, e);
+
         }
 
         /// <summary>
-        /// Called when the autocomplete window is closed (after): Handle special options
+        /// Makes Ctrl + Up / Ctrl + Down search in intellisense tooltip for typed text, in any position (not only prefix)
         /// </summary>
-        private static void SyntaxEditor_IntelliPromptMemberListClosed(object sender, System.ComponentModel.CancelEventArgs e)
+        /// <param name="syntaxEditor">Current text editor</param>
+        /// <param name="e">Key typing event</param>
+		private static void SearchInAutocopleteTooltip(SyntaxEditor syntaxEditor, KeyTypingEventArgs e)
+		{
+            try
+            { 
+                // If autocomplete tooltip is shown, something is typed, and
+                // Ctrl + Up or Ctrl + Down is pressed, search text in autocompletion
+                // items
+                int increment;
+                if (e.KeyData == (Keys.Control | Keys.Up))
+                    increment = -1;
+                else if (e.KeyData == (Keys.Control | Keys.Down))
+                    increment = +1;
+                else
+                    return;
+
+                var memberList = syntaxEditor.IntelliPrompt.MemberList;
+                if (!memberList.Visible)
+                    return;
+
+                var lineParser = new LineParser(syntaxEditor);
+                string prefix = lineParser.CurrentTokenPrefix;
+                if (prefix.StartsWith("&") || prefix.StartsWith("'") || prefix.StartsWith("\""))
+                {
+                    // Variable / sub name
+                    prefix = prefix.Substring(1);
+                }
+                
+                if (string.IsNullOrEmpty(prefix))
+                    return;
+
+                // Search next item containing the typed prefix
+                var selectedItem = memberList.SelectedItem;
+                int startIndex = selectedItem == null ? 0 : memberList.IndexOf(selectedItem);
+                int idx = startIndex;
+                for (int i=1; i<memberList.Count; i++)
+				{
+                    idx += increment;
+                    if (idx < 0)
+                        idx = memberList.Count - 1;
+                    else if (idx >= memberList.Count)
+                        idx = 0;
+
+					IntelliPromptMemberListItem item = memberList[idx];
+                    if(item.AutoCompletePreText.IndexOf(prefix, StringComparison.OrdinalIgnoreCase) >= 0)
+					{
+                        memberList.SelectedItem = item;
+                        break;
+					}
+				}
+                e.Cancel = true;
+            }
+            catch(Exception ex)
+			{
+                Log.ShowException(ex);
+			}
+        }
+
+		/// <summary>
+		/// Called when the autocomplete window is closed (after): Handle special options
+		/// </summary>
+		private static void SyntaxEditor_IntelliPromptMemberListClosed(object sender, System.ComponentModel.CancelEventArgs e)
         {
             try
 			{
