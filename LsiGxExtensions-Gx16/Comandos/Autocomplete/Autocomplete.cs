@@ -489,7 +489,22 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete
                     return;
 
                 var lineParser = new LineParser(syntaxEditor);
-                string prefix = lineParser.CurrentTokenPrefix;
+
+                string prefix;
+                if(AutocompleteContext.IsCursorInDoIdentifier(syntaxEditor, lineParser))
+                {
+                    // Curosr is at DO 'Name|'. It's a diferent case
+                    BaseSyntaxEditor baseEditor = syntaxEditor as BaseSyntaxEditor;
+                    if(baseEditor == null)
+                        return;
+                    prefix = SubNames.GetCurrentTokenPrefix(baseEditor);
+                }
+                else
+				{
+                    // Cursor is at normal code
+                    prefix = lineParser.CurrentTokenPrefix;
+                }
+                    
                 if (prefix.StartsWith("&") || prefix.StartsWith("'") || prefix.StartsWith("\""))
                 {
                     // Variable / sub name

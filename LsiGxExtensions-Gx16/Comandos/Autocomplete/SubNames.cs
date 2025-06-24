@@ -66,7 +66,12 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete
             }
         }
 
-        private static string GetCurrentTokenPrefix(BaseSyntaxEditor syntaxEditor)
+        /// <summary>
+        /// Get the current prefix for the sub name. Cursor must to be in a string literal
+        /// </summary>
+        /// <param name="syntaxEditor"></param>
+        /// <returns></returns>
+        public static string GetCurrentTokenPrefix(BaseSyntaxEditor syntaxEditor)
         {
             TextStream textStream = syntaxEditor.Document.GetTextStream(syntaxEditor.Caret.Offset);
             // Current token will be the string end:

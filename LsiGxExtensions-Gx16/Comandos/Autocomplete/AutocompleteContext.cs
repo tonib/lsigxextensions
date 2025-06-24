@@ -122,25 +122,28 @@ namespace LSI.Packages.Extensiones.Comandos.Autocomplete
         /// <summary>
         /// Cursor is in a sub call? (ex. DO 'SubName|')
         /// </summary>
-        public bool CursorInDoIdentifier
-        {
-            get
-            {
-                IToken t = SyntaxEditor.SelectedView.GetCurrentToken();
-                if (t == null)
-                    return false;
+        static public bool IsCursorInDoIdentifier(SyntaxEditor syntaxEditor, LineParser lineParser)
+		{
+            IToken t = syntaxEditor.SelectedView.GetCurrentToken();
+            if (t == null)
+                return false;
 
-                // Ev3U3: This it what should be, but StateKeys seems to be declared wrong (StateKeys.StringState == "MultiLineCommentState") ¯\_(ツ)_/¯
-                //if (t.LexicalState.Key != StateKeys.StringState && t.LexicalState.Key != StateKeys.CharacterState)
-                if (t.LexicalState.Key != "StringState" && t.LexicalState.Key != "CharacterState")
-                    return false;
+            // Ev3U3: This it what should be, but StateKeys seems to be declared wrong (StateKeys.StringState == "MultiLineCommentState") ¯\_(ツ)_/¯
+            //if (t.LexicalState.Key != StateKeys.StringState && t.LexicalState.Key != StateKeys.CharacterState)
+            if (t.LexicalState.Key != "StringState" && t.LexicalState.Key != "CharacterState")
+                return false;
 
-                if (LineParser.CompletedTokensCount == 0)
-                    return false;
+            if (lineParser.CompletedTokensCount == 0)
+                return false;
 
-				string firstLineToken = LineParser.GetCompletedTextToken(0).ToLower();
-                return firstLineToken == "do";
-            }
+            string firstLineToken = lineParser.GetCompletedTextToken(0).ToLower();
+            return firstLineToken == "do";
         }
+
+        /// <summary>
+        /// Cursor is in a sub call? (ex. DO 'SubName|')
+        /// </summary>
+        public bool CursorInDoIdentifier => IsCursorInDoIdentifier(SyntaxEditor, LineParser);
+        
     }
 }
