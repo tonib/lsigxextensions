@@ -1,4 +1,11 @@
 
+Validaciones: Habría que dar un warning cuando se asigna una variable un nº con decimales a una variable sin decimales.
+	En C# coge directamente la parte entera, sin redondear, y esto suele ser un error
+
+ERROR: Busqueda de referencias a una tabla. Cuando buscas inserciones en la tabla aparecen DataProviders y patterns como
+	si fueran inserciones en firme: Las referencias de DP seguro que no son de insercion. Las de patterns deberian aparecer como
+	que no se sabe si son validas o no
+
 Importacion de campos de SAP: Puede que haya problemas con los tamaños de campos.
 	El campo OMRC.FirmCode en la documentacion pone que es Int(6), pero en hana y en sql server esta declado como 
 	smallint (16 bits, -32000 / 32000). Ver si es siempre asi. Si es asi, asignar la propiedad "Range value" para evitar errores
