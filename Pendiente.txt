@@ -1,4 +1,8 @@
 
+ERROR: Los scripts powershell han dejado de funcionar en Gx3U3, y no parece
+tener arreglo: Ejecutar los scripts como una llamada al exe de powershell, pasando
+las variables de modelo, lascopy, etc como parametros
+
 Validaciones: Habría que dar un warning cuando se asigna una variable un nº con decimales a una variable sin decimales.
 	En C# coge directamente la parte entera, sin redondear, y esto suele ser un error
 
