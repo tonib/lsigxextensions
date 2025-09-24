@@ -1,4 +1,16 @@
 
+ERROR: 
+	sales, proc VTP_to_SAPDoc:
+	warning: Object SAPB1_Maestros.VTP_to_SAPDoc: There are attributes referenced outside FOR EACH / NEW statements. The attributes are:
+	vtcid
+	vtpgridorder
+	El problema parece estar en este FOR EACH:
+		FOR EACH Ventas.VentaTempoProducto ORDER VtcId VtpGridOrder
+	Si lo cambias por:
+		FOR EACH VentaTempoProducto ORDER VtcId VtpGridOrder
+	deja de dar el warning
+
+
 ERROR: El Ctrl + Enter en un literal string, si el literal tenia un ! inicial,
 el ! no se añade en el inicio del string insertado
 
