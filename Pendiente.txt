@@ -1,3 +1,50 @@
+- Debug con el VS (+2):
+	- En el equipo de fernando, en gx17 ha dado error que la dll dte.env (o algo asi) no existia. ver exactamente que dll y donde ha dado
+
+* Poder usar [DEPRECATED] en los nombres de los campos de un SDT
+
+* Hacer un F2, para renombrar todas las ocurrencias de una variable
+
+* Si tienes un main SD, y tienes marcado generar Android = false, iOS = false, gx no hace nada.
+  Dar un mensaje, para enterarte de que pasa
+
+* Si hay mains SD, asegurarse que este marcado generar Android o generar iOS. Si no, al preparar la produccion
+  la cagaremos, mas pronto o mas tarde
+
+* Soporte para objetos Api: Se ve que esta revisando errores de variables, y no deberia, porque
+  no estan soportadas:
+========== LSI.Extensions started ==========
+Updating variables...
+Success: LSI.Extensions
+Reloading Procedure 'GeoGeolocalizacion.PGeoReg2'...Done
+========== LSI.Extensions started ==========
+warning: Object GeoGeolocalizacion.ApiGeolocalizacion: There are unused variables:
+geolocalizacionsdt
+msgerr
+Execution time: 61 ms.
+11:59:59 - TOTAL TIME: Execution time: 62 ms.
+Failed: LSI.Extensions
+
+* Objetos llamados deSDE OBjetos API:
+	Hay una variable estandar &RestCode que solo sera escrita, no debe dar warnings
+
+* Revisiones:
+	Si en el form se añade un control Actions, y en el nombre del grupo de actions pones otro nombre
+	las acciones no salen en pantalla en tiempod de ejecucion, y gx no dice nada
+
+* WwMains: Al intentar abrir el fuente de un objeto APi, lanza una excepcion
+
+* Basura generada por el WW+
+	- En la configuracion, poner un boton que configure (o copie), las variables que hay que ignorar
+	  para usar el WW+
+	- Poder aplicar patrones a las variables a ignorar. Ej: griddlserialnumberssappliedfilters es un
+	  patron grid*appliedfilters
+
+* Sap: Al importar campos, importar el nombre de la tabla en mayusculas? En el sales lo hacen
+
+* Si un webpanel tiene un pattern, y tiene marcado aplicar el pattern al guardar, la verificacion
+  no deberia hacerse al guardar los cambios, habria que esperar a que el pattern genere sus cambios
+  (confirmar que es un segundo guardado)
 
 ERROR: 
 	sales, proc VTP_to_SAPDoc:
@@ -155,9 +202,6 @@ true y no encuentra nada. Hacer una propia, o añadir una pestaña de "Web Servi
 - Hacer pruebas sin la prediccion de codigo activada
 
 - Error: He abierto una kb en gx17 u10 que se abrio por ultima vez con gx17 u2 y no ha dado ningun aviso. Ha dejado de nfuncionar el control?
-
-- Debug con el VS:
-	- En el equipo de fernando, en gx17 ha dado error que la dll dte.env (o algo asi) no existia. ver exactamente que dll y donde ha dado
 
 - tipos SDTs:
 	- Si en el SDT hay atributos, aprovechar y guardar el tipo de los atributos
