@@ -152,7 +152,7 @@ namespace LSI.Packages.Extensiones.Utilidades.VS
             {
                 Dte.MainWindow.WindowState = vsWindowState.vsWindowStateMaximize;
                 Dte.MainWindow.Activate();
-                SetForegroundWindow(Dte.MainWindow.HWnd);
+                SetForegroundWindow((int)Dte.MainWindow.HWnd);
             }
             catch {}
         }

@@ -21,7 +21,11 @@
     
     <!-- MSBuild custom tasks -->
     <File Name="LsiExtensions.targets" Target="Packages" />
-    
+
+    <!-- Visual studio automation -->
+    <File Name="envdte.dll" Target="Packages" />
+    <File Name="Microsoft.VisualStudio.Interop.dll" Target="Packages" />
+
     <!--
 		Any other dependency (i.e.: other assemblies on which
 		this package depends) needs to be copied to the
