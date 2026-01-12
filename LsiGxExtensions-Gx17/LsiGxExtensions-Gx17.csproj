@@ -168,6 +168,9 @@
     <Reference Include="DeklaritLibrary">
       <HintPath>$(GX_SDK_DIR_GX17)\Bin\DeklaritLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="envdte, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\envdte.17.14.40260\lib\net45\envdte.dll</HintPath>
+    </Reference>
     <Reference Include="GxDataLayer">
       <HintPath>$(GX_SDK_DIR_GX17)\Bin\GxDataLayer.dll</HintPath>
     </Reference>
@@ -185,6 +188,13 @@
     </Reference>
     <Reference Include="Microsoft.Practices.ObjectBuilder">
       <HintPath>$(GX_SDK_DIR_GX17)\Bin\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime.17.14.40254\lib\net20\Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Interop, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.Interop.17.14.40260\lib\net20\Microsoft.VisualStudio.Interop.dll</HintPath>
     </Reference>
     <Reference Include="newtonsoft.json">
       <HintPath>$(GX_PROGRAM_DIR_GX17)\newtonsoft.json.dll</HintPath>
@@ -1058,6 +1068,7 @@
     <None Include="..\LsiGxExtensions-Gx16\Resources\model.tflite">
       <Link>Resources\model.tflite</Link>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -875,6 +875,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\LsiGxExtensions-Gx16\Catalog-XEv3.xml">
+      <Link>Catalog-XEv3.xml</Link>
+    </Content>
     <Content Include="..\LsiGxExtensions-Gx16\Catalog.xml">
       <Link>Catalog.xml</Link>
     </Content>
@@ -1042,7 +1045,7 @@
   -->
   <PropertyGroup>
     <PostBuildEvent>copy /Y ..\..\..\libraries\TfLiteNetWrapper\tensorflowlite_c.dll .
-"$(GX_SDK_DIR_EV3)\Tools\Updater" ..\..\..\LsiGxExtensions-Gx16\Catalog.xml ..\..\ "$(GX_PROGRAM_DIR_EV3)"\ $(Configuration)
+"$(GX_SDK_DIR_EV3)\Tools\Updater" ..\..\..\LsiGxExtensions-Gx16\Catalog-XEv3.xml ..\..\ "$(GX_PROGRAM_DIR_EV3)"\ $(Configuration)
 "$(GX_PROGRAM_DIR_EV3)"\Genexus /install
 </PostBuildEvent>
   </PropertyGroup>

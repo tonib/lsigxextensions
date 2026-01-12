@@ -140,9 +140,6 @@
     <Reference Include="DeklaritLibrary">
       <HintPath>$(GX_SDK_DIR_GX18U7)\Bin\DeklaritLibrary.dll</HintPath>
     </Reference>
-    <Reference Include="envdte, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\envdte.17.14.40260\lib\net45\envdte.dll</HintPath>
-    </Reference>
     <Reference Include="GxDataLayer">
       <HintPath>$(GX_SDK_DIR_GX18U7)\Bin\GxDataLayer.dll</HintPath>
     </Reference>
