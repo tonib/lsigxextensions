@@ -66,7 +66,7 @@ def prepare_project_release(project_dir: str, gx_version_name: str, catalog_path
 ##############################################
 
 if __name__ == "__main__":
-    prepare_project_release("..\\LsiGxExtensions-XEv3", 'XEv3')
+    prepare_project_release("..\\LsiGxExtensions-XEv3", 'XEv3', "..\\LsiGxExtensions-Gx16\\Catalog-XEv3.xml")
     prepare_project_release("..\\LsiGxExtensions-Gx15", 'Gx15')
     prepare_project_release("..\\LsiGxExtensions-Gx16", 'Gx16')
     prepare_project_release("..\\LsiGxExtensions-Gx17", 'Gx17')
