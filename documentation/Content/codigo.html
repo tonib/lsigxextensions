@@ -4,15 +4,15 @@
 		<title>LSI.Extensiones - Código</title>
 		<!--#include file="./head.html" -->
 	</head>
-	<body>
-	    <!--#include file="./cabecera.html" -->
-	    
-	    <h2>Código</h2>
-	    <p>
-	        Algunas utilidades para agilizar la edición del código en GeneXus.
-	        Se encuentran en el menú Lsi.Extensiones &gt; Código
-	    </p>
-	    
+    <body>
+        <!--#include file="./cabecera.html" -->
+
+        <h2>Código</h2>
+        <p>
+            Algunas utilidades para agilizar la edición del código en GeneXus.
+            Se encuentran en el menú Lsi.Extensiones &gt; Código
+        </p>
+
         <a id="autocompletado"></a>
         <h3>Autocompletado extendido</h3>
         <p>
@@ -43,6 +43,14 @@
             <a href="./codigo-autocompletado.png">
                 <img alt="Autocompletado" class="img-responsive" style="display:inline" src="./codigo-autocompletado.png" />
             </a>
+        </p>
+
+        <p>
+            Si se están la lista de campos tras un punto, por ejemplo, cuando se muestran los campos de un SDT, 
+            si se escribe un texto que no es el principio de una palabra, pero hay campos que incluyen ese 
+            texto en la lista, se autoseleccionará este. 
+            Se puede usar Ctrl + Flecha arriba y Ctrl + Flecha abajo para seleccioanr entre las opciones que
+            contienen ese texto. 
         </p>
 
         <p>
@@ -206,8 +214,6 @@ parm(
             </p>
         </div>
 
-
-
         <a id="autocierre"></a>
         <h3>Auto-cierre de parentesis y comillas</h3>
         <p>
@@ -218,6 +224,18 @@ parm(
         <p>
             Esta extensión se puede habilitar / deshabilitar en la <a href="configuracion.html">configuración</a>. Requiere
             que la extensión de Autocompletado extendido esté habilitada.
+        </p>
+
+        <a id="saltoslinea"></a>
+        <h3>Continuar comentarios y literales strings en la siguiente linea</h3>
+        <p>
+            Si se pulsa enter cuando el cursor está en medio de un literal string, o en una línea de
+            comentario simple, el literal o la línea de comentario simple se continuan automáticamente
+            en la línea siguiente.
+        </p>
+        <p>
+            Esta extensión se habilita / deshabilita junto con la extensión de Auto-cierre de parentesis 
+            y comillas.
         </p>
 
         <a id="addvariable"></a>
@@ -257,13 +275,13 @@ parm(
         </p>
 
 
-	    <h3>Copiar parm del obj. seleccionado al portapapeles (Atajo de teclado: <kbd>Ctrl+F10</kbd>)</h3>
-	    <p>
-	        En LSI, en algunas aplicaciones, documentamos los parametros de los objetos de una forma 
-	        parecida a como se hace con javadoc o en C#. Un ejemplo del formato de documentación que 
-	        usamos es este:
-	    </p>
-	    <pre class="brush: genexus">
+        <h3>Copiar parm del obj. seleccionado al portapapeles (Atajo de teclado: <kbd>Ctrl+F10</kbd>)</h3>
+        <p>
+            En LSI, en algunas aplicaciones, documentamos los parametros de los objetos de una forma
+            parecida a como se hace con javadoc o en C#. Un ejemplo del formato de documentación que
+            usamos es este:
+        </p>
+        <pre class="brush: genexus">
 ///**** REGLAS DEL OBJETO PUCliNomFis ****///
 parm(
         in:&amp;EmpCod,     // Código de la empresa base
@@ -272,19 +290,19 @@ parm(
         out:&amp;CliNomFis	// El nombre del cliente
 );
 	    </pre>
-	    
-	    <p>
-	        Al escribir una llamada a un objeto en el editor GeneXus,
-	        este muestra los parametros que el objeto espera recibir, pero, evidentemente, no
-	        muestra el formato de nuestros comentarios. Si un objeto tiene muchos parametros, o si
-	        la documentación es relevante para hacer la llamada, esta extensión tiene utilidad.
-	        Al seleccionar un objeto en el editor de código (poniendo el cursor encima del nombre
-	        del objeto a llamar)
-	        y pulsando <kbd>Ctrl+F10</kbd>, copia al portapapeles la regla parm del objeto comentada. 
-	        Si se pega (<kbd>Ctrl+V</kbd>) encima del código de la llamada, se tiene la información completa de
-	        como hacer la llamada:
-	    </p>
-	    <pre class="brush: genexus">
+
+        <p>
+            Al escribir una llamada a un objeto en el editor GeneXus,
+            este muestra los parametros que el objeto espera recibir, pero, evidentemente, no
+            muestra el formato de nuestros comentarios. Si un objeto tiene muchos parametros, o si
+            la documentación es relevante para hacer la llamada, esta extensión tiene utilidad.
+            Al seleccionar un objeto en el editor de código (poniendo el cursor encima del nombre
+            del objeto a llamar)
+            y pulsando <kbd>Ctrl+F10</kbd>, copia al portapapeles la regla parm del objeto comentada.
+            Si se pega (<kbd>Ctrl+V</kbd>) encima del código de la llamada, se tiene la información completa de
+            como hacer la llamada:
+        </p>
+        <pre class="brush: genexus">
 ///**** OBJETO QUE QUIERE LLAMAR A PUCliNomFis ****///
 /* parm(
 		in:&amp;EmpCod,     // Código de la empresa base
@@ -294,15 +312,15 @@ parm(
 ); */
 PUCliNomFis.Call( |
 	    </pre>
-	    
-	    <h3>Copiar un FOR EACH de una tabla al portapapeles... (Atajo de teclado: <kbd>Ctrl+F11</kbd>)</h3>
-	    <p>
-	        Pide al usuario seleccionar una tabla de la kbase y copia al portapapeles el código
-	        de un FOR EACH para leer un único registro de dicha tabla. Pulsando Ctrl+V se pega
-	        el código en el editor GeneXus.
-	        Por ejemplo, si la tabla seleccionada tiene como atributos clave EmpCod y CliCod copia esto:
-	    </p>
-	    <pre class="brush: genexus">
+
+        <h3>Copiar un FOR EACH de una tabla al portapapeles... (Atajo de teclado: <kbd>Ctrl+F11</kbd>)</h3>
+        <p>
+            Pide al usuario seleccionar una tabla de la kbase y copia al portapapeles el código
+            de un FOR EACH para leer un único registro de dicha tabla. Pulsando Ctrl+V se pega
+            el código en el editor GeneXus.
+            Por ejemplo, si la tabla seleccionada tiene como atributos clave EmpCod y CliCod copia esto:
+        </p>
+        <pre class="brush: genexus">
 FOR EACH
 	WHERE EmpCod = &amp;EmpCod
 	WHERE CliCod = &amp;CliCod
@@ -310,14 +328,14 @@ FOR EACH
 
 ENDFOR
 	    </pre>
-	    
-	    <h3>Copiar un NEW de una tabla al portapapeles... (Atajo de teclado: <kbd>Ctrl+F12</kbd>)</h3>
-	    <p>
-	        Pide al usuario seleccionar una tabla de la kbase y copia al portapapeles el código
-	        de un NEW para leer crear un registro en dicha tabla. Pulsando Ctrl+V se pega
-	        el código en el editor GeneXus. El NEW no contiene atributos que sean formulas.
-	        Por ejemplo:
-	    </p>
+
+        <h3>Copiar un NEW de una tabla al portapapeles... (Atajo de teclado: <kbd>Ctrl+F12</kbd>)</h3>
+        <p>
+            Pide al usuario seleccionar una tabla de la kbase y copia al portapapeles el código
+            de un NEW para leer crear un registro en dicha tabla. Pulsando Ctrl+V se pega
+            el código en el editor GeneXus. El NEW no contiene atributos que sean formulas.
+            Por ejemplo:
+        </p>
         <pre class="brush: genexus">
 NEW
 	EmpCod = &amp;EmpCod
@@ -326,7 +344,7 @@ NEW
 	...
 ENDNEW
         </pre>
-        
-	    <!--#include file="./pie.html" -->
-	</body>
+
+        <!--#include file="./pie.html" -->
+    </body>
 </html>
