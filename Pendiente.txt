@@ -1,5 +1,5 @@
-- Debug con el VS (+2):
-	- En el equipo de fernando, en gx17 ha dado error que la dll dte.env (o algo asi) no existia. ver exactamente que dll y donde ha dado
+
+- Añadir las opciones de .NET framwork del WWMains (y otros), si el generador es .NET (core)
 
 * Poder usar [DEPRECATED] en los nombres de los campos de un SDT
 
@@ -134,6 +134,7 @@ true y no encuentra nada. Hacer una propia, o añadir una pestaña de "Web Servi
 - Verificaciones: No dejar meter un bucle FOR &i = 1... denro de otro bucle FOR &i = 1 ... CON LA MISMA VARIABLE INDICE!!!
 
 - Traducciones:
+	- Se puede añadir contexto, usando HTML. Usarlo, mejora las traducciones
 	- Los "Initial values" de los SDTs deberian ir siempre traducidos? (HAY UN ERROR DE GENEXUS CON ESTO)
 	- Traducciones ingles Google:
 		- Si empieza con ¿, quitarlo

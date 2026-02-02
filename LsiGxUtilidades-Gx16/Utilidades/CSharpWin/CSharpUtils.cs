@@ -83,7 +83,14 @@ namespace LSI.Packages.Extensiones.Utilidades.CSharpWin
 #endif
         {
             warningMessage = null;
-            string buildMode = generator.Properties.GetPropertyValue<string>(Properties.CSHARP.BuildMode);
+            string buildMode;
+            if (generator.Generator == (int)GeneratorType.NetCore)
+            {
+                // .NET core seems only supports MsBuild
+                buildMode = BuildMode_Values.Msbuild;
+            }
+            else
+                buildMode = generator.Properties.GetPropertyValue<string>(Properties.CSHARP.BuildMode);
 
             bool msBuildMode = false;
 #if GX_17_OR_GREATER

@@ -20,6 +20,7 @@ using LSI.Packages.Extensiones.Utilidades.Threading;
 using LSI.Packages.Extensiones.Utilidades.UI;
 using LSI.Packages.Extensiones.Utilidades.VS;
 using LSI.Packages.Extensiones.Utilidades.GxClassExtensions;
+using Artech.Packages.Patterns.Engine;
 
 namespace LSI.Packages.Extensiones.Comandos.Build
 {
@@ -160,6 +161,8 @@ namespace LSI.Packages.Extensiones.Comandos.Build
         /// </summary>
         public bool IsCSharpWinGenerator;
 
+        public bool IsNetCoreGenerator;
+
         /// <summary>
         /// Generator is SD
         /// </summary>
@@ -237,9 +240,11 @@ namespace LSI.Packages.Extensiones.Comandos.Build
         {
             IsCSharpWebGenerator = Generator.Generator == (int)GeneratorType.CSharpWeb;
             IsCSharpGenerator = (Generator.Generator == (int)GeneratorType.CSharpWin ||
-                    Generator.Generator == (int)GeneratorType.CSharpWeb);
+                    Generator.Generator == (int)GeneratorType.CSharpWeb ||
+                    Generator.Generator == (int)GeneratorType.NetCore);
             IsCSharpWinGenerator = Generator.Generator == (int)GeneratorType.CSharpWin;
             IsSdGenerator = Generator.Generator == (int)GeneratorType.SmartDevices;
+            IsNetCoreGenerator = Generator.Generator == (int)GeneratorType.NetCore;
 
             if (IsCSharpWinGenerator)
             {
@@ -280,9 +285,21 @@ namespace LSI.Packages.Extensiones.Comandos.Build
 
             if (IsCSharpGenerator)
             {
-                // Add main entry for Genexus.Commons.Programs
-                RefCommons = new CompilationObjectRef(BinModuleDir, Generator);
-                Mains.Add(RefCommons);
+                if(!IsNetCoreGenerator)
+                { 
+                    // Add main entry for Genexus.Commons.Programs
+                    RefCommons = new CompilationObjectRef(BinModuleDir, Generator);
+                    Mains.Add(RefCommons);
+                }
+				else
+				{
+                    // Unsupported operations for .NET core
+                    RepairRspEnabled = 
+                        EditRspEnabled = 
+                        CustomCompileEnabled = 
+                        BtnZip.Visible = 
+                        BtnProduction.Visible = false;
+                }
             }
             else
             {
@@ -311,6 +328,8 @@ namespace LSI.Packages.Extensiones.Comandos.Build
 
             if (IsCSharpWebGenerator)
                 LnkConfigFile.Text = "web.config";
+            else if (IsNetCoreGenerator)
+                LnkConfigFile.Text = "appsettings.json";
             else
             {
                 // Remove c# web only functions
@@ -526,6 +545,8 @@ namespace LSI.Packages.Extensiones.Comandos.Build
 
                 if (IsCSharpWebGenerator)
                     DebugCsharpWeb();
+                if (IsNetCoreGenerator)
+                    DebugNetCore();
                 else
                     DebugCSharpWin();
                 
@@ -536,10 +557,34 @@ namespace LSI.Packages.Extensiones.Comandos.Build
             }
         }
 
-        /// <summary>
-        /// Start debugging button clicked
-        /// </summary>
-        private void BtnStartDebug_Click(object sender, EventArgs e)
+		private void DebugNetCore()
+		{
+            // TODO: This should work if property Web server = Kestrel. Check what we should do if 
+            // TODO: Web server = IIS
+            IEnumerable<Process> processes = ProcessUtils.GetByExeName("GxWebStartup.exe");
+
+            // string gxStartProject = '\"' + Entorno.GetTargetDirectoryFilePath(@"build\GxWebStartup\GxWebStartup.csproj") + '\"';
+            // We must find processes with a command line like this:
+            // dotnet watch run  --non-interactive --property OutputPath="D:\KBases\SgaSap_Gx18U7\LsiServicios\NETSAPHana002\web\bin" --project "D:\KBases\SgaSap_Gx18U7\LsiServicios\NETSAPHana002\build\GxWebStartup\GxWebStartup.csproj"  "LsiServiciosNETSAPHana" "D:\KBases\SgaSap_Gx18U7\LsiServicios\NETSAPHana002\web" 8082 http
+
+            // Not working: p.StartInfo.Arguments is always ""
+            // processes = processes.Where(p => p.StartInfo.Arguments.Contains(webFolder));
+            // processes = processes.Where(p => ProcessUtils.GetCommandLine(p)?.Contains(gxStartProject) == true);
+
+            if (processes.Count() == 0)
+            {
+                MessageBox.Show($"No process found running GxWebStartup.exe");
+                return;
+            }
+            VisualStudio vs = new VisualStudio(LsiExtensionsConfiguration.Load().VisualStudioComId);
+            foreach (Process p in processes)
+                vs.AttachProcess(p.Id, false);
+        }
+
+		/// <summary>
+		/// Start debugging button clicked
+		/// </summary>
+		private void BtnStartDebug_Click(object sender, EventArgs e)
         {
             try
             {
@@ -575,7 +620,7 @@ namespace LSI.Packages.Extensiones.Comandos.Build
         private string BinModuleDir
         {
             get {
-                string relativePath = IsCSharpWebGenerator ? "web\\bin" : "bin";
+                string relativePath = IsCSharpWebGenerator || IsNetCoreGenerator ? "web\\bin" : "bin";
                 return Entorno.GetTargetDirectoryFilePath(relativePath);
             }
         }
@@ -705,7 +750,7 @@ namespace LSI.Packages.Extensiones.Comandos.Build
 
                 string rspPath;
                 if (selectedRef == RefCommons)
-                    rspPath = RspFile.GetCommonsRspPath(IsCSharpWebGenerator);
+                    rspPath = RspFile.GetCommonsRspPath(IsCSharpWebGenerator || IsNetCoreGenerator);
                 else
                     rspPath = RspFile.RspFilePath(GrdMains.ObjetoSeleccionado);
 
@@ -831,7 +876,7 @@ namespace LSI.Packages.Extensiones.Comandos.Build
             EnabledBySelection(BtnEditRsp, MiEditRsp, enabled);
             EnabledBySelection(BtnZip, enabled);
 
-            if (IsCSharpWebGenerator)
+            if (IsCSharpWebGenerator || IsNetCoreGenerator)
                 // Debug always enabled on c# web
                 EnabledBySelection(BtnDebug, MiDebug, true);
         }
@@ -1007,7 +1052,7 @@ namespace LSI.Packages.Extensiones.Comandos.Build
         {
             // Get the main source file for the object
             ObjectSourceFiles sourceFiles = GeneratedSourceFilesCache.Cache(UIServices.KB.CurrentKB).GetSourceFiles(o);
-			IEnumerable<string> sourceFilePaths = sourceFiles.GetAllSourceFiles(o, IsCSharpWebGenerator);
+			IEnumerable<string> sourceFilePaths = sourceFiles.GetAllSourceFiles(o, IsCSharpWebGenerator || IsNetCoreGenerator);
             if (!sourceFilePaths.Any())
             {
                 MessageBox.Show($"Source file for {o.QualifiedName} cannot be calculated");
@@ -1035,6 +1080,7 @@ namespace LSI.Packages.Extensiones.Comandos.Build
 
             // Open main file last, to set it visible
             // TODO: Allow to search by event / sub name
+            // TODO: I think this is not rigth for .NET core (even it's declared. It seems not to be called)
             vs.EditFile(mainFilePath, "void executePrivate( )");
 
             // Open the object, to see the source
@@ -1132,7 +1178,9 @@ namespace LSI.Packages.Extensiones.Comandos.Build
         private void LnkConfigFile_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             string path;
-            if (IsCSharpWebGenerator)
+            if(IsNetCoreGenerator)
+                path = "web\\appsettings.json";
+            else if (IsCSharpWebGenerator)
                 path = "web\\web.config";
             else
                 path = "bin\\client.exe.config";

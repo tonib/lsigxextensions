@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Management;
 
 namespace LSI.Packages.Extensiones.Utilidades.Threading
 {
@@ -25,6 +26,24 @@ namespace LSI.Packages.Extensiones.Utilidades.Threading
         {
             exeName = Path.GetFileNameWithoutExtension(exeName).ToLower();
             return Process.GetProcessesByName(exeName).ToList();
+        }
+
+        /// <summary>
+        /// Returns the command line that launched the process
+        /// </summary>
+        /// <param name="process">Process to check</param>
+        /// <returns>The command line. null if not found</returns>
+        static public string GetCommandLine(Process process)
+        {
+            using (var searcher = new ManagementObjectSearcher(
+                "SELECT CommandLine FROM Win32_Process WHERE ProcessId = " + process.Id))
+            {
+                foreach (ManagementObject obj in searcher.Get())
+                {
+                    return obj["CommandLine"]?.ToString();
+                }
+            }
+            return null;
         }
 
         static public string GetWindowTitle(Process p)
