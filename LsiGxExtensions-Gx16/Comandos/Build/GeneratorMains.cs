@@ -545,7 +545,7 @@ namespace LSI.Packages.Extensiones.Comandos.Build
 
                 if (IsCSharpWebGenerator)
                     DebugCsharpWeb();
-                if (IsNetCoreGenerator)
+                else if (IsNetCoreGenerator)
                     DebugNetCore();
                 else
                     DebugCSharpWin();
