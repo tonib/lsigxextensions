@@ -152,7 +152,12 @@ namespace LSI.Packages.Extensiones.Comandos.Edit.AddVariable
                 vPart.KBObject.Parts.LsiUpdatePart(vPart);
 
             vPart.OnInvalidate();
-            propertyInspector.SelectedObject = v;
+            try
+			{
+                // Gx18U7: I'm getting random NullReferenceException inside set_SelectedObject. Catch errors silently
+                propertyInspector.SelectedObject = v;
+            }
+			catch { }
 
             return true;
         }

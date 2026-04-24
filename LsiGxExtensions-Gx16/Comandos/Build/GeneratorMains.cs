@@ -239,12 +239,22 @@ namespace LSI.Packages.Extensiones.Comandos.Build
         private void StoreGeneratorSettings()
         {
             IsCSharpWebGenerator = Generator.Generator == (int)GeneratorType.CSharpWeb;
+
             IsCSharpGenerator = (Generator.Generator == (int)GeneratorType.CSharpWin ||
-                    Generator.Generator == (int)GeneratorType.CSharpWeb ||
-                    Generator.Generator == (int)GeneratorType.NetCore);
+                    Generator.Generator == (int)GeneratorType.CSharpWeb);
+#if GX_16_OR_GREATER
+            IsCSharpGenerator = IsCSharpGenerator || Generator.Generator == (int)GeneratorType.NetCore;
+#endif
+
             IsCSharpWinGenerator = Generator.Generator == (int)GeneratorType.CSharpWin;
             IsSdGenerator = Generator.Generator == (int)GeneratorType.SmartDevices;
+
+#if GX_16_OR_GREATER
             IsNetCoreGenerator = Generator.Generator == (int)GeneratorType.NetCore;
+#else
+            IsNetCoreGenerator = false;
+#endif
+
 
             if (IsCSharpWinGenerator)
             {

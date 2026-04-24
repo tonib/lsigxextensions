@@ -84,6 +84,11 @@ namespace LSI.Packages.Extensiones.Utilidades.CSharpWin
         {
             warningMessage = null;
             string buildMode;
+
+            // GeneratorType.NetCore generator seems to be declared starting from Gx16.
+            // But BuildMode_Values.Msbuild seems to be declared starting from Gx17 ??? (lower versions don't compile)
+            // So, check this starting Gx17
+#if GX_17_OR_GREATER
             if (generator.Generator == (int)GeneratorType.NetCore)
             {
                 // .NET core seems only supports MsBuild
@@ -91,6 +96,9 @@ namespace LSI.Packages.Extensiones.Utilidades.CSharpWin
             }
             else
                 buildMode = generator.Properties.GetPropertyValue<string>(Properties.CSHARP.BuildMode);
+#else
+            buildMode = generator.Properties.GetPropertyValue<string>(Properties.CSHARP.BuildMode);
+#endif
 
             bool msBuildMode = false;
 #if GX_17_OR_GREATER
